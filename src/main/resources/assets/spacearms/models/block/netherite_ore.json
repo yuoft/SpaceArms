@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "spacearms:block/netherite_top",
+    "side": "spacearms:block/netherite_side"
+  }
+}

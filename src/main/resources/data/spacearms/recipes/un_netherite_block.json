@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+		"item": "spacearms:netherite_block"
+	}
+  ],
+  "result": {
+    "item": "spacearms:netherite_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "tree": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "tag": "minecraft:logs"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": ["spacearms:tree"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "ruby_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:ruby_ore"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:ruby_axe",
+      "spacearms:ruby_block",
+      "spacearms:un_ruby_block",
+      "spacearms:ruby_chest",
+      "spacearms:ruby_feet",
+      "spacearms:ruby_head",
+      "spacearms:ruby_ingot",
+      "spacearms:ruby_legs",
+      "spacearms:ruby_pickaxe",
+      "spacearms:ruby_sword"
+    ]
+  }
+}

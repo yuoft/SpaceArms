@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "bedrock_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:bedrock_nugget"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:bedrock",
+      "spacearms:op_chest",
+      "spacearms:op_feet",
+      "spacearms:op_head",
+      "spacearms:op_legs",
+      "spacearms:op_pickaxe",
+      "spacearms:bedrock_powder",
+      "spacearms:op_sword"
+    ]
+  }
+}

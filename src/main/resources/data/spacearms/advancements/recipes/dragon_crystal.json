@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "dragon_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:dragon_crystal"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:dragon_chest",
+      "spacearms:dragon_feet",
+      "spacearms:dragon_head",
+      "spacearms:dragon_legs",
+      "spacearms:dragon_pickaxe",
+      "spacearms:dragon_sword",
+      "spacearms:un_dragon_block",
+      "spacearms:dragon_block"
+    ]
+  }
+}

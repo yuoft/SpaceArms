@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "space_path": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:space_path"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:space_block",
+      "spacearms:un_space_block",
+      "spacearms:space_chest",
+      "spacearms:space_feet",
+      "spacearms:space_head",
+      "spacearms:space_ingot",
+      "spacearms:space_legs",
+      "spacearms:space_pickaxe",
+      "spacearms:space_sword",
+      "spacearms:un_space_ingot"
+    ]
+  }
+}

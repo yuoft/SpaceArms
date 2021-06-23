@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:bedrock",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:op_sword"
+    },
+    "title": {
+		"translate": "advancements.spacearms.op_sword.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.op_sword.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "space_block": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:op_sword"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

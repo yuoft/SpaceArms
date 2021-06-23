@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x x",
+    "x x",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:dragon_crystal"
+    }
+  },
+  "result": {
+    "item": "spacearms:dragon_chest"
+  }
+}

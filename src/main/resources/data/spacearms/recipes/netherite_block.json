@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yyy",
+    "yyy"
+  ],
+  "key": {
+    "y": {
+      "item": "spacearms:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "spacearms:netherite_block"
+  }
+}

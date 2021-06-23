@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "spacearms:netherite_ore"
+  },
+  "result": "spacearms:netherite_scrap",
+  "experience": 2.0,
+  "cookingtime": 200
+}

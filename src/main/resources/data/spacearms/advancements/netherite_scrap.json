@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:netherite_scrap"
+    },
+    "title": {
+		"translate": "advancements.spacearms.netherite_scrap.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.netherite_scrap.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "netherite_scrap": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:netherite_scrap"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

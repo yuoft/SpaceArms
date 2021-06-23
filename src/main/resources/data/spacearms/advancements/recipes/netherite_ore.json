@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "nethertie_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:netherite_ore"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:netherite_block",
+      "spacearms:un_netherite_block",
+      "spacearms:netherite_ingot",
+      "spacearms:netherite_scrap"
+    ]
+  }
+}

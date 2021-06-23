@@ -1,0 +1,39 @@
+{
+  "parent": "spacearms:netherite_scrap",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:netherite_chest"
+    },
+    "title": {
+		"translate": "advancements.spacearms.netherite_arms.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.netherite_arms.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "netherite_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { 
+		"items": [
+          {
+            "item":"spacearms:netherite_head"
+          },
+          {
+            "item":"spacearms:netherite_chest"
+          },
+          {
+            "item":"spacearms:netherite_legs"
+          },
+          {
+            "item":"spacearms:netherite_feet"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}
