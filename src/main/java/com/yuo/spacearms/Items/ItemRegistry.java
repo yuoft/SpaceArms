@@ -10,6 +10,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemTier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -115,6 +116,12 @@ public class ItemRegistry {
 	public static RegistryObject<Item> superSpacePickaxe = ITEMS.register("super_space_pickaxe", () -> {
 		return new SuperSpacePickaxe();
 	});
+	public static RegistryObject<Item> totemSword = ITEMS.register("totem_sword", () -> {
+		return new OrdinarySword(ItemTier.DIAMOND, 3, -2.4f);
+	});
+	public static RegistryObject<Item> glowstoneSword = ITEMS.register("glowstone_sword", () -> {
+		return new OrdinarySword(ItemTier.IRON, 3, -2.4f);
+	});
 
 	//盔甲
 	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head", () -> {
@@ -178,16 +185,40 @@ public class ItemRegistry {
 		return new NetheriteArms(MyArmorMaterial.NETHER, EquipmentSlotType.FEET);
 	});
 	public static RegistryObject<ArmorItem> dragonHead = ITEMS.register("dragon_head", () -> {
-		return new OrdinaryArms(MyArmorMaterial.DRAGON, EquipmentSlotType.HEAD);
+		return new DragonArms(EquipmentSlotType.HEAD);
 	});
 	public static RegistryObject<ArmorItem> dragonChest = ITEMS.register("dragon_chest", () -> {
-		return new OrdinaryArms(MyArmorMaterial.DRAGON, EquipmentSlotType.CHEST);
+		return new DragonArms(EquipmentSlotType.CHEST);
 	});
 	public static RegistryObject<ArmorItem> dragonLegs = ITEMS.register("dragon_legs", () -> {
-		return new OrdinaryArms(MyArmorMaterial.DRAGON, EquipmentSlotType.LEGS);
+		return new DragonArms(EquipmentSlotType.LEGS);
 	});
 	public static RegistryObject<ArmorItem> dragonFeet = ITEMS.register("dragon_feet", () -> {
-		return new OrdinaryArms(MyArmorMaterial.DRAGON, EquipmentSlotType.FEET);
+		return new DragonArms(EquipmentSlotType.FEET);
+	});
+	public static RegistryObject<ArmorItem> totemHead = ITEMS.register("totem_head", () -> {
+		return new TotemArms(EquipmentSlotType.HEAD);
+	});
+	public static RegistryObject<ArmorItem> totemChest = ITEMS.register("totem_chest", () -> {
+		return new TotemArms(EquipmentSlotType.CHEST);
+	});
+	public static RegistryObject<ArmorItem> totemLegs = ITEMS.register("totem_legs", () -> {
+		return new TotemArms(EquipmentSlotType.LEGS);
+	});
+	public static RegistryObject<ArmorItem> totemFeet = ITEMS.register("totem_feet", () -> {
+		return new TotemArms(EquipmentSlotType.FEET);
+	});
+	public static RegistryObject<ArmorItem> glowstoneHead = ITEMS.register("glowstone_head", () -> {
+		return new GlowstoneArms(EquipmentSlotType.HEAD);
+	});
+	public static RegistryObject<ArmorItem> glowstoneChest = ITEMS.register("glowstone_chest", () -> {
+		return new GlowstoneArms(EquipmentSlotType.CHEST);
+	});
+	public static RegistryObject<ArmorItem> glowstoneLegs = ITEMS.register("glowstone_legs", () -> {
+		return new GlowstoneArms(EquipmentSlotType.LEGS);
+	});
+	public static RegistryObject<ArmorItem> glowstoneFeet = ITEMS.register("glowstone_feet", () -> {
+		return new GlowstoneArms(EquipmentSlotType.FEET);
 	});
 	
 	

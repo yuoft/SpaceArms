@@ -15,7 +15,7 @@ public enum MyItemTier implements IItemTier {
     RUBY(1234, 8.0f, 3.0f, 3, 10, () -> {
         return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
     }),
-    SPACE(3456, 16.0f, 6.0f, 6, 20, () -> {
+    SPACE(3456, 16.0f, 8.0f, 6, 20, () -> {
         return Ingredient.fromItems(ItemRegistry.spaceIngot.get());
     }),
     SUPERSPACE(3456, 18.0f, 6.0f, 9, 20, () -> {
@@ -24,7 +24,7 @@ public enum MyItemTier implements IItemTier {
     NETHER(2345, 12.0f, 5.0f, 4, 15, () -> {
         return Ingredient.fromItems(ItemRegistry.netheriteIngot.get());
     }),
-    DRAGON(3113, 14.0f, 5.0f, 5, 18, () -> {
+    DRAGON(3113, 14.0f, 6.0f, 5, 18, () -> {
         return Ingredient.fromItems(ItemRegistry.dragonCrystal.get());
     }),
     OP(0, 99.0f, 0, 99, 0, () -> {

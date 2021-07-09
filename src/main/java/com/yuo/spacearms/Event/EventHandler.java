@@ -32,6 +32,7 @@ import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,6 +40,8 @@ import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -54,6 +57,64 @@ import java.util.Random;
  */
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
 public class EventHandler {
+    //op鞋子 无摔落伤害
+    @SubscribeEvent
+    public static void playerFall(LivingFallEvent event) {
+        LivingEntity living = event.getEntityLiving();
+        if (living instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity)living;
+            Iterable<ItemStack> list = player.getArmorInventoryList();
+            for(ItemStack stack : list) {
+                if (stack.getItem().equals(ItemRegistry.opFeet.get())) {
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+    //op胸甲 飞行 护腿 行走速度增加
+    @SubscribeEvent
+    public static void updatePlayerAbilityStatus(LivingEvent.LivingUpdateEvent event) {
+        LivingEntity living = event.getEntityLiving();
+        if (living instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) living;
+            Iterable<ItemStack> list = player.getArmorInventoryList();
+            boolean flag = false;
+            boolean flag1 = false;
+            for(ItemStack stack : list) {
+                if (stack.getItem().equals(ItemRegistry.opChest.get())) {
+                    flag = true;
+                }
+                if (stack.getItem().equals(ItemRegistry.opFeet.get())) {
+                    flag1 = true;
+                }
+            }
+            if (flag) {
+                player.abilities.allowFlying = true;
+            }else {
+                player.abilities.allowFlying = false;
+                player.abilities.isFlying = false;
+            }
+            if (flag1) {
+                player.abilities.setWalkSpeed(0.3f); //行走速度
+            }else {
+                player.abilities.setWalkSpeed(0.1f);
+            }
+        }
+    }
+    //op护腿 增加跳跃高度
+    @SubscribeEvent
+    public static void jumpBoost(LivingEvent.LivingJumpEvent event) {
+        LivingEntity living = event.getEntityLiving();
+        if (living instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity)living;
+            Iterable<ItemStack> list = player.getArmorInventoryList();
+            for(ItemStack stack : list) {
+                if (stack.getItem().equals(ItemRegistry.opLegs.get())) {
+                    player.setMotion(0, 1.0f, 0);
+                }
+            }
+        }
+    }
     //基岩镐右键基岩，将基岩变为脆弱基岩
     @SubscribeEvent
     public static void breakBedrock(PlayerInteractEvent.RightClickBlock event){

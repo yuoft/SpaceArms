@@ -28,10 +28,4 @@ public class EmeraldIngotOre extends OreBlock{
 		return MathHelper.nextInt(rand, 3, 6);
 	}
 
-	@Override
-	public List<ItemStack> getDrops(BlockState state, Builder builder) {
-		List<ItemStack> loots = new ArrayList<ItemStack>();
-		loots.add(new ItemStack(ItemRegistry.emeraldIngot.get(), RANDOM.nextInt(3) + 1));
-		return loots;
-	}
 }

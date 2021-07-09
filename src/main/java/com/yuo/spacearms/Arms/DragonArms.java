@@ -8,6 +8,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -16,18 +17,20 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class SpaceArms extends ArmorItem{
+public class DragonArms extends ArmorItem{
 
 	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
 
-	public SpaceArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.SPACE, slot, properties);
+	public DragonArms(EquipmentSlotType slot) {
+		super(MyArmorMaterial.DRAGON, slot, properties);
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_arms"));
+		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.dragon_arms"));
 	}
+
+	//盔甲在身上时触发效果
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
 		Iterator<ItemStack> iterator = player.getArmorInventoryList().iterator();
@@ -37,9 +40,9 @@ public class SpaceArms extends ArmorItem{
 				flag = false;
 			}
 		}
-		//抗性提升
+		//缓降
 		if (flag){
-			player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 0, 1));
+			player.addPotionEffect(new EffectInstance(Effects.SLOW_FALLING, 0, 0));
 		}
 	}
 }

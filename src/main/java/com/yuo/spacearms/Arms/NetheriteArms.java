@@ -1,12 +1,16 @@
 package com.yuo.spacearms.Arms;
 
 import com.yuo.spacearms.tab.ModGroup;
+import net.minecraft.client.renderer.texture.ITickable;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 /**
- * 通用普通盔甲注册
+ * 下届合金盔甲注册
  */
 public class NetheriteArms extends ArmorItem{
 
@@ -15,5 +19,4 @@ public class NetheriteArms extends ArmorItem{
 	public NetheriteArms(IArmorMaterial material, EquipmentSlotType slot) {
 		super(material, slot, properties);
 	}
-
 }

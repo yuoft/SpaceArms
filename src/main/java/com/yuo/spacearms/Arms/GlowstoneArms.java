@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
 
-public class SpaceArms extends ArmorItem{
+public class GlowstoneArms extends ArmorItem{
 
 	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
 
-	public SpaceArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.SPACE, slot, properties);
+	public GlowstoneArms(EquipmentSlotType slot) {
+		super(MyArmorMaterial.TOTEM, slot, properties);
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_arms"));
+		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.glowstone_arms"));
 	}
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
@@ -37,9 +37,9 @@ public class SpaceArms extends ArmorItem{
 				flag = false;
 			}
 		}
-		//抗性提升
+		//夜视
 		if (flag){
-			player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 0, 1));
+			player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0));
 		}
 	}
 }

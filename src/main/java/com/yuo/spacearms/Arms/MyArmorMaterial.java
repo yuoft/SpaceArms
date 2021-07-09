@@ -22,6 +22,12 @@ public enum MyArmorMaterial implements IArmorMaterial {
 	RUBY(Spacearms.MODID + ":" + "ruby", 30, new int[] { 3, 6, 8, 3 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, () -> {
 		return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
 	}),
+	TOTEM(Spacearms.MODID + ":" + "totem", 25, new int[] { 3, 6, 8, 3 }, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1.5F, () -> {
+		return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
+	}),
+	GLOWSTONE(Spacearms.MODID + ":" + "glowstone", 13, new int[] { 2, 5, 6, 2 }, 8, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.5F, () -> {
+		return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
+	}),
 	EMERALD(Spacearms.MODID + ":" + "emerald", 35, new int[] { 4, 7, 9, 4 }, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, () -> {
 		return Ingredient.fromItems(ItemRegistry.emeraldIngot.get());
 	}),

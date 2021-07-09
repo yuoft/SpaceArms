@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  y",
+    " y ",
+    "x  "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:glowstone"
+    },
+	"x": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "spacearms:glowstone_sword"
+  }
+}

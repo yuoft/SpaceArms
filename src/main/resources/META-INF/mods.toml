@@ -2,11 +2,11 @@ modLoader="javafml"
 loaderVersion="[31,)" 
 [[mods]] #mandatory
 modId="spacearms" 
-version="1.1.4"
+version="1.1.7"
 displayName="SpaceArms"
 authors="yuo" 
 description='''
-更多装备。是绿宝石工艺中的人矿石和装备部分的1.15.2升级。
+强力装备。是绿宝石工艺中的人矿石和装备部分的1.15.2升级。
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional

@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "glowstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "minecraft:glowstone"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:glowstone_head",
+      "spacearms:glowstone_chest",
+      "spacearms:glowstone_legs",
+      "spacearms:glowstone_feet",
+      "spacearms:glowstone_sword"
+    ]
+  }
+}

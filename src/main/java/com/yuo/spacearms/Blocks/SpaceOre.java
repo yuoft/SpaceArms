@@ -29,10 +29,4 @@ public class SpaceOre extends OreBlock{
 		return MathHelper.nextInt(rand, 5, 10);
 	}
 
-	@Override
-	public List<ItemStack> getDrops(BlockState state, Builder builder) {
-		List<ItemStack> loots = new ArrayList<ItemStack>();
-		loots.add(new ItemStack(ItemRegistry.spacePath.get(), RANDOM.nextInt(5) + 1));
-		return loots;
-	}
 }

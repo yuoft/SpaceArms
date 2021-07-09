@@ -25,10 +25,4 @@ public class DragonOre extends OreBlock {
         return MathHelper.nextInt(rand, 4, 8);
     }
 
-    @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        List<ItemStack> loots = new ArrayList<ItemStack>();
-        loots.add(new ItemStack(ItemRegistry.dragonCrystal.get(), RANDOM.nextInt(2) + 1));
-        return loots;
-    }
 }
