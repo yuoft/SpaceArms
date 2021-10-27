@@ -1,0 +1,30 @@
+{
+  "display": { 
+    "icon": { 
+      "item": "spacearms:ruby_ingot"
+    },
+    "title": {
+		"translate": "advancements.spacearms.ruby_ingot.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.ruby_ingot.desc"
+	},
+    "frame": "task",
+    "background": "spacearms:textures/block/space_ore.png"
+  },
+  "criteria": { 
+    "ruby_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:ruby_ingot"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

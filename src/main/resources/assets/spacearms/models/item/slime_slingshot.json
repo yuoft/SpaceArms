@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "spacearms:item/tool/slime_slingshot"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spacearms:time": 0.9
+      },
+      "model": "spacearms:item/slime_sling"
+    }
+  ]
+}

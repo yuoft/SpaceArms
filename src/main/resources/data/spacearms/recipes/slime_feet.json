@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "x x",
+    "y y"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:slime_crystal"
+    },
+    "y": {
+      "item": "minecraft:slime_block"
+    }
+  },
+  "result": {
+    "item": "spacearms:slime_feet"
+  }
+}

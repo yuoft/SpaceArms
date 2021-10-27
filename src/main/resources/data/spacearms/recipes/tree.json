@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yyy",
+    "yyy"
+  ],
+  "key": {
+    "y": {
+	  "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "spacearms:tree"
+  }
+}

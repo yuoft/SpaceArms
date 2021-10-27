@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yyy",
+    "yyy"
+  ],
+  "key": {
+    "y": {
+      "item": "spacearms:ruby_ingot"
+    }
+  },
+  "result": {
+    "item": "spacearms:ruby_block"
+  }
+}

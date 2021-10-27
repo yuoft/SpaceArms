@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+		"item": "spacearms:space_block"
+	}
+  ],
+  "result": {
+    "item": "spacearms:space_ingot",
+    "count": 9
+  }
+}

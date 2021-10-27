@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    " y ",
+    " z "
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:space_path"
+    },
+    "y": {
+      "item": "minecraft:stick"
+    },
+    "z": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "spacearms:space_arrow",
+    "count": 2
+  }
+}

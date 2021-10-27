@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xzx",
+    "zyz",
+    "xzx"
+  ],
+  "key": {
+    "x": {
+      "tag": "minecraft:wool"
+    },
+    "z": {
+      "item": "spacearms:yuanshi"
+    },
+    "y": {
+      "item": "minecraft:dandelion"
+    }
+  },
+  "result": {
+    "item": "minecraft:sponge"
+  }
+}

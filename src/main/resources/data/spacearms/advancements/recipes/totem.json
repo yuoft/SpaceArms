@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "totem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "minecraft:totem_of_undying"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:totem_head",
+      "spacearms:totem_chest",
+      "spacearms:totem_legs",
+      "spacearms:totem_feet",
+      "spacearms:totem_sword"
+    ]
+  }
+}

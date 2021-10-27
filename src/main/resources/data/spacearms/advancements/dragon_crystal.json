@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:dragon_crystal"
+    },
+    "title": {
+		"translate": "advancements.spacearms.dragon_crystal.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.dragon_crystal.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "space_path": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:dragon_crystal"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

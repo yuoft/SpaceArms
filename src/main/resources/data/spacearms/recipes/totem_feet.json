@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "x y",
+    "x x"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "y": {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  },
+  "result": {
+    "item": "spacearms:totem_feet"
+  }
+}

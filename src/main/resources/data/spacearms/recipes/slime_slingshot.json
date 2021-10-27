@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xzx",
+    "y y",
+    " j "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:string"
+    },
+    "y": {
+      "item": "minecraft:slime_ball"
+    },
+    "z": {
+      "item": "minecraft:slime_block"
+    },
+    "j": {
+      "item": "spacearms:slime_crystal"
+    }
+  },
+  "result": {
+    "item": "spacearms:slime_slingshot"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:ruby_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:emerald_ingot"
+    },
+    "title": {
+		"translate": "advancements.spacearms.emerald_ingot.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.emerald_ingot.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:emerald_ingot"					
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "spacearms:item/bow/amosi_bow_pulling_0"
+    }
+}

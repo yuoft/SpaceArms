@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spacearms:item/bedrock_ingot"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spacearms:count": 16
+      },
+      "model": "spacearms:item/bedrock_ingot_count"
+    }
+  ]
+}

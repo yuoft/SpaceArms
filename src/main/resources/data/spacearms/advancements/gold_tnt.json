@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:gold_tnt"
+    },
+    "title": {
+		"translate": "advancements.spacearms.gold_tnt.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.gold_tnt.desc"
+	},
+    "frame": "goal"
+  },
+  "criteria": { 
+    "space_path": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:gold_tnt"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 30
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:space_pickaxe",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:space_pickaxe"
+    },
+    "title": {
+		"translate": "advancements.spacearms.space_pickaxe.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.space_pickaxe.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "space_block": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:super_space_pickaxe"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

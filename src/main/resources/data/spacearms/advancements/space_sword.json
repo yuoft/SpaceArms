@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:space_path",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:space_sword"
+    },
+    "title": {
+		"translate": "advancements.spacearms.space_sword.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.space_sword.desc"
+	},
+    "frame": "goal"
+  },
+  "criteria": { 
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:space_sword"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 50
+  }
+}

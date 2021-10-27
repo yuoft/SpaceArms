@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:iron_bow",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:amosi_bow"
+    },
+    "title": {
+		"translate": "advancements.spacearms.amosi_bow.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.amosi_bow.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:amosi_bow"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

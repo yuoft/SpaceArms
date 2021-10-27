@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:dragon_crystal",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:wolf_sword"
+    },
+    "title": {
+		"translate": "advancements.spacearms.wolf_end.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.wolf_end.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "wolf_end": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:wolf_sword"					
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

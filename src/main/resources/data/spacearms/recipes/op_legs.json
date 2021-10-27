@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx",
+    "x x",
+    "x x"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:bedrock"
+    },
+	"y": {
+      "item": "spacearms:space_block"
+    }
+  },
+  "result": {
+    "item": "spacearms:op_legs"
+  }
+}
