@@ -153,7 +153,9 @@ public class EventHandler {
             //leg
             if (playersWithLeg.contains(key)) {
                 if (hasLeg) {
+                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3f); //行走速度
                 }else {
+                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1f);
                     playersWithLeg.remove(key);
                 }
             }else if (hasLeg) {
@@ -162,9 +164,7 @@ public class EventHandler {
             //feet
             if (playersWithFoot.contains(key)) {
                 if (hasFoot) {
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3f); //行走速度
                 } else {
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1f);
                     playersWithFoot.remove(key);
                 }
             } else if (hasFoot) {
@@ -179,7 +179,7 @@ public class EventHandler {
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity)living;
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
-            if (playersWithLeg.contains(key)) {
+            if (playersWithFoot.contains(key)) {
                 player.setMotion(0, 1.0f, 0);
                 return;
             }

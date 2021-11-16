@@ -3,7 +3,6 @@ package com.yuo.spacearms.Entity;
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -60,7 +59,11 @@ public class EntityRegistry {
     });
     public static RegistryObject<EntityType<AmosiArrowEntity>> AMOSI_ARROW = ENTITY_TYPES.register("amosi_arrow", () -> {
         return EntityType.Builder.<AmosiArrowEntity>create(AmosiArrowEntity::new, EntityClassification.MISC)
-                .size(0.5f, 0.5F).build("amosi_arrowv");
+                .size(0.5f, 0.5F).build("amosi_arrow");
+    });
+    public static RegistryObject<EntityType<AmosiBowArrowEntity>> AMOSI_BOW_ARROW = ENTITY_TYPES.register("amosi_bow_arrow", () -> {
+        return EntityType.Builder.<AmosiBowArrowEntity>create(AmosiBowArrowEntity::new, EntityClassification.MISC)
+                .size(0.5f, 0.5F).build("amosi_bow_arrow");
     });
 
 }

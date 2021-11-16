@@ -2,14 +2,12 @@ package com.yuo.spacearms.Blocks;
 
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.block.Block;
-import net.minecraft.block.FireBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.io.FileReader;
 
 //方块注册
 public class BlockRegistry {
@@ -18,10 +16,10 @@ public class BlockRegistry {
         return new OrdinaryBlock(Material.ROCK, 2, ToolType.PICKAXE, 5, 5);
     });
     public static RegistryObject<Block> rubyBlock = BLOCKS.register("ruby_block", () -> {
-        return new OrdinaryBlock(Material.ROCK, 2, ToolType.PICKAXE, 7, 7);
+        return new OrdinaryBlock((new Material.Builder(MaterialColor.RED)).build(), 2, ToolType.PICKAXE, 7, 7);
     });
     public static RegistryObject<Block> emeraldIngotBlock = BLOCKS.register("emerald_ingot_block", () -> {
-        return new OrdinaryBlock(Material.ROCK, 2, ToolType.PICKAXE, 9, 9);
+        return new OrdinaryBlock((new Material.Builder(MaterialColor.EMERALD)).build(), 2, ToolType.PICKAXE, 9, 9);
     });
     public static RegistryObject<Block> emeraldIngotOre = BLOCKS.register("emerald_ingot_ore", EmeraldIngotOre::new);
     public static RegistryObject<Block> spaceBlock = BLOCKS.register("space_block", SpaceBlock::new);

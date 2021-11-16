@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:gold_ingot"
-	},
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "key": {
+    "x": {
       "item": "minecraft:gold_ingot"
     }
-  ],
+  },
   "result": {
     "item": "spacearms:gold_stick"
   }

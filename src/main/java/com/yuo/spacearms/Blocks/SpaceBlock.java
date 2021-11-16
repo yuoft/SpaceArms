@@ -4,6 +4,7 @@ import com.yuo.spacearms.Util.Helper;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +22,7 @@ import java.util.List;
 public class SpaceBlock extends OreBlock{
 
 	public SpaceBlock() {
-		super(Block.Properties.create(Material.ROCK).harvestLevel(4).harvestTool(ToolType.PICKAXE)
+		super(Block.Properties.create((new Material.Builder(MaterialColor.BLACK)).build()).harvestLevel(4).harvestTool(ToolType.PICKAXE)
 				.hardnessAndResistance(40, 100));
 	}
 

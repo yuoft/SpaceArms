@@ -24,7 +24,7 @@ public class AmosiBow extends BowItem {
     };
 
     public AmosiBow() {
-        super(new Properties().maxDamage(384).group(ModGroup.myGroup));
+        super(new Properties().maxDamage(666).group(ModGroup.myGroup));
     }
 
     public AbstractArrowEntity customArrow(AbstractArrowEntity arrow) {

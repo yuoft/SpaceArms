@@ -41,6 +41,7 @@ public class ItemRegistry {
 	public static RegistryObject<Item> goldStick = ITEMS.register("gold_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> diamondStick = ITEMS.register("diamond_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> netheriteStick = ITEMS.register("netherite_stick", OrdinaryItem::new);
+	public static RegistryObject<Item> rottenFlesh0 = ITEMS.register("rotten_flesh0", OrdinaryItem::new);
 
 	//武器和工具
 	public static RegistryObject<Item> slimeSlingshot = ITEMS.register("slime_slingshot", SlimeSlingshot::new);
@@ -69,8 +70,8 @@ public class ItemRegistry {
 	public static RegistryObject<Item> emeraldAxe = ITEMS.register("emerald_axe", () -> {
 		return new OrdinaryAxe(MyItemTier.EMERALD, 5, -3.0f);
 	});
-	public static RegistryObject<Item> dragonSword = ITEMS.register("dragon_sword", DragonPickaxe::new);
-	public static RegistryObject<Item> dragonPickaxe = ITEMS.register("dragon_pickaxe", DragonSword::new);
+	public static RegistryObject<Item> dragonSword = ITEMS.register("dragon_sword", DragonSword::new);
+	public static RegistryObject<Item> dragonPickaxe = ITEMS.register("dragon_pickaxe", DragonPickaxe::new);
 	public static RegistryObject<Item> beheadSword = ITEMS.register("behead_sword", BeheadSword::new);
 	public static RegistryObject<Item> superSpacePickaxe = ITEMS.register("super_space_pickaxe", SuperSpacePickaxe::new);
 	public static RegistryObject<Item> totemSword = ITEMS.register("totem_sword", () -> {

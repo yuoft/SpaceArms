@@ -111,6 +111,8 @@ public class Spacearms {
                 (renderManager) -> new IceArrowRender(renderManager));
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_ARROW.get(),
                 (renderManager) -> new AmosiArrowRender(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_BOW_ARROW.get(),
+                (renderManager) -> new AmosiArrowRender(renderManager));
 
     }
 }

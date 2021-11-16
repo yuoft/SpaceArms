@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:netherite_ingot"
-	},
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "x",
+    "x"
+  ],
+  "key": {
+    "x": {
       "item": "minecraft:netherite_ingot"
     }
-  ],
+  },
   "result": {
     "item": "spacearms:netherite_stick"
   }

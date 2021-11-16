@@ -73,19 +73,28 @@ public class AmosiArrowEntity extends AbstractArrowEntity {
 
     //生成向四周散射的箭
     private static void ganyuArrow(World world, BlockPos pos){
-        List<DiamondArrowEntity> arrows = new ArrayList<>();
-        for (int i = 0; i < 8; i++){
-            arrows.add(i, new DiamondArrowEntity(EntityRegistry.DIAMOND_ARROW.get(), pos.getX(), pos.getY(), pos.getZ(), world));
+        List<AmosiBowArrowEntity> arrows = new ArrayList<>();
+        for (int i = 0; i < 16; i++){
+            arrows.add(i, new AmosiBowArrowEntity(EntityRegistry.AMOSI_BOW_ARROW.get(), pos.getX(), pos.getY(), pos.getZ(), world));
         }
         arrows.get(0).shoot(2, -1.10, 2, 3.0f, 1.0f);
         arrows.get(1).shoot(-2, -1.10, 2, 3.0f, 1.0f);
         arrows.get(2).shoot(2, -1.10, -2, 3.0f, 1.0f);
         arrows.get(3).shoot(-2, -1.10, -2, 3.0f, 1.0f);
-        arrows.get(4).shoot(2, -1.10, 0, 3.0f, 1.0f);
-        arrows.get(5).shoot(-2, -1.10, 0, 3.0f, 1.0f);
-        arrows.get(6).shoot(0, -1.10, 2, 3.0f, 1.0f);
-        arrows.get(7).shoot(0, -1.10, -2, 3.0f, 1.0f);
-        for (DiamondArrowEntity arrow : arrows){
+        arrows.get(4).shoot(-2, -1.10, 0, 3.0f, 1.0f);
+        arrows.get(5).shoot(0, -1.10, 2, 3.0f, 1.0f);
+        arrows.get(6).shoot(0, -1.10, -2, 3.0f, 1.0f);
+        arrows.get(7).shoot(2, -1.10, 0, 3.0f, 1.0f);
+
+        arrows.get(8).shoot(1, -1.10, 2, 3.0f, 1.0f);
+        arrows.get(9).shoot(-1, -1.10, 2, 3.0f, 1.0f);
+        arrows.get(10).shoot(1, -1.10, -2, 3.0f, 1.0f);
+        arrows.get(11).shoot(-1, -1.10, -2, 3.0f, 1.0f);
+        arrows.get(12).shoot(2, -1.10, -1, 3.0f, 1.0f);
+        arrows.get(13).shoot(-2, -1.10, 1, 3.0f, 1.0f);
+        arrows.get(14).shoot(2, -1.10, 1, 3.0f, 1.0f);
+        arrows.get(15).shoot(-2, -1.10, -1, 3.0f, 1.0f);
+        for (AmosiBowArrowEntity arrow : arrows){
             world.addEntity(arrow);
         }
     }

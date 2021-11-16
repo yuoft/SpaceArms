@@ -1,7 +1,7 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:smoking",
   "ingredient": {
-    "item": "minecraft:rotten_flesh"
+    "item": "spacearms:rotten_flesh0"
   },
   "result": "minecraft:leather",
   "experience": 0.1,
