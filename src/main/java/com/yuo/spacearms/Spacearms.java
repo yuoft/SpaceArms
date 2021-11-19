@@ -3,7 +3,6 @@ package com.yuo.spacearms;
 import com.yuo.spacearms.Blocks.BlockRegistry;
 import com.yuo.spacearms.Entity.EntityRegistry;
 import com.yuo.spacearms.Entity.Render.*;
-import com.yuo.spacearms.Event.KeyBindingEvent;
 import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.world.OreGen;
 import net.minecraft.client.Minecraft;
@@ -16,7 +15,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -37,7 +35,6 @@ public class Spacearms {
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::generateOres); //注册矿物生成
-        ClientRegistry.registerKeyBinding(KeyBindingEvent.MESSAGE_KEY); //快捷键注册
     }
     @SubscribeEvent
     public void clientSetup(final FMLClientSetupEvent event) {

@@ -2,26 +2,25 @@ package com.yuo.spacearms.Arms;
 
 import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.tab.ModGroup;
-import net.minecraft.client.particle.IAnimatedSprite;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potion;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class OpArms extends ArmorItem{
 
@@ -79,6 +78,7 @@ public class OpArms extends ArmorItem{
 						if (bad.size() > 0){
 							bad.forEach((e) ->{
 								player.removeActivePotionEffect(e);
+								player.clearActivePotions();
 							});
 						}
 					}

@@ -104,6 +104,18 @@
 	"block.spacearms.dragon_block": "§5龙晶块",
 	"block.spacearms.dragon_ore": "§5龙晶矿",
 	"block.spacearms.end_space_ore": "§b末地空间矿",
+	#实体
+	"entity.spacearms.iron_arrow": "铁箭",
+	"entity.spacearms.gold_arrow": "金箭",
+	"entity.spacearms.diamond_arrow": "钻石箭",
+	"entity.spacearms.netherite_arrow": "下界合金箭",
+	"entity.spacearms.dragon_arrow": "龙晶箭",
+	"entity.spacearms.space_arrow": "空间箭",
+	"entity.spacearms.ender_arrow": "末影箭",
+	"entity.spacearms.fire_arrow": "烈焰箭",
+	"entity.spacearms.ice_arrow": "寒冰箭",
+	"entity.spacearms.amosi_arrow": "阿莫斯之箭",
+	"entity.spacearms.amosi_bow_arrow": "阿莫斯之箭",
 	#进度
 	"advancements.spacearms.emerald_ingot.title": "更有用的绿宝石",
 	"advancements.spacearms.emerald_ingot.desc": "获取绿宝石锭",
@@ -167,10 +179,10 @@
 	"spacearms.text.itemInfo.dragon_sword": "右键消耗武器耐久发射龙晶弹",
 	"spacearms.text.itemInfo.bedrock_powder": "使用天雷轰击或许会发生什么？",
 	"spacearms.text.itemInfo.op_pickaxe": "右键基岩可将其变为脆弱基岩",
-	"spacearms.text.itemInfo.op_head": "效果：夜视饱腹",
+	"spacearms.text.itemInfo.op_head": "效果：夜视饱腹，水下呼吸",
 	"spacearms.text.itemInfo.op_chest": "效果：飞行，免疫负面状态",
-	"spacearms.text.itemInfo.op_legs": "效果：免疫火伤，跳跃高度提升",
-	"spacearms.text.itemInfo.op_feet": "效果：免疫摔落伤害，行走速度提升",
+	"spacearms.text.itemInfo.op_legs": "效果：免疫火伤，行走速度提升",
+	"spacearms.text.itemInfo.op_feet": "效果：免疫摔落伤害，跳跃高度提升"
 	"spacearms.text.itemInfo.dragon_arms": "套装效果：缓降",
 	"spacearms.text.itemInfo.space_arms": "套装效果：抗性提升",
 	"spacearms.text.itemInfo.totem_arms": "套装效果：生命恢复",
@@ -186,10 +198,5 @@
 	"spacearms.text.info.bedrock": "最下层基岩无法转变",
 	"spacearms.text.info.slime_slingshot": "芜湖！起飞！！！",
 	"spacearms.text.info.aoeBlock": "工具模式切换！§e范围挖掘开启！",
-	"spacearms.text.info.unAoeBlock": "工具模式切换！§e范围挖掘关闭！",
-	"spacearms.text.info.openHp": "调试信息：开启血量显示",
-	"spacearms.text.info.closeHp": "调试信息：关闭血量显示",
-	#快捷键
-	"key.message.spacearms": "开发调试",
-	"key.category.spacearms_c": "血量显示开关"
+	"spacearms.text.info.unAoeBlock": "工具模式切换！§e范围挖掘关闭！"
 }
