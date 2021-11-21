@@ -8,7 +8,7 @@ public class FraglieBedrock extends OreBlock{
 
 	public FraglieBedrock() {
 		super(Properties.create(Material.ROCK).harvestLevel(9).harvestTool(ToolType.PICKAXE)
-				.hardnessAndResistance(150, 1000).setLightLevel(e ->1));
+				.hardnessAndResistance(150, 1000).setLightLevel(e ->1).setRequiresTool());
 	}
 
 }

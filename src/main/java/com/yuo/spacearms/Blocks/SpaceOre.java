@@ -12,7 +12,7 @@ public class SpaceOre extends OreBlock{
 
 	public SpaceOre() {
 		super(Block.Properties.create(Material.ROCK).harvestLevel(5).harvestTool(ToolType.PICKAXE)
-				.hardnessAndResistance(35, 100).setLightLevel(e ->2));
+				.hardnessAndResistance(35, 100).setLightLevel(e ->2).setRequiresTool().setRequiresTool());
 	}
 
 	@Override

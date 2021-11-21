@@ -23,7 +23,7 @@ public class SpaceBlock extends OreBlock{
 
 	public SpaceBlock() {
 		super(Block.Properties.create((new Material.Builder(MaterialColor.BLACK)).build()).harvestLevel(4).harvestTool(ToolType.PICKAXE)
-				.hardnessAndResistance(40, 100));
+				.hardnessAndResistance(40, 100).setRequiresTool());
 	}
 
 	@Override

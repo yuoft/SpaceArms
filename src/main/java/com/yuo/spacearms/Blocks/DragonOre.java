@@ -11,7 +11,7 @@ import java.util.Random;
 public class DragonOre extends OreBlock {
     public DragonOre() {
         super(Block.Properties.create(Material.ROCK).harvestLevel(4).harvestTool(ToolType.PICKAXE)
-                .hardnessAndResistance(30, 100));
+                .hardnessAndResistance(30, 100).setRequiresTool());
     }
 
     @Override

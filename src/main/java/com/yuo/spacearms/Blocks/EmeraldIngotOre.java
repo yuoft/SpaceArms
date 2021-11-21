@@ -12,7 +12,7 @@ public class EmeraldIngotOre extends OreBlock{
 
 	public EmeraldIngotOre() {
 		super(Block.Properties.create(Material.ROCK).harvestLevel(2).harvestTool(ToolType.PICKAXE)
-				.hardnessAndResistance(6, 6).setLightLevel(e -> 5));
+				.hardnessAndResistance(6, 6).setLightLevel(e -> 5).setRequiresTool());
 	}
 	@Override
 	protected int getExperience(Random rand) {
