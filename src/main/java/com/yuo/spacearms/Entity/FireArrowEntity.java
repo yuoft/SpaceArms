@@ -1,7 +1,9 @@
 package com.yuo.spacearms.Entity;
 
 import com.yuo.spacearms.Items.ItemRegistry;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -61,6 +63,11 @@ public class FireArrowEntity extends AbstractArrowEntity {
         if (!world.isAirBlock(pos)) return;
         if (face == Direction.UP){
             world.setBlockState(pos, Blocks.FIRE.getDefaultState()); //生成火
+            this.remove();
+        }
+        BlockState state = world.getBlockState(pos);
+        if (state.getMaterial() == Material.WOOD){
+            world.setBlockState(pos, Blocks.FIRE_CORAL_WALL_FAN.getDefaultState());
             this.remove();
         }
     }

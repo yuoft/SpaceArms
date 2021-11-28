@@ -51,6 +51,7 @@ public class Spacearms {
             setBowProperty(ItemRegistry.fireBow.get());
             setBowProperty(ItemRegistry.iceBow.get());
             setBowProperty(ItemRegistry.amosiBow.get());
+            setBowProperty(ItemRegistry.tntBow.get());
             ItemModelsProperties.registerProperty(ItemRegistry.slimeSlingshot.get(), new ResourceLocation(Spacearms.MODID,
                     "time"), (itemStack, clientWorld, livingEntity) -> {
                 if (livingEntity == null) {

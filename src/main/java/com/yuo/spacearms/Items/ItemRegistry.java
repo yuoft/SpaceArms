@@ -82,16 +82,6 @@ public class ItemRegistry {
 	});
 
 	//弓 箭
-	public static RegistryObject<BowItem> ironBow = ITEMS.register("iron_bow", IronBow::new);
-	public static RegistryObject<BowItem> goldBow = ITEMS.register("gold_bow", GoldBow::new);
-	public static RegistryObject<BowItem> diamondBow = ITEMS.register("diamond_bow", DiamondBow::new);
-	public static RegistryObject<BowItem> netheriteBow = ITEMS.register("netherite_bow", NetheriteBow::new);
-	public static RegistryObject<BowItem> dragonBow = ITEMS.register("dragon_bow", DragonBow::new);
-	public static RegistryObject<BowItem> spaceBow = ITEMS.register("space_bow", SpaceBow::new);
-	public static RegistryObject<BowItem> enderBow = ITEMS.register("ender_bow", EnderBow::new);
-	public static RegistryObject<BowItem> fireBow = ITEMS.register("fire_bow", FireBow::new);
-	public static RegistryObject<BowItem> iceBow = ITEMS.register("ice_bow", IceBow::new);
-	public static RegistryObject<BowItem> amosiBow = ITEMS.register("amosi_bow", AmosiBow::new);
 	public static RegistryObject<Item> ironArrow = ITEMS.register("iron_arrow", ModArrow::new);
 	public static RegistryObject<Item> goldArrow = ITEMS.register("gold_arrow", ModArrow::new);
 	public static RegistryObject<Item> diamondArrow = ITEMS.register("diamond_arrow", ModArrow::new);
@@ -102,6 +92,17 @@ public class ItemRegistry {
 	public static RegistryObject<Item> fireArrow = ITEMS.register("fire_arrow", ModArrow::new);
 	public static RegistryObject<Item> iceArrow = ITEMS.register("ice_arrow", ModArrow::new);
 	public static RegistryObject<Item> amosiArrow = ITEMS.register("amosi_arrow", ModArrow::new);
+	public static RegistryObject<BowItem> ironBow = ITEMS.register("iron_bow", IronBow::new);
+	public static RegistryObject<BowItem> goldBow = ITEMS.register("gold_bow", GoldBow::new);
+	public static RegistryObject<BowItem> diamondBow = ITEMS.register("diamond_bow", DiamondBow::new);
+	public static RegistryObject<BowItem> netheriteBow = ITEMS.register("netherite_bow", NetheriteBow::new);
+	public static RegistryObject<BowItem> dragonBow = ITEMS.register("dragon_bow", DragonBow::new);
+	public static RegistryObject<BowItem> spaceBow = ITEMS.register("space_bow", SpaceBow::new);
+	public static RegistryObject<BowItem> enderBow = ITEMS.register("ender_bow", EnderBow::new);
+	public static RegistryObject<BowItem> fireBow = ITEMS.register("fire_bow", FireBow::new);
+	public static RegistryObject<BowItem> iceBow = ITEMS.register("ice_bow", IceBow::new);
+	public static RegistryObject<BowItem> amosiBow = ITEMS.register("amosi_bow", AmosiBow::new);
+	public static RegistryObject<BowItem> tntBow = ITEMS.register("tnt_bow", TntBow::new);
 
 	//盔甲
 	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head", () -> {
