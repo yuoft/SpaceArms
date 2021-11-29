@@ -30,7 +30,7 @@ public enum MyItemTier implements IItemTier {
     DRAGON(2365, 14.0f, 6.0f, 5, 18, () -> {
         return Ingredient.fromItems(ItemRegistry.dragonCrystal.get());
     }), //数值无穷表示：Double或Float的POSITIVE_INFINITY（正）或NEGATIVE_INFINITY（负）
-    OP(0, 99.0f, 10.0f, 99, 0, () -> {
+    OP(9999, 99.0f, 10.0f, 99, 0, () -> {
         return Ingredient.EMPTY;
     });
 

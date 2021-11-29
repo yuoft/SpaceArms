@@ -205,6 +205,6 @@
 	"spacearms.text.info.space_sword": "您的经验等级不足！",
 	"spacearms.text.info.bedrock": "最下层基岩无法转变",
 	"spacearms.text.info.slime_slingshot": "芜湖！起飞！！！",
-	"spacearms.text.info.aoeBlock": "工具模式切换！§e范围挖掘开启！",
-	"spacearms.text.info.unAoeBlock": "工具模式切换！§e范围挖掘关闭！"
+	"spacearms.text.itemInfo.aoe": "范围挖掘:§c开启！",
+	"spacearms.text.itemInfo.unAoe": "范围挖掘:§b关闭！"
 }

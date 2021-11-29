@@ -45,6 +45,11 @@ public class OpPickaxe extends PickaxeItem {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_pickaxe"));
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.op_pickaxe"));
+		if (stack.hasTag() && stack.getTag().contains("mode")){
+			if (stack.getTag().getBoolean("mode"))
+				tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
+			else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
+		}
 	}
 
 	@Override

@@ -1,33 +1,17 @@
 package com.yuo.spacearms.Items.tool;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
 import net.minecraft.item.ToolItem;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.loot.LootContext;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.event.world.BlockEvent;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * 范围挖掘工具类
@@ -148,27 +132,14 @@ public class ItemHander
      * @param handIn
      */
     public static void changeMode(World worldIn, PlayerEntity playerIn, Hand handIn){
-        if (!worldIn.isRemote){
+        if (!worldIn.isRemote && playerIn.isSneaking()){
             ItemStack stack = playerIn.getHeldItem(handIn);
             CompoundNBT tag = stack.getTag();
-            boolean mode;
-            if (tag == null){
-                mode = false;
-            }else mode = tag.getBoolean("mode");
-            if (playerIn.isSneaking()){
-                if (!mode){
-                    CompoundNBT nbt = new CompoundNBT();
-                    nbt.putBoolean("mode", true);
-                    stack.setTag(nbt);
-                    playerIn.sendMessage(new TranslationTextComponent("spacearms.text.info.aoeBlock"), UUID.randomUUID());
-                }else {
-                    CompoundNBT nbt = new CompoundNBT();
-                    nbt.putBoolean("mode", false);
-                    stack.setTag(nbt);
-                    playerIn.sendMessage(new TranslationTextComponent("spacearms.text.info.unAoeBlock"), UUID.randomUUID());
-                }
-
+            if (tag.isEmpty() || !tag.contains("mode")){
+                tag.putBoolean("mode", false); //添加tag
             }
+            tag.putBoolean("mode", !tag.getBoolean("mode")); //切换
+            stack.setTag(tag);
         }
     }
 

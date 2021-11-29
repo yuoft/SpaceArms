@@ -29,6 +29,11 @@ public class SpacePickaxe extends PickaxeItem {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_pickaxe"));
+		if (stack.hasTag() && stack.getTag().contains("mode")){
+			if (stack.getTag().getBoolean("mode"))
+				tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
+			else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
+		}
 	}
 	//切换工具模式 开启或关闭范围挖掘
 	@Override
