@@ -2,6 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -70,7 +71,8 @@ public class TntBow extends BowItem {
                 if (f < 0.6d) return;
                 if (!worldIn.isRemote) {
                     TNTEntity tntEntity = new TNTEntity(worldIn, playerentity.getPosX(), playerentity.getPosY() + 0.5, playerentity.getPosZ(), playerentity);
-                    tntEntity.setMotion(playerentity.getLookVec().scale(f + 0.5));
+                    int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+                    tntEntity.setMotion(playerentity.getLookVec().scale(f + 0.5 + power * 0.05));
                     tntEntity.setFuse((int) Math.ceil(30 * f));
                     stack.damageItem(1, playerentity, e -> e.sendBreakAnimation(playerentity.getActiveHand()));
                     worldIn.addEntity(tntEntity);
@@ -94,15 +96,13 @@ public class TntBow extends BowItem {
         if (!(shootable.getItem() instanceof ShootableItem)) {
             return ItemStack.EMPTY;
         } else {
-            ItemStack heldItem = player.getHeldItem(Hand.MAIN_HAND);
-            ItemStack heldItem1 = player.getHeldItem(Hand.OFF_HAND);
+            ItemStack heldItem = player.getHeldItem(Hand.OFF_HAND);
             if (heldItem.getItem() == Items.TNT) {
                 return heldItem;
-            }else if (heldItem1.getItem() == Items.TNT) return heldItem1;
-            else {
+            } else {
                 for(int i = 0; i < player.inventory.getSizeInventory(); ++i) {
                     ItemStack stack = player.inventory.getStackInSlot(i);
-                    if (heldItem.getItem() == Items.TNT) {
+                    if (stack.getItem() == Items.TNT) {
                         return stack;
                     }
                 }
@@ -113,10 +113,11 @@ public class TntBow extends BowItem {
     }
 
     //是否允许附魔
-//    @Override
-//    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-//        return false;
-//    }
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment == Enchantments.FLAME || enchantment == Enchantments.PUNCH) return false;
+        return super.canApplyAtEnchantingTable(stack, enchantment);
+    }
 
     @Override
     public int getItemEnchantability() {

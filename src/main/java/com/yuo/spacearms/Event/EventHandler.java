@@ -33,7 +33,10 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
@@ -322,6 +325,17 @@ public class EventHandler {
                 spawnDrops(ItemRegistry.yuanshi.get(), 1, world, pos, event);
             }
         }
+    }
+
+    //玩家登入
+    @SubscribeEvent
+    public static void playerLogin(PlayerEvent.PlayerLoggedInEvent event){
+        //重置双爆属性
+        PlayerEntity player = event.getPlayer();
+        //发送消息
+        player.sendMessage(new TranslationTextComponent("spacearms.message.login")
+                .setStyle(Style.EMPTY.setHoverEvent(HoverEvent.Action.SHOW_TEXT.deserialize(new TranslationTextComponent("spacearms.message.login0")))
+                        .setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://space.bilibili.com/21854371"))), UUID.randomUUID());
     }
 
     /**

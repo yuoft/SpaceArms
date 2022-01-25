@@ -15,11 +15,11 @@
   "criteria": { 
     "netherite_axe": {
       "trigger": "minecraft:item_durability_changed",
-      "conditions": { 
-		"items": {
-				"item":"minecraft:netherite_axe"
-			},
-            "durability": -1
+      "conditions": {
+        "item": {
+          "item": "minecraft:netherite_axe"
+        },
+        "durability": 0
       }
     }
   },

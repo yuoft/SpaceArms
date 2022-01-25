@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    "mon",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:diamond_sword"
+    },
+    "y": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "z": {
+      "item": "minecraft:diamond_axe"
+    },
+    "m": {
+      "item": "minecraft:diamond_shovel"
+    },
+    "o": {
+      "item": "spacearms:iron_stick"
+    },
+    "n": {
+      "item": "minecraft:diamond_hoe"
+    }
+  },
+  "result": {
+    "item": "spacearms:diamond_complex_tool"
+  }
+}

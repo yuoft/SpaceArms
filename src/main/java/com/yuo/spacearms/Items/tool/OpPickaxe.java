@@ -1,6 +1,7 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.tab.ModGroup;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -40,6 +41,15 @@ public class OpPickaxe extends PickaxeItem {
 			items.add(stack);
 		}
 	}
+
+	@Override
+	public float getDestroySpeed(ItemStack stack, BlockState state) {
+		if (state.getHarvestTool() == ToolType.PICKAXE){
+			return 100.0f;
+		}
+		return Math.max(super.getDestroySpeed(stack, state), 10.0f);
+	}
+
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));

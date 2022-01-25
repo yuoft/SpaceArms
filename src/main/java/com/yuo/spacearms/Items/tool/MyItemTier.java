@@ -9,10 +9,10 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum MyItemTier implements IItemTier {
-    EMERALD(1432, 7.0f, 3.0f, 3, 12, () -> {
+    EMERALD(1332, 7.0f, 3.5f, 3, 12, () -> {
              return Ingredient.fromItems(ItemRegistry.emeraldIngot.get());
     }),
-    RUBY(1214, 7.0f, 2.5f, 2, 10, () -> {
+    RUBY(1214, 7.0f, 2.5f, 3, 12, () -> {
         return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
     }),
     SPACE(3124, 16.0f, 8.0f, 6, 20, () -> {

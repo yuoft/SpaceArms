@@ -34,6 +34,8 @@
 	"item.spacearms.netherite_stick": "下界合金棍",
 	"item.spacearms.gold_tnt": "黄金TNT",
 	"item.spacearms.rotten_flesh0": "特殊腐肉",
+	"item.spacearms.emerald_powder": "绿宝石粉末",
+	"item.spacearms.complex_powder": "复合粉末",
 	#武器和工具
 	"item.spacearms.ruby_sword": "红宝石剑",
 	"item.spacearms.wolf_sword": "§6狼的末路",
@@ -63,6 +65,16 @@
 	"item.spacearms.ice_bow": "寒冰弓",
 	"item.spacearms.amosi_bow": "§d阿莫斯之弓",
 	"item.spacearms.tnt_bow": "TNT弓",
+	"item.spacearms.wood_complex_tool": "木质复合工具",
+	"item.spacearms.stone_complex_tool": "石质复合工具",
+	"item.spacearms.iron_complex_tool": "铁质复合工具",
+	"item.spacearms.gold_complex_tool": "金质复合工具",
+	"item.spacearms.diamond_complex_tool": "钻石复合工具",
+	"item.spacearms.netherite_complex_tool": "下界合金复合工具",
+	"item.spacearms.emerald_complex_tool": "绿宝石复合工具",
+	"item.spacearms.ruby_complex_tool": "红宝石复合工具",
+	"item.spacearms.dragon_complex_tool": "§5龙晶复合工具",
+	"item.spacearms.iron_shield": "铁盾",
 	#盔甲
 	"item.spacearms.ruby_head": "红宝石头盔",
 	"item.spacearms.ruby_chest": "红宝石胸甲",
@@ -168,6 +180,8 @@
 	"advancements.spacearms.iron_stick.desc": "合成铁棍",
 	#物品栏
 	"itemGroup.SpaceArms": "强力装备",
+	"spacearms.message.login"="§b欢迎游玩本模组[强力装备]，问题反馈§a点击此处!",
+	"spacearms.message.login0"="§ahttps://space.bilibili.com/21854371",
 	#文本
 	"spacearms.text.itemInfo.opSword": "右键使用范围伤害。§c潜行击杀所有生物，非潜行击杀怪物！",
 	"spacearms.text.itemInfo.aoeBlock": "拥有范围挖掘能力的镐子",

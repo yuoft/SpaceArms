@@ -1,6 +1,7 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.tab.ModGroup;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,14 @@ public class SpacePickaxe extends PickaxeItem {
 				tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
 			else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
 		}
+	}
+
+	@Override
+	public float getDestroySpeed(ItemStack stack, BlockState state) {
+		if (state.getHarvestTool() == ToolType.PICKAXE){
+			return 60.0f;
+		}
+		return Math.max(super.getDestroySpeed(stack, state), 6.0f);
 	}
 	//切换工具模式 开启或关闭范围挖掘
 	@Override

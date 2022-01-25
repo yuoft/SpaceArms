@@ -3,7 +3,10 @@ package com.yuo.spacearms.world;
 import com.yuo.spacearms.Blocks.BlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
@@ -38,11 +41,16 @@ public class OreGen {
                     3, 0, 5, 100);
             addFeatureNether(generation, BlockRegistry.fragileBedrock.get().getDefaultState(),
                     3, 123, 128, 100);
+            addFeatureNether(generation, BlockRegistry.rubyOre.get().getDefaultState(),
+                    3, 16, 96, 50);
         }
         //末地
         if (event.getCategory().equals(Biome.Category.THEEND)){
-            addFeatureTheend(generation, BlockRegistry.endSpaceOre.get().getDefaultState(),
-                    6, 32, 64, 10);
+            RegistryKey<Biome> key = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName());
+            if (key.equals(Biomes.THE_END)){
+                addFeatureTheend(generation, BlockRegistry.endSpaceOre.get().getDefaultState(),
+                        6, 32, 64, 10);
+            }
             addFeatureTheend(generation, BlockRegistry.dragonOre.get().getDefaultState(),
                     4, 32, 64, 10);
         }

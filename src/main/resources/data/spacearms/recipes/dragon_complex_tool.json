@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    " o ",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:dragon_sword"
+    },
+    "y": {
+      "item": "spacearms:dragon_block"
+    },
+    "z": {
+      "item": "spacearms:dragon_pickaxe"
+    },
+    "o": {
+      "item": "spacearms:netherite_stick"
+    }
+  },
+  "result": {
+    "item": "spacearms:dragon_complex_tool"
+  }
+}

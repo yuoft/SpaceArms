@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    "mon",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:stone_sword"
+    },
+    "y": {
+      "item": "minecraft:stone_pickaxe"
+    },
+    "z": {
+      "item": "minecraft:stone_axe"
+    },
+    "m": {
+      "item": "minecraft:stone_shovel"
+    },
+    "o": {
+      "item": "minecraft:stick"
+    },
+    "n": {
+      "item": "minecraft:stone_hoe"
+    }
+  },
+  "result": {
+    "item": "spacearms:stone_complex_tool"
+  }
+}

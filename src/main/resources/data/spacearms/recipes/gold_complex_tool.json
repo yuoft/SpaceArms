@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    "mon",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:golden_sword"
+    },
+    "y": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "z": {
+      "item": "minecraft:golden_axe"
+    },
+    "m": {
+      "item": "minecraft:golden_shovel"
+    },
+    "o": {
+      "item": "spacearms:gold_stick"
+    },
+    "n": {
+      "item": "minecraft:golden_hoe"
+    }
+  },
+  "result": {
+    "item": "spacearms:gold_complex_tool"
+  }
+}

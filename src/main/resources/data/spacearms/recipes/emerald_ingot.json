@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "minecraft:emerald"
+    "item": "spacearms:complex_powder"
   },
   "result": "spacearms:emerald_ingot",
   "experience": 0.5,
