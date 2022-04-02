@@ -24,6 +24,11 @@ public class OrdinaryArms extends ArmorItem{
 	}
 
 	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return getArmorMaterial() == MyArmorMaterial.SUPER_XRAY || getArmorMaterial() == MyArmorMaterial.ULTRA;
+	}
+
+	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 	}
 }

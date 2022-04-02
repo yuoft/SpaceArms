@@ -1,8 +1,10 @@
 package com.yuo.spacearms.Arms;
 
 import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Spacearms;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -17,14 +19,12 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class OpArms extends ArmorItem{
 
 	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
+	public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MODID + ":movement_speed",0.2, AttributeModifier.Operation.ADDITION);
 
 	public OpArms(EquipmentSlotType slot) {
 		super(MyArmorMaterial.OP, slot, properties);

@@ -17,9 +17,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.MagmaCubeEntity;
@@ -59,10 +59,10 @@ import java.util.*;
  */
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
 public class EventHandler {
-    public static List<String> playersWithHat = new ArrayList<String>();
-    public static List<String> playersWithChest = new ArrayList<String>();
-    public static List<String> playersWithLeg = new ArrayList<String>();
-    public static List<String> playersWithFoot = new ArrayList<String>();
+    public static List<String> playersWithOpHead = new ArrayList<>();
+    public static List<String> playersWithOpChest = new ArrayList<>();
+    public static List<String> playersWithOpLeg = new ArrayList<>();
+    public static List<String> playersWithOpFeet = new ArrayList<>();
 
     //op鞋子 无摔落伤害
     @SubscribeEvent
@@ -71,7 +71,7 @@ public class EventHandler {
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity)living;
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
-            if (playersWithFoot.contains(key)) {
+            if (playersWithOpFeet.contains(key)) {
                 event.setCanceled(true);
             }
             //史莱姆鞋子 弹出玩家
@@ -123,24 +123,24 @@ public class EventHandler {
         LivingEntity living = event.getEntityLiving();
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) living;
-            Boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
-            Boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
-            Boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.opHead.get();
-            Boolean hasFoot = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.opFeet.get();
+            boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
+            boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
+            boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.opHead.get();
+            boolean hasFoot = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.opFeet.get();
             //防止其它模组飞行装备无法使用
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
             //head
-            if (playersWithHat.contains(key)) {
+            if (playersWithOpHead.contains(key)) {
                 if (hasHead) {
 
                 } else {
-                    playersWithHat.remove(key);
+                    playersWithOpHead.remove(key);
                 }
             } else if (hasHead) {
-                playersWithHat.add(key);
+                playersWithOpHead.add(key);
             }
             //chest
-            if (playersWithChest.contains(key)) {
+            if (playersWithOpChest.contains(key)) {
                 if (hasChest) {
                     player.abilities.allowFlying = true;
                 }else {
@@ -148,30 +148,32 @@ public class EventHandler {
                         player.abilities.allowFlying = false;
                         player.abilities.isFlying = false;
                     }
-                    playersWithChest.remove(key);
+                    playersWithOpChest.remove(key);
                 }
             }else if (hasChest) {
-                playersWithChest.add(key);
+                playersWithOpChest.add(key);
             }
             //leg
-            if (playersWithLeg.contains(key)) {
-                if (hasLeg) {
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3f); //行走速度
+            if (playersWithOpLeg.contains(key)) {
+                ModifiableAttributeInstance attribute = player.getAttribute(Attributes.MOVEMENT_SPEED);
+                if (hasLeg && attribute != null) {
+                    attribute.applyPersistentModifier(OpArms.modifier); //行走速度
                 }else {
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1f);
-                    playersWithLeg.remove(key);
+                    if (attribute != null)
+                        attribute.removeModifier(OpArms.modifier);
+                    playersWithOpLeg.remove(key);
                 }
             }else if (hasLeg) {
-                playersWithLeg.add(key);
+                playersWithOpLeg.add(key);
             }
             //feet
-            if (playersWithFoot.contains(key)) {
+            if (playersWithOpFeet.contains(key)) {
                 if (hasFoot) {
                 } else {
-                    playersWithFoot.remove(key);
+                    playersWithOpFeet.remove(key);
                 }
             } else if (hasFoot) {
-                playersWithFoot.add(key);
+                playersWithOpFeet.add(key);
             }
         }
     }
@@ -182,7 +184,7 @@ public class EventHandler {
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity)living;
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
-            if (playersWithFoot.contains(key)) {
+            if (playersWithOpFeet.contains(key)) {
                 player.setMotion(0, 1.0f, 0);
                 return;
             }
@@ -214,12 +216,12 @@ public class EventHandler {
     public static void opTool(PlayerEvent.ItemCraftedEvent event){
         ItemStack stack = event.getCrafting();
         if (stack.getItem().equals(ItemRegistry.opSword.get())){
-            Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
+            Map<Enchantment, Integer> map = new HashMap<>();
             map.put(Enchantments.LOOTING, 10);
             EnchantmentHelper.setEnchantments( map, stack);
         }
         if (stack.getItem().equals(ItemRegistry.opPickaxe.get())){
-            Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
+            Map<Enchantment, Integer> map = new HashMap<>();
             map.put(Enchantments.FORTUNE, 10);
             EnchantmentHelper.setEnchantments( map, stack);
         }
@@ -228,7 +230,6 @@ public class EventHandler {
     @SubscribeEvent
     public static void lightningEntity(EntityStruckByLightningEvent event){
         Entity entity = event.getEntity();
-        LightningBoltEntity lightning = event.getLightning();
         if (entity instanceof ItemEntity){
             ItemEntity itemEntity = (ItemEntity) entity;
             if (itemEntity.getItem().getItem().equals(ItemRegistry.bedrockPowder.get())){

@@ -37,7 +37,6 @@ public class EventCraftRuby {
         if (entity instanceof ItemEntity) {
             ItemStack item = ((ItemEntity) entity).getItem();
             if (!item.isEmpty() && item.getItem() == ItemRegistry.rubyOre.get()) {
-                List<ItemEntity> list;
                 if (event.getWorld().isRemote)
                     rubyClient.add((ItemEntity) entity);
                 else

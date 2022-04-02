@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "xyz",
-    " m ",
+    "mon",
     " o "
   ],
   "key": {
@@ -16,7 +16,10 @@
       "item": "spacearms:ruby_axe"
     },
     "m": {
-      "item": "spacearms:ruby_ingot"
+      "item": "spacearms:ruby_shovel"
+    },
+    "n": {
+      "item": "spacearms:ruby_hoe"
     },
     "o": {
       "item": "spacearms:iron_stick"

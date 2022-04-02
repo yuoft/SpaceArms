@@ -9,30 +9,40 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum MyItemTier implements IItemTier {
-    EMERALD(1332, 7.0f, 3.5f, 3, 12, () -> {
+    EMERALD(1332, 9.0f, 3.0f, 3, 10, () -> {
              return Ingredient.fromItems(ItemRegistry.emeraldIngot.get());
     }),
-    RUBY(1214, 7.0f, 2.5f, 3, 12, () -> {
+    RUBY(1214, 8.5f, 2.5f, 3, 10, () -> {
         return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
     }),
-    SPACE(3124, 16.0f, 8.0f, 6, 20, () -> {
+    SPACE(3124, 30.0f, 20.0f, 7, 30, () -> {
         return Ingredient.fromItems(ItemRegistry.spaceIngot.get());
     }),
-    SUPERSPACE(3124, 18.0f, 6.0f, 9, 20, () -> {
+    SUPERSPACE(3124, 15.0f, 10.0f, 9, 15, () -> {
         return Ingredient.fromItems(ItemRegistry.spaceCore.get());
     }),
-    WOLF(1000, 20.0f, 600.0f, 3, 50, () -> {
+    WOLF(233, 20.0f, 600f, 3, 0, () -> {
         return Ingredient.fromItems(Items.NETHER_STAR);
     }),
     SLIME(150, 5.0f, 0, 0, 0, () -> {
         return Ingredient.fromItems(ItemRegistry.slimeCrystal.get());
     }),
-    DRAGON(2365, 14.0f, 6.0f, 5, 18, () -> {
+    XRAY(1679, 11.0f, 5, 4, 12, () -> {
+        return Ingredient.fromItems(ItemRegistry.xrayIngot.get());
+    }),
+    SUPER_XRAY(2647, 17.0f, 9, 5, 16, () -> {
+        return Ingredient.fromItems(ItemRegistry.superXrayIngot.get());
+    }),
+    SUPER(2105, 13.0f, 6, 4, 14, () -> {
+        return Ingredient.fromItems(ItemRegistry.superIngot.get());
+    }),
+    ULTRA(2967, 19.0f, 10, 6, 20, () -> {
+        return Ingredient.fromItems(ItemRegistry.ultraIngot.get());
+    }),
+    DRAGON(2365, 15f, 8, 5, 15, () -> {
         return Ingredient.fromItems(ItemRegistry.dragonCrystal.get());
     }), //数值无穷表示：Double或Float的POSITIVE_INFINITY（正）或NEGATIVE_INFINITY（负）
-    OP(9999, 99.0f, 10.0f, 99, 0, () -> {
-        return Ingredient.EMPTY;
-    });
+    OP(9999, 99.0f, 10.0f, 99, 0, () -> Ingredient.EMPTY);
 
     private final int maxUses;//耐久
     private final float efficiency;//使用效率

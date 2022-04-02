@@ -14,11 +14,16 @@ import java.util.List;
 public class SuperSpacePickaxe extends PickaxeItem {
 
 	public SuperSpacePickaxe() {
-		super(MyItemTier.SUPERSPACE, 3, -2.4f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.SUPERSPACE, 2, -2.4f, new Properties().group(ModGroup.myGroup));
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.super_space_pickaxe"));
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 }

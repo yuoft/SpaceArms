@@ -4,15 +4,14 @@ import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -20,24 +19,21 @@ import java.util.List;
 public class DragonPickaxe extends PickaxeItem {
 
 	public DragonPickaxe() {
-		super(MyItemTier.DRAGON, 3, -2.4f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, 2, -2.8f, new Properties().group(ModGroup.myGroup));
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.dragon_pickaxe"));
+		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.dragon_tool"));
 	}
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
 		if (!worldIn.isRemote){
-			if (entityLiving instanceof PlayerEntity){
+			ToolType toolType = state.getHarvestTool();
+			if (entityLiving instanceof PlayerEntity && toolType == ToolType.PICKAXE){
 				PlayerEntity player = (PlayerEntity) entityLiving;
-				stack.damageItem(1, entityLiving, e -> entityLiving.sendBreakAnimation(Hand.MAIN_HAND));
-				if (random.nextInt(100) > 50) return true; //50%额外概率掉落经验
-				ExperienceOrbEntity exp = new ExperienceOrbEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), random.nextInt(5));
-				worldIn.addEntity(exp);
-				stack.damageItem(1, player, e -> player.sendBreakAnimation(Hand.MAIN_HAND));
+				ItemHelper.spawnExp(player, worldIn, stack, pos);
 			}
 		}
 		return true;

@@ -7,6 +7,8 @@ import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.world.OreGen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemModelsProperties;
@@ -39,6 +41,8 @@ public class Spacearms {
     @SubscribeEvent
     public void clientSetup(final FMLClientSetupEvent event) {
         registerEntityRender(event.getMinecraftSupplier()); //注册客户端渲染
+        RenderTypeLookup.setRenderLayer(BlockRegistry.xrayBlock.get(), RenderType.getCutout()); //方块透明
+        RenderTypeLookup.setRenderLayer(BlockRegistry.superXrayBlock.get(), RenderType.getCutout());
         //物品动态属性注册
         event.enqueueWork(() -> {
             setBowProperty(ItemRegistry.ironBow.get());
@@ -61,9 +65,7 @@ public class Spacearms {
                 }
             });
             ItemModelsProperties.registerProperty(ItemRegistry.bedrockIngot.get(), new ResourceLocation(Spacearms.MODID,
-                    "count"), (itemStack, clientWorld, livingEntity) -> {
-                return itemStack.getCount();
-            });
+                    "count"), (itemStack, clientWorld, livingEntity) -> itemStack.getCount());
         });
     }
 
@@ -78,9 +80,8 @@ public class Spacearms {
             }
         });
         ItemModelsProperties.registerProperty(item, new ResourceLocation(Spacearms.MODID,
-                "pulling"), (itemStack, clientWorld, livingEntity) -> {
-            return livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F;
-        });
+                "pulling"), (itemStack, clientWorld, livingEntity)
+                -> livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F);
     }
 
     private void registerEntityRender(Supplier<Minecraft> minecraft){
@@ -90,27 +91,27 @@ public class Spacearms {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOLD_TNT.get(), //实体箭渲染
                 (renderManager) -> new SpriteRenderer<>(renderManager, renderer));
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.IRON_ARROW.get(),
-                (renderManager) -> new IronArrowRender(renderManager));
+                IronArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOLD_ARROW.get(),
-                (renderManager) -> new GoldArrowRender(renderManager));
+                GoldArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DIAMOND_ARROW.get(),
-                (renderManager) -> new DiamondArrowRender(renderManager));
+                DiamondArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NETHERITE_ARROW.get(),
-                (renderManager) -> new NetheriteArrowRender(renderManager));
+                NetheriteArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DRAGON_ARROW.get(),
-                (renderManager) -> new DragonArrowRender(renderManager));
+                DragonArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SPACE_ARROW.get(),
-                (renderManager) -> new SpaceArrowRender(renderManager));
+                SpaceArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.ENDER_ARROW.get(),
-                (renderManager) -> new EnderArrowRender(renderManager));
+                EnderArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.FIRE_ARROW.get(),
-                (renderManager) -> new FireArrowRender(renderManager));
+                FireArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.ICE_ARROW.get(),
-                (renderManager) -> new IceArrowRender(renderManager));
+                IceArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_ARROW.get(),
-                (renderManager) -> new AmosiArrowRender(renderManager));
+                AmosiArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_BOW_ARROW.get(),
-                (renderManager) -> new AmosiArrowRender(renderManager));
+                AmosiArrowRender::new);
 
     }
 }

@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "  y",
-    " y ",
-    "x  "
+    "mym",
+    "mym",
+    "mxm"
   ],
   "key": {
     "y": {
@@ -11,6 +11,9 @@
     },
 	"x": {
       "item": "minecraft:dragon_egg"
+    },
+    "m": {
+      "item": "spacearms:jiejing"
     }
   },
   "result": {

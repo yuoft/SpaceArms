@@ -1,6 +1,5 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -19,15 +18,20 @@ public class ComplexTool extends ToolItem {
     private static final Set<ToolType> toolTypes = new HashSet<>(Arrays.asList(ToolType.PICKAXE, ToolType.AXE, ToolType.SHOVEL, ToolType.HOE));
     static {
         blockSet.addAll(PickaxeItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll( ShovelItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll( AxeItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll( HoeItem.BLOCK_TO_ITEM.keySet());
+        blockSet.addAll(ShovelItem.BLOCK_TO_ITEM.keySet());
+        blockSet.addAll(AxeItem.BLOCK_TO_ITEM.keySet());
+        blockSet.addAll(HoeItem.BLOCK_TO_ITEM.keySet());
     }
     private final IItemTier itemTier;
 
     public ComplexTool(IItemTier tier) {
-        super(tier.getAttackDamage(), -2.4f, tier, blockSet, new Properties().group(ModGroup.myGroup).maxDamage(tier.getMaxUses()));
+        super( 3, -2.6f, tier, blockSet, new Properties().group(ModGroup.myGroup).maxDamage(tier.getMaxUses()));
         this.itemTier = tier;
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA;
     }
 
     @Override
@@ -50,27 +54,4 @@ public class ComplexTool extends ToolItem {
         return super.canHarvestBlock(blockIn);
     }
 
-    @Override
-    public float getAttackDamage() {
-        if (this == ItemRegistry.woodComplexTool.get()){
-            return 2.5f;
-        }else if (this == ItemRegistry.stoneComplexTool.get()){
-            return 3.5f;
-        }else if (this == ItemRegistry.goldComplexTool.get()){
-            return 2.5f;
-        }else if (this == ItemRegistry.ironComplexTool.get()){
-            return 4.5f;
-        }else if (this == ItemRegistry.diamondComplexTool.get()){
-            return 5.5f;
-        }else if (this == ItemRegistry.emeraldComplexTool.get()){
-            return 6f;
-        }else if (this == ItemRegistry.rubyComplexTool.get()){
-            return 5f;
-        }else if (this == ItemRegistry.netheriteComplexTool.get()){
-            return 6.5f;
-        }else if (this == ItemRegistry.dragonComplexTool.get()){
-            return 10.5f;
-        }
-        return super.getAttackDamage();
-    }
 }

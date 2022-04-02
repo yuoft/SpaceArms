@@ -24,6 +24,11 @@ public class AmosiBow extends ModBow {
     }
 
     @Override
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
+
+    @Override
     public Predicate<ItemStack> getInventoryAmmoPredicate() {
         return AMOSI_ARROWS;
     }

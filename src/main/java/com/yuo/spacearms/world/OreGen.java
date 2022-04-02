@@ -34,6 +34,8 @@ public class OreGen {
                     4, 2, 10, 10);
             addFeatureOverWorld(generation, BlockRegistry.fragileBedrock.get().getDefaultState(),
                     3, 0, 5, 50);
+            addFeatureOverWorld(generation, BlockRegistry.xrayBlock.get().getDefaultState(),
+                    5, 0, 128, 3);
         }
         //下届
         if (event.getCategory().equals(Biome.Category.NETHER)){
@@ -49,10 +51,12 @@ public class OreGen {
             RegistryKey<Biome> key = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName());
             if (key.equals(Biomes.THE_END)){
                 addFeatureTheend(generation, BlockRegistry.endSpaceOre.get().getDefaultState(),
-                        6, 32, 64, 10);
+                        6, 0, 20, 4);
             }
             addFeatureTheend(generation, BlockRegistry.dragonOre.get().getDefaultState(),
-                    4, 32, 64, 10);
+                    4, 32, 64, 8);
+            addFeatureTheend(generation, BlockRegistry.superOre.get().getDefaultState(),
+                    5, 16, 48, 6);
         }
     }
 

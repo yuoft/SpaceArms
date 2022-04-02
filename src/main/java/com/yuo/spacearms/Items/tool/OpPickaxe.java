@@ -28,7 +28,7 @@ public class OpPickaxe extends PickaxeItem {
 	private ItemHander hander;
 	public OpPickaxe() {
 		super(MyItemTier.OP, 1, -2.4f, new Properties().group(ModGroup.myGroup));
-		this.hander = new ItemHander(this);
+		this.hander = new ItemHander();
 	}
 
 	@Override

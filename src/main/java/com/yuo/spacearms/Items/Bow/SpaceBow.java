@@ -19,6 +19,11 @@ public class SpaceBow extends ModBow {
         return stack.getItem().isIn(tag);
     };
 
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
+
     public SpaceBow() {
         super(new Properties().maxDamage(484).group(ModGroup.myGroup), ItemRegistry.spaceArrow.get());
     }

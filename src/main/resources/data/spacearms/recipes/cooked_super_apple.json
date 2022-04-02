@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "spacearms:super_apple"
+  },
+  "result": "spacearms:cooked_super_apple",
+  "experience": 0.1,
+  "cookingtime": 200
+}

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "xyz",
-    " o ",
+    "mon",
     " o "
   ],
   "key": {
@@ -10,10 +10,16 @@
       "item": "spacearms:dragon_sword"
     },
     "y": {
-      "item": "spacearms:dragon_block"
+      "item": "spacearms:dragon_pickaxe"
     },
     "z": {
-      "item": "spacearms:dragon_pickaxe"
+      "item": "spacearms:dragon_axe"
+    },
+    "m": {
+      "item": "spacearms:dragon_shovel"
+    },
+    "n": {
+      "item": "spacearms:dragon_hoe"
     },
     "o": {
       "item": "spacearms:netherite_stick"

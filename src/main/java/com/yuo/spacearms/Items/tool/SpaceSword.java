@@ -28,12 +28,17 @@ import java.util.UUID;
 
 public class SpaceSword extends SwordItem{
 	public SpaceSword() {
-		super(MyItemTier.SPACE, 6, -2.4F, new Item.Properties().group(ModGroup.myGroup));
+		super(MyItemTier.SPACE, 4, -2.4F, new Item.Properties().group(ModGroup.myGroup));
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_sword"));
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	//使用时间
