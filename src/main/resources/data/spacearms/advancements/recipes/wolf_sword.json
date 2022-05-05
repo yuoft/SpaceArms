@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "nether_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "minecraft:nether_star"
+          }]
+      }
+    },
+    "dragon_egg": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "minecraft:dragon_egg"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:wolf_sword"
+    ]
+  },
+  "requirements": [
+    [
+      "dragon_egg",
+      "nether_star"
+    ]
+  ]
+}

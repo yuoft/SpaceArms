@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "spacearms:item/bow/fire_bow_pulling_1"
+    }
+}

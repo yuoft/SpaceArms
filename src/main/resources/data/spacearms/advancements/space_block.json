@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:space_path",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:space_block"
+    },
+    "title": {
+		"translate": "advancements.spacearms.space_block.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.space_block.desc"
+	},
+    "frame": "goal"
+  },
+  "criteria": { 
+    "space_block": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:space_block"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 50
+  }
+}

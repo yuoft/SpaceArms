@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:super_stick",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:super_string"
+    },
+    "title": {
+		"translate": "advancements.spacearms.super_string.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.super_string.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:super_string"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

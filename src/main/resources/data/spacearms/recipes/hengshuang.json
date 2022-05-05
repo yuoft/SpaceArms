@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mzm",
+    "mym",
+    "mxm"
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "z": {
+      "item": "minecraft:nether_star"
+    },
+	"x": {
+      "item": "minecraft:trident"
+    },
+    "m": {
+      "item": "spacearms:jiejing"
+    }
+  },
+  "result": {
+    "item": "spacearms:hengshuang"
+  }
+}

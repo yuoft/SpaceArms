@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:dragon_crystal",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:space_path"
+    },
+    "title": {
+		"translate": "advancements.spacearms.space_path.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.space_path.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "space_path": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:space_path"					
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " zz",
+    " xz",
+    "y  "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "z": {
+      "item": "spacearms:jiejing"
+    },
+    "y": {
+      "item": "minecraft:prismarine"
+    }
+  },
+  "result": {
+    "item": "minecraft:trident"
+  }
+}

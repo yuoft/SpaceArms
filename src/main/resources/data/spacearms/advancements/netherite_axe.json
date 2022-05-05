@@ -1,0 +1,29 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "minecraft:netherite_axe"
+    },
+    "title": {
+		"translate": "advancements.spacearms.netherite_axe.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.netherite_axe.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "netherite_axe": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "item": {
+          "item": "minecraft:netherite_axe"
+        },
+        "durability": 0
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

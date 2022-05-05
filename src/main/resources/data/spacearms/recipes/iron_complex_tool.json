@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    "mon",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:iron_sword"
+    },
+    "y": {
+      "item": "minecraft:iron_pickaxe"
+    },
+    "z": {
+      "item": "minecraft:iron_axe"
+    },
+    "m": {
+      "item": "minecraft:iron_shovel"
+    },
+    "o": {
+      "item": "spacearms:gold_stick"
+    },
+    "n": {
+      "item": "minecraft:iron_hoe"
+    }
+  },
+  "result": {
+    "item": "spacearms:iron_complex_tool"
+  }
+}

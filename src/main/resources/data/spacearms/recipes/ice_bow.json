@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " yn",
+    "xzm",
+    " yn"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:snowball"
+    },
+    "y": {
+      "item": "minecraft:gold_ingot"
+    },
+    "z": {
+      "item": "minecraft:bow"
+    },
+    "m": {
+      "item": "minecraft:blue_ice"
+    },
+    "n": {
+      "item": "minecraft:packed_ice"
+    }
+  },
+  "result": {
+    "item": "spacearms:ice_bow"
+  }
+}

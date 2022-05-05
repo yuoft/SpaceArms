@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    " y ",
+    " z "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:packed_ice"
+    },
+    "y": {
+      "item": "minecraft:stick"
+    },
+    "z": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "spacearms:ice_arrow",
+    "count": 3
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "spacearms:item/tool/diamond_complex_tool"
+  }
+}

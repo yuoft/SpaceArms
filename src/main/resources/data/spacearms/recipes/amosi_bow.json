@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " xy",
+    "xzy",
+    " xy"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:yuanshi"
+    },
+    "y": {
+      "item": "spacearms:jiejing"
+    },
+    "z": {
+      "item": "spacearms:space_bow"
+    }
+  },
+  "result": {
+    "item": "spacearms:amosi_bow"
+  }
+}

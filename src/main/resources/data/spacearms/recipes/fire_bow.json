@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " yn",
+    "xzm",
+    " yn"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:magma_block"
+    },
+    "y": {
+      "item": "minecraft:gold_ingot"
+    },
+    "z": {
+      "item": "minecraft:bow"
+    },
+    "m": {
+      "item": "minecraft:magma_cream"
+    },
+    "n": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "spacearms:fire_bow"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "spacearms:space_path",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:space_core"
+    },
+    "title": {
+		"translate": "advancements.spacearms.space_core.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.space_core.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": { 
+    "netherite_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { 
+		"items": [{
+				"item":"spacearms:space_core"
+			}]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 200
+  }
+}

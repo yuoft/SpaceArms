@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:dragon_crystal",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:slime_slingshot"
+    },
+    "title": {
+		"translate": "advancements.spacearms.slime_slingshot.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.slime_slingshot.desc"
+	},
+    "frame": "goal"
+  },
+  "criteria": { 
+    "space_path": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:slime_slingshot"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 50
+  }
+}

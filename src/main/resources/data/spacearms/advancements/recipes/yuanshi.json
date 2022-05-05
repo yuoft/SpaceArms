@@ -1,0 +1,43 @@
+{
+  "criteria": {
+    "yuanshi": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:yuanshi"
+          }]
+      }
+    },
+    "jiejing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:jiejing"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:yuanshi",
+      "spacearms:iron_horse_armor",
+      "spacearms:golden_horse_armor",
+      "spacearms:diamond_horse_armor",
+      "spacearms:wither_skeleton_skull",
+      "spacearms:sponge",
+      "spacearms:nether_star",
+      "spacearms:dragon_egg",
+      "spacearms:trident",
+      "spacearms:totem_of_undying",
+      "spacearms:name_tag",
+      "spacearms:experience_bottle",
+      "spacearms:golden_apple"
+    ]
+  },
+  "requirements": [
+    [
+      "yuanshi",
+      "jiejing"
+    ]
+  ]
+}

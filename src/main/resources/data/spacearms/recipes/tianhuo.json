@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mzm",
+    "mym",
+    "mxm"
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:dragon_head"
+    },
+    "z": {
+      "item": "minecraft:nether_star"
+    },
+	"x": {
+      "item": "minecraft:dragon_breath"
+    },
+    "m": {
+      "item": "spacearms:jiejing"
+    }
+  },
+  "result": {
+    "item": "spacearms:tianhuo"
+  }
+}

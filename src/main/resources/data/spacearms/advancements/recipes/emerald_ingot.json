@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:emerald_ingot"
+          }]
+      }
+    },
+    "emerald_ingot_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": "spacearms:emerald_ingot_ore"
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:emerald_axe",
+      "spacearms:emerald_block",
+      "spacearms:un_emerald_block",
+      "spacearms:emerald_chest",
+      "spacearms:emerald_feet",
+      "spacearms:emerald_head",
+      "spacearms:emerald_ingot",
+      "spacearms:emerald_legs",
+      "spacearms:emerald_pickaxe",
+      "spacearms:emerald_sword"
+    ]
+  },
+ "requirements": [
+   [
+     "emerald_ingot",
+     "emerald_ingot_ore"
+   ]
+ ]
+}

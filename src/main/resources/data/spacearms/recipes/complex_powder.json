@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "xzx",
+    "yxy"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:emerald_powder"
+    },
+    "y": {
+      "item": "minecraft:emerald"
+    },
+    "z": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "spacearms:complex_powder"
+  }
+}

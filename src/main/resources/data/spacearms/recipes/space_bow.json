@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " xy",
+    "xzy",
+    " xy"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:space_ingot"
+    },
+    "y": {
+      "item": "spacearms:space_string"
+    },
+    "z": {
+      "item": "minecraft:bow"
+    }
+  },
+  "result": {
+    "item": "spacearms:space_bow"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:super_string",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:iron_bow"
+    },
+    "title": {
+		"translate": "advancements.spacearms.iron_bow.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.iron_bow.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "emerald_ingot": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item": "spacearms:iron_bow"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

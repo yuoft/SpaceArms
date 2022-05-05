@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+		"item": "spacearms:dragon_block"
+	}
+  ],
+  "result": {
+    "item": "spacearms:dragon_crystal",
+    "count": 9
+  }
+}

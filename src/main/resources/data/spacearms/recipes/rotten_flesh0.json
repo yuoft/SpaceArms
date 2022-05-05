@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "y": {
+      "item": "spacearms:yuanshi"
+    }
+  },
+  "result": {
+    "item": "spacearms:rotten_flesh0",
+    "count": 8
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "zxz",
+    "zzz"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:egg"
+    },
+    "z": {
+      "item": "spacearms:jiejing"
+    },
+    "y": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "minecraft:dragon_egg"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:xray_block",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:super_ore"
+    },
+    "title": {
+		"translate": "advancements.spacearms.super_ore.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.super_ore.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "super_ore": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:super_ore"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}
