@@ -13,9 +13,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.16.4-1.3.6'
-group = 'com.yuo.spaceamrs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'SpaceAmrs'
+version = '1.16.4-1.3.7'
+group = 'com.yuo.spacearms' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'SpaceArms'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' //解决含有中文无法编译
@@ -59,10 +59,10 @@ minecraft {
 
 //引入仓库
 repositories {
-    maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
-    }
+//    maven {
+//        name = "CurseForge"
+//        url = "https://minecraft.curseforge.com/api/maven/"
+//    }
     maven {
         name = "CurseMaven"
         url "https://www.cursemaven.com"
@@ -91,12 +91,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "examplemod",
-            "Specification-Vendor": "examplemodsareus",
+            "Specification-Title": "spacearms",
+            "Specification-Vendor": "spacearms",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"examplemodsareus",
+            "Implementation-Vendor" :"spacearms",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

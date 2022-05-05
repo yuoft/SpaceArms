@@ -1,25 +1,17 @@
 package com.yuo.spacearms.Event;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import com.yuo.spacearms.Spacearms;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.culling.ClippingHelper;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.NameTagItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
@@ -106,50 +98,6 @@ public class TickEvents {
             } else {
                 this.timer = 0;
                 this.wasInAir = true;
-            }
-        }
-    }
-
-    private static final String HP = " HP:";
-    private static final String FENGEN = " / ";
-    @SubscribeEvent
-    public static void onRenderWorldLast(RenderWorldLastEvent event) {
-        Minecraft mc = Minecraft.getInstance();
-        if (!Minecraft.isGuiEnabled()) return; //游戏是否显示gui
-
-        ActiveRenderInfo renderInfo = mc.gameRenderer.getActiveRenderInfo();
-        MatrixStack matrixStack = event.getMatrixStack();
-        float partialTicks = event.getPartialTicks();
-        Entity cameraEntity = renderInfo.getRenderViewEntity() != null ? renderInfo.getRenderViewEntity() : mc.player;
-
-        Vector3d cameraPos = renderInfo.getProjectedView();
-        final ClippingHelper clippingHelper = new ClippingHelper(matrixStack.getLast().getMatrix(), event.getProjectionMatrix());
-        clippingHelper.setCameraPosition(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ());
-
-        ClientWorld client = mc.world;
-        if (client != null && !KeyBindingEvent.isIsKeyC()) {
-            for (Entity entity : client.getAllEntities()) {
-                if (entity != null && entity instanceof LivingEntity && entity != cameraEntity && entity.isAlive() && entity.getRecursivePassengers().isEmpty() && entity.isInRangeToRender3d(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ()) && (entity.ignoreFrustumCheck || clippingHelper.isBoundingBoxInFrustum(entity.getBoundingBox()))) {
-                    entity.setCustomName(null);
-                }
-            }
-            return; //血量显示关闭
-        }
-        if (client != null) {
-            for (Entity entity : client.getAllEntities()) {
-                if (entity != null && entity instanceof LivingEntity && entity != cameraEntity && entity.isAlive() && entity.getRecursivePassengers().isEmpty() && entity.isInRangeToRender3d(cameraPos.getX(), cameraPos.getY(), cameraPos.getZ()) && (entity.ignoreFrustumCheck || clippingHelper.isBoundingBoxInFrustum(entity.getBoundingBox()))) {
-                    ITextComponent customName = entity.getCustomName();
-                    entity.setCustomName(null);
-                    String[] strs;
-                    if (customName != null){
-                        strs = customName.getString().split(HP); //获取命名
-                        //设置自定义名称 名称 + 血量
-                        entity.setCustomName(ITextComponent.getTextComponentOrEmpty(strs[0] + HP
-                                + ((LivingEntity) entity).getHealth() + FENGEN + ((LivingEntity) entity).getMaxHealth()));
-                    }
-                    else entity.setCustomName(ITextComponent.getTextComponentOrEmpty(entity.getDisplayName().getString() + HP
-                        + ((LivingEntity) entity).getHealth() + FENGEN + ((LivingEntity) entity).getMaxHealth()));
-                }
             }
         }
     }

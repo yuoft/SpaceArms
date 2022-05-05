@@ -8,9 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.client.settings.KeyModifier;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.glfw.GLFW;
 
 import java.util.UUID;
 
@@ -27,7 +25,7 @@ public class KeyBindingEvent {
             67, //按键C
             "key.category.spacearms_c"); //按键描述
 
-    @SubscribeEvent
+//    @SubscribeEvent
     public static void onKeyboardInput(InputEvent.KeyInputEvent event) {
         if (MESSAGE_KEY.isPressed() && Minecraft.getInstance().player != null) {
             if (IS_KEY_C){
