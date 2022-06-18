@@ -19,12 +19,12 @@ import java.util.List;
 
 public class OrdinarySword extends SwordItem{
 	public OrdinarySword(IItemTier iItemTier) {
-		super(iItemTier, 4, - 2.4f, new Properties().group(ModGroup.myGroup));
+		super(iItemTier, 4, - 2.4f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA;
+		return (getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA) || stack.isEnchanted();
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class FireBow extends ModBow {
     };
 
     public FireBow() {
-        super(new Properties().maxDamage(400).group(ModGroup.myGroup), ItemRegistry.fireArrow.get());
+        super(new Properties().maxDamage(400).group(ModGroup.spaceArms), ItemRegistry.fireArrow.get());
     }
 
     @Override

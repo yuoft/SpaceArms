@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 //箭物品
 public class ModArrow extends ArrowItem {
     public ModArrow() {
-        super(new Item.Properties().group(ModGroup.myGroup));
+        super(new Item.Properties().group(ModGroup.spaceArms));
     }
 
     //创建箭实体

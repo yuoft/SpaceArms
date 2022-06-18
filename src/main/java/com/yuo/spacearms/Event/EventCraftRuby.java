@@ -26,7 +26,7 @@ import java.util.List;
  * @author https://github.com/rwtema/Extra-Utilities-2-Source
  * 部分源码来自更多实用设备2
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID)
 public class EventCraftRuby {
     static List<ItemEntity> rubyServer = new ArrayList<>();
     static List<ItemEntity> rubyClient = new ArrayList<>();

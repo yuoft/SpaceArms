@@ -23,7 +23,7 @@ import java.util.IdentityHashMap;
 /**
  * 事件处理类
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID)
 public class TickEvents {
 
     private static boolean IS_BEDROCK = false; //是否持有基岩

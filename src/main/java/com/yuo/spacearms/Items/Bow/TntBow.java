@@ -27,7 +27,7 @@ import java.util.List;
 public class TntBow extends BowItem {
 
     public TntBow() {
-        super(new Properties().maxDamage(384).group(ModGroup.myGroup));
+        super(new Properties().maxDamage(384).group(ModGroup.spaceArms));
     }
 
     @Override

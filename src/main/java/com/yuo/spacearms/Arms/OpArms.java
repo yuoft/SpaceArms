@@ -23,8 +23,8 @@ import java.util.*;
 
 public class OpArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
-	public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MODID + ":movement_speed",0.2, AttributeModifier.Operation.ADDITION);
+	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
+	public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MOD_ID + ":movement_speed",0.2, AttributeModifier.Operation.ADDITION);
 
 	public OpArms(EquipmentSlotType slot) {
 		super(MyArmorMaterial.OP, slot, properties);

@@ -4,10 +4,7 @@ import com.yuo.spacearms.Arms.OpArms;
 import com.yuo.spacearms.Blocks.BlockRegistry;
 import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.Items.NetheriteItem;
-import com.yuo.spacearms.Items.tool.BeheadSword;
-import com.yuo.spacearms.Items.tool.OpPickaxe;
-import com.yuo.spacearms.Items.tool.OpSword;
-import com.yuo.spacearms.Items.tool.WolfSword;
+import com.yuo.spacearms.Items.tool.*;
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,7 +27,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.Style;
@@ -39,14 +38,10 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,7 +52,7 @@ import java.util.*;
 /**
  * 事件处理类
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
+@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
 public class EventHandler {
     public static List<String> playersWithOpHead = new ArrayList<>();
     public static List<String> playersWithOpChest = new ArrayList<>();
@@ -97,6 +92,7 @@ public class EventHandler {
             }
         }
     }
+
     //op装备 不受伤害
     @SubscribeEvent
     public static void opArmsImmuneDamage(LivingDamageEvent event){
@@ -107,6 +103,22 @@ public class EventHandler {
             Boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
             Boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.opHead.get();
             Boolean hasFeet = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.opFeet.get();
+            DamageSource source = event.getSource();
+            ItemStack offhand = player.getHeldItemOffhand();
+            if (offhand.getItem() instanceof ModShield && source.isMagicDamage()){ //盾牌抵抗其防护值一半的魔法伤害
+                ModShield modShield = (ModShield) offhand.getItem();
+                float probability = modShield.getShieldType().getProbability();
+                World world = player.world;
+                BlockPos pos = player.getPosition();
+                if (world.rand.nextFloat() < probability){
+                    world.playSound(player, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                    for (int i = 0; i < 10; i++){
+                        world.addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + world.rand.nextGaussian() / 2, pos.getY() + world.rand.nextGaussian() / 2, pos.getZ() + world.rand.nextGaussian() / 2,
+                                0.01, 0.01, 0.01);
+                    }
+                    event.setAmount(event.getAmount() - (modShield.getShieldType().getProtectionValue() / 2f));
+                }
+            }
             if (hasChest && hasFeet && hasHead && hasLeg){
                 event.setAmount(0);
                 return;
@@ -117,11 +129,37 @@ public class EventHandler {
         }
 
     }
+
+    //盾牌抵抗伤害(非魔法， 非可以攻击创造伤害)
+    @SubscribeEvent
+    public static void shieldArmor(LivingAttackEvent event){
+        LivingEntity living = event.getEntityLiving();
+        if (living instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) living;
+            ItemStack offhand = player.getHeldItemOffhand();
+            if (offhand.getItem() instanceof ModShield && !event.getSource().isMagicDamage() && !event.getSource().canHarmInCreative()){
+                ModShield modShield = (ModShield) offhand.getItem();
+                float probability = modShield.getShieldType().getProbability();
+                World world = player.world;
+                BlockPos pos = player.getPosition();
+                pos.add(player.getLookVec().x, 0, player.getLookVec().z);
+                if (world.rand.nextFloat() < probability){
+                    world.playSound(player, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                    for (int i = 0; i < 10; i++){
+                        world.addParticle(ParticleTypes.CLOUD, pos.getX() + world.rand.nextGaussian() / 2, pos.getY() + world.rand.nextGaussian() / 2, pos.getZ() + world.rand.nextGaussian() / 2,
+                                0.01, 0.01, 0.01);
+                    }
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
     //op胸甲 飞行 护腿 行走速度增加
     @SubscribeEvent
     public static void updatePlayerAbilityStatus(LivingEvent.LivingUpdateEvent event) {
         LivingEntity living = event.getEntityLiving();
-        if (living instanceof PlayerEntity) {
+        if (living instanceof PlayerEntity && !living.world.isRemote) {
             PlayerEntity player = (PlayerEntity) living;
             boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
             boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
@@ -156,10 +194,11 @@ public class EventHandler {
             //leg
             if (playersWithOpLeg.contains(key)) {
                 ModifiableAttributeInstance attribute = player.getAttribute(Attributes.MOVEMENT_SPEED);
-                if (hasLeg && attribute != null) {
-                    attribute.applyPersistentModifier(OpArms.modifier); //行走速度
+                if (hasLeg) {
+                    if (attribute != null && !attribute.hasModifier(OpArms.modifier))
+                        attribute.applyPersistentModifier(OpArms.modifier); //行走速度
                 }else {
-                    if (attribute != null)
+                    if (attribute != null && attribute.hasModifier(OpArms.modifier))
                         attribute.removeModifier(OpArms.modifier);
                     playersWithOpLeg.remove(key);
                 }

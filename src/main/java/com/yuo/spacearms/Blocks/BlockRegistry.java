@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 //方块注册
 public class BlockRegistry {
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Spacearms.MODID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Spacearms.MOD_ID);
     public static RegistryObject<Block> rubyOre = BLOCKS.register("ruby_ore",
             () -> new OrdinaryOre(Material.ROCK, 2, ToolType.PICKAXE, 5, 5));
     public static RegistryObject<Block> rubyBlock = BLOCKS.register("ruby_block",

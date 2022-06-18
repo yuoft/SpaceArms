@@ -30,7 +30,7 @@ import java.util.UUID;
 public class SlimeSlingshot extends ToolItem {
 
 	public SlimeSlingshot() {
-		super(0,0, MyItemTier.SLIME,null,new Properties().group(ModGroup.myGroup));
+		super(0,0, MyItemTier.SLIME,null,new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

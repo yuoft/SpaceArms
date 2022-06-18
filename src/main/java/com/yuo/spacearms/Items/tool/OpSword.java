@@ -25,7 +25,7 @@ import java.util.Map;
 public class OpSword extends SwordItem{
 
 	public OpSword() {
-		super(MyItemTier.OP, 0, -2.0F, new Item.Properties().group(ModGroup.myGroup));
+		super(MyItemTier.OP, 0, -2.0F, new Item.Properties().group(ModGroup.spaceArms));
 	}
 
     @Override

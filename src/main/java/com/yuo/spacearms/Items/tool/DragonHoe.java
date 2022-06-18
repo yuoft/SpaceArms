@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonHoe extends HoeItem {
 
 	public DragonHoe() {
-		super(MyItemTier.DRAGON, -3, 0, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, -3, 0, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

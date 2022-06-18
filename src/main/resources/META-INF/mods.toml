@@ -3,7 +3,7 @@ loaderVersion="[35,)"
 license="All rights reserved"
 [[mods]] #mandatory
 modId="spacearms" 
-version="1.16.4-1.3.7"
+version="1.16.4-1.4.0"
 displayName="SpaceArms"
 authors="yuo" 
 description='''

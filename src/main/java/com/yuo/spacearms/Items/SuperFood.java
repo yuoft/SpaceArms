@@ -8,7 +8,7 @@ import net.minecraft.item.Rarity;
 
 public class SuperFood extends Item {
     public SuperFood(Food food) {
-        super(new Properties().group(ModGroup.myGroup).food(food).maxStackSize(32).rarity(Rarity.RARE));
+        super(new Properties().group(ModGroup.spaceArms).food(food).maxStackSize(32).rarity(Rarity.RARE));
     }
 
     @Override

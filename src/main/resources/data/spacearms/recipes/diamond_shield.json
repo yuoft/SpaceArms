@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx",
+    "xxx",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "x": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "spacearms:diamond_shield"
+  }
+}

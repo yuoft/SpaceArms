@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class GoldTnt extends Item{
 
 	public GoldTnt() {
-		super(new Properties().group(ModGroup.myGroup));
+		super(new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

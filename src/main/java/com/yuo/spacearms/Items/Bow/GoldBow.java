@@ -17,7 +17,7 @@ public class GoldBow extends ModBow {
     };
 
     public GoldBow() {
-        super(new Properties().maxDamage(384).group(ModGroup.myGroup), ItemRegistry.goldArrow.get());
+        super(new Properties().maxDamage(384).group(ModGroup.spaceArms), ItemRegistry.goldArrow.get());
     }
 
     @Override
