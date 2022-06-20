@@ -20,6 +20,8 @@ public class ClientEventHandler {
     public static final ResourceLocation DIAMOND_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/diamond_shield_nopattern");
     public static final ResourceLocation NETHERITE_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/netherite_shield");
     public static final ResourceLocation NETHERITE_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/netherite_shield_nopattern");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/obsidian_shield");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/obsidian_shield_nopattern");
     public static final ResourceLocation NORMAL_SHIELD_TEXTURE = new ResourceLocation("entity/shield_base");
     public static final ResourceLocation NORMAL_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation("entity/shield_base_nopattern");
 
@@ -33,6 +35,8 @@ public class ClientEventHandler {
                 return getRenderMaterial(flag ? DIAMOND_SHIELD_TEXTURE : DIAMOND_SHIELD_TEXTURE_NOPATTERN);
             case NETHERITE:
                 return getRenderMaterial(flag ? NETHERITE_SHIELD_TEXTURE : NETHERITE_SHIELD_TEXTURE_NOPATTERN);
+            case OBSIDIAN:
+                return getRenderMaterial(flag ? OBSIDIAN_SHIELD_TEXTURE : OBSIDIAN_SHIELD_TEXTURE_NOPATTERN);
             default:
                 return getRenderMaterial(flag ? NORMAL_SHIELD_TEXTURE : NORMAL_SHIELD_TEXTURE_NOPATTERN);
         }
@@ -54,6 +58,8 @@ public class ClientEventHandler {
             event.addSprite(DIAMOND_SHIELD_TEXTURE_NOPATTERN);
             event.addSprite(NETHERITE_SHIELD_TEXTURE);
             event.addSprite(NETHERITE_SHIELD_TEXTURE_NOPATTERN);
+            event.addSprite(OBSIDIAN_SHIELD_TEXTURE);
+            event.addSprite(OBSIDIAN_SHIELD_TEXTURE_NOPATTERN);
         }
     }
 }

@@ -16,6 +16,11 @@ public class ModArrow extends ArrowItem {
         super(new Item.Properties().group(ModGroup.spaceArms));
     }
 
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return stack.getItem() == ItemRegistry.amosiArrow.get();
+    }
+
     //创建箭实体
     @Override
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {

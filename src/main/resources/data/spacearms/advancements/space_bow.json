@@ -13,7 +13,7 @@
     "frame": "goal"
   },
   "criteria": { 
-    "emerald_ingot": {
+    "space_bow": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

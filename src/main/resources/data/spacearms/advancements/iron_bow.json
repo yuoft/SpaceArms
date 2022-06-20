@@ -13,7 +13,7 @@
     "frame": "task"
   },
   "criteria": { 
-    "emerald_ingot": {
+    "iron_bow": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

@@ -1,30 +1,30 @@
 {
-  "parent": "spacearms:bedrock_ingot",
+  "parent": "spacearms:emerald_ingot",
   "display": { 
     "icon": { 
-      "item": "minecraft:bedrock"
+      "item": "spacearms:hengshuang"
     },
     "title": {
-		"translate": "advancements.spacearms.bedrock.title"
+		"translate": "advancements.spacearms.hengshuang.title"
 	},
     "description": {
-		"translate": "advancements.spacearms.bedrock.desc"
+		"translate": "advancements.spacearms.hengshuang.desc"
 	},
     "frame": "task"
   },
   "criteria": { 
-    "bedrock": {
+    "hengshuang": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[
 			{
-				"item":"minecraft:bedrock"
+				"item":"spacearms:hengshuang"
 			}
 		]
       }
     }
   },
   "rewards": { 
-    "experience": 20
+    "experience": 10
   }
 }

@@ -1,6 +1,7 @@
 package com.yuo.spacearms;
 
 import com.yuo.spacearms.Blocks.BlockRegistry;
+import com.yuo.spacearms.Effect.EffectRegistry;
 import com.yuo.spacearms.Entity.EntityRegistry;
 import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.Proxy.ClientProxy;
@@ -24,6 +25,7 @@ public class Spacearms {
         ItemRegistry.ITEMS.register(modEventBus);
         BlockRegistry.BLOCKS.register(modEventBus);
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
+        EffectRegistry.EFFECTS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::generateOres); //注册矿物生成
         proxy.registerHandlers();

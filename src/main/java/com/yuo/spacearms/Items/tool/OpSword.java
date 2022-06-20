@@ -59,7 +59,7 @@ public class OpSword extends SwordItem{
             }
             playerIn.getCooldownTracker().setCooldown(this, 20);
         }
-        return new ActionResult<ItemStack>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
+        return new ActionResult<>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
     }
 
     //攻击实体

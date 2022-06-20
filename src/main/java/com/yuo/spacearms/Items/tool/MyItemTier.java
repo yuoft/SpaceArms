@@ -30,6 +30,9 @@ public enum MyItemTier implements IItemTier {
     XRAY(1679, 11.0f, 5, 4, 12, () -> {
         return Ingredient.fromItems(ItemRegistry.xrayIngot.get());
     }),
+    BH3(886, 11.0f, 15, 3, 10, () -> {
+        return Ingredient.fromItems(ItemRegistry.jiejing.get());
+    }),
     SUPER_XRAY(2647, 17.0f, 9, 5, 16, () -> {
         return Ingredient.fromItems(ItemRegistry.superXrayIngot.get());
     }),

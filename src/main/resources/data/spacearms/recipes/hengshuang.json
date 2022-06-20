@@ -1,22 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "mzm",
-    "mym",
-    "mxm"
+    "zxm",
+    "xyx",
+    " o "
   ],
   "key": {
+    "x": {
+      "item": "spacearms:jiejing"
+    },
+    "z": {
+      "item": "minecraft:blue_ice"
+    },
+    "m": {
+      "item": "minecraft:rabbit_foot"
+    },
     "y": {
       "item": "minecraft:heart_of_the_sea"
     },
-    "z": {
-      "item": "minecraft:nether_star"
-    },
-	"x": {
+    "o": {
       "item": "minecraft:trident"
-    },
-    "m": {
-      "item": "spacearms:jiejing"
     }
   },
   "result": {

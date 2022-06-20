@@ -13,7 +13,7 @@
     "frame": "challenge"
   },
   "criteria": { 
-    "netherite_axe": {
+    "space_core": {
       "trigger": "minecraft:inventory_changed",
       "conditions": { 
 		"items": [{

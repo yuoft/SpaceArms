@@ -281,6 +281,12 @@
 	"advancements.spacearms.cooked_super_apple.desc": "食用任意加工后的超级食物",
 	"advancements.spacearms.ultra_ingot.title": "暴食者",
 	"advancements.spacearms.ultra_ingot.desc": "食用全部超级食物",
+	"advancements.spacearms.tianhuo.title": "§c天火",
+	"advancements.spacearms.tianhuo.desc": "合成天火",
+	"advancements.spacearms.hengshuang.title": "§b恒霜",
+	"advancements.spacearms.hengshuang.desc": "合成恒霜",
+
+	"effect.spacearms.frozen": "冻结",
 
 	"itemGroup.SpaceArms": "强力装备",
 	"spacearms.message.login":"§b欢迎游玩本模组[强力装备]，问题反馈§a点击此处!",
@@ -323,5 +329,10 @@
 	"spacearms.text.info.bedrock": "最下层基岩无法转变",
 	"spacearms.text.info.slime_slingshot": "芜湖！起飞！！！",
 	"spacearms.text.itemInfo.aoe": "范围挖掘:§c开启！",
-	"spacearms.text.itemInfo.unAoe": "范围挖掘:§b关闭！"
+	"spacearms.text.itemInfo.unAoe": "范围挖掘:§b关闭！",
+	"spacearms.text.info.bh3_use": "你不满足使用条件！",
+	"spacearms.text.itemInfo.hengshuang": "§b冰箱的主人",
+	"spacearms.text.itemInfo.hengshuang1": "§b被动：20%概率冻结敌人",
+	"spacearms.text.itemInfo.tianhuo": "§c我将发动一次牛逼的攻击(天火自裁)",
+	"spacearms.text.itemInfo.tianhuo1": "§c被动：20%概率燃烧敌人"
 }

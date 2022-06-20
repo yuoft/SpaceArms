@@ -1,22 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "mzm",
-    "mym",
-    "mxm"
+    "xzx",
+    "mxy",
+    " o "
   ],
   "key": {
-    "y": {
-      "item": "minecraft:dragon_head"
+    "x": {
+      "item": "spacearms:jiejing"
     },
     "z": {
-      "item": "minecraft:nether_star"
+      "item": "minecraft:blaze_rod"
     },
-	"x": {
-      "item": "minecraft:dragon_breath"
+    "y": {
+      "item": "minecraft:fire_charge"
     },
     "m": {
-      "item": "spacearms:jiejing"
+      "item": "minecraft:dragon_breath"
+    },
+    "o": {
+      "item": "minecraft:magma_block"
     }
   },
   "result": {

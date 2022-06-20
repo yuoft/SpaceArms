@@ -159,7 +159,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void updatePlayerAbilityStatus(LivingEvent.LivingUpdateEvent event) {
         LivingEntity living = event.getEntityLiving();
-        if (living instanceof PlayerEntity && !living.world.isRemote) {
+        if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) living;
             boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
             boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
@@ -225,10 +225,9 @@ public class EventHandler {
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
             if (playersWithOpFeet.contains(key)) {
                 player.setMotion(0, 1.0f, 0);
-                return;
             }
-            if (TickEvents.isIS_BEDROCK()){
-                player.setMotion(0, 0.05f, 0);
+            if (player.getPersistentData().getBoolean(TickEvents.NBT_NAME)){
+                player.setMotion(0, 0.15f, 0);
             }
         }
     }

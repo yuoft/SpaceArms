@@ -13,7 +13,7 @@
     "frame": "challenge"
   },
   "criteria": { 
-    "space_block": {
+    "op_sword": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

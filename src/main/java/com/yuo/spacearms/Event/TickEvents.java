@@ -1,17 +1,18 @@
 package com.yuo.spacearms.Event;
 
+import com.yuo.spacearms.Items.ItemRegistry;
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
@@ -23,10 +24,10 @@ import java.util.IdentityHashMap;
 /**
  * 事件处理类
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID)
+@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
 public class TickEvents {
 
-    private static boolean IS_BEDROCK = false; //是否持有基岩
+    public static final String NBT_NAME = Spacearms.MOD_ID + ":is_bedrock";
     private static final IdentityHashMap<Entity, TickEvents> bouncingEntities = new IdentityHashMap<>();
 
     public final LivingEntity entityLiving;
@@ -58,10 +59,11 @@ public class TickEvents {
         PlayerEntity player = event.player;
         PlayerInventory inventory = player.inventory;
         NonNullList<ItemStack> mainInventory = inventory.mainInventory;
-        mainInventory.forEach((e) ->{ setPlayerEffects(e, player); });
+        mainInventory.forEach(e -> setPlayerEffects(e, player));
         NonNullList<ItemStack> offHandInventory = inventory.offHandInventory;
-        offHandInventory.forEach( e ->{ setPlayerEffects(e, player); });
+        offHandInventory.forEach( e -> setPlayerEffects(e, player));
     }
+
     //使玩家弹起来
     @SubscribeEvent
     public void slimeFeet(TickEvent.PlayerTickEvent event) {
@@ -109,15 +111,16 @@ public class TickEvents {
      */
     private static void setPlayerEffects(ItemStack e, PlayerEntity player){
         if (e.getItem().equals(Items.BEDROCK)){ //如果玩家持有基岩，则给予负面状态
-            if (!player.isCreative()){
-                IS_BEDROCK = true;
+            //创造模式 和 玩家穿戴op甲 时不生效
+            if (player.isCreative() || player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get()){
+                player.getPersistentData().putBoolean(NBT_NAME, false);
+            }else {
+                player.getPersistentData().putBoolean(NBT_NAME, true);
                 player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
                 player.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, 200, 3));
                 player.addPotionEffect(new EffectInstance(Effects.HUNGER, 200, 2));
                 player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 2));
-            }else IS_BEDROCK = false;
-        }else {
-            IS_BEDROCK = false;
+            }
         }
     }
     public static void addBounceHandler(LivingEntity entity) {
@@ -138,14 +141,6 @@ public class TickEvents {
             handler.bounce = bounce;
             handler.bounceTick = entity.ticksExisted;
         }
-    }
-
-    public static boolean isIS_BEDROCK() {
-        return IS_BEDROCK;
-    }
-
-    public static void setIS_BEDROCK(boolean flag) {
-        IS_BEDROCK = flag;
     }
 }
 

@@ -13,7 +13,7 @@
     "frame": "challenge"
   },
   "criteria": { 
-    "wolf_end": {
+    "wolf_sword": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

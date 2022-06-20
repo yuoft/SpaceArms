@@ -13,7 +13,7 @@
     "frame": "goal"
   },
   "criteria": { 
-    "space_path": {
+    "slime_slingshot": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

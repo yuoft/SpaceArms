@@ -105,8 +105,8 @@ public class ItemRegistry {
 	//武器和工具
 	public static RegistryObject<Item> slimeSlingshot = ITEMS.register("slime_slingshot", SlimeSlingshot::new);
 	public static RegistryObject<Item> wolfSword = ITEMS.register("wolf_sword", WolfSword::new);
-	public static RegistryObject<Item> tianhuo = ITEMS.register("tianhuo", WolfSword::new);
-	public static RegistryObject<Item> hengshuang = ITEMS.register("hengshuang", WolfSword::new);
+	public static RegistryObject<Item> tianhuo = ITEMS.register("tianhuo", BH3Sword::new);
+	public static RegistryObject<Item> hengshuang = ITEMS.register("hengshuang", BH3Sword::new);
 	public static RegistryObject<Item> rubySword = ITEMS.register("ruby_sword", () -> new OrdinarySword(MyItemTier.RUBY));
 	public static RegistryObject<Item> rubyPickaxe = ITEMS.register("ruby_pickaxe", () -> new OrdinaryPickaxe(MyItemTier.RUBY));
 	public static RegistryObject<Item> rubyAxe = ITEMS.register("ruby_axe", () -> new OrdinaryAxe(MyItemTier.RUBY));
@@ -168,6 +168,7 @@ public class ItemRegistry {
 	public static RegistryObject<Item> superXrayComplexTool = ITEMS.register("super_xray_complex_tool", () -> new ComplexTool(MyItemTier.SUPER_XRAY));
 	public static RegistryObject<Item> superComplexTool = ITEMS.register("super_complex_tool", () -> new ComplexTool(MyItemTier.SUPER));
 	public static RegistryObject<Item> ultraComplexTool = ITEMS.register("ultra_complex_tool", () -> new ComplexTool(MyItemTier.ULTRA));
+
 	public static RegistryObject<Item> ironShield = ITEMS.register("iron_shield", () -> new ModShield(ShieldType.IRON));
 	public static RegistryObject<Item> goldShield = ITEMS.register("gold_shield", () -> new ModShield(ShieldType.GOLD));
 	public static RegistryObject<Item> diamondShield = ITEMS.register("diamond_shield", () -> new ModShield(ShieldType.DIAMOND));

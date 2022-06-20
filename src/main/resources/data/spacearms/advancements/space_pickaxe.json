@@ -13,7 +13,7 @@
     "frame": "goal"
   },
   "criteria": { 
-    "space_block": {
+    "space_pickaxe": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

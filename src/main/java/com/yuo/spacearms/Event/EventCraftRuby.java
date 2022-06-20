@@ -12,7 +12,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,10 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author https://github.com/rwtema/Extra-Utilities-2-Source
- * 部分源码来自更多实用设备2
+ * 部分源码参考更多实用设备2
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID)
+@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
 public class EventCraftRuby {
     static List<ItemEntity> rubyServer = new ArrayList<>();
     static List<ItemEntity> rubyClient = new ArrayList<>();
