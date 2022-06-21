@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonPickaxe extends PickaxeItem {
 
 	public DragonPickaxe() {
-		super(MyItemTier.DRAGON, 2, -2.8f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, 2, -2.8f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

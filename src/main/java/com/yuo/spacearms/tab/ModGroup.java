@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 //创造模式物品栏 实例化
 public class ModGroup extends ItemGroup{
-	public static ItemGroup myGroup = new ModGroup();
+	public static ItemGroup spaceArms = new ModGroup();
 
 	public ModGroup() {
 		super(ItemGroup.GROUPS.length, "SpaceArms"); //页码11开始，名称

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class OrdinaryArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
+	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
 
 	public OrdinaryArms(IArmorMaterial material, EquipmentSlotType slot) {
 		super(material, slot, properties);

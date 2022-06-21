@@ -7,7 +7,7 @@ import net.minecraft.item.PickaxeItem;
 
 public class OrdinaryPickaxe extends PickaxeItem {
 	public OrdinaryPickaxe(IItemTier iItemTier) {
-		super(iItemTier, 2, -2.8f, new Properties().group(ModGroup.myGroup));
+		super(iItemTier, 2, -2.8f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

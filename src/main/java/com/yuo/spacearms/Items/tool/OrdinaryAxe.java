@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class OrdinaryAxe extends AxeItem {
 	public OrdinaryAxe(IItemTier iItemTier) {
-		super(iItemTier, 6f, - 3.0f, new Properties().group(ModGroup.myGroup));
+		super(iItemTier, 6f, - 3.0f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import net.minecraft.item.PickaxeItem;
 public class OrdinaryHoe extends PickaxeItem {
 
 	public OrdinaryHoe(IItemTier itemTier) {
-		super(itemTier, (int) (-itemTier.getAttackDamage() + 1), 0, new Properties().group(ModGroup.myGroup));
+		super(itemTier, (int) (-itemTier.getAttackDamage() + 1), 0, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

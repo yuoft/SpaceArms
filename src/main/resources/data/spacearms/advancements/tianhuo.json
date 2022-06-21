@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:tianhuo"
+    },
+    "title": {
+		"translate": "advancements.spacearms.tianhuo.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.tianhuo.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "hengshuang": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:tianhuo"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

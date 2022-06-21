@@ -23,8 +23,8 @@ import java.util.*;
 
 public class OpArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
-	public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MODID + ":movement_speed",0.2, AttributeModifier.Operation.ADDITION);
+	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
+	public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MOD_ID + ":movement_speed",0.2, AttributeModifier.Operation.ADDITION);
 
 	public OpArms(EquipmentSlotType slot) {
 		super(MyArmorMaterial.OP, slot, properties);
@@ -54,40 +54,31 @@ public class OpArms extends ArmorItem{
 
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-		Iterator<ItemStack> iterator = player.getArmorInventoryList().iterator();
-		while (iterator.hasNext()){
-			ItemStack next = iterator.next();
-			if (!next.isEmpty()){
-				Item item = next.getItem();
-				if (item.equals(ItemRegistry.opHead.get())){
-					if (player.areEyesInFluid(FluidTags.WATER)){ //玩家视线在水中
-						player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 0, 5));
-					}
-					player.getFoodStats().addStats(20, 20f); //饱腹
-					player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0)); //夜视
-				}
-				if (item.equals(ItemRegistry.opChest.get())){
-					//清除所有负面效果
-					Collection<EffectInstance> effects = player.getActivePotionEffects();
-					if (effects.size() > 0){
-						List<Effect> bad = new ArrayList<>();
-						effects.forEach((e) -> {
-							if (!e.getPotion().isBeneficial())
-								bad.add(e.getPotion());
-						});
-						if (bad.size() > 0){
-							bad.forEach((e) ->{
-								player.removeActivePotionEffect(e);
-								player.clearActivePotions();
-							});
-						}
-					}
-				}
-				if (item.equals(ItemRegistry.opLegs.get())){
-					if (player.isBurning()) player.extinguish();//着火时熄灭
-					player.isImmuneToFire(); //免疫火伤
+		Item item = stack.getItem();
+		if (item.equals(ItemRegistry.opHead.get())) {
+			if (player.areEyesInFluid(FluidTags.WATER)) { //玩家视线在水中
+				player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 0, 5));
+			}
+			player.getFoodStats().addStats(20, 20f); //饱腹
+			player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0)); //夜视
+		}
+		if (item.equals(ItemRegistry.opChest.get())) {
+			//清除所有负面效果
+			Collection<EffectInstance> effects = player.getActivePotionEffects();
+			if (effects.size() > 0) {
+				List<Effect> bad = new ArrayList<>();
+				effects.forEach((e) -> {
+					if (!e.getPotion().isBeneficial())
+						bad.add(e.getPotion());
+				});
+				if (bad.size() > 0) {
+					bad.forEach(player::removePotionEffect);
 				}
 			}
+		}
+		if (item.equals(ItemRegistry.opLegs.get())) {
+			if (player.isBurning()) player.extinguish();//着火时熄灭
+			player.isImmuneToFire(); //免疫火伤
 		}
 	}
 

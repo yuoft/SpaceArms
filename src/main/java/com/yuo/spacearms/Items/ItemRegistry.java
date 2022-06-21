@@ -252,36 +252,36 @@ public class ItemRegistry {
 	
 	//注册方块物品
 	public static RegistryObject<BlockItem> rubyOre = ITEMS.register("ruby_ore",
-			() -> new BlockItem(BlockRegistry.rubyOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.rubyOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> rubyBlock = ITEMS.register("ruby_block",
-			() -> new BlockItem(BlockRegistry.rubyBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.rubyBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> emeraldIngotBlock = ITEMS.register("emerald_ingot_block",
-			() -> new BlockItem(BlockRegistry.emeraldIngotBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.emeraldIngotBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> emeraldIngotOre = ITEMS.register("emerald_ingot_ore",
-			() -> new BlockItem(BlockRegistry.emeraldIngotOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.emeraldIngotOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> spaceBlock = ITEMS.register("space_block",
-			() -> new BlockItem(BlockRegistry.spaceBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.spaceBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> spaceOre = ITEMS.register("space_ore",
-			() -> new BlockItem(BlockRegistry.spaceOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.spaceOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> tree = ITEMS.register("tree",
-			() -> new BlockItem(BlockRegistry.tree.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.tree.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> fragileBedrock = ITEMS.register("fragile_bedrock",
-			() -> new BlockItem(BlockRegistry.fragileBedrock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.fragileBedrock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> dragonBlock = ITEMS.register("dragon_block",
-			() -> new BlockItem(BlockRegistry.dragonBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.dragonBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> dragonOre = ITEMS.register("dragon_ore",
-			() -> new BlockItem(BlockRegistry.dragonOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.dragonOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> endSpaceOre = ITEMS.register("end_space_ore",
-			() -> new BlockItem(BlockRegistry.endSpaceOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.endSpaceOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 
 	public static RegistryObject<BlockItem> xrayBlock = ITEMS.register("xray_block",
-			() -> new BlockItem(BlockRegistry.xrayBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.xrayBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> superXrayBlock = ITEMS.register("super_xray_block",
-			() -> new BlockItem(BlockRegistry.superXrayBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.superXrayBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> superOre = ITEMS.register("super_ore",
-			() -> new BlockItem(BlockRegistry.superOre.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.superOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> superBlock = ITEMS.register("super_block",
-			() -> new BlockItem(BlockRegistry.superBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.superBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> ultraBlock = ITEMS.register("ultra_block",
-			() -> new BlockItem(BlockRegistry.ultraBlock.get(), new Item.Properties().group(ModGroup.myGroup)));
+			() -> new BlockItem(BlockRegistry.ultraBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 }

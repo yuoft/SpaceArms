@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DragonArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
+	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
 
 	public DragonArms(EquipmentSlotType slot) {
 		super(MyArmorMaterial.DRAGON, slot, properties);

@@ -25,7 +25,7 @@ public class SpaceBow extends ModBow {
     }
 
     public SpaceBow() {
-        super(new Properties().maxDamage(484).group(ModGroup.myGroup), ItemRegistry.spaceArrow.get());
+        super(new Properties().maxDamage(484).group(ModGroup.spaceArms), ItemRegistry.spaceArrow.get());
     }
 
     @Override

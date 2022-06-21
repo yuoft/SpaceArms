@@ -1,5 +1,4 @@
 {
-	#物品
 	"item.spacearms.ruby_ingot": "红宝石",
 	"item.spacearms.emerald_ingot": "绿宝石锭",
 	"item.spacearms.space_ingot": "§b空间锭",
@@ -40,7 +39,7 @@
 	"item.spacearms.super_xray_ingot": "超级X光锭",
 	"item.spacearms.super_ingot": "超级锭",
 	"item.spacearms.ultra_ingot": "极限锭",
-	#食物
+
 	"item.spacearms.cooked_super_apple": "熟的超级苹果",
 	"item.spacearms.cooked_super_beef": "超级熟牛排",
 	"item.spacearms.cooked_super_beetroot": "超级烤甜菜根",
@@ -67,7 +66,7 @@
 	"item.spacearms.super_rabbit": "超级生兔肉",
 	"item.spacearms.super_rabbit_stew": "超级兔肉煲",
 	"item.spacearms.super_pumpkin_pie": "超级南瓜派",
-	#武器和工具
+
 	"item.spacearms.ruby_sword": "红宝石剑",
 	"item.spacearms.wolf_sword": "§6狼的末路",
 	"item.spacearms.tianhuo": "§c天火",
@@ -144,7 +143,11 @@
 	"item.spacearms.ultra_shovel": "极限铲",
 
 	"item.spacearms.iron_shield": "铁盾",
-	#盔甲
+	"item.spacearms.gold_shield": "金盾",
+	"item.spacearms.diamond_shield": "钻石盾",
+	"item.spacearms.netherite_shield": "下界合金盾",
+	"item.spacearms.obsidian_shield": "黑曜石盾",
+
 	"item.spacearms.ruby_head": "红宝石头盔",
 	"item.spacearms.ruby_chest": "红宝石胸甲",
 	"item.spacearms.ruby_legs": "红宝石护腿",
@@ -190,7 +193,7 @@
 	"item.spacearms.ultra_chest": "极限胸甲",
 	"item.spacearms.ultra_legs": "极限护腿",
 	"item.spacearms.ultra_feet": "极限鞋子",
-	#方块
+
 	"block.spacearms.ruby_ore": "红宝石矿",
 	"block.spacearms.ruby_block": "红宝石块",
 	"block.spacearms.emerald_ingot_ore": "绿宝石锭矿",
@@ -207,7 +210,7 @@
 	"block.spacearms.super_ore": "超级矿",
 	"block.spacearms.super_block": "超级块",
 	"block.spacearms.ultra_block": "极限块",
-	#实体
+
 	"entity.spacearms.iron_arrow": "铁箭",
 	"entity.spacearms.gold_arrow": "金箭",
 	"entity.spacearms.diamond_arrow": "钻石箭",
@@ -219,7 +222,7 @@
 	"entity.spacearms.ice_arrow": "寒冰箭",
 	"entity.spacearms.amosi_arrow": "阿莫斯之箭",
 	"entity.spacearms.amosi_bow_arrow": "阿莫斯之箭",
-	#进度
+
 	"advancements.spacearms.emerald_ingot.title": "更有用的绿宝石",
 	"advancements.spacearms.emerald_ingot.desc": "获取绿宝石锭",
 	"advancements.spacearms.space_path.title": "空间之力",
@@ -278,11 +281,17 @@
 	"advancements.spacearms.cooked_super_apple.desc": "食用任意加工后的超级食物",
 	"advancements.spacearms.ultra_ingot.title": "暴食者",
 	"advancements.spacearms.ultra_ingot.desc": "食用全部超级食物",
-	#物品栏
+	"advancements.spacearms.tianhuo.title": "§c天火",
+	"advancements.spacearms.tianhuo.desc": "合成天火",
+	"advancements.spacearms.hengshuang.title": "§b恒霜",
+	"advancements.spacearms.hengshuang.desc": "合成恒霜",
+
+	"effect.spacearms.frozen": "冻结",
+
 	"itemGroup.SpaceArms": "强力装备",
-	"spacearms.message.login"="§b欢迎游玩本模组[强力装备]，问题反馈§a点击此处!",
-	"spacearms.message.login0"="§ahttps://space.bilibili.com/21854371",
-	#文本
+	"spacearms.message.login":"§b欢迎游玩本模组[强力装备]，问题反馈§a点击此处!",
+	"spacearms.message.login0":"§ahttps://space.bilibili.com/21854371",
+
 	"spacearms.text.itemInfo.opSword": "右键使用范围伤害。§c潜行击杀所有生物，非潜行击杀怪物！",
 	"spacearms.text.itemInfo.aoeBlock": "范围挖掘:3x3",
 	"spacearms.text.itemInfo.space_tool": "潜行右键切换工具模式",
@@ -291,7 +300,7 @@
 	"spacearms.text.itemInfo.dragon_tool": "挖掘对应方块时可能会额外掉落0-5的经验",
 	"spacearms.text.itemInfo.space_sword": "长按右键消耗经验和武器耐久回城",
 	"spacearms.text.itemInfo.space_path": "右键使用随机传送",
-	"spacearms.text.itemInfo.dragon_sword": "右键消耗武器耐久发射龙晶弹",
+	"spacearms.text.itemInfo.dragon_sword": "右键消耗武器耐久发射龙晶弹(潜行不触发)",
 	"spacearms.text.itemInfo.bedrock_powder": "使用天雷轰击或许会发生什么？",
 	"spacearms.text.itemInfo.op_pickaxe": "右键基岩可将其变为脆弱基岩",
 	"spacearms.text.itemInfo.op_head": "效果：夜视饱腹，水下呼吸",
@@ -320,5 +329,10 @@
 	"spacearms.text.info.bedrock": "最下层基岩无法转变",
 	"spacearms.text.info.slime_slingshot": "芜湖！起飞！！！",
 	"spacearms.text.itemInfo.aoe": "范围挖掘:§c开启！",
-	"spacearms.text.itemInfo.unAoe": "范围挖掘:§b关闭！"
+	"spacearms.text.itemInfo.unAoe": "范围挖掘:§b关闭！",
+	"spacearms.text.info.bh3_use": "你不满足使用条件！",
+	"spacearms.text.itemInfo.hengshuang": "§b冰箱的主人",
+	"spacearms.text.itemInfo.hengshuang1": "§b被动：20%概率冻结敌人",
+	"spacearms.text.itemInfo.tianhuo": "§c我将发动一次牛逼的攻击(天火自裁)",
+	"spacearms.text.itemInfo.tianhuo1": "§c被动：20%概率燃烧敌人"
 }

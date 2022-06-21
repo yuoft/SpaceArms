@@ -6,6 +6,6 @@ import net.minecraft.item.ShieldItem;
 public class ModShield extends ShieldItem {
 
     public ModShield() {
-        super(new Properties().group(ModGroup.myGroup).maxDamage(10));
+        super(new Properties().group(ModGroup.spaceArms).maxDamage(10));
     }
 }

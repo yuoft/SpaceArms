@@ -25,7 +25,7 @@ public class ComplexTool extends ToolItem {
     private final IItemTier itemTier;
 
     public ComplexTool(IItemTier tier) {
-        super( 3, -2.6f, tier, blockSet, new Properties().group(ModGroup.myGroup).maxDamage(tier.getMaxUses()));
+        super( 3, -2.6f, tier, blockSet, new Properties().group(ModGroup.spaceArms).maxDamage(tier.getMaxUses()));
         this.itemTier = tier;
     }
 

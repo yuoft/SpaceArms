@@ -17,7 +17,7 @@ public class IronBow extends ModBow {
     };
 
     public IronBow() {
-        super(new Properties().maxDamage(384).group(ModGroup.myGroup), ItemRegistry.ironArrow.get());
+        super(new Properties().maxDamage(384).group(ModGroup.spaceArms), ItemRegistry.ironArrow.get());
     }
 
     @Override

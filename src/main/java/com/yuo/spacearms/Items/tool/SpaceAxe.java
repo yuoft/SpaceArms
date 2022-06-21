@@ -21,7 +21,7 @@ public class SpaceAxe extends AxeItem {
 	private ItemHander hander;
 
 	public SpaceAxe() {
-		super(MyItemTier.SPACE, 6, -3.0f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.SPACE, 6, -3.0f, new Properties().group(ModGroup.spaceArms));
 		this.hander = new ItemHander();
 	}
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DragonSword extends SwordItem{
 	public DragonSword() {
-		super(MyItemTier.DRAGON, 4, -2.4F, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, 4, -2.4F, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

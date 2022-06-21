@@ -14,7 +14,7 @@ import java.util.List;
 public class SuperSpacePickaxe extends PickaxeItem {
 
 	public SuperSpacePickaxe() {
-		super(MyItemTier.SUPERSPACE, 2, -2.4f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.SUPERSPACE, 2, -2.4f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

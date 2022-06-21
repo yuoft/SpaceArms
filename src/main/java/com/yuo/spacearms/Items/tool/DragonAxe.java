@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonAxe extends AxeItem {
 
 	public DragonAxe() {
-		super(MyItemTier.DRAGON, 6, -3.0f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, 6, -3.0f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

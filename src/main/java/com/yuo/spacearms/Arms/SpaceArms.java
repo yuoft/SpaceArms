@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SpaceArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.myGroup);
+	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
 
 	public SpaceArms(EquipmentSlotType slot) {
 		super(MyArmorMaterial.SPACE, slot, properties);

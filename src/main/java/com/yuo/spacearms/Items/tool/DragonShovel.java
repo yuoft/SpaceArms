@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonShovel extends ShovelItem {
 
 	public DragonShovel() {
-		super(MyItemTier.DRAGON, 3, -3f, new Properties().group(ModGroup.myGroup));
+		super(MyItemTier.DRAGON, 3, -3f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class NetheriteBow extends ModBow {
     };
 
     public NetheriteBow() {
-        super(new Properties().maxDamage(524).group(ModGroup.myGroup), ItemRegistry.netheriteArrow.get());
+        super(new Properties().maxDamage(524).group(ModGroup.spaceArms), ItemRegistry.netheriteArrow.get());
     }
 
     @Override

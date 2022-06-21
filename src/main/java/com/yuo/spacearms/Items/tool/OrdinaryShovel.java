@@ -8,7 +8,7 @@ import net.minecraft.item.PickaxeItem;
 public class OrdinaryShovel extends PickaxeItem {
 
 	public OrdinaryShovel(IItemTier itemTier) {
-		super(itemTier, 3, -3f, new Properties().group(ModGroup.myGroup));
+		super(itemTier, 3, -3f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override
