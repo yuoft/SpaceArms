@@ -57,10 +57,10 @@ public class BH3Sword extends SwordItem {
             List<Entity> entityList = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, aabb);
             DamageSource source = DamageSource.GENERIC;
             if (item == ItemRegistry.hengshuang.get()){
-                worldIn.playSound(player, player.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                worldIn.playSound(player, player.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 3.0f, 1.0f);
                 source = DamageSource.MAGIC;
             } else if (item == ItemRegistry.tianhuo.get()){
-                worldIn.playSound(player, player.getPosition(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                worldIn.playSound(player, player.getPosition(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.PLAYERS, 3.0f, 1.0f);
                 source = DamageSource.IN_FIRE;
             }
             for (Entity entity : entityList) {

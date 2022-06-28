@@ -5,6 +5,7 @@ import com.yuo.spacearms.Spacearms;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -45,6 +46,11 @@ public class OpArms extends ArmorItem {
         if (item.equals(ItemRegistry.opFeet.get())) {
             tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.op_feet"));
         }
+    }
+
+    @Override
+    public boolean isEnderMask(ItemStack stack, PlayerEntity player, EndermanEntity endermanEntity) {
+        return true;
     }
 
     @Override
