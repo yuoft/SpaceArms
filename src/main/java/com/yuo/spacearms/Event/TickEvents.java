@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
@@ -58,10 +57,18 @@ public class TickEvents {
     public static void playerTick(TickEvent.PlayerTickEvent event){
         PlayerEntity player = event.player;
         PlayerInventory inventory = player.inventory;
-        NonNullList<ItemStack> mainInventory = inventory.mainInventory;
-        mainInventory.forEach(e -> setPlayerEffects(e, player));
-        NonNullList<ItemStack> offHandInventory = inventory.offHandInventory;
-        offHandInventory.forEach( e -> setPlayerEffects(e, player));
+        if (inventory.hasItemStack(new ItemStack(Items.BEDROCK))){ //如果玩家持有基岩，则给予负面状态
+            //创造模式 和 玩家穿戴op甲 时不生效
+            if (player.isCreative() || player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get()){
+                player.getPersistentData().putBoolean(NBT_NAME, false);
+            }else {
+                player.getPersistentData().putBoolean(NBT_NAME, true);
+                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
+                player.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, 200, 3));
+                player.addPotionEffect(new EffectInstance(Effects.HUNGER, 200, 2));
+                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 2));
+            }
+        }else player.getPersistentData().putBoolean(NBT_NAME, false);
     }
 
     //使玩家弹起来
@@ -104,25 +111,6 @@ public class TickEvents {
         }
     }
 
-    /**
-     * 判断物品，设置玩家状态
-     * @param e 物品
-     * @param player 玩家
-     */
-    private static void setPlayerEffects(ItemStack e, PlayerEntity player){
-        if (e.getItem().equals(Items.BEDROCK)){ //如果玩家持有基岩，则给予负面状态
-            //创造模式 和 玩家穿戴op甲 时不生效
-            if (player.isCreative() || player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get()){
-                player.getPersistentData().putBoolean(NBT_NAME, false);
-            }else {
-                player.getPersistentData().putBoolean(NBT_NAME, true);
-                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
-                player.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, 200, 3));
-                player.addPotionEffect(new EffectInstance(Effects.HUNGER, 200, 2));
-                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 2));
-            }
-        }
-    }
     public static void addBounceHandler(LivingEntity entity) {
         addBounceHandler(entity, 0d);
     }
