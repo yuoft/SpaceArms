@@ -51,7 +51,7 @@ public enum MyArmorMaterial implements IArmorMaterial {
 	SLIME(Spacearms.MOD_ID + ":" + "slime", 10, new int[] { 1, 3, 4, 2 }, 10, SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 0.5F, 0,() -> {
 		return Ingredient.fromItems(ItemRegistry.slimeCrystal.get());
 	}),
-	OP(Spacearms.MOD_ID + ":" + "op", 0, new int[] { 0, 0, 0, 0 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, 10,() -> Ingredient.EMPTY);
+	OP(Spacearms.MOD_ID + ":" + "op", 1, new int[] { 3, 6, 8, 3 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, 10,() -> Ingredient.EMPTY);
 
 	private static final int[] MAX_DAMAGE_ARRAY = new int[] { 13, 15, 16, 11 };
 	private final String name;
