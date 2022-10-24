@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -10,40 +10,40 @@ import java.util.function.Supplier;
 
 public enum MyItemTier implements IItemTier {
     EMERALD(1332, 9.0f, 3.0f, 3, 10, () -> {
-             return Ingredient.fromItems(ItemRegistry.emeraldIngot.get());
+             return Ingredient.fromItems(SAItems.emeraldIngot.get());
     }),
     RUBY(1214, 8.5f, 2.5f, 3, 10, () -> {
-        return Ingredient.fromItems(ItemRegistry.rubyIngot.get());
+        return Ingredient.fromItems(SAItems.rubyIngot.get());
     }),
     SPACE(3124, 30.0f, 20.0f, 7, 30, () -> {
-        return Ingredient.fromItems(ItemRegistry.spaceIngot.get());
+        return Ingredient.fromItems(SAItems.spaceIngot.get());
     }),
-    SUPERSPACE(3124, 15.0f, 10.0f, 9, 15, () -> {
-        return Ingredient.fromItems(ItemRegistry.spaceCore.get());
+    SUPER_SPACE(3124, 15.0f, 10.0f, 9, 15, () -> {
+        return Ingredient.fromItems(SAItems.spaceCore.get());
     }),
     WOLF(233, 20.0f, 600f, 3, 0, () -> {
         return Ingredient.fromItems(Items.NETHER_STAR);
     }),
     SLIME(150, 5.0f, 0, 0, 0, () -> {
-        return Ingredient.fromItems(ItemRegistry.slimeCrystal.get());
+        return Ingredient.fromItems(SAItems.slimeCrystal.get());
     }),
     XRAY(1679, 11.0f, 5, 4, 12, () -> {
-        return Ingredient.fromItems(ItemRegistry.xrayIngot.get());
+        return Ingredient.fromItems(SAItems.xrayIngot.get());
     }),
     BH3(886, 11.0f, 15, 3, 10, () -> {
-        return Ingredient.fromItems(ItemRegistry.jiejing.get());
+        return Ingredient.fromItems(SAItems.jiejing.get());
     }),
     SUPER_XRAY(2647, 17.0f, 9, 5, 16, () -> {
-        return Ingredient.fromItems(ItemRegistry.superXrayIngot.get());
+        return Ingredient.fromItems(SAItems.superXrayIngot.get());
     }),
     SUPER(2105, 13.0f, 6, 4, 14, () -> {
-        return Ingredient.fromItems(ItemRegistry.superIngot.get());
+        return Ingredient.fromItems(SAItems.superIngot.get());
     }),
     ULTRA(2967, 19.0f, 10, 6, 20, () -> {
-        return Ingredient.fromItems(ItemRegistry.ultraIngot.get());
+        return Ingredient.fromItems(SAItems.ultraIngot.get());
     }),
     DRAGON(2365, 15f, 8, 5, 15, () -> {
-        return Ingredient.fromItems(ItemRegistry.dragonCrystal.get());
+        return Ingredient.fromItems(SAItems.dragonCrystal.get());
     }), //数值无穷表示：Double或Float的POSITIVE_INFINITY（正）或NEGATIVE_INFINITY（负）
     OP(9999, 99.0f, 10.0f, 99, 0, () -> Ingredient.EMPTY);
 

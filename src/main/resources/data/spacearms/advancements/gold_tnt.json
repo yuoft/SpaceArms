@@ -13,7 +13,7 @@
     "frame": "goal"
   },
   "criteria": { 
-    "space_path": {
+    "gold_tnt": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

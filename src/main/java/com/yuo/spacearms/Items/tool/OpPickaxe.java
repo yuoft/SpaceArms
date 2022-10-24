@@ -25,10 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 public class OpPickaxe extends PickaxeItem {
-	private ItemHander hander;
+	private final ItemHander handler;
 	public OpPickaxe() {
 		super(MyItemTier.OP, 1, -2.4f, new Properties().group(ModGroup.spaceArms));
-		this.hander = new ItemHander();
+		this.handler = new ItemHander();
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class OpPickaxe extends PickaxeItem {
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_pickaxe"));
 		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.op_pickaxe"));
-		if (stack.hasTag() && stack.getTag().contains("mode")){
-			if (stack.getTag().getBoolean("mode"))
+		if (stack.hasTag() && stack.getOrCreateTag().contains("mode")){
+			if (stack.getOrCreateTag().getBoolean("mode"))
 				tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
 			else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
 		}
@@ -75,6 +75,6 @@ public class OpPickaxe extends PickaxeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, hander, 3, ToolType.PICKAXE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 3, ToolType.PICKAXE);
 	}
 }

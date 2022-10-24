@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -24,16 +24,16 @@ public class OrdinarySword extends SwordItem{
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA;
+		return (getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA) || stack.isEnchanted();
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		Item item = stack.getItem();
-		if (item.equals(ItemRegistry.totemSword.get())){
+		if (item.equals(SAItems.totemSword.get())){
 			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.totem_sword"));
 		}
-		if (item.equals(ItemRegistry.glowstoneSword.get())){
+		if (item.equals(SAItems.glowstoneSword.get())){
 			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.glowstone_sword"));
 		}
 	}
@@ -41,13 +41,13 @@ public class OrdinarySword extends SwordItem{
 	@Override
 	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 		Item item = stack.getItem();
-		if (item.equals(ItemRegistry.totemSword.get())){
+		if (item.equals(SAItems.totemSword.get())){
 			if (target.isEntityUndead())
 				target.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, 0));
 			else target.addPotionEffect(new EffectInstance(Effects.INSTANT_DAMAGE, 10, 0));
 			return true;
 		}
-		if (item.equals(ItemRegistry.glowstoneSword.get())){
+		if (item.equals(SAItems.glowstoneSword.get())){
 			target.addPotionEffect(new EffectInstance(Effects.GLOWING, 40, 0));
 			return true;
 		}

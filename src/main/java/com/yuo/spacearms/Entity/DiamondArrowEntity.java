@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -29,7 +29,7 @@ public class DiamondArrowEntity extends AbstractArrowEntity {
 
     @Override
     protected ItemStack getArrowStack() {
-        return new ItemStack(ItemRegistry.diamondArrow.get());
+        return new ItemStack(SAItems.diamondArrow.get());
     }
 
     @Override

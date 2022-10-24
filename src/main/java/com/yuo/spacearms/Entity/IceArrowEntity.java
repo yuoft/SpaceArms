@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -35,7 +35,7 @@ public class IceArrowEntity extends AbstractArrowEntity {
 
     @Override
     protected ItemStack getArrowStack() {
-        return new ItemStack(ItemRegistry.iceArrow.get());
+        return new ItemStack(SAItems.iceArrow.get());
     }
 
     @Override

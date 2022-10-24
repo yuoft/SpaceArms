@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx",
+    "xxx",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:obsidian"
+    },
+    "x": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "spacearms:netherite_shield"
+  }
+}

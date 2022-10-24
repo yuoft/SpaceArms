@@ -1,13 +1,10 @@
 package com.yuo.spacearms.Event;
 
 import com.yuo.spacearms.Arms.OpArms;
-import com.yuo.spacearms.Blocks.BlockRegistry;
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Blocks.SABlocks;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.NetheriteItem;
-import com.yuo.spacearms.Items.tool.BeheadSword;
-import com.yuo.spacearms.Items.tool.OpPickaxe;
-import com.yuo.spacearms.Items.tool.OpSword;
-import com.yuo.spacearms.Items.tool.WolfSword;
+import com.yuo.spacearms.Items.tool.*;
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,7 +27,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.Style;
@@ -39,14 +38,10 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,7 +52,7 @@ import java.util.*;
 /**
  * 事件处理类
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
+@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
 public class EventHandler {
     public static List<String> playersWithOpHead = new ArrayList<>();
     public static List<String> playersWithOpChest = new ArrayList<>();
@@ -76,7 +71,7 @@ public class EventHandler {
             }
             //史莱姆鞋子 弹出玩家
             ItemStack slimeFeet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
-            if (!slimeFeet.isEmpty() && !player.isCrouching() && slimeFeet.getItem().equals(ItemRegistry.slimeFeet.get())
+            if (!slimeFeet.isEmpty() && !player.isCrouching() && slimeFeet.getItem().equals(SAItems.slimeFeet.get())
                     && event.getDistance() > 2){ //玩家未蹲着， 摔落距离大于2格
                 event.setDamageMultiplier(0); //设置摔落伤害为0
                 player.fallDistance =  0.0F; //摔落距离为0
@@ -97,16 +92,33 @@ public class EventHandler {
             }
         }
     }
+
     //op装备 不受伤害
     @SubscribeEvent
     public static void opArmsImmuneDamage(LivingDamageEvent event){
         LivingEntity entityLiving = event.getEntityLiving();
         if (entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            Boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
-            Boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
-            Boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.opHead.get();
-            Boolean hasFeet = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.opFeet.get();
+            Boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == SAItems.opChest.get();
+            Boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == SAItems.opLegs.get();
+            Boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == SAItems.opHead.get();
+            Boolean hasFeet = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == SAItems.opFeet.get();
+            DamageSource source = event.getSource();
+            ItemStack offhand = player.getHeldItemOffhand();
+            if (offhand.getItem() instanceof ModShield && source.isMagicDamage()){ //盾牌抵抗其防护值一半的魔法伤害
+                ModShield modShield = (ModShield) offhand.getItem();
+                float probability = modShield.getShieldType().getProbability();
+                World world = player.world;
+                BlockPos pos = player.getPosition();
+                if (world.rand.nextFloat() < probability){
+                    world.playSound(player, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                    for (int i = 0; i < 10; i++){
+                        world.addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + world.rand.nextGaussian() / 2, pos.getY() + world.rand.nextGaussian() / 2, pos.getZ() + world.rand.nextGaussian() / 2,
+                                0.01, 0.01, 0.01);
+                    }
+                    event.setAmount(event.getAmount() - (modShield.getShieldType().getProtectionValue() / 2f));
+                }
+            }
             if (hasChest && hasFeet && hasHead && hasLeg){
                 event.setAmount(0);
                 return;
@@ -117,16 +129,42 @@ public class EventHandler {
         }
 
     }
+
+    //盾牌抵抗伤害(非魔法， 非可以攻击创造伤害)
+    @SubscribeEvent
+    public static void shieldArmor(LivingAttackEvent event){
+        LivingEntity living = event.getEntityLiving();
+        if (living instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) living;
+            ItemStack offhand = player.getHeldItemOffhand();
+            if (offhand.getItem() instanceof ModShield && !event.getSource().isMagicDamage() && !event.getSource().canHarmInCreative()){
+                ModShield modShield = (ModShield) offhand.getItem();
+                float probability = modShield.getShieldType().getProbability();
+                World world = player.world;
+                BlockPos pos = player.getPosition();
+                pos.add(player.getLookVec().x, 0, player.getLookVec().z);
+                if (world.rand.nextFloat() < probability){
+                    world.playSound(player, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+                    for (int i = 0; i < 10; i++){
+                        world.addParticle(ParticleTypes.CLOUD, pos.getX() + world.rand.nextGaussian() / 2, pos.getY() + world.rand.nextGaussian() / 2, pos.getZ() + world.rand.nextGaussian() / 2,
+                                0.01, 0.01, 0.01);
+                    }
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
     //op胸甲 飞行 护腿 行走速度增加
     @SubscribeEvent
     public static void updatePlayerAbilityStatus(LivingEvent.LivingUpdateEvent event) {
         LivingEntity living = event.getEntityLiving();
         if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) living;
-            boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemRegistry.opChest.get();
-            boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.opLegs.get();
-            boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.opHead.get();
-            boolean hasFoot = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.opFeet.get();
+            boolean hasChest = player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == SAItems.opChest.get();
+            boolean hasLeg = player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == SAItems.opLegs.get();
+            boolean hasHead = player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == SAItems.opHead.get();
+            boolean hasFoot = player.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == SAItems.opFeet.get();
             //防止其它模组飞行装备无法使用
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
             //head
@@ -156,12 +194,11 @@ public class EventHandler {
             //leg
             if (playersWithOpLeg.contains(key)) {
                 ModifiableAttributeInstance attribute = player.getAttribute(Attributes.MOVEMENT_SPEED);
-                if (hasLeg && attribute != null) {
-                    boolean hasModifier = player.getAttributeManager().hasModifier(Attributes.MOVEMENT_SPEED, OpArms.modifier.getID());
-                    if (!hasModifier)
-                        attribute.applyNonPersistentModifier(OpArms.modifier); //行走速度
+                if (hasLeg) {
+                    if (attribute != null && !attribute.hasModifier(OpArms.modifier))
+                        attribute.applyPersistentModifier(OpArms.modifier); //行走速度
                 }else {
-                    if (attribute != null)
+                    if (attribute != null && attribute.hasModifier(OpArms.modifier))
                         attribute.removeModifier(OpArms.modifier);
                     playersWithOpLeg.remove(key);
                 }
@@ -188,10 +225,9 @@ public class EventHandler {
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
             if (playersWithOpFeet.contains(key)) {
                 player.setMotion(0, 1.0f, 0);
-                return;
             }
-            if (TickEvents.isIS_BEDROCK()){
-                player.setMotion(0, 0.05f, 0);
+            if (player.getPersistentData().getBoolean(TickEvents.NBT_NAME)){
+                player.setMotion(0, 0.15f, 0);
             }
         }
     }
@@ -209,7 +245,7 @@ public class EventHandler {
                 return;
             }
             if (state.getBlock().equals(Blocks.BEDROCK)){
-                world.setBlockState(pos, BlockRegistry.fragileBedrock.get().getDefaultState());
+                world.setBlockState(pos, SABlocks.fragileBedrock.get().getDefaultState());
             }
         }
     }
@@ -217,12 +253,12 @@ public class EventHandler {
     @SubscribeEvent
     public static void opTool(PlayerEvent.ItemCraftedEvent event){
         ItemStack stack = event.getCrafting();
-        if (stack.getItem().equals(ItemRegistry.opSword.get())){
+        if (stack.getItem().equals(SAItems.opSword.get())){
             Map<Enchantment, Integer> map = new HashMap<>();
             map.put(Enchantments.LOOTING, 10);
             EnchantmentHelper.setEnchantments( map, stack);
         }
-        if (stack.getItem().equals(ItemRegistry.opPickaxe.get())){
+        if (stack.getItem().equals(SAItems.opPickaxe.get())){
             Map<Enchantment, Integer> map = new HashMap<>();
             map.put(Enchantments.FORTUNE, 10);
             EnchantmentHelper.setEnchantments( map, stack);
@@ -234,14 +270,14 @@ public class EventHandler {
         Entity entity = event.getEntity();
         if (entity instanceof ItemEntity){
             ItemEntity itemEntity = (ItemEntity) entity;
-            if (itemEntity.getItem().getItem().equals(ItemRegistry.bedrockPowder.get())){
+            if (itemEntity.getItem().getItem().equals(SAItems.bedrockPowder.get())){
                 World world = itemEntity.world;
                 BlockPos pos = itemEntity.getPosition();
                 int count = itemEntity.getItem().getCount();
                 if (!world.isRemote){
                     for (int i = 0; i < 10; i++)
                         ((ServerWorld)world).spawnParticle(ParticleTypes.HAPPY_VILLAGER, pos.getX(), pos.getY(), pos.getZ(), 1, 0,0,0,0);
-                    ItemStack stack = new ItemStack(ItemRegistry.bedrockIngot.get(), count);
+                    ItemStack stack = new ItemStack(SAItems.bedrockIngot.get(), count);
                     itemEntity.setItem(stack);
                     world.addEntity(itemEntity);
                 }
@@ -265,13 +301,13 @@ public class EventHandler {
         ItemStack stack2=event.getRight();
         int count1=stack.getCount();
         int count2=stack2.getCount();
-        if((stack.getItem().equals(ItemRegistry.spacePickaxe.get()) && stack2.getItem().equals(ItemRegistry.spaceCore.get())))
+        if((stack.getItem().equals(SAItems.spacePickaxe.get()) && stack2.getItem().equals(SAItems.spaceCore.get())))
         {
             if(count1 <= count2)
             {
                 event.setCost(30);
                 event.setMaterialCost(count1);
-                event.setOutput(new ItemStack(ItemRegistry.superSpacePickaxe.get(), 1));
+                event.setOutput(new ItemStack(SAItems.superSpacePickaxe.get(), 1));
             }
         }
     }
@@ -288,13 +324,13 @@ public class EventHandler {
         ItemStack stack = ((PlayerEntity) source).getHeldItemMainhand();
         int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, stack); //抢夺
         if (entityLiving instanceof EnderDragonEntity){ //末影龙额外掉落 龙晶 创世结晶
-            spawnDrops(ItemRegistry.dragonCrystal.get(), random.nextInt(4 + level), world, pos, event);
-            spawnDrops(ItemRegistry.jiejing.get(), 1, world, pos, event);
-            spawnDrops(ItemRegistry.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
+            spawnDrops(SAItems.dragonCrystal.get(), random.nextInt(4 + level), world, pos, event);
+            spawnDrops(SAItems.jiejing.get(), 1, world, pos, event);
+            spawnDrops(SAItems.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
         }
         if (entityLiving instanceof WitherEntity){ //凋零 创世结晶
-            spawnDrops(ItemRegistry.jiejing.get(), 1, world, pos, event);
-            spawnDrops(ItemRegistry.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
+            spawnDrops(SAItems.jiejing.get(), 1, world, pos, event);
+            spawnDrops(SAItems.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
         }
         if (entityLiving instanceof WitherSkeletonEntity) { //凋零骷髅额外掉落 凋零骷髅头 凋零骨
             if (stack.getItem() instanceof BeheadSword) { //使用斩首大剑
@@ -306,26 +342,26 @@ public class EventHandler {
             }
             int j = random.nextInt(100);
             if (j > (70 - level * 5)) {
-                spawnDrops(ItemRegistry.witherBone.get(), random.nextInt(2 + level), world, pos, event);
+                spawnDrops(SAItems.witherBone.get(), random.nextInt(2 + level), world, pos, event);
             }
         }
         if (entityLiving instanceof BlazeEntity) { //烈焰人额外掉落 烈焰骨
             int j = random.nextInt(100);
             if (j > (70 - level * 5)) {
-                spawnDrops(ItemRegistry.blazeBone.get(), random.nextInt(2 + level), world, pos, event);
+                spawnDrops(SAItems.blazeBone.get(), random.nextInt(2 + level), world, pos, event);
             }
         }
         if (entityLiving instanceof MagmaCubeEntity) { //岩浆怪掉落 史莱姆水晶
             int j = random.nextInt(100);
             if (j > (90 - level * 5)) {
-                spawnDrops(ItemRegistry.slimeCrystal.get(), 1, world, pos, event);
+                spawnDrops(SAItems.slimeCrystal.get(), 1, world, pos, event);
             }
         }
         //所有非boss生物掉落 原石
         if (!(entityLiving instanceof EnderDragonEntity) && !(entityLiving instanceof WitherEntity)){
             int j = random.nextInt(100);
             if (j > (94 - level * 5)){
-                spawnDrops(ItemRegistry.yuanshi.get(), 1, world, pos, event);
+                spawnDrops(SAItems.yuanshi.get(), 1, world, pos, event);
             }
         }
     }

@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Items.Bow;
 
-import com.yuo.spacearms.Items.ItemRegistry;
-import com.yuo.spacearms.Items.TagsRegistry;
+import com.yuo.spacearms.Items.SAItems;
+import com.yuo.spacearms.Items.SATags;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  */
 public class SpaceBow extends ModBow {
     public static final Predicate<ItemStack> SPACE_ARROWS = (stack) -> {
-        ITag<Item> tag = ItemTags.getCollection().get(TagsRegistry.SPACE_ARROWS);
+        ITag<Item> tag = ItemTags.getCollection().get(SATags.SPACE_ARROWS);
         return stack.getItem().isIn(tag);
     };
 
@@ -25,7 +25,7 @@ public class SpaceBow extends ModBow {
     }
 
     public SpaceBow() {
-        super(new Properties().maxDamage(484).group(ModGroup.spaceArms), ItemRegistry.spaceArrow.get());
+        super(new Properties().maxDamage(484).group(ModGroup.spaceArms), SAItems.spaceArrow.get());
     }
 
     @Override

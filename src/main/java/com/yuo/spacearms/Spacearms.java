@@ -1,9 +1,9 @@
 package com.yuo.spacearms;
 
-import com.yuo.spacearms.Blocks.BlockRegistry;
+import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Effect.EffectRegistry;
 import com.yuo.spacearms.Entity.EntityRegistry;
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Proxy.ClientProxy;
 import com.yuo.spacearms.Proxy.CommonProxy;
 import com.yuo.spacearms.Proxy.IProxy;
@@ -22,8 +22,8 @@ public class Spacearms {
 	public Spacearms() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		//注册物品至mod总线
-        ItemRegistry.ITEMS.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus);
+        SAItems.ITEMS.register(modEventBus);
+        SABlocks.BLOCKS.register(modEventBus);
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
         EffectRegistry.EFFECTS.register(modEventBus);
 

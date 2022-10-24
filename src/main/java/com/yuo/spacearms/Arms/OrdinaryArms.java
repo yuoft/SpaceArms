@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class OrdinaryArms extends ArmorItem{
 
-	private static Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
+	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
 
 	public OrdinaryArms(IArmorMaterial material, EquipmentSlotType slot) {
 		super(material, slot, properties);
@@ -25,7 +25,7 @@ public class OrdinaryArms extends ArmorItem{
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return getArmorMaterial() == MyArmorMaterial.SUPER_XRAY || getArmorMaterial() == MyArmorMaterial.ULTRA;
+		return (getArmorMaterial() == MyArmorMaterial.SUPER_XRAY || getArmorMaterial() == MyArmorMaterial.ULTRA) || stack.isEnchanted();
 	}
 
 	@Override

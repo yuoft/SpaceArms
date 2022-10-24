@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Util.Helper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -38,7 +38,7 @@ public class SpaceArrowEntity extends AbstractArrowEntity {
 
     @Override
     protected ItemStack getArrowStack() {
-        return new ItemStack(ItemRegistry.spaceArrow.get());
+        return new ItemStack(SAItems.spaceArrow.get());
     }
 
     @Override

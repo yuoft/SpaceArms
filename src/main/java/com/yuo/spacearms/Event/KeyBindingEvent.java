@@ -1,5 +1,6 @@
 package com.yuo.spacearms.Event;
 
+import com.yuo.spacearms.Spacearms;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
@@ -15,7 +16,7 @@ import java.util.UUID;
 /**
  * 用户输入/快捷键
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class KeyBindingEvent {
 
     private static boolean IS_KEY_C = false; //是否按住快捷键

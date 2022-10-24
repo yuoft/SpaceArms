@@ -18,11 +18,11 @@ import java.util.List;
 
 public class SpaceAxe extends AxeItem {
 
-	private ItemHander hander;
+	private final ItemHander handler;
 
 	public SpaceAxe() {
-		super(MyItemTier.SPACE, 6, -3.0f, new Properties().group(ModGroup.spaceArms));
-		this.hander = new ItemHander();
+		super(MyItemTier.SPACE, 6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		this.handler = new ItemHander();
 	}
 
 	@Override
@@ -52,6 +52,6 @@ public class SpaceAxe extends AxeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, hander, 1, ToolType.AXE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.AXE);
 	}
 }

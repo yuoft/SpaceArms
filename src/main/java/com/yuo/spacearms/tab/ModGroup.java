@@ -1,6 +1,6 @@
 package com.yuo.spacearms.tab;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
@@ -14,6 +14,6 @@ public class ModGroup extends ItemGroup{
 	//图标
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ItemRegistry.rubyIngot.get());
+		return new ItemStack(SAItems.spacePath.get());
 	}
 }

@@ -13,7 +13,7 @@
     "frame": "challenge"
   },
   "criteria": { 
-    "emerald_ingot": {
+    "amosi_bow": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx",
+    "xxx",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:diamond"
+    },
+    "x": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "spacearms:obsidian_shield"
+  }
+}

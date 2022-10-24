@@ -20,11 +20,11 @@ import java.util.List;
 
 public class SpaceShovel extends ShovelItem {
 
-	private ItemHander hander;
+	private final ItemHander handler;
 
 	public SpaceShovel() {
-		super(MyItemTier.SPACE, -6, -3.0f, new Properties().group(ModGroup.spaceArms));
-		this.hander = new ItemHander();
+		super(MyItemTier.SPACE, -6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		this.handler = new ItemHander();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class SpaceShovel extends ShovelItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, hander, 1, ToolType.SHOVEL);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.SHOVEL);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class SpaceSword extends SwordItem{
 	public SpaceSword() {
-		super(MyItemTier.SPACE, 4, -2.4F, new Item.Properties().group(ModGroup.spaceArms));
+		super(MyItemTier.SPACE, 4, -2.4F, new Item.Properties().group(ModGroup.spaceArms).isImmuneToFire());
 	}
 
 	@Override

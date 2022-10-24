@@ -70,7 +70,7 @@ public class SlimeSlingshot extends ToolItem {
 			//检查玩家是否瞄准了一个方块
 			RayTraceResult mop = rayTrace(worldIn, player, RayTraceContext.FluidMode.NONE);
 
-			if (mop != null && mop.getType() == RayTraceResult.Type.BLOCK) {
+			if (mop.getType() == RayTraceResult.Type.BLOCK) {
 				// 反转玩家朝向
 				Vector3d vec = player.getLookVec().normalize();
 				float d0 = 1.0f;

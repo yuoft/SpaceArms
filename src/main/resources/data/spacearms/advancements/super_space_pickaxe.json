@@ -13,7 +13,7 @@
     "frame": "challenge"
   },
   "criteria": { 
-    "space_block": {
+    "super_space_pickaxe": {
       "trigger": "minecraft:inventory_changed", 
       "conditions": { 
 		"items":[

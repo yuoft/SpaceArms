@@ -18,11 +18,11 @@ import java.util.List;
 
 public class SpaceHoe extends HoeItem {
 
-	private ItemHander hander;
+	private final ItemHander handler;
 
 	public SpaceHoe() {
-		super(MyItemTier.SPACE, -3, 0, new Properties().group(ModGroup.spaceArms));
-		this.hander = new ItemHander();
+		super(MyItemTier.SPACE, -3, 0, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		this.handler = new ItemHander();
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class SpaceHoe extends HoeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, hander, 1, ToolType.HOE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.HOE);
 	}
 
 	@Override

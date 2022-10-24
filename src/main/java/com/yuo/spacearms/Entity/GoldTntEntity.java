@@ -1,22 +1,14 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
-import net.minecraft.entity.Entity;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.LightningBoltEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -38,7 +30,7 @@ public class GoldTntEntity extends ProjectileItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return ItemRegistry.goldTnt.get().asItem();
+        return SAItems.goldTnt.get().asItem();
     }
 
     @Override

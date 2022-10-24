@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Effect.EffectRegistry;
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -56,21 +56,21 @@ public class BH3Sword extends SwordItem {
             AxisAlignedBB aabb = player.getBoundingBox().grow(8);
             List<Entity> entityList = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, aabb);
             DamageSource source = DamageSource.GENERIC;
-            if (item == ItemRegistry.hengshuang.get()){
-                worldIn.playSound(player, player.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.0f, 3.0f);
+            if (item == SAItems.hengshuang.get()){
+                worldIn.playSound(player, player.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 3.0f, 1.0f);
                 source = DamageSource.MAGIC;
-            } else if (item == ItemRegistry.tianhuo.get()){
-                worldIn.playSound(player, player.getPosition(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.PLAYERS, 1.0f, 3.0f);
+            } else if (item == SAItems.tianhuo.get()){
+                worldIn.playSound(player, player.getPosition(), SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.PLAYERS, 3.0f, 1.0f);
                 source = DamageSource.IN_FIRE;
             }
             for (Entity entity : entityList) {
                 if (entity instanceof LivingEntity && !(entity instanceof ArmorStandEntity)) {
                     entity.attackEntityFrom(source, 10);
                     BlockPos pos = entity.getPosition();
-                    if (item == ItemRegistry.hengshuang.get()){
+                    if (item == SAItems.hengshuang.get()){
                         addParticle(worldIn, pos, ParticleTypes.ITEM_SNOWBALL);
                         ((LivingEntity) entity).addPotionEffect(new EffectInstance(EffectRegistry.frozen.get(), 3 * 20, 0));
-                    } else if (item == ItemRegistry.tianhuo.get()){
+                    } else if (item == SAItems.tianhuo.get()){
                         addParticle(worldIn, pos, ParticleTypes.LAVA);
                         entity.setFire(10);
                     }
@@ -111,11 +111,11 @@ public class BH3Sword extends SwordItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         Item item = stack.getItem();
-        if (item == ItemRegistry.hengshuang.get()){
+        if (item == SAItems.hengshuang.get()){
             tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.hengshuang"));
             tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.hengshuang1"));
         }
-        if (item == ItemRegistry.tianhuo.get()){
+        if (item == SAItems.tianhuo.get()){
             tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.tianhuo"));
             tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.tianhuo1"));
         }
@@ -125,10 +125,10 @@ public class BH3Sword extends SwordItem {
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Item item = stack.getItem();
         World world = attacker.world;
-        if (item == ItemRegistry.hengshuang.get() && world.rand.nextDouble() < 0.2){
+        if (item == SAItems.hengshuang.get() && world.rand.nextDouble() < 0.2){
             target.addPotionEffect(new EffectInstance(EffectRegistry.frozen.get(), 3 * 20, 0));
         }
-        if (item == ItemRegistry.tianhuo.get() && world.rand.nextDouble() < 0.2){
+        if (item == SAItems.tianhuo.get() && world.rand.nextDouble() < 0.2){
             target.setFire(10);
         }
         //击退

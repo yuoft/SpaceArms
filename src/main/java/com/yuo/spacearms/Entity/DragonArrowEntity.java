@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
@@ -35,7 +35,7 @@ public class DragonArrowEntity extends AbstractArrowEntity {
 
     @Override
     protected ItemStack getArrowStack() {
-        return new ItemStack(ItemRegistry.dragonArrow.get());
+        return new ItemStack(SAItems.dragonArrow.get());
     }
 
     @Override
@@ -61,9 +61,11 @@ public class DragonArrowEntity extends AbstractArrowEntity {
             living.addPotionEffect(new EffectInstance(Effects.SLOW_FALLING, 100, 0));
         }
         LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(world);  //召唤闪电
-        lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(living.getPosition()));
-        lightningBoltEntity.setCaster(living instanceof ServerPlayerEntity ? (ServerPlayerEntity)living : null);
-        world.addEntity(lightningBoltEntity);
+        if (!world.isRemote && lightningBoltEntity != null){
+            lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(living.getPosition()));
+            lightningBoltEntity.setCaster(living instanceof ServerPlayerEntity ? (ServerPlayerEntity)living : null);
+            world.addEntity(lightningBoltEntity);
+        }
         this.remove();
     }
 }

@@ -22,7 +22,7 @@ public class NetheriteItem extends Item{
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		if (stack.getItem().equals(ItemRegistry.bedrockPowder.get())){
+		if (stack.getItem().equals(SAItems.bedrockPowder.get())){
 			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.bedrock_powder"));
 		}
 	}

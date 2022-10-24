@@ -29,7 +29,7 @@ public class DragonSword extends SwordItem{
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		ItemStack stack = playerIn.getHeldItem(handIn);
-		if (!worldIn.isRemote){
+		if (!worldIn.isRemote && !playerIn.isSneaking()){
 			DragonCrystalEntity diamondEntity = new DragonCrystalEntity(EntityRegistry.DRAGON_CRYSTAL.get(), playerIn, worldIn);
 			diamondEntity.setDirectionAndMovement(playerIn, playerIn.rotationPitch, playerIn.rotationYaw,
 					0, 2.0f,1.0f);

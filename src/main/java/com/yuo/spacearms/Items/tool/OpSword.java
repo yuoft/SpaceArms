@@ -52,14 +52,10 @@ public class OpSword extends SwordItem{
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (!worldIn.isRemote) {
-            if (playerIn.isSneaking()) {
-                attackAOE(playerIn, 16, 10000, true);
-            }else {
-                attackAOE(playerIn, 16, 10000, false);
-            }
+            attackAOE(playerIn, 16, 10000, playerIn.isSneaking());
             playerIn.getCooldownTracker().setCooldown(this, 20);
         }
-        return new ActionResult<ItemStack>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
+        return new ActionResult<>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
     }
 
     //攻击实体
@@ -75,26 +71,18 @@ public class OpSword extends SwordItem{
     //aoe伤害
     protected void attackAOE(PlayerEntity player,float range, float damage,boolean type)
     {
-        if (player.getEntityWorld().isRemote)
-        {
-            return;
-        }
+        if (player.getEntityWorld().isRemote) return;
         AxisAlignedBB aabb = player.getBoundingBox().grow(range);//范围
         List<Entity> toAttack = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, aabb);//生物列表
         DamageSource src = DamageSource.GENERIC;//伤害类型
-        for (Entity entity : toAttack)//循环遍历
-        {
-            if(type)
-            {
-                if(entity instanceof LivingEntity)
-                {
+        for (Entity entity : toAttack) { //循环遍历
+            if(type) {
+                if(entity instanceof LivingEntity) {
                     entity.attackEntityFrom(src, damage);//给与实体伤害
                 }
             }
-            else
-            {
-                if (entity instanceof IMob)
-                {
+            else {
+                if (entity instanceof IMob) {
                     if (entity instanceof EnderDragonEntity){
                         EnderDragonEntity drageon = (EnderDragonEntity) entity;
                         drageon.attackEntityPartFrom(drageon.dragonPartHead, DamageSource.causePlayerDamage(player), 10000);

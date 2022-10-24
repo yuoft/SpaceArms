@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Items.Bow;
 
-import com.yuo.spacearms.Items.ItemRegistry;
-import com.yuo.spacearms.Items.TagsRegistry;
+import com.yuo.spacearms.Items.SAItems;
+import com.yuo.spacearms.Items.SATags;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,12 +15,12 @@ import java.util.function.Predicate;
  */
 public class AmosiBow extends ModBow {
     public static final Predicate<ItemStack> AMOSI_ARROWS = (stack) -> {
-        ITag<Item> tag = ItemTags.getCollection().get(TagsRegistry.AMOSI_ARROWS);
+        ITag<Item> tag = ItemTags.getCollection().get(SATags.AMOSI_ARROWS);
         return stack.getItem().isIn(tag);
     };
 
     public AmosiBow() {
-        super(new Properties().maxDamage(666).group(ModGroup.spaceArms), ItemRegistry.amosiArrow.get());
+        super(new Properties().maxDamage(666).group(ModGroup.spaceArms), SAItems.amosiArrow.get());
     }
 
     @Override

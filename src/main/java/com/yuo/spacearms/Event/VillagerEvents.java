@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Event;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Spacearms;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.entity.Entity;
@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.util.IItemProvider;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,18 +22,18 @@ import java.util.Random;
 /**
  * 添加村民交易处理类
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MODID)
+@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
 public class VillagerEvents {
     @SubscribeEvent
     public static void registerTrades(VillagerTradesEvent event) {
         VillagerProfession type = event.getType();
         if (VillagerProfession.WEAPONSMITH.equals(type)){
             Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
-            trades.get(1).add(new EmeraldForItemsTrade(ItemRegistry.rubyIngot.get(), 10, 16, 2));  //每次可交易次数，获取经验
-            trades.get(2).add(new EmeraldForItemsTrade(ItemRegistry.emeraldIngot.get(), 8, 12, 3));
-            trades.get(3).add(new EmeraldForItemsTrade(ItemRegistry.dragonCrystal.get(), 4, 8, 5));
-            trades.get(4).add(new ItemsForEmeraldsAndItemsTrade(ItemRegistry.spacePath.get(), 9,16,  ItemRegistry.spaceIngot.get(), 1,6, 6));
-            trades.get(5).add(new ItemsForEmeraldsAndItemsTrade(Items.NETHER_STAR, 1,64,  ItemRegistry.spaceCore.get(), 1,5, 8));
+            trades.get(1).add(new EmeraldForItemsTrade(SAItems.rubyIngot.get(), 10, 16, 2));  //每次可交易次数，获取经验
+            trades.get(2).add(new EmeraldForItemsTrade(SAItems.emeraldIngot.get(), 8, 12, 3));
+            trades.get(3).add(new EmeraldForItemsTrade(SAItems.dragonCrystal.get(), 4, 8, 5));
+            trades.get(4).add(new ItemsForEmeraldsAndItemsTrade(SAItems.spacePath.get(), 9,16,  SAItems.spaceIngot.get(), 1,6, 6));
+            trades.get(5).add(new ItemsForEmeraldsAndItemsTrade(Items.NETHER_STAR, 1,64,  SAItems.spaceCore.get(), 1,5, 8));
         }
     }
     //物品换绿宝石

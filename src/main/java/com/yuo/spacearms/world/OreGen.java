@@ -1,6 +1,6 @@
 package com.yuo.spacearms.world;
 
-import com.yuo.spacearms.Blocks.BlockRegistry;
+import com.yuo.spacearms.Blocks.SABlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.RegistryKey;
@@ -20,42 +20,42 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
  * 矿物生成
  */
 public class OreGen {
-    private static int topOffset = 0;
+    private static final int topOffset = 0;
 
     public static void generateOres(final BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         //主世界
         if (!(event.getCategory().equals(Biome.Category.THEEND) || event.getCategory().equals(Biome.Category.NETHER))){
-            addFeatureOverWorld(generation, BlockRegistry.emeraldIngotOre.get().getDefaultState(),
+            addFeatureOverWorld(generation, SABlocks.emeraldIngotOre.get().getDefaultState(),
                     8, 32, 64, 5);
-            addFeatureOverWorld(generation, BlockRegistry.rubyOre.get().getDefaultState(),
+            addFeatureOverWorld(generation, SABlocks.rubyOre.get().getDefaultState(),
                     6, 5, 20, 5);
-            addFeatureOverWorld(generation, BlockRegistry.spaceOre.get().getDefaultState(),
+            addFeatureOverWorld(generation, SABlocks.spaceOre.get().getDefaultState(),
                     4, 2, 10, 10);
-            addFeatureOverWorld(generation, BlockRegistry.fragileBedrock.get().getDefaultState(),
+            addFeatureOverWorld(generation, SABlocks.fragileBedrock.get().getDefaultState(),
                     3, 0, 5, 50);
-            addFeatureOverWorld(generation, BlockRegistry.xrayBlock.get().getDefaultState(),
+            addFeatureOverWorld(generation, SABlocks.xrayBlock.get().getDefaultState(),
                     5, 0, 128, 3);
         }
         //下届
         if (event.getCategory().equals(Biome.Category.NETHER)){
-            addFeatureNether(generation, BlockRegistry.fragileBedrock.get().getDefaultState(),
+            addFeatureNether(generation, SABlocks.fragileBedrock.get().getDefaultState(),
                     3, 0, 5, 100);
-            addFeatureNether(generation, BlockRegistry.fragileBedrock.get().getDefaultState(),
+            addFeatureNether(generation, SABlocks.fragileBedrock.get().getDefaultState(),
                     3, 123, 128, 100);
-            addFeatureNether(generation, BlockRegistry.rubyOre.get().getDefaultState(),
+            addFeatureNether(generation, SABlocks.rubyOre.get().getDefaultState(),
                     3, 16, 96, 50);
         }
         //末地
-        if (event.getCategory().equals(Biome.Category.THEEND)){
+        if (event.getCategory().equals(Biome.Category.THEEND) && event.getName() != null){
             RegistryKey<Biome> key = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName());
             if (key.equals(Biomes.THE_END)){
-                addFeatureTheend(generation, BlockRegistry.endSpaceOre.get().getDefaultState(),
+                addFeatureTheend(generation, SABlocks.endSpaceOre.get().getDefaultState(),
                         6, 0, 20, 4);
             }
-            addFeatureTheend(generation, BlockRegistry.dragonOre.get().getDefaultState(),
+            addFeatureTheend(generation, SABlocks.dragonOre.get().getDefaultState(),
                     4, 32, 64, 8);
-            addFeatureTheend(generation, BlockRegistry.superOre.get().getDefaultState(),
+            addFeatureTheend(generation, SABlocks.superOre.get().getDefaultState(),
                     5, 16, 48, 6);
         }
     }

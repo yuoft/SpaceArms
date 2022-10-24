@@ -1,10 +1,10 @@
 package com.yuo.spacearms.Proxy;
 
-import com.yuo.spacearms.Blocks.BlockRegistry;
+import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Entity.EntityRegistry;
 import com.yuo.spacearms.Entity.Render.*;
 import com.yuo.spacearms.Items.Bow.ModBow;
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.tool.ModShield;
 import com.yuo.spacearms.Spacearms;
 import net.minecraft.client.Minecraft;
@@ -33,11 +33,11 @@ public class ClientProxy implements IProxy {
     @SubscribeEvent
     public void clientSetup(final FMLClientSetupEvent event) {
         registerEntityRender(event.getMinecraftSupplier()); //注册客户端渲染
-        RenderTypeLookup.setRenderLayer(BlockRegistry.xrayBlock.get(), RenderType.getCutout()); //方块透明
-        RenderTypeLookup.setRenderLayer(BlockRegistry.superXrayBlock.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(SABlocks.xrayBlock.get(), RenderType.getCutout()); //方块透明
+        RenderTypeLookup.setRenderLayer(SABlocks.superXrayBlock.get(), RenderType.getCutout());
         //物品动态属性注册
         event.enqueueWork(() -> {
-            Collection<RegistryObject<Item>> entries = ItemRegistry.ITEMS.getEntries();
+            Collection<RegistryObject<Item>> entries = SAItems.ITEMS.getEntries();
             for (RegistryObject<Item> entry : entries) {
                 Item item = entry.get();
                 if (item instanceof ModBow){
@@ -59,7 +59,7 @@ public class ClientProxy implements IProxy {
 
     //史莱姆弹弓和基岩锭
     private void setSmileShotProperty(){
-        ItemModelsProperties.registerProperty(ItemRegistry.slimeSlingshot.get(), new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(SAItems.slimeSlingshot.get(), new ResourceLocation(Spacearms.MOD_ID,
                 "time"), (itemStack, clientWorld, livingEntity) -> {
             if (livingEntity == null) {
                 return 0.0F;
@@ -67,7 +67,7 @@ public class ClientProxy implements IProxy {
                 return livingEntity.getActiveItemStack() != itemStack ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getItemInUseCount()) / 20.0F;
             }
         });
-        ItemModelsProperties.registerProperty(ItemRegistry.bedrockIngot.get(), new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(SAItems.bedrockIngot.get(), new ResourceLocation(Spacearms.MOD_ID,
                 "count"), (itemStack, clientWorld, livingEntity) -> itemStack.getCount());
     }
 

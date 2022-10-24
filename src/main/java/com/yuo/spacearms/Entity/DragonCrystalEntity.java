@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Entity;
 
-import com.yuo.spacearms.Items.ItemRegistry;
+import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -34,7 +34,7 @@ public class DragonCrystalEntity extends ProjectileItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return ItemRegistry.dragonCrystal.get().asItem();
+        return SAItems.dragonCrystal.get().asItem();
     }
 
     @Override
@@ -43,9 +43,11 @@ public class DragonCrystalEntity extends ProjectileItemEntity {
             Entity entity = result.getEntity();
             world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 5.0f, true, Explosion.Mode.DESTROY);
             LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(world);
-            lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(entity.getPosition()));
-            lightningBoltEntity.setCaster(entity instanceof ServerPlayerEntity ? (ServerPlayerEntity)entity : null);
-            world.addEntity(lightningBoltEntity); //服务端召唤闪电
+            if (lightningBoltEntity != null){
+                lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(entity.getPosition()));
+                lightningBoltEntity.setCaster(entity instanceof ServerPlayerEntity ? (ServerPlayerEntity)entity : null);
+                world.addEntity(lightningBoltEntity); //服务端召唤闪电
+            }
             this.remove();
         }
     }

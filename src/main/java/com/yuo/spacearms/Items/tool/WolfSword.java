@@ -7,7 +7,7 @@ import net.minecraft.item.SwordItem;
 //狼的末路
 public class WolfSword extends SwordItem{
 	public WolfSword() {
-		super(MyItemTier.WOLF, 7, -2.4F, new Item.Properties().group(ModGroup.spaceArms));
+		super(MyItemTier.WOLF, 7, -2.4F, new Item.Properties().group(ModGroup.spaceArms).isImmuneToFire());
 	}
 
 	@Override
