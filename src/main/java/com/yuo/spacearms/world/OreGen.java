@@ -27,36 +27,36 @@ public class OreGen {
         //主世界
         if (!(event.getCategory().equals(Biome.Category.THEEND) || event.getCategory().equals(Biome.Category.NETHER))){
             addFeatureOverWorld(generation, SABlocks.emeraldIngotOre.get().getDefaultState(),
-                    8, 32, 64, 5);
+                    6, 32, 64, 4);
             addFeatureOverWorld(generation, SABlocks.rubyOre.get().getDefaultState(),
-                    6, 5, 20, 5);
+                    4, 5, 20, 4);
             addFeatureOverWorld(generation, SABlocks.spaceOre.get().getDefaultState(),
-                    4, 2, 10, 10);
+                    3, 2, 10, 9);
             addFeatureOverWorld(generation, SABlocks.fragileBedrock.get().getDefaultState(),
-                    3, 0, 5, 50);
+                    2, 0, 5, 40);
             addFeatureOverWorld(generation, SABlocks.xrayBlock.get().getDefaultState(),
-                    5, 0, 128, 3);
+                    4, 0, 128, 3);
         }
         //下届
         if (event.getCategory().equals(Biome.Category.NETHER)){
             addFeatureNether(generation, SABlocks.fragileBedrock.get().getDefaultState(),
-                    3, 0, 5, 100);
+                    3, 0, 5, 80);
             addFeatureNether(generation, SABlocks.fragileBedrock.get().getDefaultState(),
-                    3, 123, 128, 100);
+                    3, 123, 128, 80);
             addFeatureNether(generation, SABlocks.rubyOre.get().getDefaultState(),
-                    3, 16, 96, 50);
+                    3, 16, 96, 30);
         }
         //末地
         if (event.getCategory().equals(Biome.Category.THEEND) && event.getName() != null){
             RegistryKey<Biome> key = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName());
             if (key.equals(Biomes.THE_END)){
                 addFeatureTheend(generation, SABlocks.endSpaceOre.get().getDefaultState(),
-                        6, 0, 20, 4);
+                        5, 0, 20, 4);
             }
             addFeatureTheend(generation, SABlocks.dragonOre.get().getDefaultState(),
-                    4, 32, 64, 8);
+                    3, 32, 64, 6);
             addFeatureTheend(generation, SABlocks.superOre.get().getDefaultState(),
-                    5, 16, 48, 6);
+                    4, 16, 48, 5);
         }
     }
 

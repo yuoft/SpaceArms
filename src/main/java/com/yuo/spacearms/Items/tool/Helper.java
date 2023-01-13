@@ -1,4 +1,4 @@
-package com.yuo.spacearms.Util;
+package com.yuo.spacearms.Items.tool;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

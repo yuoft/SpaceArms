@@ -40,7 +40,7 @@ public class BH3Sword extends SwordItem {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         if (playerIn.isSneaking() && (playerIn.experienceLevel > 30 || playerIn.isCreative())) { // 潜行使用
-            playerIn.setActiveHand(handIn);
+            playerIn.swingArm(handIn);
             return ActionResult.resultConsume(itemstack);
         }else {
             playerIn.sendMessage(new TranslationTextComponent("spacearms.text.info.bh3_use"), UUID.randomUUID());

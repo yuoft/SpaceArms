@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Blocks;
 
-import com.yuo.spacearms.Util.Helper;
+import com.yuo.spacearms.Items.tool.Helper;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;

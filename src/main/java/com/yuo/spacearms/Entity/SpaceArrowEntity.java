@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Entity;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Util.Helper;
+import com.yuo.spacearms.Items.tool.Helper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

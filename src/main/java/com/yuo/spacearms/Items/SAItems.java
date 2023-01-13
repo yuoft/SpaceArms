@@ -257,7 +257,7 @@ public class SAItems {
 	
 	//注册方块物品
 	public static RegistryObject<BlockItem> rubyOre = ITEMS.register("ruby_ore",
-			() -> new BlockItem(SABlocks.rubyOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new SABlockItem(SABlocks.rubyOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> rubyBlock = ITEMS.register("ruby_block",
 			() -> new BlockItem(SABlocks.rubyBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> emeraldIngotBlock = ITEMS.register("emerald_ingot_block",

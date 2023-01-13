@@ -32,4 +32,9 @@ public class AmosiBow extends ModBow {
     public Predicate<ItemStack> getInventoryAmmoPredicate() {
         return AMOSI_ARROWS;
     }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 36000;
+    }
 }

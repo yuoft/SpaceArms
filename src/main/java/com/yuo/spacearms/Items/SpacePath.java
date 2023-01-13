@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.Util.Helper;
+import com.yuo.spacearms.Items.tool.Helper;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;

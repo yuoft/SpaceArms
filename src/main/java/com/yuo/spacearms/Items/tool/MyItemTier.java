@@ -9,40 +9,40 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum MyItemTier implements IItemTier {
-    EMERALD(1332, 9.0f, 3.0f, 3, 10, () -> {
+    EMERALD(1332, 9.0f, 4.0f, 3, 10, () -> {
              return Ingredient.fromItems(SAItems.emeraldIngot.get());
     }),
-    RUBY(1214, 8.5f, 2.5f, 3, 10, () -> {
+    RUBY(1214, 8.5f, 3.0f, 3, 10, () -> {
         return Ingredient.fromItems(SAItems.rubyIngot.get());
     }),
-    SPACE(3124, 30.0f, 20.0f, 7, 30, () -> {
+    SPACE(3124, 30.0f, 25.0f, 7, 30, () -> {
         return Ingredient.fromItems(SAItems.spaceIngot.get());
     }),
-    SUPER_SPACE(3124, 15.0f, 10.0f, 9, 15, () -> {
+    SUPER_SPACE(3124, 15.0f, 12.0f, 9, 15, () -> {
         return Ingredient.fromItems(SAItems.spaceCore.get());
     }),
     WOLF(233, 20.0f, 600f, 3, 0, () -> {
         return Ingredient.fromItems(Items.NETHER_STAR);
     }),
-    SLIME(150, 5.0f, 0, 0, 0, () -> {
+    SLIME(150, 5.0f, 1, 0, 0, () -> {
         return Ingredient.fromItems(SAItems.slimeCrystal.get());
     }),
-    XRAY(1679, 11.0f, 5, 4, 12, () -> {
+    XRAY(1679, 11.0f, 6, 4, 12, () -> {
         return Ingredient.fromItems(SAItems.xrayIngot.get());
     }),
     BH3(886, 11.0f, 15, 3, 10, () -> {
         return Ingredient.fromItems(SAItems.jiejing.get());
     }),
-    SUPER_XRAY(2647, 17.0f, 9, 5, 16, () -> {
+    SUPER_XRAY(2647, 17.0f, 13, 5, 16, () -> {
         return Ingredient.fromItems(SAItems.superXrayIngot.get());
     }),
-    SUPER(2105, 13.0f, 6, 4, 14, () -> {
+    SUPER(2105, 13.0f, 8, 4, 14, () -> {
         return Ingredient.fromItems(SAItems.superIngot.get());
     }),
-    ULTRA(2967, 19.0f, 10, 6, 20, () -> {
+    ULTRA(2967, 19.0f, 15, 6, 20, () -> {
         return Ingredient.fromItems(SAItems.ultraIngot.get());
     }),
-    DRAGON(2365, 15f, 8, 5, 15, () -> {
+    DRAGON(2365, 15f, 10, 5, 15, () -> {
         return Ingredient.fromItems(SAItems.dragonCrystal.get());
     }), //数值无穷表示：Double或Float的POSITIVE_INFINITY（正）或NEGATIVE_INFINITY（负）
     OP(9999, 99.0f, 10.0f, 99, 0, () -> Ingredient.EMPTY);
