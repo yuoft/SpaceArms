@@ -18,10 +18,8 @@ import java.util.List;
 
 public class SpaceArms extends ArmorItem{
 
-	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-
 	public SpaceArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.SPACE, slot, properties);
+		super(MyArmorMaterial.SPACE, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(MyArmorMaterial.SPACE.getDurability(slot)));
 	}
 
 	@Override

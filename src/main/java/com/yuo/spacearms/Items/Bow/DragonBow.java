@@ -17,7 +17,7 @@ public class DragonBow extends ModBow {
     };
 
     public DragonBow() {
-        super(new Properties().maxDamage(432).group(ModGroup.spaceArms), SAItems.dragonArrow.get());
+        super(new Properties().maxDamage(715).group(ModGroup.spaceArms), SAItems.dragonArrow.get());
     }
 
     @Override

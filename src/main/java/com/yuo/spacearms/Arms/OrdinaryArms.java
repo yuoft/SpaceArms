@@ -7,6 +7,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -17,10 +18,8 @@ import java.util.List;
  */
 public class OrdinaryArms extends ArmorItem{
 
-	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-
-	public OrdinaryArms(IArmorMaterial material, EquipmentSlotType slot) {
-		super(material, slot, properties);
+	public OrdinaryArms(MyArmorMaterial material, EquipmentSlotType slot) {
+		super(material, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(material.getDurability(slot)));
 	}
 
 	@Override
@@ -28,7 +27,4 @@ public class OrdinaryArms extends ArmorItem{
 		return (getArmorMaterial() == MyArmorMaterial.SUPER_XRAY || getArmorMaterial() == MyArmorMaterial.ULTRA) || stack.isEnchanted();
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-	}
 }

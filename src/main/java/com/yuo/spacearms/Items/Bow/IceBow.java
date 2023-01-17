@@ -17,7 +17,7 @@ public class IceBow extends ModBow {
     };
 
     public IceBow() {
-        super(new Properties().maxDamage(384).group(ModGroup.spaceArms), SAItems.iceArrow.get());
+        super(new Properties().maxDamage(454).group(ModGroup.spaceArms), SAItems.iceArrow.get());
     }
 
     @Override

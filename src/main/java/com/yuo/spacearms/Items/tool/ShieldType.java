@@ -7,11 +7,11 @@ import net.minecraftforge.common.Tags;
 import javax.annotation.Nonnull;
 
 public enum ShieldType {
-    IRON("iron", 2, 396, 0.1f, Tags.Items.INGOTS_IRON, 5, false),
-    GOLD("gold", 3.5f, 256, 0.2f, Tags.Items.INGOTS_GOLD, 12, false),
-    DIAMOND("diamond", 4, 443, 0.3f, Tags.Items.GEMS_DIAMOND, 10, false),
-    NETHERITE("netherite", 6, 526, 0.5f, Tags.Items.INGOTS_NETHERITE, 15, true),
-    OBSIDIAN("obsidian", 5.5f, 509, 0.45f, Tags.Items.OBSIDIAN, 13, true);
+    IRON("iron", 2, 496, 0.1f, Tags.Items.INGOTS_IRON, 5, false),
+    GOLD("gold", 3.5f, 356, 0.2f, Tags.Items.INGOTS_GOLD, 12, false),
+    DIAMOND("diamond", 4, 543, 0.3f, Tags.Items.GEMS_DIAMOND, 10, false),
+    NETHERITE("netherite", 6, 626, 0.5f, Tags.Items.INGOTS_NETHERITE, 15, true),
+    OBSIDIAN("obsidian", 5.5f, 699, 0.45f, Tags.Items.OBSIDIAN, 13, true);
 
     private final String name; //id
     private final float protectionValue; //防护数值(盔甲值)

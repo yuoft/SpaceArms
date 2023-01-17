@@ -17,7 +17,7 @@ public class DiamondBow extends ModBow {
     };
 
     public DiamondBow() {
-        super(new Properties().maxDamage(412).group(ModGroup.spaceArms), SAItems.diamondArrow.get());
+        super(new Properties().maxDamage(576).group(ModGroup.spaceArms), SAItems.diamondArrow.get());
     }
 
     @Override

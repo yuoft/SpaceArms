@@ -199,22 +199,14 @@ public class SAItems {
 	public static RegistryObject<BowItem> tntBow = ITEMS.register("tnt_bow", TntBow::new);
 
 	//盔甲
-	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head",
-			() -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> rubyChest = ITEMS.register("ruby_chest",
-			() -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> rubyLegs = ITEMS.register("ruby_legs",
-			() -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> rubyFeet = ITEMS.register("ruby_feet",
-			() -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> emeraldHead = ITEMS.register("emerald_head",
-			() -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> emeraldChest = ITEMS.register("emerald_chest",
-			() -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> emeraldLegs = ITEMS.register("emerald_legs",
-			() -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> emeraldFeet = ITEMS.register("emerald_feet",
-			() -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.FEET));
+	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head", () -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.HEAD));
+	public static RegistryObject<ArmorItem> rubyChest = ITEMS.register("ruby_chest", () -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.CHEST));
+	public static RegistryObject<ArmorItem> rubyLegs = ITEMS.register("ruby_legs", () -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.LEGS));
+	public static RegistryObject<ArmorItem> rubyFeet = ITEMS.register("ruby_feet", () -> new OrdinaryArms(MyArmorMaterial.RUBY, EquipmentSlotType.FEET));
+	public static RegistryObject<ArmorItem> emeraldHead = ITEMS.register("emerald_head", () -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.HEAD));
+	public static RegistryObject<ArmorItem> emeraldChest = ITEMS.register("emerald_chest", () -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.CHEST));
+	public static RegistryObject<ArmorItem> emeraldLegs = ITEMS.register("emerald_legs", () -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.LEGS));
+	public static RegistryObject<ArmorItem> emeraldFeet = ITEMS.register("emerald_feet", () -> new OrdinaryArms(MyArmorMaterial.EMERALD, EquipmentSlotType.FEET));
 	public static RegistryObject<ArmorItem> spaceHead = ITEMS.register("space_head", () -> new SpaceArms(EquipmentSlotType.HEAD));
 	public static RegistryObject<ArmorItem> spaceChest = ITEMS.register("space_chest", () -> new SpaceArms(EquipmentSlotType.CHEST));
 	public static RegistryObject<ArmorItem> spaceLegs = ITEMS.register("space_legs", () -> new SpaceArms(EquipmentSlotType.LEGS));

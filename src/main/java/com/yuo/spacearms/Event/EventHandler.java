@@ -32,6 +32,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.util.text.event.ClickEvent;
@@ -42,6 +43,7 @@ import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -58,6 +60,15 @@ public class EventHandler {
     public static List<String> playersWithOpChest = new ArrayList<>();
     public static List<String> playersWithOpLeg = new ArrayList<>();
     public static List<String> playersWithOpFeet = new ArrayList<>();
+
+    @SubscribeEvent
+    public static void toolInfo(ItemTooltipEvent event){
+        ItemStack itemStack = event.getItemStack();
+        int maxDamage = itemStack.getMaxDamage();
+        if (maxDamage > 1){
+            event.getToolTip().add(new StringTextComponent("耐久:" + (maxDamage - itemStack.getDamage()) + "/" + maxDamage));
+        }
+    }
 
     //op鞋子 无摔落伤害
     @SubscribeEvent

@@ -17,7 +17,7 @@ public class EnderBow extends ModBow {
     };
 
     public EnderBow() {
-        super(new Properties().maxDamage(400).group(ModGroup.spaceArms), SAItems.enderArrow.get());
+        super(new Properties().maxDamage(432).group(ModGroup.spaceArms), SAItems.enderArrow.get());
     }
 
     @Override

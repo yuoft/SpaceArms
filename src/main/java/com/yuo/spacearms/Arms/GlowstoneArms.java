@@ -18,10 +18,8 @@ import java.util.List;
 
 public class GlowstoneArms extends ArmorItem{
 
-	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-
 	public GlowstoneArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.GLOWSTONE, slot, properties);
+		super(MyArmorMaterial.GLOWSTONE, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(MyArmorMaterial.GLOWSTONE.getDurability(slot)));
 	}
 
 	@Override

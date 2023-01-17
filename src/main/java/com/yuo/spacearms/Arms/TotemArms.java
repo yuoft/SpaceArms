@@ -18,10 +18,8 @@ import java.util.List;
 
 public class TotemArms extends ArmorItem{
 
-	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-
 	public TotemArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.TOTEM, slot, properties);
+		super(MyArmorMaterial.TOTEM, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(MyArmorMaterial.TOTEM.getDurability(slot)));
 	}
 
 	@Override

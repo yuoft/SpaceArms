@@ -16,10 +16,8 @@ import java.util.List;
 
 public class SlimeArms extends ArmorItem{
 
-	private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-
 	public SlimeArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.SLIME, slot, properties);
+		super(MyArmorMaterial.SLIME, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(MyArmorMaterial.SLIME.getDurability(slot)));
 	}
 
 	@Override

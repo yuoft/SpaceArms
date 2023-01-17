@@ -20,7 +20,7 @@ public class AmosiBow extends ModBow {
     };
 
     public AmosiBow() {
-        super(new Properties().maxDamage(666).group(ModGroup.spaceArms), SAItems.amosiArrow.get());
+        super(new Properties().maxDamage(987).group(ModGroup.spaceArms), SAItems.amosiArrow.get());
     }
 
     @Override
