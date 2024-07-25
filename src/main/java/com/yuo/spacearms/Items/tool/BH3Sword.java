@@ -41,6 +41,7 @@ public class BH3Sword extends SwordItem {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         if (playerIn.isSneaking() && (playerIn.experienceLevel > 30 || playerIn.isCreative())) { // 潜行使用
             playerIn.swingArm(handIn);
+            onItemUseFinish(itemstack, worldIn, playerIn);
             return ActionResult.resultConsume(itemstack);
         }else {
             playerIn.sendMessage(new TranslationTextComponent("spacearms.text.info.bh3_use"), UUID.randomUUID());
@@ -78,7 +79,7 @@ public class BH3Sword extends SwordItem {
             }
             if (!player.isCreative()){
                 player.addExperienceLevel(-30);
-                stack.damageItem(5, player, e -> e.sendBreakAnimation(player.getActiveHand()));
+                stack.damageItem(9, player, e -> e.sendBreakAnimation(player.getActiveHand()));
             }
             player.getCooldownTracker().setCooldown(item, 20 * 60);
         }

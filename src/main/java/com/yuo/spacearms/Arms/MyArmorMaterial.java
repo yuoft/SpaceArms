@@ -15,7 +15,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
-//盔甲材料类
+/**
+ * 盔甲材料类
+ */
 public enum MyArmorMaterial implements IArmorMaterial {
 	//---------材质---耐久值----------护甲值-------附魔能力--------音效----------------------盔甲韧性- 击退抗性-修复材料
 	SLIME(Spacearms.MOD_ID + ":" + "slime", 12, new int[] { 1, 3, 4, 2 }, 10, SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 0.5F, 0,() -> {
