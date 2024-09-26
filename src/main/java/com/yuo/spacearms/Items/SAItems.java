@@ -29,8 +29,6 @@ public class SAItems {
 	public static RegistryObject<Item> bedrockIngot = ITEMS.register("bedrock_ingot", NetheriteItem::new);
 	public static RegistryObject<Item> bedrockNugget = ITEMS.register("bedrock_nugget", NetheriteItem::new);
 	public static RegistryObject<Item> slimeCrystal = ITEMS.register("slime_crystal", OrdinaryItem::new);
-	public static RegistryObject<Item> yuanshi = ITEMS.register("yuanshi", OrdinaryItem::new);
-	public static RegistryObject<Item> jiejing = ITEMS.register("jiejing", OrdinaryItem::new);
 	public static RegistryObject<Item> spaceString = ITEMS.register("space_string", OrdinaryItem::new);
 	public static RegistryObject<Item> superString = ITEMS.register("super_string", OrdinaryItem::new);
 	public static RegistryObject<Item> dragonString = ITEMS.register("dragon_string", OrdinaryItem::new);

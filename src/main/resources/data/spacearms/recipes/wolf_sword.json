@@ -3,7 +3,7 @@
   "pattern": [
     "mym",
     "mym",
-    "mxm"
+    " x "
   ],
   "key": {
     "y": {
@@ -13,7 +13,7 @@
       "item": "minecraft:dragon_egg"
     },
     "m": {
-      "item": "spacearms:jiejing"
+      "item": "minecraft:bone"
     }
   },
   "result": {

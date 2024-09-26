@@ -30,12 +30,5 @@ public class OrdinaryItem extends Item{
 
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		Item item = stack.getItem();
-		if (item.equals(SAItems.yuanshi.get())){
-			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.yuanshi"));
-		}
-		if (item.equals(SAItems.jiejing.get())){
-			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.jiejing"));
-		}
 	}
 }

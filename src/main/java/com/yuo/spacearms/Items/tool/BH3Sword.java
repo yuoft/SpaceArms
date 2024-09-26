@@ -39,7 +39,7 @@ public class BH3Sword extends SwordItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
-        if (playerIn.isSneaking() && (playerIn.experienceLevel > 30 || playerIn.isCreative())) { // 潜行使用
+        if (playerIn.isSneaking() && (playerIn.experienceLevel > 10 || playerIn.isCreative())) { // 潜行使用
             playerIn.swingArm(handIn);
             onItemUseFinish(itemstack, worldIn, playerIn);
             return ActionResult.resultConsume(itemstack);
@@ -78,10 +78,10 @@ public class BH3Sword extends SwordItem {
                 }
             }
             if (!player.isCreative()){
-                player.addExperienceLevel(-30);
+                player.addExperienceLevel(-10);
                 stack.damageItem(9, player, e -> e.sendBreakAnimation(player.getActiveHand()));
             }
-            player.getCooldownTracker().setCooldown(item, 20 * 60);
+            player.getCooldownTracker().setCooldown(item, 20 * 30);
         }
 
         return stack;

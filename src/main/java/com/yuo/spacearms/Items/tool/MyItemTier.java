@@ -15,8 +15,8 @@ public enum MyItemTier implements IItemTier {
     WOLF(233, 20.0f, 52.8f, 3, 0, () -> {
         return Ingredient.fromItems(Items.NETHER_STAR);
     }),
-    BH3(886, 11.0f, 15, 3, 10, () -> {
-        return Ingredient.fromItems(SAItems.jiejing.get());
+    BH3(233, 11.0f, 15, 3, 10, () -> {
+        return Ingredient.fromItems(Items.NETHER_STAR);
     }),
     RUBY(1456, 11f, 4.0f, 3, 10, () -> {
         return Ingredient.fromItems(SAItems.rubyIngot.get());
@@ -24,22 +24,22 @@ public enum MyItemTier implements IItemTier {
     EMERALD(1589, 15.0f, 5.0f, 3, 10, () -> {
              return Ingredient.fromItems(SAItems.emeraldIngot.get());
     }),
-    XRAY(1879, 19.0f, 9, 4, 12, () -> {
+    XRAY(2179, 19.0f, 12, 4, 12, () -> {
         return Ingredient.fromItems(SAItems.xrayIngot.get());
     }),
-    SUPER(2305, 22.0f, 12, 4, 14, () -> {
+    SUPER(2605, 22.0f, 15, 4, 14, () -> {
         return Ingredient.fromItems(SAItems.superIngot.get());
     }),
-    DRAGON(2765, 25f, 15, 5, 15, () -> {
+    DRAGON(3465, 25f, 18, 5, 15, () -> {
         return Ingredient.fromItems(SAItems.dragonCrystal.get());
     }),
-    SUPER_XRAY(3147, 30.0f, 18, 5, 16, () -> {
+    SUPER_XRAY(3947, 30.0f, 23, 5, 16, () -> {
         return Ingredient.fromItems(SAItems.superXrayIngot.get());
     }),
-    ULTRA(3967, 35.0f, 25, 6, 20, () -> {
+    ULTRA(4467, 35.0f, 29, 6, 20, () -> {
         return Ingredient.fromItems(SAItems.ultraIngot.get());
     }),
-    SPACE(5124, 50.0f, 40.0f, 7, 30, () -> {
+    SPACE(5924, 50.0f, 50.0f, 7, 30, () -> {
         return Ingredient.fromItems(SAItems.spaceIngot.get());
     }),
     SUPER_SPACE(1124, 50.0f, 12.0f, 9, 15, () -> {

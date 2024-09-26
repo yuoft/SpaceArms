@@ -4,7 +4,7 @@
     "item": "minecraft:string"
   },
   "addition": {
-    "item": "spacearms:yuanshi"
+    "item": "minecraft:diamond"
   },
   "result": {
     "item": "spacearms:super_string"

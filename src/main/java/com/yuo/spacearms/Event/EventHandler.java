@@ -336,12 +336,6 @@ public class EventHandler {
         int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, stack); //抢夺
         if (entityLiving instanceof EnderDragonEntity){ //末影龙额外掉落 龙晶 创世结晶
             spawnDrops(SAItems.dragonCrystal.get(), random.nextInt(4 + level), world, pos, event);
-            spawnDrops(SAItems.jiejing.get(), 1, world, pos, event);
-            spawnDrops(SAItems.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
-        }
-        if (entityLiving instanceof WitherEntity){ //凋零 创世结晶
-            spawnDrops(SAItems.jiejing.get(), 1, world, pos, event);
-            spawnDrops(SAItems.yuanshi.get(), random.nextInt(4) + level, world, pos, event);
         }
         if (entityLiving instanceof WitherSkeletonEntity) { //凋零骷髅额外掉落 凋零骷髅头 凋零骨
             if (stack.getItem() instanceof BeheadSword) { //使用斩首大剑
@@ -366,13 +360,6 @@ public class EventHandler {
             int j = random.nextInt(100);
             if (j > (90 - level * 5)) {
                 spawnDrops(SAItems.slimeCrystal.get(), 1, world, pos, event);
-            }
-        }
-        //所有非boss生物掉落 原石
-        if (!(entityLiving instanceof EnderDragonEntity) && !(entityLiving instanceof WitherEntity)){
-            int j = random.nextInt(100);
-            if (j > (94 - level * 5)){
-                spawnDrops(SAItems.yuanshi.get(), 1, world, pos, event);
             }
         }
     }
