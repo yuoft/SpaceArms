@@ -21,8 +21,6 @@ public class SABlocks {
     public static RegistryObject<Block> emeraldIngotOre = BLOCKS.register("emerald_ingot_ore", EmeraldIngotOre::new);
     public static RegistryObject<Block> spaceBlock = BLOCKS.register("space_block", SpaceBlock::new);
     public static RegistryObject<Block> spaceOre = BLOCKS.register("space_ore", SpaceOre::new);
-    public static RegistryObject<Block> tree = BLOCKS.register("tree",
-            () -> new OrdinaryBlock(Material.WOOD, 2, ToolType.AXE, 3, 3));
     public static RegistryObject<Block> fragileBedrock = BLOCKS.register("fragile_bedrock", FraglieBedrock::new);
     public static RegistryObject<Block> dragonBlock = BLOCKS.register("dragon_block",
             () -> new OrdinaryBlock(Material.ROCK, 4, ToolType.PICKAXE, 30, 100));

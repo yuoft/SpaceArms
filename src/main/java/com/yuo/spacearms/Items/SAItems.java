@@ -257,8 +257,6 @@ public class SAItems {
 			() -> new BlockItem(SABlocks.spaceBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> spaceOre = ITEMS.register("space_ore",
 			() -> new BlockItem(SABlocks.spaceOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
-	public static RegistryObject<BlockItem> tree = ITEMS.register("tree",
-			() -> new BlockItem(SABlocks.tree.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> fragileBedrock = ITEMS.register("fragile_bedrock",
 			() -> new BlockItem(SABlocks.fragileBedrock.get(), new Item.Properties().group(ModGroup.spaceArms)));
 	public static RegistryObject<BlockItem> dragonBlock = ITEMS.register("dragon_block",
