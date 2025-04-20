@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonAxe extends AxeItem {
 
 	public DragonAxe() {
-		super(MyItemTier.DRAGON, 6, -3.0f, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.DRAGON, 6, -3.0f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class DragonAxe extends AxeItem {
 			ToolType toolType = state.getHarvestTool();
 			if (entityLiving instanceof PlayerEntity && toolType == ToolType.AXE){
 				PlayerEntity player = (PlayerEntity) entityLiving;
-				ItemHelper.spawnExp(player, worldIn, stack, pos);
+				ToolHelper.spawnExp(player, worldIn, stack, pos);
 			}
 		}
 		return true;

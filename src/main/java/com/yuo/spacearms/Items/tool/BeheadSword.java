@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BeheadSword extends SwordItem{
 	public BeheadSword() {
-		super(MyItemTier.RUBY, 4, -3.0F, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.RUBY, 4, -3.0F, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override

@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class BH3Sword extends SwordItem {
     public BH3Sword() {
-        super(MyItemTier.BH3, 4, -2.4f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+        super(SAItemTiers.BH3, 4, -2.4f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
     }
 
     @Override

@@ -27,7 +27,7 @@ import java.util.Map;
 public class OpPickaxe extends PickaxeItem {
 	private final ItemHander handler;
 	public OpPickaxe() {
-		super(MyItemTier.OP, 1, -2.4f, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.OP, 1, -2.4f, new Properties().group(ModGroup.spaceArms));
 		this.handler = new ItemHander();
 	}
 

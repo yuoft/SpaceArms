@@ -12,16 +12,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod("spacearms")
-public class Spacearms {
+public class SpaceArms {
 	public static final String MOD_ID = "spacearms";
     public static final IProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-	public Spacearms() {
+	public SpaceArms() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		//注册物品至mod总线
         SAItems.ITEMS.register(modEventBus);

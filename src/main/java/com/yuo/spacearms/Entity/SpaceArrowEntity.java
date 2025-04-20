@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Entity;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Items.tool.Helper;
+import com.yuo.spacearms.Items.tool.ToolHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -61,7 +61,7 @@ public class SpaceArrowEntity extends AbstractArrowEntity {
     @Override
     protected void arrowHit(LivingEntity living) {
         if (living instanceof PlayerEntity){
-            Helper.TP(living, world); //传送玩家
+            ToolHelper.TP(living, world); //传送玩家
         }else { //产生爆炸
             world.createExplosion(this, getPosX(), getPosY(), getPosZ(), 5, true, Explosion.Mode.BREAK);
         }

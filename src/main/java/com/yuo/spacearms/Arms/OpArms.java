@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Arms;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -25,10 +25,10 @@ import java.util.*;
 public class OpArms extends ArmorItem {
 
     private static final Properties properties = new Properties().maxStackSize(1).group(ModGroup.spaceArms);
-    public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), Spacearms.MOD_ID + ":movement_speed", 0.2, AttributeModifier.Operation.ADDITION);
+    public static AttributeModifier modifier = new AttributeModifier(UUID.fromString("63e94267-8e6d-781a-b573-462fd18c5a84"), SpaceArms.MOD_ID + ":movement_speed", 0.2, AttributeModifier.Operation.ADDITION);
 
     public OpArms(EquipmentSlotType slot) {
-        super(MyArmorMaterial.OP, slot, properties);
+        super(SAArmorMaterials.OP, slot, properties);
     }
 
     @Override

@@ -21,7 +21,7 @@ public class SpaceAxe extends AxeItem {
 	private final ItemHander handler;
 
 	public SpaceAxe() {
-		super(MyItemTier.SPACE, 6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, 6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
 		this.handler = new ItemHander();
 	}
 

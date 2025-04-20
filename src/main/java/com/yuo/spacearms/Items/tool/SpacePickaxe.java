@@ -21,7 +21,7 @@ public class SpacePickaxe extends PickaxeItem {
 	private final ItemHander handler;
 
 	public SpacePickaxe() {
-		super(MyItemTier.SPACE, 2, -2.8f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, 2, -2.8f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
 		this.handler = new ItemHander();
 	}
 

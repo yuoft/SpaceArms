@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonArms extends ArmorItem{
 
 	public DragonArms(EquipmentSlotType slot) {
-		super(MyArmorMaterial.DRAGON, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(MyArmorMaterial.DRAGON.getDurability(slot)));
+		super(SAArmorMaterials.DRAGON, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(SAArmorMaterials.DRAGON.getDurability(slot)));
 	}
 
 	@Override

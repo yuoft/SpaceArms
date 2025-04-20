@@ -23,7 +23,7 @@ public class SpaceShovel extends ShovelItem {
 	private final ItemHander handler;
 
 	public SpaceShovel() {
-		super(MyItemTier.SPACE, -6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, -6, -3.0f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
 		this.handler = new ItemHander();
 	}
 

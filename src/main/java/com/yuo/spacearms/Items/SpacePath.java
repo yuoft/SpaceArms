@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.Items.tool.Helper;
+import com.yuo.spacearms.Items.tool.ToolHelper;
 import com.yuo.spacearms.tab.ModGroup;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -45,7 +45,7 @@ public class SpacePath extends Item{
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 		if (entityLiving instanceof PlayerEntity){
 			PlayerEntity player = (PlayerEntity) entityLiving;
-			Helper.TP(entityLiving, worldIn);
+			ToolHelper.TP(entityLiving, worldIn);
 			player.getCooldownTracker().setCooldown(this, 30);
 			stack.setCount(stack.getCount() - 1);
 		}

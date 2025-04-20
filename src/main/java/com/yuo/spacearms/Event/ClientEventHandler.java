@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Event;
 
 import com.yuo.spacearms.Items.tool.ShieldType;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.util.ResourceLocation;
@@ -10,18 +10,18 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Spacearms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = SpaceArms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientEventHandler {
-    public static final ResourceLocation IRON_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/iron_shield");
-    public static final ResourceLocation IRON_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/iron_shield_nopattern");
-    public static final ResourceLocation GOLD_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/gold_shield");
-    public static final ResourceLocation GOLD_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/gold_shield_nopattern");
-    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/diamond_shield");
-    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/diamond_shield_nopattern");
-    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/netherite_shield");
-    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/netherite_shield_nopattern");
-    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE = new ResourceLocation(Spacearms.MOD_ID, "entity/obsidian_shield");
-    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(Spacearms.MOD_ID, "entity/obsidian_shield_nopattern");
+    public static final ResourceLocation IRON_SHIELD_TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "entity/iron_shield");
+    public static final ResourceLocation IRON_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(SpaceArms.MOD_ID, "entity/iron_shield_nopattern");
+    public static final ResourceLocation GOLD_SHIELD_TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "entity/gold_shield");
+    public static final ResourceLocation GOLD_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(SpaceArms.MOD_ID, "entity/gold_shield_nopattern");
+    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "entity/diamond_shield");
+    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(SpaceArms.MOD_ID, "entity/diamond_shield_nopattern");
+    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "entity/netherite_shield");
+    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(SpaceArms.MOD_ID, "entity/netherite_shield_nopattern");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "entity/obsidian_shield");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation(SpaceArms.MOD_ID, "entity/obsidian_shield_nopattern");
     public static final ResourceLocation NORMAL_SHIELD_TEXTURE = new ResourceLocation("entity/shield_base");
     public static final ResourceLocation NORMAL_SHIELD_TEXTURE_NOPATTERN = new ResourceLocation("entity/shield_base_nopattern");
 

@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Event;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
@@ -22,7 +22,7 @@ import java.util.Random;
 /**
  * 添加村民交易处理类
  */
-@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
+@Mod.EventBusSubscriber(modid = SpaceArms.MOD_ID)
 public class VillagerEvents {
     @SubscribeEvent
     public static void registerTrades(VillagerTradesEvent event) {

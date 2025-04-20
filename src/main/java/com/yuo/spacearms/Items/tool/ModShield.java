@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.yuo.spacearms.Entity.Render.ShieldTileEntityRenderer;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -12,7 +12,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShieldItem;
@@ -32,7 +31,7 @@ public class ModShield extends ShieldItem {
         super(type.getProperties().setISTER(() -> ShieldTileEntityRenderer::new));
         this.shieldType = type;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ARMOR, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, Spacearms.MOD_ID + "shield_armor", type.getProtectionValue(), AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ARMOR, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, SpaceArms.MOD_ID + "shield_armor", type.getProtectionValue(), AttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
     }
 

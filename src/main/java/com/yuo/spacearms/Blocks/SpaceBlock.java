@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Blocks;
 
-import com.yuo.spacearms.Items.tool.Helper;
+import com.yuo.spacearms.Items.tool.ToolHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.material.Material;
@@ -35,7 +35,7 @@ public class SpaceBlock extends OreBlock{
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity){
-			Helper.TP((LivingEntity) entityIn, worldIn);
+			ToolHelper.TP((LivingEntity) entityIn, worldIn);
 		}
 	}
 }

@@ -21,7 +21,7 @@ public class SpaceHoe extends HoeItem {
 	private final ItemHander handler;
 
 	public SpaceHoe() {
-		super(MyItemTier.SPACE, -3, 0, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, -3, 0, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
 		this.handler = new ItemHander();
 	}
 

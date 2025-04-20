@@ -6,7 +6,7 @@ import com.yuo.spacearms.Entity.Render.*;
 import com.yuo.spacearms.Items.Bow.ModBow;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.tool.ModShield;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
@@ -52,28 +52,20 @@ public class ClientProxy implements IProxy {
 
     //盾牌
     private void setShieldProperty(Item item){
-        ItemModelsProperties.registerProperty(item, new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(item, new ResourceLocation(SpaceArms.MOD_ID,
                 "blocking"), (itemStack, clientWorld, livingEntity) -> livingEntity != null && livingEntity.isHandActive()
                 && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F);
     }
 
     //史莱姆弹弓和基岩锭
     private void setSmileShotProperty(){
-        ItemModelsProperties.registerProperty(SAItems.slimeSlingshot.get(), new ResourceLocation(Spacearms.MOD_ID,
-                "time"), (itemStack, clientWorld, livingEntity) -> {
-            if (livingEntity == null) {
-                return 0.0F;
-            } else {
-                return livingEntity.getActiveItemStack() != itemStack ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getItemInUseCount()) / 20.0F;
-            }
-        });
-        ItemModelsProperties.registerProperty(SAItems.bedrockIngot.get(), new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(SAItems.bedrockIngot.get(), new ResourceLocation(SpaceArms.MOD_ID,
                 "count"), (itemStack, clientWorld, livingEntity) -> itemStack.getCount());
     }
 
     //设置弓物品的动态属性
     private void setBowProperty(Item item){
-        ItemModelsProperties.registerProperty(item, new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(item, new ResourceLocation(SpaceArms.MOD_ID,
                 "pull"), (itemStack, clientWorld, livingEntity) -> {
             if (livingEntity == null) {
                 return 0.0F;
@@ -81,7 +73,7 @@ public class ClientProxy implements IProxy {
                 return livingEntity.getActiveItemStack() != itemStack ? 0.0F : (float)(itemStack.getUseDuration() - livingEntity.getItemInUseCount()) / 20.0F;
             }
         });
-        ItemModelsProperties.registerProperty(item, new ResourceLocation(Spacearms.MOD_ID,
+        ItemModelsProperties.registerProperty(item, new ResourceLocation(SpaceArms.MOD_ID,
                 "pulling"), (itemStack, clientWorld, livingEntity)
                 -> livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F);
     }

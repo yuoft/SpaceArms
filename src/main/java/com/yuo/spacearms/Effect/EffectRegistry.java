@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Effect;
 
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.potion.Effect;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class EffectRegistry {
-    public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Spacearms.MOD_ID);
+    public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, SpaceArms.MOD_ID);
 
     //冻结
     public static final RegistryObject<Effect> frozen = EFFECTS.register("frozen", () ->

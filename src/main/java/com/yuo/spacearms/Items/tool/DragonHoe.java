@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonHoe extends HoeItem {
 
 	public DragonHoe() {
-		super(MyItemTier.DRAGON, -3, 0, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.DRAGON, -3, 0, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class DragonHoe extends HoeItem {
 			ToolType toolType = state.getHarvestTool();
 			if (entityLiving instanceof PlayerEntity && toolType == ToolType.HOE){
 				PlayerEntity player = (PlayerEntity) entityLiving;
-				ItemHelper.spawnExp(player, worldIn, stack, pos);
+				ToolHelper.spawnExp(player, worldIn, stack, pos);
 			}
 		}
 		return true;

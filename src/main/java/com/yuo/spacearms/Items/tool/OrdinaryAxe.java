@@ -12,6 +12,6 @@ public class OrdinaryAxe extends AxeItem {
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return (getTier() == MyItemTier.SUPER_XRAY || getTier() == MyItemTier.ULTRA) || stack.isEnchanted();
+		return (getTier() == SAItemTiers.SUPER_XRAY || getTier() == SAItemTiers.ULTRA) || stack.isEnchanted();
 	}
 }

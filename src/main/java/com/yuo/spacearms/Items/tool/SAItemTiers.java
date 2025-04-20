@@ -8,7 +8,7 @@ import net.minecraft.util.LazyValue;
 
 import java.util.function.Supplier;
 
-public enum MyItemTier implements IItemTier {
+public enum SAItemTiers implements IItemTier {
     SLIME(233, 5.0f, 1, 0, 0, () -> {
         return Ingredient.fromItems(SAItems.slimeCrystal.get());
     }),
@@ -55,7 +55,7 @@ public enum MyItemTier implements IItemTier {
     private final int enchantability;//附魔等级
     private final LazyValue<Ingredient> repairMaterial;//修复材料
 
-    MyItemTier(int maxUses, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial) {
+    SAItemTiers(int maxUses, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial) {
         this.maxUses = maxUses;
         this.efficiency = efficiency;
         this.attackDamage = attackDamage;

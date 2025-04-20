@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonShovel extends ShovelItem {
 
 	public DragonShovel() {
-		super(MyItemTier.DRAGON, 3, -3f, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.DRAGON, 3, -3f, new Properties().group(ModGroup.spaceArms));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class DragonShovel extends ShovelItem {
 			ToolType toolType = state.getHarvestTool();
 			if (entityLiving instanceof PlayerEntity && toolType == ToolType.SHOVEL){
 				PlayerEntity player = (PlayerEntity) entityLiving;
-				ItemHelper.spawnExp(player, worldIn, stack, pos);
+				ToolHelper.spawnExp(player, worldIn, stack, pos);
 			}
 		}
 		return true;

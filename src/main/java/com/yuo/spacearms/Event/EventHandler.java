@@ -5,7 +5,7 @@ import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.NetheriteItem;
 import com.yuo.spacearms.Items.tool.*;
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
@@ -15,18 +15,20 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
-import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.MagmaCubeEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
@@ -40,6 +42,7 @@ import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.AnvilUpdateEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.living.*;
@@ -54,12 +57,32 @@ import java.util.*;
 /**
  * 事件处理类
  */
-@Mod.EventBusSubscriber(modid = Spacearms.MOD_ID)
+@Mod.EventBusSubscriber(modid = SpaceArms.MOD_ID)
 public class EventHandler {
     public static List<String> playersWithOpHead = new ArrayList<>();
     public static List<String> playersWithOpChest = new ArrayList<>();
     public static List<String> playersWithOpLeg = new ArrayList<>();
     public static List<String> playersWithOpFeet = new ArrayList<>();
+    public static final String IS_BEDROCK = SpaceArms.MOD_ID + ":is_bedrock";
+
+    //检查玩家背包是否有基岩，有则给予负面状态
+    @SubscribeEvent
+    public static void playerTick(TickEvent.PlayerTickEvent event){
+        PlayerEntity player = event.player;
+        PlayerInventory inventory = player.inventory;
+        if (inventory.hasItemStack(new ItemStack(Items.BEDROCK))){ //如果玩家持有基岩，则给予负面状态
+            //创造模式 和 玩家穿戴op甲 时不生效
+            if (player.isCreative() || player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == SAItems.opChest.get()){
+                player.getPersistentData().putBoolean(IS_BEDROCK, false);
+            }else {
+                player.getPersistentData().putBoolean(IS_BEDROCK, true);
+                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
+                player.addPotionEffect(new EffectInstance(Effects.MINING_FATIGUE, 200, 3));
+                player.addPotionEffect(new EffectInstance(Effects.HUNGER, 200, 2));
+                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 2));
+            }
+        }else player.getPersistentData().putBoolean(IS_BEDROCK, false);
+    }
 
     @SubscribeEvent
     public static void toolInfo(ItemTooltipEvent event){
@@ -79,27 +102,6 @@ public class EventHandler {
             String key = player.getGameProfile().getName()+":"+player.world.isRemote;
             if (playersWithOpFeet.contains(key)) {
                 event.setCanceled(true);
-            }
-            //史莱姆鞋子 弹出玩家
-            ItemStack slimeFeet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
-            if (!slimeFeet.isEmpty() && !player.isCrouching() && slimeFeet.getItem().equals(SAItems.slimeFeet.get())
-                    && event.getDistance() > 2){ //玩家未蹲着， 摔落距离大于2格
-                event.setDamageMultiplier(0); //设置摔落伤害为0
-                player.fallDistance =  0.0F; //摔落距离为0
-
-                if (player.world.isRemote) {
-                    player.setMotion(player.getMotion().x, player.getMotion().y * -0.9, player.getMotion().z);
-                    player.isAirBorne = true;
-                    player.setOnGround(false);
-                    double f = 0.91d + 0.04d;
-                    // 弹跳时减速一半
-                    player.setMotion(player.getMotion().x / f, player.getMotion().y, player.getMotion().z / f);
-                } else {
-                    event.setCanceled(true);
-                }
-
-                player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1f, 1f);
-                TickEvents.addBounceHandler(player, player.getMotion().y);
             }
         }
     }
@@ -237,7 +239,7 @@ public class EventHandler {
             if (playersWithOpFeet.contains(key)) {
                 player.setMotion(0, 1.0f, 0);
             }
-            if (player.getPersistentData().getBoolean(TickEvents.NBT_NAME)){
+            if (player.getPersistentData().getBoolean(IS_BEDROCK)){
                 player.setMotion(0, 0.15f, 0);
             }
         }

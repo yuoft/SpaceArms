@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Blocks;
 
-import com.yuo.spacearms.Spacearms;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 //方块注册
 public class SABlocks {
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Spacearms.MOD_ID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SpaceArms.MOD_ID);
     public static RegistryObject<Block> rubyOre = BLOCKS.register("ruby_ore",
             () -> new OrdinaryOre(Material.ROCK, 2, ToolType.PICKAXE, 5, 5));
     public static RegistryObject<Block> rubyBlock = BLOCKS.register("ruby_block",
