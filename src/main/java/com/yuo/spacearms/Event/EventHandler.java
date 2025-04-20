@@ -358,12 +358,6 @@ public class EventHandler {
                 spawnDrops(SAItems.blazeBone.get(), random.nextInt(2 + level), world, pos, event);
             }
         }
-        if (entityLiving instanceof MagmaCubeEntity) { //岩浆怪掉落 史莱姆水晶
-            int j = random.nextInt(100);
-            if (j > (90 - level * 5)) {
-                spawnDrops(SAItems.slimeCrystal.get(), 1, world, pos, event);
-            }
-        }
     }
 
     //玩家登入

@@ -20,9 +20,6 @@ import java.util.function.Supplier;
  */
 public enum SAArmorMaterials implements IArmorMaterial {
 	//---------材质---耐久值----------护甲值-------附魔能力--------音效----------------------盔甲韧性- 击退抗性-修复材料
-	SLIME(SpaceArms.MOD_ID + ":" + "slime", 16, new int[] { 1, 3, 4, 2 }, 10, SoundEvents.BLOCK_SLIME_BLOCK_BREAK, 0.5F, 0,() -> {
-		return Ingredient.fromItems(SAItems.slimeCrystal.get());
-	}),
 	TOTEM(SpaceArms.MOD_ID + ":" + "totem", 15, new int[] { 3, 6, 8, 3 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, 0,() -> {
 		return Ingredient.fromItems(Items.TOTEM_OF_UNDYING);
 	}),

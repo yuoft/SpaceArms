@@ -9,9 +9,6 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum SAItemTiers implements IItemTier {
-    SLIME(233, 5.0f, 1, 0, 0, () -> {
-        return Ingredient.fromItems(SAItems.slimeCrystal.get());
-    }),
     WOLF(233, 20.0f, 52.8f, 3, 0, () -> {
         return Ingredient.fromItems(Items.NETHER_STAR);
     }),

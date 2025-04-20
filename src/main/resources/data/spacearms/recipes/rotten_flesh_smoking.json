@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smoking",
-  "ingredient": {
-    "item": "spacearms:rotten_flesh0"
-  },
-  "result": "minecraft:leather",
-  "experience": 0.1,
-  "cookingtime": 200
-}

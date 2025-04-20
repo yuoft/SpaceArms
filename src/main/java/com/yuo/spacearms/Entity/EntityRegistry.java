@@ -16,9 +16,6 @@ public class EntityRegistry {
     public static RegistryObject<EntityType<DragonCrystalEntity>> DRAGON_CRYSTAL = ENTITY_TYPES.register("dragon_crystal",
             () -> EntityType.Builder.<DragonCrystalEntity>create(DragonCrystalEntity::new, EntityClassification.MISC)
             .size(0.5f, 0.5F).build("dragon_crystal"));
-    public static RegistryObject<EntityType<GoldTntEntity>> GOLD_TNT = ENTITY_TYPES.register("gold_tnt",
-            () -> EntityType.Builder.<GoldTntEntity>create(GoldTntEntity::new, EntityClassification.MISC)
-            .size(0.5f, 0.5F).build("gold_tnt"));
     public static RegistryObject<EntityType<IronArrowEntity>> IRON_ARROW = ENTITY_TYPES.register("iron_arrow",
             () -> EntityType.Builder.<IronArrowEntity>create(IronArrowEntity::new, EntityClassification.MISC)
             .size(0.5f, 0.5F).build("iron_arrow"));

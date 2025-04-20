@@ -82,9 +82,7 @@ public class ClientProxy implements IProxy {
         ItemRenderer renderer = minecraft.get().getItemRenderer();
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DRAGON_CRYSTAL.get(),
                 (renderManager) -> new SpriteRenderer<>(renderManager, renderer)); //投掷物渲染
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOLD_TNT.get(), //实体箭渲染
-                (renderManager) -> new SpriteRenderer<>(renderManager, renderer));
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.IRON_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.IRON_ARROW.get(),//实体箭渲染
                 IronArrowRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOLD_ARROW.get(),
                 GoldArrowRender::new);

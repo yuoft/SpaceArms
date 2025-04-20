@@ -30,12 +30,10 @@ public class SAItems {
 	public static RegistryObject<Item> spaceString = ITEMS.register("space_string", OrdinaryItem::new);
 	public static RegistryObject<Item> superString = ITEMS.register("super_string", OrdinaryItem::new);
 	public static RegistryObject<Item> dragonString = ITEMS.register("dragon_string", OrdinaryItem::new);
-	public static RegistryObject<Item> goldTnt = ITEMS.register("gold_tnt", GoldTnt::new);
 	public static RegistryObject<Item> ironStick = ITEMS.register("iron_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> goldStick = ITEMS.register("gold_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> diamondStick = ITEMS.register("diamond_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> netheriteStick = ITEMS.register("netherite_stick", OrdinaryItem::new);
-	public static RegistryObject<Item> rottenFlesh0 = ITEMS.register("rotten_flesh0", OrdinaryItem::new);
 	public static RegistryObject<Item> emeraldPowder = ITEMS.register("emerald_powder", OrdinaryItem::new);
 	public static RegistryObject<Item> complexPowder = ITEMS.register("complex_powder", OrdinaryItem::new);
 	public static RegistryObject<Item> xrayIngot = ITEMS.register("xray_ingot", OrdinaryItem::new);
