@@ -10,7 +10,7 @@
     "description": {
 		"translate": "advancements.spacearms.hengshuang.desc"
 	},
-    "frame": "task"
+    "frame": "challenge"
   },
   "criteria": { 
     "hengshuang": {
