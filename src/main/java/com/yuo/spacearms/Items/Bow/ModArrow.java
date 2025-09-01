@@ -2,7 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.Entity.*;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ArrowItem;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 //箭物品
 public class ModArrow extends ArrowItem {
     public ModArrow() {
-        super(new Item.Properties().group(ModGroup.spaceArms));
+        super(new Item.Properties().group(SATabs.spaceArms0));
     }
 
     @Override
@@ -26,25 +26,25 @@ public class ModArrow extends ArrowItem {
     public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
         Item item = stack.getItem();
         if (item.equals(SAItems.ironArrow.get())){
-            return new IronArrowEntity(EntityRegistry.IRON_ARROW.get(), shooter, worldIn);
+            return new IronArrowEntity(SAEntitys.IRON_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.goldArrow.get())){
-            return new GoldArrowEntity(EntityRegistry.GOLD_ARROW.get(), shooter, worldIn);
+            return new GoldArrowEntity(SAEntitys.GOLD_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.diamondArrow.get())){
-            return new DiamondArrowEntity(EntityRegistry.DIAMOND_ARROW.get(), shooter, worldIn);
+            return new DiamondArrowEntity(SAEntitys.DIAMOND_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.netheriteArrow.get())){
-            return new NetheriteArrowEntity(EntityRegistry.NETHERITE_ARROW.get(), shooter, worldIn);
+            return new NetheriteArrowEntity(SAEntitys.NETHERITE_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.dragonArrow.get())){
-            return new DragonArrowEntity(EntityRegistry.DRAGON_ARROW.get(), shooter, worldIn);
+            return new DragonArrowEntity(SAEntitys.DRAGON_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.spaceArrow.get())){
-            return new SpaceArrowEntity(EntityRegistry.SPACE_ARROW.get(), shooter, worldIn);
+            return new SpaceArrowEntity(SAEntitys.SPACE_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.enderArrow.get())){
-            return new EnderArrowEntity(EntityRegistry.ENDER_ARROW.get(), shooter, worldIn);
+            return new EnderArrowEntity(SAEntitys.ENDER_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.fireArrow.get())){
-            return new FireArrowEntity(EntityRegistry.FIRE_ARROW.get(), shooter, worldIn);
+            return new FireArrowEntity(SAEntitys.FIRE_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.iceArrow.get())){
-            return new IceArrowEntity(EntityRegistry.ICE_ARROW.get(), shooter, worldIn);
+            return new IceArrowEntity(SAEntitys.ICE_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.amosiArrow.get())){
-            return new AmosiArrowEntity(EntityRegistry.AMOSI_ARROW.get(), shooter, worldIn);
+            return new AmosiArrowEntity(SAEntitys.AMOSI_ARROW.get(), shooter, worldIn);
         }else return null;
     }
 

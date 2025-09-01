@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class SpaceSword extends SwordItem{
 	public SpaceSword() {
-		super(SAItemTiers.SPACE, 4, -2.4F, new Item.Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, 4, -2.4F, new Item.Properties().group(SATabs.spaceArms0).isImmuneToFire());
 	}
 
 	@Override

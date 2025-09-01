@@ -2,7 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.SATags;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tags.ITag;
@@ -17,7 +17,7 @@ public class IceBow extends ModBow {
     };
 
     public IceBow() {
-        super(new Properties().maxDamage(454).group(ModGroup.spaceArms), SAItems.iceArrow.get());
+        super(new Properties().maxDamage(454).group(SATabs.spaceArms0), SAItems.iceArrow.get());
     }
 
     @Override

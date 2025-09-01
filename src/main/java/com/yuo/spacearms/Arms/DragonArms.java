@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Arms;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonArms extends ArmorItem{
 
 	public DragonArms(EquipmentSlotType slot) {
-		super(SAArmorMaterials.DRAGON, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(SAArmorMaterials.DRAGON.getDurability(slot)));
+		super(SAArmorMaterials.DRAGON, slot, new Properties().maxStackSize(1).group(SATabs.spaceArms0).defaultMaxDamage(SAArmorMaterials.DRAGON.getDurability(slot)));
 	}
 
 	@Override

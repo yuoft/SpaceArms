@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Tags;
 
@@ -30,8 +30,8 @@ public enum ShieldType {
         this.repairable = repairableIn;
         this.enchantAbility = enchantAbilityIn;
         if (isImmuneToFire)
-            this.properties = new Item.Properties().group(ModGroup.spaceArms).maxDamage(maxDamage).isImmuneToFire();
-        else this.properties = new Item.Properties().group(ModGroup.spaceArms).maxDamage(maxDamage);
+            this.properties = new Item.Properties().group(SATabs.spaceArms0).maxDamage(maxDamage).isImmuneToFire();
+        else this.properties = new Item.Properties().group(SATabs.spaceArms0).maxDamage(maxDamage);
     }
 
     public String getName() {

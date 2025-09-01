@@ -1,8 +1,8 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Entity.DragonCrystalEntity;
-import com.yuo.spacearms.Entity.EntityRegistry;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.Entity.SAEntitys;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DragonSword extends SwordItem{
 	public DragonSword() {
-		super(SAItemTiers.DRAGON, 4, -2.4F, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.DRAGON, 4, -2.4F, new Properties().group(SATabs.spaceArms0));
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class DragonSword extends SwordItem{
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		ItemStack stack = playerIn.getHeldItem(handIn);
 		if (!worldIn.isRemote && !playerIn.isSneaking()){
-			DragonCrystalEntity diamondEntity = new DragonCrystalEntity(EntityRegistry.DRAGON_CRYSTAL.get(), playerIn, worldIn);
+			DragonCrystalEntity diamondEntity = new DragonCrystalEntity(SAEntitys.DRAGON_CRYSTAL.get(), playerIn, worldIn);
 			diamondEntity.setDirectionAndMovement(playerIn, playerIn.rotationPitch, playerIn.rotationYaw,
 					0, 2.0f,1.0f);
 			worldIn.addEntity(diamondEntity);

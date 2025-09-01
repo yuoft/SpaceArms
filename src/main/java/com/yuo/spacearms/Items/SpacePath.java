@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Items;
 
 import com.yuo.spacearms.Items.tool.ToolHelper;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,7 @@ import java.util.List;
 public class SpacePath extends Item{
 
 	public SpacePath() {
-		super(new Properties().group(ModGroup.spaceArms)); //设置物品所在 创造模式物品栏
+		super(new Properties().group(SATabs.spaceArms)); //设置物品所在 创造模式物品栏
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Effect.EffectRegistry;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class BH3Sword extends SwordItem {
     public BH3Sword() {
-        super(SAItemTiers.BH3, 4, -2.4f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+        super(SAItemTiers.BH3, 4, -2.4f, new Properties().group(SATabs.spaceArms0).isImmuneToFire());
     }
 
     @Override

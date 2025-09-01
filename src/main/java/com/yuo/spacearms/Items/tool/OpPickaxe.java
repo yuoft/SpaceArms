@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
@@ -27,7 +27,7 @@ import java.util.Map;
 public class OpPickaxe extends PickaxeItem {
 	private final ItemHander handler;
 	public OpPickaxe() {
-		super(SAItemTiers.OP, 1, -2.4f, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.OP, 1, -2.4f, new Properties().group(SATabs.spaceArms0));
 		this.handler = new ItemHander();
 	}
 

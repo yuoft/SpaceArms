@@ -2,7 +2,7 @@ package com.yuo.spacearms;
 
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Effect.EffectRegistry;
-import com.yuo.spacearms.Entity.EntityRegistry;
+import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Proxy.ClientProxy;
 import com.yuo.spacearms.Proxy.CommonProxy;
@@ -24,7 +24,7 @@ public class SpaceArms {
 		//注册物品至mod总线
         SAItems.ITEMS.register(modEventBus);
         SABlocks.BLOCKS.register(modEventBus);
-        EntityRegistry.ENTITY_TYPES.register(modEventBus);
+        SAEntitys.ENTITY_TYPES.register(modEventBus);
         EffectRegistry.EFFECTS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::generateOres); //注册矿物生成

@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.IItemTier;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class OrdinarySword extends SwordItem{
 	public OrdinarySword(IItemTier iItemTier) {
-		super(iItemTier, 4, - 2.4f, new Properties().group(ModGroup.spaceArms));
+		super(iItemTier, 4, - 2.4f, new Properties().group(SATabs.spaceArms0));
 	}
 
 	@Override

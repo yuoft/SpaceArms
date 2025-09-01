@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BeheadSword extends SwordItem{
 	public BeheadSword() {
-		super(SAItemTiers.RUBY, 4, -3.0F, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.RUBY, 4, -3.0F, new Properties().group(SATabs.spaceArms0));
 	}
 
 	@Override

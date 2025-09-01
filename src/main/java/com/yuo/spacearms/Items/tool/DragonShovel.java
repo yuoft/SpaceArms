@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -19,7 +19,7 @@ import java.util.List;
 public class DragonShovel extends ShovelItem {
 
 	public DragonShovel() {
-		super(SAItemTiers.DRAGON, 3, -3f, new Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.DRAGON, 3, -3f, new Properties().group(SATabs.spaceArms0));
 	}
 
 	@Override

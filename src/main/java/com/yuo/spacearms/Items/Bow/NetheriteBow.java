@@ -2,7 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.SATags;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tags.ITag;
@@ -17,7 +17,7 @@ public class NetheriteBow extends ModBow {
     };
 
     public NetheriteBow() {
-        super(new Properties().maxDamage(643).group(ModGroup.spaceArms), SAItems.netheriteArrow.get());
+        super(new Properties().maxDamage(643).group(SATabs.spaceArms0), SAItems.netheriteArrow.get());
     }
 
     @Override

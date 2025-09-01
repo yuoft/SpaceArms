@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ import java.util.List;
 public class NetheriteItem extends Item{
 
 	public NetheriteItem() {
-		super(new Properties().group(ModGroup.spaceArms)); //设置物品所在 创造模式物品栏
+		super(new Properties().group(SATabs.spaceArms)); //设置物品所在 创造模式物品栏
 	}
 
 	@Override

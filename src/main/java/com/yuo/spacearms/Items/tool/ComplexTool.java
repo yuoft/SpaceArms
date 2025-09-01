@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,7 @@ public class ComplexTool extends ToolItem {
     private final IItemTier itemTier;
 
     public ComplexTool(IItemTier tier) {
-        super( 3, -2.6f, tier, blockSet, new Properties().group(ModGroup.spaceArms).maxDamage(tier.getMaxUses()));
+        super( 3, -2.6f, tier, blockSet, new Properties().group(SATabs.spaceArms0).maxDamage(tier.getMaxUses()));
         this.itemTier = tier;
     }
 

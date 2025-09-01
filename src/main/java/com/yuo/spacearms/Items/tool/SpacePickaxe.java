@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +21,7 @@ public class SpacePickaxe extends PickaxeItem {
 	private final ItemHander handler;
 
 	public SpacePickaxe() {
-		super(SAItemTiers.SPACE, 2, -2.8f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SPACE, 2, -2.8f, new Properties().group(SATabs.spaceArms0).isImmuneToFire());
 		this.handler = new ItemHander();
 	}
 

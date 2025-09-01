@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.Bow;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -27,7 +27,7 @@ import java.util.List;
 public class TntBow extends BowItem {
 
     public TntBow() {
-        super(new Properties().maxDamage(389).group(ModGroup.spaceArms));
+        super(new Properties().maxDamage(389).group(SATabs.spaceArms0));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Arms;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public class OrdinaryArms extends ArmorItem{
 
 	public OrdinaryArms(SAArmorMaterials material, EquipmentSlotType slot) {
-		super(material, slot, new Properties().maxStackSize(1).group(ModGroup.spaceArms).defaultMaxDamage(material.getDurability(slot)));
+		super(material, slot, new Properties().maxStackSize(1).group(SATabs.spaceArms0).defaultMaxDamage(material.getDurability(slot)));
 	}
 
 	@Override

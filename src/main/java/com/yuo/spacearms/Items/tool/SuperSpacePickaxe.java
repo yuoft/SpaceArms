@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
@@ -14,7 +14,7 @@ import java.util.List;
 public class SuperSpacePickaxe extends PickaxeItem {
 
 	public SuperSpacePickaxe() {
-		super(SAItemTiers.SUPER_SPACE, 2, -2.4f, new Properties().group(ModGroup.spaceArms).isImmuneToFire());
+		super(SAItemTiers.SUPER_SPACE, 2, -2.4f, new Properties().group(SATabs.spaceArms0).isImmuneToFire());
 	}
 
 	@Override

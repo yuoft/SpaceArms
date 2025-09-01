@@ -215,6 +215,17 @@
 	"entity.spacearms.amosi_arrow": "阿莫斯之箭",
 	"entity.spacearms.amosi_bow_arrow": "阿莫斯之箭",
 
+	"entity.spacearms.green_zombie": "§a强化僵尸",
+	"entity.spacearms.red_zombie": "§C精英僵尸",
+	"entity.spacearms.green_skeleton": "§a强化骷髅",
+	"entity.spacearms.red_skeleton": "§c精英骷髅",
+	"entity.spacearms.green_spider": "§a强化蜘蛛",
+	"entity.spacearms.red_spider": "§c精英蜘蛛",
+	"entity.spacearms.green_creeper": "§a强化苦力怕",
+	"entity.spacearms.red_creeper": "§c精英苦力怕",
+	"entity.spacearms.green_enderman": "§a强化末影人",
+	"entity.spacearms.red_enderman": "§c精英末影人",
+
 	"advancements.spacearms.emerald_ingot.title": "更有用的绿宝石",
 	"advancements.spacearms.emerald_ingot.desc": "获取绿宝石锭",
 	"advancements.spacearms.space_path.title": "空间之力",
@@ -276,7 +287,8 @@
 
 	"effect.spacearms.frozen": "冻结",
 
-	"itemGroup.SpaceArms": "强力装备",
+	"itemGroup.SpaceArms0": "强力装备·材料",
+	"itemGroup.SpaceArms1": "强力装备·装备",
 	"spacearms.message.login":"§b欢迎游玩本模组[强力装备]，问题反馈§a点击此处!",
 	"spacearms.message.login0":"§ahttps://space.bilibili.com/21854371",
 

@@ -2,9 +2,10 @@ package com.yuo.spacearms.Items;
 
 import com.yuo.spacearms.Arms.*;
 import com.yuo.spacearms.Blocks.SABlocks;
+import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.Bow.*;
 import com.yuo.spacearms.Items.tool.*;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -40,6 +41,9 @@ public class SAItems {
 	public static RegistryObject<Item> superXrayIngot = ITEMS.register("super_xray_ingot", OrdinaryItem::new);
 	public static RegistryObject<Item> superIngot = ITEMS.register("super_ingot", OrdinaryItem::new);
 	public static RegistryObject<Item> ultraIngot = ITEMS.register("ultra_ingot", OrdinaryItem::new);
+
+	public static RegistryObject<ModSpawnEgg> greenZombieEgg = ITEMS.register("green_zombie_egg", () ->
+			new ModSpawnEgg(SAEntitys.GREEN_ZOMBIE, 0xff2233, 0x3ff211));
 
 	//食物
 	public static RegistryObject<Item> cookedSuperApple = ITEMS.register("cooked_super_apple",
@@ -240,34 +244,34 @@ public class SAItems {
 	
 	//注册方块物品
 	public static RegistryObject<BlockItem> rubyOre = ITEMS.register("ruby_ore",
-			() -> new SABlockItem(SABlocks.rubyOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new SABlockItem(SABlocks.rubyOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> rubyBlock = ITEMS.register("ruby_block",
-			() -> new BlockItem(SABlocks.rubyBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.rubyBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> emeraldIngotBlock = ITEMS.register("emerald_ingot_block",
-			() -> new BlockItem(SABlocks.emeraldIngotBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.emeraldIngotBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> emeraldIngotOre = ITEMS.register("emerald_ingot_ore",
-			() -> new BlockItem(SABlocks.emeraldIngotOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.emeraldIngotOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> spaceBlock = ITEMS.register("space_block",
-			() -> new BlockItem(SABlocks.spaceBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.spaceBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> spaceOre = ITEMS.register("space_ore",
-			() -> new BlockItem(SABlocks.spaceOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.spaceOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> fragileBedrock = ITEMS.register("fragile_bedrock",
-			() -> new BlockItem(SABlocks.fragileBedrock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.fragileBedrock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> dragonBlock = ITEMS.register("dragon_block",
-			() -> new BlockItem(SABlocks.dragonBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.dragonBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> dragonOre = ITEMS.register("dragon_ore",
-			() -> new BlockItem(SABlocks.dragonOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.dragonOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> endSpaceOre = ITEMS.register("end_space_ore",
-			() -> new BlockItem(SABlocks.endSpaceOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.endSpaceOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 
 	public static RegistryObject<BlockItem> xrayBlock = ITEMS.register("xray_block",
-			() -> new BlockItem(SABlocks.xrayBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.xrayBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> superXrayBlock = ITEMS.register("super_xray_block",
-			() -> new BlockItem(SABlocks.superXrayBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.superXrayBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> superOre = ITEMS.register("super_ore",
-			() -> new BlockItem(SABlocks.superOre.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.superOre.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> superBlock = ITEMS.register("super_block",
-			() -> new BlockItem(SABlocks.superBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.superBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 	public static RegistryObject<BlockItem> ultraBlock = ITEMS.register("ultra_block",
-			() -> new BlockItem(SABlocks.ultraBlock.get(), new Item.Properties().group(ModGroup.spaceArms)));
+			() -> new BlockItem(SABlocks.ultraBlock.get(), new Item.Properties().group(SATabs.spaceArms)));
 }

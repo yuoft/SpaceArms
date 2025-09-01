@@ -1,7 +1,8 @@
 package com.yuo.spacearms.Proxy;
 
 import com.yuo.spacearms.Blocks.SABlocks;
-import com.yuo.spacearms.Entity.EntityRegistry;
+import com.yuo.spacearms.Entity.Render.Mob.*;
+import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Entity.Render.*;
 import com.yuo.spacearms.Items.Bow.ModBow;
 import com.yuo.spacearms.Items.SAItems;
@@ -80,31 +81,41 @@ public class ClientProxy implements IProxy {
 
     private void registerEntityRender(Supplier<Minecraft> minecraft){
         ItemRenderer renderer = minecraft.get().getItemRenderer();
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DRAGON_CRYSTAL.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.DRAGON_CRYSTAL.get(),
                 (renderManager) -> new SpriteRenderer<>(renderManager, renderer)); //投掷物渲染
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.IRON_ARROW.get(),//实体箭渲染
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.IRON_ARROW.get(),//实体箭渲染
                 IronArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOLD_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GOLD_ARROW.get(),
                 GoldArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DIAMOND_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.DIAMOND_ARROW.get(),
                 DiamondArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NETHERITE_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.NETHERITE_ARROW.get(),
                 NetheriteArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DRAGON_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.DRAGON_ARROW.get(),
                 DragonArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SPACE_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.SPACE_ARROW.get(),
                 SpaceArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.ENDER_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.ENDER_ARROW.get(),
                 EnderArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.FIRE_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.FIRE_ARROW.get(),
                 FireArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.ICE_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.ICE_ARROW.get(),
                 IceArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.AMOSI_ARROW.get(),
                 AmosiArrowRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AMOSI_BOW_ARROW.get(),
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.AMOSI_BOW_ARROW.get(),
                 AmosiArrowRender::new);
 
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GREEN_ZOMBIE.get(), GreenZombieRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.RED_ZOMBIE.get(), RedZombieRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GREEN_SKELETON.get(), GreenSkeletonRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.RED_SKELETON.get(), RedSkeletonRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GREEN_SPIDER.get(), GreenSpiderRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.RED_SPIDER.get(), RedSpiderRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GREEN_CREEPER.get(), GreenCreeperRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.RED_CREEPER.get(), RedCreeperRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.GREEN_ENDERMAN.get(), GreenEndermanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(SAEntitys.RED_ENDERMAN.get(), RedEndermanRender::new);
     }
 
     @Override

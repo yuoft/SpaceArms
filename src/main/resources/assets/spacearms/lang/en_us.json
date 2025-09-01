@@ -215,6 +215,17 @@
 	"entity.spacearms.amosi_arrow": "Amosi Arrow",
 	"entity.spacearms.amosi_bow_arrow": "Scattering Amosi Arrow",
 
+	"entity.spacearms.green_zombie": "§aGreen Zombie",
+	"entity.spacearms.red_zombie": "§cRed Zombie",
+	"entity.spacearms.green_skeleton": "§aGreen Skeleton",
+	"entity.spacearms.red_skeleton": "§cRed Skeleton",
+	"entity.spacearms.green_spider": "§aGreen Spider",
+	"entity.spacearms.red_spider": "§cRed Spider",
+	"entity.spacearms.green_creeper": "§aGreen Creeper",
+	"entity.spacearms.red_creeper": "§cRed Creeper",
+	"entity.spacearms.green_enderman": "§aGreen Enderman",
+	"entity.spacearms.red_enderman": "§cRed Enderman",
+
 	"advancements.spacearms.emerald_ingot.title": "More useful emerald",
 	"advancements.spacearms.emerald_ingot.desc": "Get emerald ingot",
 	"advancements.spacearms.space_path.title": "The power of space",
@@ -276,7 +287,8 @@
 
 	"effect.spacearms.frozen": "Frozen",
 
-	"itemGroup.SpaceArms": "Space Arms",
+	"itemGroup.SpaceArms0": "Space Arms · Item",
+	"itemGroup.SpaceArms1": "Space Arms · Arms",
 	"spacearms.message.login":"§bWelcome to play this module [powerful equipment], and give feedback§aClick here!",
 	"spacearms.message.login0":"§ahttps://space.bilibili.com/21854371",
 

@@ -2,7 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.SATags;
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tags.ITag;
@@ -17,7 +17,7 @@ public class EnderBow extends ModBow {
     };
 
     public EnderBow() {
-        super(new Properties().maxDamage(432).group(ModGroup.spaceArms), SAItems.enderArrow.get());
+        super(new Properties().maxDamage(432).group(SATabs.spaceArms0), SAItems.enderArrow.get());
     }
 
     @Override

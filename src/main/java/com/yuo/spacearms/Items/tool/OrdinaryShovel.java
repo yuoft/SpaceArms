@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
@@ -8,7 +8,7 @@ import net.minecraft.item.ShovelItem;
 public class OrdinaryShovel extends ShovelItem {
 
 	public OrdinaryShovel(IItemTier itemTier) {
-		super(itemTier, 3, -3f, new Properties().group(ModGroup.spaceArms));
+		super(itemTier, 3, -3f, new Properties().group(SATabs.spaceArms0));
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -20,7 +19,7 @@ import java.util.List;
 public class OrdinaryItem extends Item{
 
 	public OrdinaryItem() {
-		super(new Properties().group(ModGroup.spaceArms)); //设置物品所在 创造模式物品栏
+		super(new Properties().group(SATabs.spaceArms)); //设置物品所在 创造模式物品栏
 	}
 
 	@Override

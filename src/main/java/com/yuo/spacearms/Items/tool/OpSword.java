@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.tab.ModGroup;
+import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class OpSword extends SwordItem{
 
 	public OpSword() {
-		super(SAItemTiers.OP, 0, -2.0F, new Item.Properties().group(ModGroup.spaceArms));
+		super(SAItemTiers.OP, 0, -2.0F, new Item.Properties().group(SATabs.spaceArms0));
 	}
 
     @Override
@@ -90,6 +90,6 @@ public class OpSword extends SwordItem{
                 }
             }
         }
-        player.getEntityWorld().playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ITEM_TOTEM_USE, SoundCategory.PLAYERS, 1.0f, 1.0f);
+        player.getEntityWorld().playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1.0f, 1.0f);
     }
 }

@@ -75,7 +75,7 @@ public class AmosiArrowEntity extends AbstractArrowEntity {
     private static void ganyuArrow(World world, BlockPos pos){
         List<AmosiBowArrowEntity> arrows = new ArrayList<>();
         for (int i = 0; i < 16; i++){
-            arrows.add(i, new AmosiBowArrowEntity(EntityRegistry.AMOSI_BOW_ARROW.get(), pos.getX(), pos.getY(), pos.getZ(), world));
+            arrows.add(i, new AmosiBowArrowEntity(SAEntitys.AMOSI_BOW_ARROW.get(), pos.getX(), pos.getY(), pos.getZ(), world));
         }
         arrows.get(0).shoot(2, -1.10, 2, 3.0f, 1.0f);
         arrows.get(1).shoot(-2, -1.10, 2, 3.0f, 1.0f);
