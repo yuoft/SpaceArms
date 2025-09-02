@@ -187,6 +187,17 @@
 	"item.spacearms.ultra_legs": "Ultra Legs",
 	"item.spacearms.ultra_feet": "Ultra Feet",
 
+	"item.spacearms.green_zombie_egg": "§aGreen Zombie Egg",
+	"item.spacearms.red_zombie_egg": "§cRed Zombie Egg",
+	"item.spacearms.green_skeleton_egg": "§aGreen Skeleton Egg",
+	"item.spacearms.red_skeleton_egg": "§cRed Skeleton Egg",
+	"item.spacearms.green_spider_egg": "§aGreen Spider Egg",
+	"item.spacearms.red_spider_egg": "§cRed Spider Egg",
+	"item.spacearms.green_creeper_egg": "§aGreen Creeper Egg",
+	"item.spacearms.red_creeper_egg": "§cRed Creeper Egg",
+	"item.spacearms.green_enderman_egg": "§aGreen Enderman Egg",
+	"item.spacearms.red_enderman_egg": "§cRed Enderman Egg",
+
 	"block.spacearms.ruby_ore": "Ruby Ore",
 	"block.spacearms.ruby_block": "Ruby Block",
 	"block.spacearms.emerald_ingot_ore": "Emerald Ingot Ore",

@@ -187,6 +187,17 @@
 	"item.spacearms.ultra_legs": "极限护腿",
 	"item.spacearms.ultra_feet": "极限鞋子",
 
+	"item.spacearms.green_zombie_egg": "§a生成 强化僵尸",
+	"item.spacearms.red_zombie_egg": "§c生成 精英僵尸",
+	"item.spacearms.green_skeleton_egg": "§a生成 强化骷髅",
+	"item.spacearms.red_skeleton_egg": "§c生成 精英骷髅",
+	"item.spacearms.green_spider_egg": "§a生成 强化蜘蛛",
+	"item.spacearms.red_spider_egg": "§c生成 精英蜘蛛",
+	"item.spacearms.green_creeper_egg": "§a生成 强化苦力怕",
+	"item.spacearms.red_creeper_egg": "§c生成 精英苦力怕",
+	"item.spacearms.green_enderman_egg": "§a生成 强化末影人",
+	"item.spacearms.red_enderman_egg": "§c生成 精英末影人",
+
 	"block.spacearms.ruby_ore": "红宝石矿",
 	"block.spacearms.ruby_block": "红宝石块",
 	"block.spacearms.emerald_ingot_ore": "绿宝石锭矿",
