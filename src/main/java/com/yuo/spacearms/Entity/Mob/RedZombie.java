@@ -1,15 +1,27 @@
 package com.yuo.spacearms.Entity.Mob;
 
+import com.yuo.spacearms.Entity.AI.AISetBlock;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.monster.ZombieEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 public class RedZombie extends GreenZombie {
 
     public RedZombie(EntityType<? extends ZombieEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.targetSelector.addGoal(2, new AISetBlock(this));
     }
 
     //属性
@@ -24,4 +36,20 @@ public class RedZombie extends GreenZombie {
                 .createMutableAttribute(Attributes.ARMOR, 2.0d);
     }
 
+    @Override
+    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+        MobHelper.setEquipmentBasedOnDifficulty(this, difficulty, true);
+    }
+
+    @Override
+    protected int getExperiencePoints(PlayerEntity player) {
+        this.experienceValue *= 3;
+        return super.getExperiencePoints(player);
+    }
+
+    @Override
+    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
+        super.dropSpecialItems(source, looting, recentlyHitIn);
+        MobHelper.getMobDrops(this, source, looting, true);
+    }
 }

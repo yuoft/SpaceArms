@@ -1,4 +1,4 @@
-package com.yuo.spacearms.Arms;
+package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;

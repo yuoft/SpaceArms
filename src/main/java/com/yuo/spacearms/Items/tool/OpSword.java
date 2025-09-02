@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class OpSword extends SwordItem{
 
@@ -37,6 +38,11 @@ public class OpSword extends SwordItem{
             EnchantmentHelper.setEnchantments(map, stack);
             items.add(stack);
         }
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken) {
+        return 0;
     }
 
     @Override

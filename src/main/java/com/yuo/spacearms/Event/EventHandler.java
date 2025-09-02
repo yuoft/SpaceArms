@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Event;
 
-import com.yuo.spacearms.Arms.OpArms;
+import com.yuo.spacearms.Items.Arms.OpArms;
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.NetheriteItem;
@@ -18,7 +18,6 @@ import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.BlazeEntity;
-import net.minecraft.entity.monster.MagmaCubeEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

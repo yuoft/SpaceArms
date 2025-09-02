@@ -1,13 +1,18 @@
 package com.yuo.spacearms.Event;
 
+import com.yuo.spacearms.Items.ModSpawnEgg;
+import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.tool.ShieldType;
 import com.yuo.spacearms.SpaceArms;
 import net.minecraft.client.renderer.Atlases;
 import net.minecraft.client.renderer.model.RenderMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = SpaceArms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -60,6 +65,16 @@ public class ClientEventHandler {
             event.addSprite(NETHERITE_SHIELD_TEXTURE_NOPATTERN);
             event.addSprite(OBSIDIAN_SHIELD_TEXTURE);
             event.addSprite(OBSIDIAN_SHIELD_TEXTURE_NOPATTERN);
+        }
+    }
+
+    //染色
+    @SubscribeEvent
+    public static void itemColors(ColorHandlerEvent.Item event) {
+        for (RegistryObject<Item> entry : SAItems.ITEMS.getEntries()) {
+            Item item = entry.get();
+            if (item instanceof ModSpawnEgg)
+                event.getItemColors().register(ModSpawnEgg::getColor, item);
         }
     }
 }

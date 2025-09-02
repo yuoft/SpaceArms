@@ -1,8 +1,8 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.Arms.*;
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Entity.SAEntitys;
+import com.yuo.spacearms.Items.Arms.*;
 import com.yuo.spacearms.Items.Bow.*;
 import com.yuo.spacearms.Items.tool.*;
 import com.yuo.spacearms.SATabs;
@@ -42,8 +42,26 @@ public class SAItems {
 	public static RegistryObject<Item> superIngot = ITEMS.register("super_ingot", OrdinaryItem::new);
 	public static RegistryObject<Item> ultraIngot = ITEMS.register("ultra_ingot", OrdinaryItem::new);
 
-	public static RegistryObject<ModSpawnEgg> greenZombieEgg = ITEMS.register("green_zombie_egg", () ->
+	public static RegistryObject<Item> greenZombieEgg = ITEMS.register("green_zombie_egg", () ->
 			new ModSpawnEgg(SAEntitys.GREEN_ZOMBIE, 0xff2233, 0x3ff211));
+	public static RegistryObject<Item> redZombieEgg = ITEMS.register("red_zombie_egg", () ->
+			new ModSpawnEgg(SAEntitys.RED_ZOMBIE, 0xff3333, 0xcc6699));
+	public static RegistryObject<Item> greenSkeletonEgg = ITEMS.register("green_skeleton_egg", () ->
+			new ModSpawnEgg(SAEntitys.GREEN_SKELETON, 0xff2233, 0x3ff211));
+	public static RegistryObject<Item> redSkeletonEgg = ITEMS.register("red_skeleton_egg", () ->
+			new ModSpawnEgg(SAEntitys.RED_SKELETON, 0xff3333, 0xcc6699));
+	public static RegistryObject<Item> greenSpiderEgg = ITEMS.register("green_spider_egg", () ->
+			new ModSpawnEgg(SAEntitys.GREEN_SPIDER, 0xff2233, 0x3ff211));
+	public static RegistryObject<Item> redSpiderEgg = ITEMS.register("red_spider_egg", () ->
+			new ModSpawnEgg(SAEntitys.RED_SPIDER, 0xff3333, 0xcc6699));
+	public static RegistryObject<Item> greenCreeperEgg = ITEMS.register("green_creeper_egg", () ->
+			new ModSpawnEgg(SAEntitys.GREEN_CREEPER, 0xff2233, 0x3ff211));
+	public static RegistryObject<Item> redCreeperEgg = ITEMS.register("red_creeper_egg", () ->
+			new ModSpawnEgg(SAEntitys.RED_CREEPER, 0xff3333, 0xcc6699));
+	public static RegistryObject<Item> greenEndermanEgg = ITEMS.register("green_enderman_egg", () ->
+			new ModSpawnEgg(SAEntitys.GREEN_ENDERMAN, 0xff2233, 0x3ff211));
+	public static RegistryObject<Item> redEndermanEgg = ITEMS.register("red_enderman_egg", () ->
+			new ModSpawnEgg(SAEntitys.RED_ENDERMAN, 0xff3333, 0x3ff211));
 
 	//食物
 	public static RegistryObject<Item> cookedSuperApple = ITEMS.register("cooked_super_apple",
@@ -203,10 +221,10 @@ public class SAItems {
 	public static RegistryObject<ArmorItem> emeraldChest = ITEMS.register("emerald_chest", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.CHEST));
 	public static RegistryObject<ArmorItem> emeraldLegs = ITEMS.register("emerald_legs", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.LEGS));
 	public static RegistryObject<ArmorItem> emeraldFeet = ITEMS.register("emerald_feet", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> spaceHead = ITEMS.register("space_head", () -> new com.yuo.spacearms.Arms.SpaceArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> spaceChest = ITEMS.register("space_chest", () -> new com.yuo.spacearms.Arms.SpaceArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> spaceLegs = ITEMS.register("space_legs", () -> new com.yuo.spacearms.Arms.SpaceArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> spaceFeet = ITEMS.register("space_feet", () -> new com.yuo.spacearms.Arms.SpaceArms(EquipmentSlotType.FEET));
+	public static RegistryObject<ArmorItem> spaceHead = ITEMS.register("space_head", () -> new SpaceArms(EquipmentSlotType.HEAD));
+	public static RegistryObject<ArmorItem> spaceChest = ITEMS.register("space_chest", () -> new SpaceArms(EquipmentSlotType.CHEST));
+	public static RegistryObject<ArmorItem> spaceLegs = ITEMS.register("space_legs", () -> new SpaceArms(EquipmentSlotType.LEGS));
+	public static RegistryObject<ArmorItem> spaceFeet = ITEMS.register("space_feet", () -> new SpaceArms(EquipmentSlotType.FEET));
 	public static RegistryObject<ArmorItem> opHead = ITEMS.register("op_head", () -> new OpArms(EquipmentSlotType.HEAD));
 	public static RegistryObject<ArmorItem> opChest = ITEMS.register("op_chest", () -> new OpArms(EquipmentSlotType.CHEST));
 	public static RegistryObject<ArmorItem> opLegs = ITEMS.register("op_legs", () -> new OpArms(EquipmentSlotType.LEGS));

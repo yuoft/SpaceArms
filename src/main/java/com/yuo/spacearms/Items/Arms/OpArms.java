@@ -1,9 +1,10 @@
-package com.yuo.spacearms.Arms;
+package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
 import com.yuo.spacearms.SATabs;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,6 +22,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.function.Consumer;
 
 public class OpArms extends ArmorItem {
 
@@ -29,6 +31,11 @@ public class OpArms extends ArmorItem {
 
     public OpArms(EquipmentSlotType slot) {
         super(SAArmorMaterials.OP, slot, properties);
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken) {
+        return 0;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.yuo.spacearms.Arms;
+package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
@@ -50,7 +50,7 @@ public enum SAArmorMaterials implements IArmorMaterial {
 	SPACE(SpaceArms.MOD_ID + ":" + "space", 111, new int[] { 29, 36, 39, 29 }, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 5.0F, 0.3f,() -> {
 		return Ingredient.fromItems(SAItems.spaceIngot.get());
 	}),
-	OP(SpaceArms.MOD_ID + ":" + "op", 10, new int[] { 3, 6, 8, 3 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, 10,() -> Ingredient.EMPTY);
+	OP(SpaceArms.MOD_ID + ":" + "op", 999, new int[] { 3, 6, 8, 3 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, 10,() -> Ingredient.EMPTY);
 
 	private static final int[] MAX_DAMAGE_ARRAY = new int[] { 23, 25, 27, 21 };
 	private final String name;
