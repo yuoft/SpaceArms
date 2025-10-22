@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " zy",
+    " yz",
+    "x  "
+  ],
+  "key": {
+    "y": {
+      "item": "spacearms:wither_bone"
+    },
+    "z": {
+      "item": "spacearms:blaze_bone"
+    },
+	"x": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "spacearms:behead_sword"
+  }
+}

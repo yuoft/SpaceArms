@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyx",
+    "xxx",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:gold_ingot"
+    },
+    "x": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "spacearms:iron_shield"
+  }
+}

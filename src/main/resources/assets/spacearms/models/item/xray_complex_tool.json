@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "spacearms:item/xray/xray_complex_tool"
+  }
+}

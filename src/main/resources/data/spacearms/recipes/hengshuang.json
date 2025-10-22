@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxm",
+    "xyx",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:nether_star"
+    },
+    "z": {
+      "item": "minecraft:blue_ice"
+    },
+    "m": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "y": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "o": {
+      "item": "minecraft:trident"
+    }
+  },
+  "result": {
+    "item": "spacearms:hengshuang"
+  }
+}

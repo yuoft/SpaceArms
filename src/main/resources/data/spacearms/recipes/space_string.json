@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:string"
+  },
+  "addition": {
+    "item": "spacearms:space_ingot"
+  },
+  "result": {
+    "item": "spacearms:space_string"
+  }
+}

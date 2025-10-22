@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " y ",
+    " y ",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:bedrock"
+    },
+	"x": {
+      "item": "spacearms:space_block"
+    }
+  },
+  "result": {
+    "item": "spacearms:op_sword"
+  }
+}

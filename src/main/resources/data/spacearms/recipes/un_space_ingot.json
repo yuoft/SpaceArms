@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+		"item": "spacearms:space_ingot"
+	}
+  ],
+  "result": {
+    "item": "spacearms:space_path",
+    "count": 9
+  }
+}

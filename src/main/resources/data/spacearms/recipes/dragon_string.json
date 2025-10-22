@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:string"
+  },
+  "addition": {
+    "item": "spacearms:dragon_crystal",
+    "count": 3
+  },
+  "result": {
+    "item": "spacearms:dragon_string"
+  }
+}

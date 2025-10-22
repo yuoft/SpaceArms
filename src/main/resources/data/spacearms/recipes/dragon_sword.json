@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " y ",
+    " y ",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "spacearms:dragon_crystal"
+    },
+	"x": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "spacearms:dragon_sword"
+  }
+}

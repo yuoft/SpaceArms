@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " xy",
+    "xzy",
+    " xy"
+  ],
+  "key": {
+    "x": {
+      "item": "spacearms:dragon_crystal"
+    },
+    "y": {
+      "item": "spacearms:dragon_string"
+    },
+    "z": {
+      "item": "minecraft:bow"
+    }
+  },
+  "result": {
+    "item": "spacearms:dragon_bow"
+  }
+}

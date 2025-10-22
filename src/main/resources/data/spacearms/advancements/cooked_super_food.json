@@ -1,0 +1,159 @@
+{
+  "parent": "spacearms:super_food",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:cooked_super_apple"
+    },
+    "title": {
+		"translate": "advancements.spacearms.cooked_super_apple.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.cooked_super_apple.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": {
+    "cooked_super_apple": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_apple"
+        }
+      }
+    },
+    "cooked_super_beef": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_beef"
+        }
+      }
+    },
+    "cooked_super_beetroot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_beetroot"
+        }
+      }
+    },
+    "cooked_super_bread": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_bread"
+        }
+      }
+    },
+    "cooked_super_carrot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_carrot"
+        }
+      }
+    },
+    "cooked_super_chicken": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_chicken"
+        }
+      }
+    },
+    "cooked_super_cod": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_cod"
+        }
+      }
+    },
+    "cooked_super_potato": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_potato"
+        }
+      }
+    },
+    "cooked_super_mutton": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_mutton"
+        }
+      }
+    },
+    "cooked_super_pork": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_pork"
+        }
+      }
+    },
+    "cooked_super_rabbit": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:cooked_super_rabbit"
+        }
+      }
+    },
+    "super_beetroot_soup": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:super_beetroot_soup"
+        }
+      }
+    },
+    "super_cookie": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:super_cookie"
+        }
+      }
+    },
+    "super_rabbit_stew": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:super_rabbit_stew"
+        }
+      }
+    },
+    "super_pumpkin_pie": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "spacearms:super_pumpkin_pie"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cooked_super_apple",
+      "cooked_super_beef",
+      "cooked_super_beetroot",
+      "cooked_super_bread",
+      "cooked_super_carrot",
+      "cooked_super_chicken",
+      "cooked_super_cod",
+      "cooked_super_potato",
+      "cooked_super_mutton",
+      "cooked_super_pork",
+      "cooked_super_rabbit",
+      "super_beetroot_soup",
+      "super_cookie",
+      "super_rabbit_stew",
+      "super_pumpkin_pie"
+    ]
+  ],
+  "rewards": { 
+    "experience": 10
+  }
+}

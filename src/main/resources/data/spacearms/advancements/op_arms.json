@@ -1,0 +1,44 @@
+{
+  "parent": "spacearms:bedrock",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:op_chest"
+    },
+    "title": {
+		"translate": "advancements.spacearms.op_arms.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.op_arms.desc"
+	},
+    "frame": "challenge"
+  },
+  "criteria": {
+    "op_arms": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "spacearms:op_head"
+          },
+          {
+            "item": "spacearms:op_chest"
+          },
+          {
+            "item": "spacearms:op_legs"
+          },
+          {
+            "item": "spacearms:op_feet"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "op_arms"
+    ]
+  ],
+  "rewards": { 
+    "experience": 3000
+  }
+}

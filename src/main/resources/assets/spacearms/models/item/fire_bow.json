@@ -1,0 +1,28 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "spacearms:item/bow/fire_bow"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spacearms:pulling": 1
+      },
+      "model": "spacearms:item/fire_bow_pulling_0"
+    },
+    {
+      "predicate": {
+        "spacearms:pulling": 1,
+        "spacearms:pull": 0.65
+      },
+      "model": "spacearms:item/fire_bow_pulling_1"
+    },
+    {
+      "predicate": {
+        "spacearms:pulling": 1,
+        "spacearms:pull": 0.9
+      },
+      "model": "spacearms:item/fire_bow_pulling_2"
+    }
+  ]
+}

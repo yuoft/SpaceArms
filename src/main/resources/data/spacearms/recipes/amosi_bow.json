@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " xy",
+    "xzy",
+    " xy"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:nether_star"
+    },
+    "y": {
+      "item": "minecraft:emerald"
+    },
+    "z": {
+      "item": "spacearms:space_bow"
+    }
+  },
+  "result": {
+    "item": "spacearms:amosi_bow"
+  }
+}

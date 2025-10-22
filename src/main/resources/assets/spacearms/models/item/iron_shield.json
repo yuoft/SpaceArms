@@ -1,0 +1,14 @@
+{
+    "parent": "item/shield",
+    "textures": {
+        "particle": "block/iron_block"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "spacearms:blocking": 1
+            },
+            "model": "spacearms:item/iron_shield_blocking"
+        }
+    ]
+}

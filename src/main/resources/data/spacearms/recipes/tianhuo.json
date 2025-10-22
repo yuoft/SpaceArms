@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xzx",
+    "mxy",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:nether_star"
+    },
+    "z": {
+      "item": "minecraft:blaze_rod"
+    },
+    "y": {
+      "item": "minecraft:fire_charge"
+    },
+    "m": {
+      "item": "minecraft:dragon_breath"
+    },
+    "o": {
+      "item": "minecraft:magma_block"
+    }
+  },
+  "result": {
+    "item": "spacearms:tianhuo"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "spacearms:emerald_ingot",
+  "display": { 
+    "icon": { 
+      "item": "spacearms:xray_block"
+    },
+    "title": {
+		"translate": "advancements.spacearms.xray_block.title"
+	},
+    "description": {
+		"translate": "advancements.spacearms.xray_block.desc"
+	},
+    "frame": "task"
+  },
+  "criteria": { 
+    "xray_block": {
+      "trigger": "minecraft:inventory_changed", 
+      "conditions": { 
+		"items":[
+			{
+				"item":"spacearms:xray_block"
+			}
+		]
+      }
+    }
+  },
+  "rewards": { 
+    "experience": 10
+  }
+}

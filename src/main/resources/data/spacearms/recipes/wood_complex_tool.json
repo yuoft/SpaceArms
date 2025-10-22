@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xyz",
+    "mon",
+    " o "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:wooden_sword"
+    },
+    "y": {
+      "item": "minecraft:wooden_pickaxe"
+    },
+    "z": {
+      "item": "minecraft:wooden_axe"
+    },
+    "m": {
+      "item": "minecraft:wooden_shovel"
+    },
+    "o": {
+      "item": "minecraft:stick"
+    },
+    "n": {
+      "item": "minecraft:wooden_hoe"
+    }
+  },
+  "result": {
+    "item": "spacearms:wood_complex_tool"
+  }
+}

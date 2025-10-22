@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mym",
+    "mym",
+    " x "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:nether_star"
+    },
+	"x": {
+      "item": "minecraft:dragon_egg"
+    },
+    "m": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "spacearms:wolf_sword"
+  }
+}
