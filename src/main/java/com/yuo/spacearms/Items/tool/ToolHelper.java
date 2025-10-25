@@ -53,11 +53,11 @@ public class ToolHelper {
      * @param pos 坐标
      */
     public static void spawnExp(Player player, Level world, ItemStack stack, BlockPos pos){
-        stack.setDamageValue(1);
+        stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
         if (RANDOM.nextInt(100) > 50){//50%额外概率掉落经验
             ExperienceOrb exp = new ExperienceOrb(world, pos.getX(), pos.getY(), pos.getZ(), RANDOM.nextInt(5) + 1);
             world.addFreshEntity(exp);
-            stack.setDamageValue(1);
+            stack.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(e.getUsedItemHand()));
         }
     }
 }

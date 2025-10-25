@@ -1,37 +1,38 @@
 package com.yuo.spacearms.Entity.Mob;
 
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.Random;
 
 public class MobHelper {
-    private static final Random rand  = new Random();
+    private static final RandomSource rand  = RandomSource.create();
 
     /**
      * 怪物通用掉落物
      * @param isRed 是否精英
      */
-    public static void getMobDrops(MonsterEntity mob, DamageSource source, int looting, boolean isRed){
-        ItemStack stack = new ItemStack(Items.DIAMOND, MathHelper.nextInt(rand, 0, 3 + looting));
-        ItemStack stack0 = new ItemStack(Items.EMERALD, MathHelper.nextInt(rand, looting, 2 + looting));
-        ItemStack stack1 = new ItemStack(Items.GOLD_INGOT, MathHelper.nextInt(rand, 0, 4 + looting));
-        ItemStack stack2 = new ItemStack(Items.IRON_INGOT, MathHelper.nextInt(rand, looting, 5 + looting));
-        ItemStack stack3 = new ItemStack(Items.NETHERITE_INGOT, MathHelper.nextInt(rand, 0, looting));
+    public static void getMobDrops(Monster mob, DamageSource source, int looting, boolean isRed){
+        ItemStack stack = new ItemStack(Items.DIAMOND, Mth.nextInt(rand, 0, 3 + looting));
+        ItemStack stack0 = new ItemStack(Items.EMERALD, Mth.nextInt(rand, looting, 2 + looting));
+        ItemStack stack1 = new ItemStack(Items.GOLD_INGOT, Mth.nextInt(rand, 0, 4 + looting));
+        ItemStack stack2 = new ItemStack(Items.IRON_INGOT, Mth.nextInt(rand, looting, 5 + looting));
+        ItemStack stack3 = new ItemStack(Items.NETHERITE_INGOT, Mth.nextInt(rand, 0, looting));
 
-        mob.entityDropItem(stack0);
-        mob.entityDropItem(stack1);
-        mob.entityDropItem(stack2);
-        mob.entityDropItem(stack);
+        mob.spawnAtLocation(stack0);
+        mob.spawnAtLocation(stack1);
+        mob.spawnAtLocation(stack2);
+        mob.spawnAtLocation(stack);
         if (isRed){
-            mob.entityDropItem(stack3);
+            mob.spawnAtLocation(stack3);
         }
     }
 
@@ -62,7 +63,7 @@ public class MobHelper {
     /**
      * 根据难度设置装备
      */
-    public static void setEquipmentBasedOnDifficulty(MonsterEntity mob, DifficultyInstance difficulty, boolean isRed){
+    public static void setEquipmentBasedOnDifficulty(Monster mob, DifficultyInstance difficulty, boolean isRed){
         //添加装备
         int chance = MobHelper.getArmorChance();
         if (rand.nextFloat() < 0.25F * (difficulty.getDifficulty() == Difficulty.HARD ? 2 : 1)) {
@@ -70,7 +71,7 @@ public class MobHelper {
         }
 
         //添加武器
-        if (rand.nextFloat() < (mob.world.getDifficulty() == Difficulty.HARD ? 0.7F : 0.3F)) {
+        if (rand.nextFloat() < (mob.level().getDifficulty() == Difficulty.HARD ? 0.7F : 0.3F)) {
             MobHelper.setMobWeapons(mob, chance, isRed);
         }
     }
@@ -78,13 +79,13 @@ public class MobHelper {
     /**
      * 设置装备
      */
-    public static void setMobArmor(MonsterEntity mob, DifficultyInstance difficulty, int chance, boolean isRed){
+    public static void setMobArmor(Monster mob, DifficultyInstance difficulty, int chance, boolean isRed){
         float f = difficulty.getDifficulty() == Difficulty.HARD ? 0.05F : 0.15F;
         boolean flag = true;
 
-        for (EquipmentSlotType equipmentslottype : EquipmentSlotType.values()) {
-            if (equipmentslottype.getSlotType() == EquipmentSlotType.Group.ARMOR) {
-                ItemStack itemstack = mob.getItemStackFromSlot(equipmentslottype);
+        for (EquipmentSlot equipmentslottype : EquipmentSlot.values()) {
+            if (equipmentslottype.getType() == EquipmentSlot.Type.ARMOR) {
+                ItemStack itemstack = mob.getItemBySlot(equipmentslottype);
                 if (!flag && rand.nextFloat() < f) {
                     break;
                 }
@@ -93,7 +94,7 @@ public class MobHelper {
                 if (itemstack.isEmpty()) {
                     Item item = getArmorByChance(equipmentslottype, chance, isRed); //装备物品获取
                     if (item != null) {
-                        mob.setItemStackToSlot(equipmentslottype, new ItemStack(item));
+                        mob.setItemSlot(equipmentslottype, new ItemStack(item));
                     }
                 }
             }
@@ -104,7 +105,7 @@ public class MobHelper {
      * 根据装备品质获取物品
      * @param isRed 是否精英
      */
-    public static Item getArmorByChance(EquipmentSlotType slotIn, int chance, boolean isRed) {
+    public static Item getArmorByChance(EquipmentSlot slotIn, int chance, boolean isRed) {
         switch (slotIn) {
             case HEAD:
                 if (chance == 0) {
@@ -162,12 +163,12 @@ public class MobHelper {
     /**
      * 设置手持武器
      */
-    public static void setMobWeapons(MonsterEntity mob, int chance, boolean isRed){
+    public static void setMobWeapons(Monster mob, int chance, boolean isRed){
         if (rand.nextFloat() < 0.67) {
-            mob.setItemStackToSlot(EquipmentSlotType.MAINHAND, getMobWeaponLv(chance, isRed));
+            mob.setItemSlot(EquipmentSlot.MAINHAND, getMobWeaponLv(chance, isRed));
         } else {
-            mob.setItemStackToSlot(EquipmentSlotType.MAINHAND, getMobWeaponLv(chance, isRed));
-            mob.setItemStackToSlot(EquipmentSlotType.OFFHAND, new ItemStack(Items.TOTEM_OF_UNDYING));
+            mob.setItemSlot(EquipmentSlot.MAINHAND, getMobWeaponLv(chance, isRed));
+            mob.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.TOTEM_OF_UNDYING));
         }
     }
 
@@ -176,13 +177,13 @@ public class MobHelper {
      */
     private static ItemStack getMobWeaponLv(int chance, boolean isRed){
         boolean b = rand.nextFloat() < .25f;
-        switch (chance){
-            case 0: return new ItemStack(isRed && b ? Items.WOODEN_AXE : Items.WOODEN_SWORD);
-            case 1: return new ItemStack(isRed && b ? Items.STONE_AXE : Items.STONE_SWORD);
-            case 2: return new ItemStack(isRed && b ? Items.IRON_AXE : Items.IRON_SWORD);
-            case 3: return new ItemStack(isRed && b ? Items.GOLDEN_AXE : Items.GOLDEN_SWORD);
-            case 4: return new ItemStack(isRed && b ? Items.DIAMOND_AXE : Items.DIAMOND_SWORD);
-            default: return ItemStack.EMPTY;
-        }
+        return switch (chance) {
+            case 0 -> new ItemStack(isRed && b ? Items.WOODEN_AXE : Items.WOODEN_SWORD);
+            case 1 -> new ItemStack(isRed && b ? Items.STONE_AXE : Items.STONE_SWORD);
+            case 2 -> new ItemStack(isRed && b ? Items.IRON_AXE : Items.IRON_SWORD);
+            case 3 -> new ItemStack(isRed && b ? Items.GOLDEN_AXE : Items.GOLDEN_SWORD);
+            case 4 -> new ItemStack(isRed && b ? Items.DIAMOND_AXE : Items.DIAMOND_SWORD);
+            default -> ItemStack.EMPTY;
+        };
     }
 }

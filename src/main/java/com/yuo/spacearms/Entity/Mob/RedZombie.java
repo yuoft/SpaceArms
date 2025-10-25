@@ -1,20 +1,19 @@
 package com.yuo.spacearms.Entity.Mob;
 
 import com.yuo.spacearms.Entity.AI.AISetBlock;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.world.Difficulty;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.level.Level;
 
 public class RedZombie extends GreenZombie {
 
-    public RedZombie(EntityType<? extends ZombieEntity> entityType, World world) {
+    public RedZombie(EntityType<? extends Zombie> entityType, Level world) {
         super(entityType, world);
     }
 
@@ -25,31 +24,32 @@ public class RedZombie extends GreenZombie {
     }
 
     //属性
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.ZOMBIE_SPAWN_REINFORCEMENTS, 2.0D)
-                .createMutableAttribute(Attributes.MAX_HEALTH, 40.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.26D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 8.0D)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, .01D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 48.0D)
-                .createMutableAttribute(Attributes.ARMOR, 2.0d);
+    public static AttributeSupplier.Builder setCustomAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 2.0D)
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.26D)
+                .add(Attributes.ATTACK_DAMAGE, 8.0D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, .01D)
+                .add(Attributes.FOLLOW_RANGE, 48.0D)
+                .add(Attributes.ARMOR, 2.0d);
     }
 
     @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+    protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficulty) {
+        super.populateDefaultEquipmentSlots(randomSource, difficulty);
         MobHelper.setEquipmentBasedOnDifficulty(this, difficulty, true);
     }
 
     @Override
-    protected int getExperiencePoints(PlayerEntity player) {
-        this.experienceValue *= 3;
-        return super.getExperiencePoints(player);
+    public int getExperienceReward() {
+        this.xpReward *= 3;
+        return super.getExperienceReward();
     }
 
     @Override
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean b) {
+        super.dropCustomDeathLoot(source, looting, b);
         MobHelper.getMobDrops(this, source, looting, true);
     }
 }

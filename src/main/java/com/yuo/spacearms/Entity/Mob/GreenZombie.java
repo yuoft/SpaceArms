@@ -1,89 +1,86 @@
 package com.yuo.spacearms.Entity.Mob;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.network.IPacket;
-import net.minecraft.util.DamageSource;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.network.NetworkHooks;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
+public class GreenZombie extends Zombie {
 
-public class GreenZombie extends ZombieEntity {
-
-    public GreenZombie(EntityType<? extends ZombieEntity> entityType, World world) {
+    public GreenZombie(EntityType<? extends Zombie> entityType, Level world) {
         super(entityType, world);
     }
 
     //属性
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.ZOMBIE_SPAWN_REINFORCEMENTS, 1.5D)
-                .createMutableAttribute(Attributes.MAX_HEALTH, 30.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.24D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 40.0D)
-                .createMutableAttribute(Attributes.ARMOR, 2.0d);
+    public static AttributeSupplier.Builder setCustomAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 1.5D)
+                .add(Attributes.MAX_HEALTH, 30.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.24D)
+                .add(Attributes.ATTACK_DAMAGE, 4.0D)
+                .add(Attributes.FOLLOW_RANGE, 40.0D)
+                .add(Attributes.ARMOR, 2.0d);
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-
-    @Override
-    public void livingTick() {
-        super.livingTick();
+    protected boolean convertsInWater() {
+        return false;
     }
 
     //被攻击时
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        return super.attackEntityFrom(source, amount);
+    public boolean hurt(DamageSource source, float v) {
+        return super.hurt(source, v);
     }
 
     //攻击时
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        return super.attackEntityAsMob(entityIn);
+    public boolean doHurtTarget(Entity entity) {
+        return super.doHurtTarget(entity);
     }
 
     //是否可以装备物品
     @Override
-    public boolean canEquipItem(ItemStack stack) {
-        return true;
+    public ItemStack equipItemIfPossible(ItemStack stack) {
+        return super.equipItemIfPossible(stack);
     }
 
     //破门
     @Override
-    public boolean isBreakDoorsTaskSet() {
+    public boolean canBreakDoors() {
         return true;
     }
 
+    //装备
     @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-        MobHelper.setEquipmentBasedOnDifficulty(this, difficulty, false);
+    protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+        super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
+        MobHelper.setEquipmentBasedOnDifficulty(this, difficultyInstance, false);
     }
 
     @Override
-    protected int getExperiencePoints(PlayerEntity player) {
-        this.experienceValue *= 2;
-        return super.getExperiencePoints(player);
+    public int getExperienceReward() {
+        this.xpReward *= 2;
+        return super.getExperienceReward();
     }
 
     @Override
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean b) {
+        super.dropCustomDeathLoot(source, looting, b);
         MobHelper.getMobDrops(this, source, looting, false);
     }
 }

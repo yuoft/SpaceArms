@@ -1,59 +1,55 @@
 package com.yuo.spacearms.Entity.Mob;
 
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.SpiderEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.Explosion.Mode;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import java.util.Collection;
+import java.util.Iterator;
 
-public class GreenCreeper extends CreeperEntity {
+public class GreenCreeper extends Creeper {
     private int lastActiveTime;
     private int timeSinceIgnited;
     protected int fuseTime;
     protected int explosionRadius;
 
-    public GreenCreeper(EntityType<? extends CreeperEntity> type, World world) {
+    public GreenCreeper(EntityType<? extends Creeper> type, Level world) {
         super(type, world);
         this.fuseTime = 15;
         this.explosionRadius = 6;
     }
 
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 30.0D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.24D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4.0D)
-                .createMutableAttribute(Attributes.FOLLOW_RANGE, 40.0D)
-                .createMutableAttribute(Attributes.ARMOR, 2.0d);
+    public static AttributeSupplier.Builder setCustomAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 30.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.24D)
+                .add(Attributes.ATTACK_DAMAGE, 4.0D)
+                .add(Attributes.FOLLOW_RANGE, 40.0D)
+                .add(Attributes.ARMOR, 2.0d);
     }
 
     public void tick() {
         if (this.isAlive()) {
             this.lastActiveTime = this.timeSinceIgnited;
-            if (this.hasIgnited()) {
-                this.setCreeperState(1);
+            if (this.isIgnited()) {
+                this.setSwellDir(1);
             }
 
-            int i = this.getCreeperState();
+            int i = this.getSwellDir();
             if (i > 0 && this.timeSinceIgnited == 0) {
-                this.playSound(SoundEvents.ENTITY_CREEPER_PRIMED, 1.0F, 0.5F);
+                this.playSound(SoundEvents.CREEPER_PRIMED, 1.0F, 0.5F);
             }
 
             this.timeSinceIgnited += i;
@@ -63,68 +59,65 @@ public class GreenCreeper extends CreeperEntity {
 
             if (this.timeSinceIgnited >= this.fuseTime) {
                 this.timeSinceIgnited = this.fuseTime;
-                this.explode();
+                this.explodeCreeper();
             }
         }
 
         super.tick();
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public float getCreeperFlashIntensity(float p_70831_1_) {
-        return MathHelper.lerp(p_70831_1_, (float)this.lastActiveTime, (float)this.timeSinceIgnited) / (float)(this.fuseTime - 2);
+    @Override
+    public float getSwelling(float v) {
+        return Mth.lerp(v, (float)this.lastActiveTime, (float)this.timeSinceIgnited) / (float)(this.fuseTime - 2);
     }
 
-    protected void explode() {
-        if (!this.world.isRemote) {
-            Explosion.Mode explosion$mode = ForgeEventFactory.getMobGriefingEvent(this.world, this) ? Mode.DESTROY : Mode.NONE;
-            int i = this.isCharged() ? this.explosionRadius + 2 : this.explosionRadius;
+    protected void explodeCreeper() {
+        if (!this.level().isClientSide) {
+            ExplosionInteraction interaction = ForgeEventFactory.getMobGriefingEvent(this.level(), this) ? ExplosionInteraction.MOB : ExplosionInteraction.NONE;
+            int i = this.isPowered() ? this.explosionRadius + 2 : this.explosionRadius;
             this.dead = true;
-            this.world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), i, explosion$mode);
-            this.remove();
+            this.level().explode(this, this.getX(), this.getY(), this.getZ(), i, interaction);
+            this.discard();
             this.spawnLingeringCloud();
         }
 
     }
 
-    protected void spawnLingeringCloud() {
-        Collection<EffectInstance> collection = this.getActivePotionEffects();
-        if (!collection.isEmpty()) {
-            AreaEffectCloudEntity areaeffectcloudentity = new AreaEffectCloudEntity(this.world, this.getPosX(), this.getPosY(), this.getPosZ());
-            areaeffectcloudentity.setRadius(2.5F);
-            areaeffectcloudentity.setRadiusOnUse(-0.5F);
-            areaeffectcloudentity.setWaitTime(10);
-            areaeffectcloudentity.setDuration(areaeffectcloudentity.getDuration() / 2);
-            areaeffectcloudentity.setRadiusPerTick(-areaeffectcloudentity.getRadius() / (float)areaeffectcloudentity.getDuration());
+    //效果云
+    private void spawnLingeringCloud() {
+        Collection<MobEffectInstance> activeEffects = this.getActiveEffects();
+        if (!activeEffects.isEmpty()) {
+            AreaEffectCloud areaEffectCloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
+            areaEffectCloud.setRadius(2.5F);
+            areaEffectCloud.setRadiusOnUse(-0.5F);
+            areaEffectCloud.setWaitTime(10);
+            areaEffectCloud.setDuration(areaEffectCloud.getDuration() / 2);
+            areaEffectCloud.setRadiusPerTick(-areaEffectCloud.getRadius() / (float)areaEffectCloud.getDuration());
 
-            for (EffectInstance effectinstance : collection) {
-                areaeffectcloudentity.addEffect(new EffectInstance(effectinstance));
+            for (MobEffectInstance $$2 : activeEffects) {
+                areaEffectCloud.addEffect(new MobEffectInstance($$2));
             }
 
-            this.world.addEntity(areaeffectcloudentity);
+            this.level().addFreshEntity(areaEffectCloud);
         }
 
     }
 
     @Override
-    public boolean canEquipItem(ItemStack stack) {
-        return true;
+    protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance) {
+        super.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
+        MobHelper.setEquipmentBasedOnDifficulty(this, difficultyInstance, false);
     }
 
     @Override
-    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
-        MobHelper.setEquipmentBasedOnDifficulty(this, difficulty, false);
+    public int getExperienceReward() {
+        this.xpReward *= 2;
+        return super.getExperienceReward();
     }
 
     @Override
-    protected int getExperiencePoints(PlayerEntity player) {
-        this.experienceValue *= 2;
-        return super.getExperiencePoints(player);
-    }
-
-    @Override
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
         MobHelper.getMobDrops(this, source, looting, false);
     }
 }

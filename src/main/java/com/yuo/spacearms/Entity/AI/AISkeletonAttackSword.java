@@ -1,30 +1,30 @@
 package com.yuo.spacearms.Entity.AI;
 
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class AISkeletonAttackSword extends Goal {
-    private final CreatureEntity entity;
+    private final Skeleton entity;
 
-    public AISkeletonAttackSword(CreatureEntity entity) {
+    public AISkeletonAttackSword(Skeleton entity) {
         this.entity = entity;
     }
 
     //是否执行ai任务
     @Override
-    public boolean shouldExecute() {
-        LivingEntity entityLivingBase = entity.world.getClosestPlayer(entity, 3.0D);
+    public boolean canUse() {
+        LivingEntity entityLivingBase = entity.level().getNearestPlayer(entity, 3.0D);
         if (entityLivingBase == null) {
             return false;
         } else if (!entityLivingBase.isAlive()) {
             return false;
         } else {
-            ItemStack stack = entity.getItemStackFromSlot(EquipmentSlotType.MAINHAND);
+            ItemStack stack = entity.getItemBySlot(EquipmentSlot.MAINHAND);
             return !stack.getItem().equals(Items.IRON_SWORD);
         }
     }
@@ -32,9 +32,9 @@ public class AISkeletonAttackSword extends Goal {
     //ai任务
     @Override
     public void tick() {//当玩家靠近骷髅3格时，切换武器为剑
-        LivingEntity entityLivingBase = this.entity.world.getClosestPlayer(entity, 3.0D);
-        if (entityLivingBase instanceof PlayerEntity) {
-            this.entity.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.IRON_SWORD));
+        LivingEntity entityLivingBase = this.entity.level().getNearestPlayer(entity, 3.0D);
+        if (entityLivingBase instanceof Player) {
+            this.entity.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
         }
     }
 }

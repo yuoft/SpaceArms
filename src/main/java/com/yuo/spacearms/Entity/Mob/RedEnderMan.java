@@ -7,24 +7,21 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
 
-public class RedCreeper extends GreenCreeper {
-    public RedCreeper(EntityType<? extends Creeper> type, Level world) {
+public class RedEnderMan extends GreenEnderMan {
+    public RedEnderMan(EntityType<? extends EnderMan> type, Level world) {
         super(type, world);
-        this.fuseTime = 5;
-        this.explosionRadius = 8;
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.MAX_HEALTH, 80.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.26D)
                 .add(Attributes.ATTACK_DAMAGE, 8.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, .01D)
@@ -33,8 +30,18 @@ public class RedCreeper extends GreenCreeper {
     }
 
     @Override
-    public float getBlockExplosionResistance(Explosion explosion, BlockGetter getter, BlockPos pos, BlockState state, FluidState fluidState, float v) {
-        return super.getBlockExplosionResistance(explosion, getter, pos, state, fluidState, v);
+    public void tick() {
+        super.tick();
+        Player player = this.lastHurtByPlayer;
+        if (player != null && random.nextInt(100) > 50 && this.tickCount % 40 == 0) {
+            BlockPos pos = player.blockPosition();
+            BlockPos pos1 = new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ());
+            BlockState state = level().getBlockState(pos1);
+            if (state.getBlock().defaultDestroyTime() < 5.0f) {
+                this.setCarriedBlock(state);
+                level().setBlockAndUpdate(pos1, Blocks.AIR.defaultBlockState());
+            }
+        }
     }
 
     @Override
