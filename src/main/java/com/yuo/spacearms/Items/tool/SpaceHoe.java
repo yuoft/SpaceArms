@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -43,7 +42,7 @@ public class SpaceHoe extends HoeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.HOE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1);
 	}
 
 	@Override

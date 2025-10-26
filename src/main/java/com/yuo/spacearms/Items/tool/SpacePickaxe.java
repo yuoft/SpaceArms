@@ -51,6 +51,6 @@ public class SpacePickaxe extends PickaxeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.PICKAXE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1);
 	}
 }

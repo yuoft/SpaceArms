@@ -1,23 +1,27 @@
 package com.yuo.spacearms.Entity.Render.Mob;
 
 import com.yuo.spacearms.Entity.Mob.GreenZombie;
+import com.yuo.spacearms.RlUtils;
 import com.yuo.spacearms.SpaceArms;
+import net.minecraft.client.model.ZombieModel;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.AbstractZombieRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.model.ZombieModel;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.ZombieRenderer;
+import net.minecraft.resources.ResourceLocation;
 
 public class RedZombieRender extends AbstractZombieRenderer<GreenZombie, ZombieModel<GreenZombie>> {
-    private final ResourceLocation TEXTURE = new ResourceLocation(SpaceArms.MOD_ID, "textures/entity/mob/red_zombie.png");
+    private final ResourceLocation TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "textures/entity/mob/red_zombie.png");
 
-    public RedZombieRender(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new ZombieModel<>(0.0F, false),
-                new ZombieModel<>(0.5F, true), new ZombieModel<>(1.0F, true));
+    public RedZombieRender(EntityRendererProvider.Context renderManagerIn) {
+        super(renderManagerIn, new ZombieModel<>(renderManagerIn.bakeLayer(ModelLayers.ZOMBIE)),
+                new ZombieModel<>(renderManagerIn.bakeLayer(ModelLayers.ZOMBIE_INNER_ARMOR)),
+                new ZombieModel<>(renderManagerIn.bakeLayer(ModelLayers.ZOMBIE_OUTER_ARMOR)));
         this.addLayer(new RedZombieEyesLayer(this));
     }
 
     @Override
-    public ResourceLocation getEntityTexture(GreenZombie entity) {
+    public ResourceLocation getTextureLocation(GreenZombie entity) {
         return TEXTURE;
     }
 }

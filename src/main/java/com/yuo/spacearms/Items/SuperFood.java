@@ -1,18 +1,18 @@
 package com.yuo.spacearms.Items;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 
 public class SuperFood extends Item {
-    public SuperFood(Food food) {
-        super(new Properties().group(SATabs.spaceArms).food(food).maxStackSize(32).rarity(Rarity.RARE));
+    public SuperFood(FoodProperties food) {
+        super(new Properties().food(food).stacksTo(32).rarity(Rarity.RARE));
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return true;
     }
 }

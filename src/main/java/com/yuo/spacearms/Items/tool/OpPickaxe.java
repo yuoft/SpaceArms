@@ -1,23 +1,19 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.SATabs;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ToolActions;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -27,53 +23,54 @@ import java.util.Map;
 public class OpPickaxe extends PickaxeItem {
 	private final ItemHander handler;
 	public OpPickaxe() {
-		super(SAItemTiers.OP, 1, -2.4f, new Properties().group(SATabs.spaceArms0));
+		super(SAItemTiers.OP, 1, -2.4f, new Properties());
 		this.handler = new ItemHander();
 	}
 
-	@Override
-	public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
-		if (this.isInGroup(group)){
-			Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
-			map.put(Enchantments.FORTUNE, 10);
-			ItemStack stack = new ItemStack(this);
-			EnchantmentHelper.setEnchantments(map, stack);
-			items.add(stack);
-		}
-	}
+//	@Override
+//	public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+//		if (this.isInGroup(group)){
+//			Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
+//			map.put(Enchantments.FORTUNE, 10);
+//			ItemStack stack = new ItemStack(this);
+//			EnchantmentHelper.setEnchantments(map, stack);
+//			items.add(stack);
+//		}
+//	}
 
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
-		if (state.getHarvestTool() == ToolType.PICKAXE){
+		if (stack.isCorrectToolForDrops(state)){
 			return 100.0f;
 		}
 		return Math.max(super.getDestroySpeed(stack, state), 10.0f);
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.op_pickaxe"));
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		tooltip.add(Component.translatable("spacearms.text.itemInfo.aoeBlock"));
+		tooltip.add(Component.translatable("spacearms.text.itemInfo.op_pickaxe"));
 		if (stack.hasTag() && stack.getOrCreateTag().contains("mode")){
 			if (stack.getOrCreateTag().getBoolean("mode"))
-				tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
-			else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
+				tooltip.add(Component.translatable("spacearms.text.itemInfo.aoe"));
+			else tooltip.add(Component.translatable("spacearms.text.itemInfo.unAoe"));
 		}
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 		ItemHander.changeMode(worldIn, playerIn, handIn);
-		return ActionResult.resultPass(playerIn.getHeldItem(handIn));
+		return InteractionResultHolder.pass(playerIn.getItemInHand(handIn));
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 
+
 	@Override
-	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 3, ToolType.PICKAXE);
+	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player) {
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 3);
 	}
 }

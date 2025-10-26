@@ -52,6 +52,6 @@ public class SpaceAxe extends AxeItem {
 
 	@Override
 	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
-		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1, ToolType.AXE);
+		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1);
 	}
 }

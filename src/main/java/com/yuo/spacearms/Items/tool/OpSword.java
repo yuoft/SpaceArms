@@ -1,21 +1,28 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -23,22 +30,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class OpSword extends SwordItem{
+public class OpSword extends SwordItem {
 
 	public OpSword() {
-		super(SAItemTiers.OP, 0, -2.0F, new Item.Properties().group(SATabs.spaceArms0));
+		super(SAItemTiers.OP, 0, -2.0F, new Item.Properties());
 	}
 
-    @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
-	    if (this.isInGroup(group)){ //防止添加到其它物品页
-            Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
-            map.put(Enchantments.LOOTING, 10);
-            ItemStack stack = new ItemStack(this);
-            EnchantmentHelper.setEnchantments(map, stack);
-            items.add(stack);
-        }
-    }
+//    @Override
+//    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+//	    if (this.isInGroup(group)){ //防止添加到其它物品页
+//            Map<Enchantment, Integer> map = new HashMap<Enchantment, Integer>();
+//            map.put(Enchantments.LOOTING, 10);
+//            ItemStack stack = new ItemStack(this);
+//            EnchantmentHelper.setEnchantments(map, stack);
+//            items.add(stack);
+//        }
+//    }
 
     @Override
     public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken) {
@@ -46,56 +53,59 @@ public class OpSword extends SwordItem{
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return true;
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.opSword",""));
+    public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+        components.add(Component.translatable("spacearms.text.itemInfo.opSword",""));
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        if (!worldIn.isRemote) {
-            attackAOE(playerIn, 16, 10000, playerIn.isSneaking());
-            playerIn.getCooldownTracker().setCooldown(this, 20);
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+        if (!worldIn.isClientSide) {
+            attackAOE(playerIn, 16, 10000, playerIn.isCrouching());
+            playerIn.getCooldowns().addCooldown(this, 20);
         }
-        return new ActionResult<>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
+        return InteractionResultHolder.pass(playerIn.getItemInHand(handIn));
     }
 
     //攻击实体
+
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-	    if (target instanceof EnderDragonEntity){
-            EnderDragonEntity drageon = (EnderDragonEntity) target; //攻击末影龙
-            drageon.attackEntityPartFrom(drageon.dragonPartHead, DamageSource.causePlayerDamage((PlayerEntity) attacker), 10000);
-        }else target.attackEntityFrom(DamageSource.causePlayerDamage((PlayerEntity) attacker), 10000.0f);
-        return super.hitEntity(stack, target, attacker);
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (attacker instanceof Player player) {
+            if (target instanceof EnderDragon dragon){
+                dragon.hurt(dragon.head, attacker.damageSources().playerAttack(player), Integer.MAX_VALUE);
+            } else if (target instanceof WitherBoss witherBoss){
+                witherBoss.hurt(attacker.damageSources().playerAttack(player), Integer.MAX_VALUE);
+            } else target.hurt(attacker.damageSources().playerAttack(player), Integer.MAX_VALUE);
+        }else target.hurt(attacker.damageSources().generic(), Integer.MAX_VALUE);
+        return super.hurtEnemy(stack, target, attacker);
     }
 
     //aoe伤害
-    protected void attackAOE(PlayerEntity player,float range, float damage,boolean type)
-    {
-        if (player.getEntityWorld().isRemote) return;
-        AxisAlignedBB aabb = player.getBoundingBox().grow(range);//范围
-        List<Entity> toAttack = player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(player, aabb);//生物列表
-        DamageSource src = DamageSource.GENERIC;//伤害类型
+    protected void attackAOE(Player player, float range, float damage, boolean type) {
+        if (player.level().isClientSide) return;
+        AABB aabb = player.getBoundingBox().inflate(range);//范围
+        List<Entity> toAttack = player.level().getEntities(player, aabb);//生物列表
+        DamageSource src = player.damageSources().generic();//伤害类型
         for (Entity entity : toAttack) { //循环遍历
-            if(type) {
-                if(entity instanceof LivingEntity) {
-                    entity.attackEntityFrom(src, damage);//给与实体伤害
+            if (type) {
+                if (entity instanceof LivingEntity) {
+                    entity.hurt(src, damage);//给与实体伤害
                 }
-            }
-            else {
-                if (entity instanceof IMob) {
-                    if (entity instanceof EnderDragonEntity){
-                        EnderDragonEntity drageon = (EnderDragonEntity) entity;
-                        drageon.attackEntityPartFrom(drageon.dragonPartHead, DamageSource.causePlayerDamage(player), 10000);
-                    }else entity.attackEntityFrom(src, damage);
+            } else {
+                if (entity instanceof Mob mob) {
+                    if (mob instanceof EnderDragon dragon){
+                        dragon.hurt(dragon.head, player.damageSources().playerAttack(player), 10000.0f);
+                    } else if (mob instanceof WitherBoss witherBoss){
+                        witherBoss.hurt(player.damageSources().playerAttack(player), 10000.0f);
+                    } else mob.hurt(player.damageSources().playerAttack(player), 10000.0f);
                 }
             }
         }
-        player.getEntityWorld().playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 1.0f, 1.0f);
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 1.0f, 1.0f);
     }
 }

@@ -1,33 +1,32 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 /**
  * 通用普通物品
  */
-public class OrdinaryItem extends Item{
+public class OrdinaryItem extends Item {
 
 	public OrdinaryItem() {
-		super(new Properties().group(SATabs.spaceArms)); //设置物品所在 创造模式物品栏
+		super(new Properties()); //设置物品所在 创造模式物品栏
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		return ActionResult.resultPass(playerIn.getHeldItem(handIn));
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+		return InteractionResultHolder.pass(playerIn.getItemInHand(handIn));
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		super.appendHoverText(stack, level, components, flag);
 	}
 }

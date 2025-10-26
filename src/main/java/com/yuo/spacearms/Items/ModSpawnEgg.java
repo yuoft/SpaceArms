@@ -1,27 +1,24 @@
 package com.yuo.spacearms.Items;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.Lazy;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class ModSpawnEgg extends Item {
@@ -30,7 +27,7 @@ public class ModSpawnEgg extends Item {
     private static int secondaryColor = 0xff00ff;
 
     public ModSpawnEgg(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn) {
-        super(new Properties().group(SATabs.spaceArms));
+        super(new Properties());
         this.entityTypeSupplier = Lazy.of(entityTypeSupplier);
         primaryColor = primaryColorIn;
         secondaryColor = secondaryColorIn;
@@ -44,31 +41,30 @@ public class ModSpawnEgg extends Item {
         return i == 0 ? ModSpawnEgg.primaryColor : ModSpawnEgg.secondaryColor;
     }
 
-
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-        ItemStack stack = context.getItem();
-        PlayerEntity player = context.getPlayer();
-        World world = context.getWorld();
-        BlockPos blockPos = context.getPos();
-        if (!world.isRemote) {
-            Direction face = context.getFace();
+    public InteractionResult useOn(UseOnContext context) {
+        ItemStack stack = context.getItemInHand();
+        Player player = context.getPlayer();
+        Level world = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
+        if (!world.isClientSide) {
+            Direction face = context.getClickedFace();
             BlockState state = world.getBlockState(blockPos);
             BlockPos blockpos1;
-            if (state.getCollisionShapeUncached(world, blockPos).isEmpty()) {
+            if (state.getCollisionShape(world, blockPos).isEmpty()) {
                 blockpos1 = blockPos;
             } else {
-                blockpos1 = blockPos.offset(face);
+                blockpos1 = blockPos.relative(face);
             }
 
             EntityType<?> entitytype = this.getType();
-            if (entitytype.spawn((ServerWorld)world, stack, player, blockpos1, SpawnReason.SPAWN_EGG, true,
+            if (entitytype.spawn((ServerLevel) world, stack, player, blockpos1, MobSpawnType.SPAWN_EGG, true,
                     !Objects.equals(blockPos, blockpos1) && face == Direction.UP) != null) {
                 stack.shrink(1);
             }
 
-            return ActionResultType.CONSUME;
+            return InteractionResult.CONSUME;
         }
-        return super.onItemUse(context);
+        return super.useOn(context);
     }
 }

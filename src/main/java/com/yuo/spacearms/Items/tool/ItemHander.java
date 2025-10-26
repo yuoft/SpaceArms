@@ -1,19 +1,17 @@
 package com.yuo.spacearms.Items.tool;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -34,17 +32,11 @@ public class ItemHander
      * @param pos 方块坐标
      * @param player 玩家
      * @param lv 范围等级
-     * @param type 类型
      */
-	public void onBlockStartBreak(ItemStack stack, World world, BlockState state, BlockPos pos,
-			PlayerEntity player, Integer lv, ToolType type) {
-        int harvestLevel = stack.getHarvestLevel(type, player, state);
-        int level = state.getHarvestLevel();
-        if (harvestLevel < level ){
-            return; //工具无法挖掘此块
-        }
-        Vector3d vec = player.getLookVec();
-        Direction facing = Direction.getFacingFromVector(vec.x, vec.y, vec.z);
+	public void onBlockStartBreak(ItemStack stack, Level world, BlockState state, BlockPos pos,
+                                  Player player, Integer lv) {
+        Vec3 vec = player.getLookAngle();
+        Direction facing = Direction.getNearest(vec.x, vec.y, vec.z);
         switch (facing){
             case UP:
                 for (int x = pos.getX() - lv; x <= pos.getX() + lv; x ++){
@@ -112,14 +104,14 @@ public class ItemHander
      * @param state 基准方块状态
      * @param stack 工具
      */
-    private void destroyBlocks(int x, int y, int z, World world, BlockState state, ItemStack stack, PlayerEntity player){
+    private void destroyBlocks(int x, int y, int z, Level world, BlockState state, ItemStack stack, Player player){
         BlockPos poslv = new BlockPos(x, y, z);
         //排除空气方块和非同类型方块
-        if (world.isAirBlock(poslv) || !world.getBlockState(poslv).equals(state)){
+        if (world.getBlockState(poslv).isAir() || !world.getBlockState(poslv).equals(state)){
             return;
         }
         //消耗工具耐久
-        stack.damageItem(1, player, (e) -> e.sendBreakAnimation(EquipmentSlotType.MAINHAND));
+        stack.hurtAndBreak(1, player, (e) -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         if (stack.getCount() > 0){
             world.destroyBlock(poslv, true, player); //破坏方块，并且掉落
         }
@@ -131,18 +123,15 @@ public class ItemHander
      * @param playerIn 玩家
      * @param handIn 活动手
      */
-    public static ActionResult<ItemStack> changeMode(World worldIn, PlayerEntity playerIn, Hand handIn){
-        ItemStack stack = playerIn.getHeldItem(handIn);
-        if (!worldIn.isRemote && playerIn.isSneaking()){
-            CompoundNBT tag = stack.getOrCreateTag();
-//            if (tag.isEmpty() || !tag.contains("mode")){
-//                tag.putBoolean("mode", false); //添加tag
-//            }
+    public static InteractionResultHolder<ItemStack> changeMode(Level worldIn, Player playerIn, InteractionHand handIn){
+        ItemStack stack = playerIn.getItemInHand(handIn);
+        if (!worldIn.isClientSide && playerIn.isCrouching()){
+            CompoundTag tag = stack.getOrCreateTag();
             tag.putBoolean("mode", !tag.getBoolean("mode")); //切换
-            playerIn.swingArm(handIn); //摆臂
-            return ActionResult.resultSuccess(stack);
+            playerIn.swing(handIn); //摆臂
+            return InteractionResultHolder.success(stack);
         }
-        return ActionResult.resultPass(stack);
+        return InteractionResultHolder.pass(stack);
     }
 
     /**
@@ -150,13 +139,13 @@ public class ItemHander
      * @param stack 物品
      * @param tooltip 描述
      */
-    public static void addInfo(ItemStack stack, List<ITextComponent> tooltip) {
-        tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoeBlock"));
-        tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_tool"));
+    public static void addInfo(ItemStack stack, List<Component> tooltip) {
+        tooltip.add(Component.translatable("spacearms.text.itemInfo.aoeBlock"));
+        tooltip.add(Component.translatable("spacearms.text.itemInfo.space_tool"));
         if (stack.hasTag() && stack.getOrCreateTag().contains("mode")){
             if (stack.getOrCreateTag().getBoolean("mode"))
-                tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.aoe"));
-            else tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.unAoe"));
+                tooltip.add(Component.translatable("spacearms.text.itemInfo.aoe"));
+            else tooltip.add(Component.translatable("spacearms.text.itemInfo.unAoe"));
         }
     }
 
@@ -169,14 +158,14 @@ public class ItemHander
      * @param lv 范围挖掘等级 1:3*3；2:5*5 。。。。
      * @return 是否成功
      */
-    public static boolean toolBreakBlock(ItemStack itemstack, PlayerEntity player, BlockPos pos, ItemHander hander, int lv, ToolType type){
-        CompoundNBT tag = itemstack.getTag();
+    public static boolean toolBreakBlock(ItemStack itemstack, Player player, BlockPos pos, ItemHander hander, int lv){
+        CompoundTag tag = itemstack.getTag();
         if (tag == null) return false;
         boolean mode = tag.getBoolean("mode");
         if (mode){
-            BlockState state = player.world.getBlockState(pos);
-            if (!itemstack.canHarvestBlock(state)) return false;
-            hander.onBlockStartBreak(itemstack, player.world, state, pos, player, lv, type);
+            BlockState state = player.level().getBlockState(pos);
+            if (!itemstack.isCorrectToolForDrops(state)) return false;
+            hander.onBlockStartBreak(itemstack, player.level(), state, pos, player, lv);
             return true;
         }
         return false;
