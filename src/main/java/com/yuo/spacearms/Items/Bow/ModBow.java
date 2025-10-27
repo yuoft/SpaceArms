@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class ModBow extends BowItem {
-    private Item arrow;
+    private final Item arrow;
 
     public ModBow(Properties builder, Item arrow) {
         super(builder);
@@ -51,7 +51,7 @@ public class ModBow extends BowItem {
     @Override
     public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entity, int timeLeft) {
         if (entity instanceof Player player) {
-            boolean flag = player.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
+            boolean flag = player.getAbilities().instabuild || stack.getEnchantmentLevel(Enchantments.INFINITY_ARROWS) > 0;
             ItemStack itemstack = findAmmo(stack, player);
 
             int i = this.getUseDuration(stack) - timeLeft;
@@ -75,17 +75,17 @@ public class ModBow extends BowItem {
                             abstractarrow.setCritArrow(true);
                         }
 
-                        int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);
+                        int j = stack.getEnchantmentLevel(Enchantments.POWER_ARROWS);
                         if (j > 0) {
                             abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() + (double)j * 0.5D + 0.5D);
                         }
 
-                        int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, stack);
+                        int k = stack.getEnchantmentLevel(Enchantments.PUNCH_ARROWS);
                         if (k > 0) {
                             abstractarrow.setKnockback(k);
                         }
 
-                        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, stack) > 0) {
+                        if (stack.getEnchantmentLevel(Enchantments.FLAMING_ARROWS) > 0) {
                             abstractarrow.setSecondsOnFire(100);
                         }
 

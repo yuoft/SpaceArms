@@ -1,39 +1,37 @@
 package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
-public class SpaceArms extends ArmorItem{
+public class SpaceArms extends ArmorItem {
 
-	public SpaceArms(EquipmentSlotType slot) {
-		super(SAArmorMaterials.SPACE, slot, new Properties().maxStackSize(1).group(SATabs.spaceArms0).defaultMaxDamage(SAArmorMaterials.SPACE.getDurability(slot)));
+	public SpaceArms(Type slot) {
+		super(SAArmorMaterials.SPACE, slot, new Properties().stacksTo(1).defaultDurability(SAArmorMaterials.SPACE.getDurabilityForType(slot)));
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.space_arms"));
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		components.add(Component.translatable("spacearms.text.itemInfo.space_arms"));
 	}
 	@Override
-	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-		NonNullList<ItemStack> stacks = player.inventory.armorInventory;
+	public void onArmorTick(ItemStack stack, Level world, Player player) {
+		NonNullList<ItemStack> stacks = player.getInventory().armor;
 		boolean flag = stacks.size() >= 4;
 		for (ItemStack itemStack : stacks) {
 			if (itemStack.isEmpty() || !(itemStack.getItem() instanceof SpaceArms))
@@ -41,7 +39,7 @@ public class SpaceArms extends ArmorItem{
 		}
 		//抗性提升
 		if (flag) {
-			player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 0, 1));
+			player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 0, 1));
 		}
 	}
 }

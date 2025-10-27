@@ -1,22 +1,29 @@
 package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 /**
  * 通用普通盔甲注册
  */
-public class OrdinaryArms extends ArmorItem{
+public class OrdinaryArms extends ArmorItem {
 
-	public OrdinaryArms(SAArmorMaterials material, EquipmentSlotType slot) {
-		super(material, slot, new Properties().maxStackSize(1).group(SATabs.spaceArms0).defaultMaxDamage(material.getDurability(slot)));
-	}
+    public OrdinaryArms(SAArmorMaterials material, Type slot) {
+        super(material, slot, new Properties().stacksTo(1).defaultDurability(material.getDurabilityForType(slot)));
+    }
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return (getArmorMaterial() == SAArmorMaterials.SUPER_XRAY || getArmorMaterial() == SAArmorMaterials.ULTRA) || stack.isEnchanted();
-	}
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+		return (getMaterial() == SAArmorMaterials.SUPER_XRAY || getMaterial() == SAArmorMaterials.ULTRA) || stack.isEnchanted();
+    }
 
+    @Override
+    public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+    }
 }

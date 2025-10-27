@@ -2,13 +2,13 @@ package com.yuo.spacearms.Items.Arms;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.ArmorItem.Type;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -18,39 +18,30 @@ import java.util.function.Supplier;
 /**
  * 盔甲材料类
  */
-public enum SAArmorMaterials implements IArmorMaterial {
+public enum SAArmorMaterials implements ArmorMaterial {
 	//---------材质---耐久值----------护甲值-------附魔能力--------音效----------------------盔甲韧性- 击退抗性-修复材料
-	TOTEM(SpaceArms.MOD_ID + ":" + "totem", 15, new int[] { 3, 6, 8, 3 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, 0,() -> {
-		return Ingredient.fromItems(Items.TOTEM_OF_UNDYING);
-	}),
-	GLOWSTONE(SpaceArms.MOD_ID + ":" + "glowstone", 21, new int[] { 2, 5, 6, 2 }, 8, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0,0, () -> {
-		return Ingredient.fromItems(Items.GLOWSTONE);
-	}),
-	RUBY(SpaceArms.MOD_ID + ":" + "ruby", 43, new int[] { 4, 7, 9, 4 }, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2F, 0,() -> {
-		return Ingredient.fromItems(SAItems.rubyIngot.get());
-	}),
-	EMERALD(SpaceArms.MOD_ID + ":" + "emerald", 56, new int[] { 5, 8, 10, 5 }, 11, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, 0,() -> {
-		return Ingredient.fromItems(SAItems.emeraldIngot.get());
-	}),
-	XRAY(SpaceArms.MOD_ID + ":" + "xray", 61, new int[] { 7, 10, 12, 7 }, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2F, 0,() -> {
-		return Ingredient.fromItems(SAItems.xrayIngot.get());
-	}),
-	SUPER(SpaceArms.MOD_ID + ":" + "super", 69, new int[] { 12, 15, 17, 12 }, 13, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3F, 0,() -> {
-		return Ingredient.fromItems(SAItems.superIngot.get());
-	}),
-	DRAGON(SpaceArms.MOD_ID + ":" + "dragon", 78, new int[] { 14, 17, 19, 14 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.5F, 0.1f,() -> {
-		return Ingredient.fromItems(SAItems.dragonCrystal.get());
-	}),
-	SUPER_XRAY(SpaceArms.MOD_ID + ":" + "xray", 85, new int[] { 19, 22, 24, 19 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.5F, 0.05f,() -> {
-		return Ingredient.fromItems(SAItems.superXrayIngot.get());
-	}),
-	ULTRA(SpaceArms.MOD_ID + ":" + "ultra", 94, new int[] { 23, 26, 28, 23 }, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 4F, 0.15f,() -> {
-		return Ingredient.fromItems(SAItems.ultraIngot.get());
-	}),
-	SPACE(SpaceArms.MOD_ID + ":" + "space", 111, new int[] { 29, 36, 39, 29 }, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 5.0F, 0.3f,() -> {
-		return Ingredient.fromItems(SAItems.spaceIngot.get());
-	}),
-	OP(SpaceArms.MOD_ID + ":" + "op", 999, new int[] { 3, 6, 8, 3 }, 0, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0, 10,() -> Ingredient.EMPTY);
+	TOTEM(SpaceArms.MOD_ID + ":" + "totem", 15, new int[] { 3, 6, 8, 3 }, 15,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 2.5F, 0,() -> Ingredient.of(Items.TOTEM_OF_UNDYING)),
+	GLOWSTONE(SpaceArms.MOD_ID + ":" + "glowstone", 21, new int[] { 2, 5, 6, 2 }, 8,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 0,0, () -> Ingredient.of(Items.GLOWSTONE)),
+	RUBY(SpaceArms.MOD_ID + ":" + "ruby", 43, new int[] { 4, 7, 9, 4 }, 10,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 2F, 0,() -> Ingredient.of(SAItems.rubyIngot.get())),
+	EMERALD(SpaceArms.MOD_ID + ":" + "emerald", 56, new int[] { 5, 8, 10, 5 }, 11,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 2.5F, 0,() -> Ingredient.of(SAItems.emeraldIngot.get())),
+	XRAY(SpaceArms.MOD_ID + ":" + "xray", 61, new int[] { 7, 10, 12, 7 }, 12,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 2F, 0,() -> Ingredient.of(SAItems.xrayIngot.get())),
+	SUPER(SpaceArms.MOD_ID + ":" + "super", 69, new int[] { 12, 15, 17, 12 }, 13,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 3F, 0,() -> Ingredient.of(SAItems.superIngot.get())),
+	DRAGON(SpaceArms.MOD_ID + ":" + "dragon", 78, new int[] { 14, 17, 19, 14 }, 15,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 3.5F, 0.1f,() -> Ingredient.of(SAItems.dragonCrystal.get())),
+	SUPER_XRAY(SpaceArms.MOD_ID + ":" + "xray", 85, new int[] { 19, 22, 24, 19 }, 15,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 3.5F, 0.05f,() -> Ingredient.of(SAItems.superXrayIngot.get())),
+	ULTRA(SpaceArms.MOD_ID + ":" + "ultra", 94, new int[] { 23, 26, 28, 23 }, 16,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 4F, 0.15f,() -> Ingredient.of(SAItems.ultraIngot.get())),
+	SPACE(SpaceArms.MOD_ID + ":" + "space", 111, new int[] { 29, 36, 39, 29 }, 30,
+			SoundEvents.ARMOR_EQUIP_DIAMOND, 5.0F, 0.3f,() -> Ingredient.of(SAItems.spaceIngot.get())),
+	OP(SpaceArms.MOD_ID + ":" + "op", 999, new int[] { 3, 6, 8, 3 }, 0,
+			SoundEvents.ARMOR_EQUIP_NETHERITE, 0, 10,() -> Ingredient.EMPTY);
 
 	private static final int[] MAX_DAMAGE_ARRAY = new int[] { 23, 25, 27, 21 };
 	private final String name;
@@ -59,7 +50,7 @@ public enum SAArmorMaterials implements IArmorMaterial {
 	private final int enchantability;
 	private final SoundEvent soundEvent;
 	private final float toughness;
-	private final LazyValue<Ingredient> repairMaterial;
+	private final LazyLoadedValue<Ingredient> repairMaterial;
 	private final float knockbackResistance;
 
 	SAArmorMaterials(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
@@ -70,29 +61,32 @@ public enum SAArmorMaterials implements IArmorMaterial {
 		this.soundEvent = soundEvent;
 		this.toughness = toughness;
 		this.knockbackResistance = knockbackResistance;
-		this.repairMaterial = new LazyValue<>(repairMaterial);
+		this.repairMaterial = new LazyLoadedValue<>(repairMaterial);
 	   }
 
-	public int getDurability(EquipmentSlotType slotIn) {
-		return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
+	@Override
+	public int getDurabilityForType(Type type) {
+		return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * this.maxDamageFactor;
 	}
 
-	public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-		return this.damageReductionAmountArray[slotIn.getIndex()];
+	@Override
+	public int getDefenseForType(Type type) {
+		return this.damageReductionAmountArray[type.getSlot().getIndex()];
 	}
 
-	public int getEnchantability() {
+	@Override
+	public int getEnchantmentValue() {
 		return this.enchantability;
 	}
 
-	@Nonnull
-	public SoundEvent getSoundEvent() {
+	@Override
+	public SoundEvent getEquipSound() {
 		return this.soundEvent;
 	}
 
-	@Nonnull
-	public Ingredient getRepairMaterial() {
-		return this.repairMaterial.getValue();
+	@Override
+	public Ingredient getRepairIngredient() {
+		return this.repairMaterial.get();
 	}
 
 	@OnlyIn(Dist.CLIENT)

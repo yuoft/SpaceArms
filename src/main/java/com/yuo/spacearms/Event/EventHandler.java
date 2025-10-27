@@ -329,7 +329,7 @@ public class EventHandler {
         Entity source = event.getSource().getEntity();
         if (!(source instanceof Player)) return; //伤害来源于玩家
         ItemStack stack = ((Player) source).getMainHandItem();
-        int level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MOB_LOOTING, stack); //抢夺
+        int level = stack.getEnchantmentLevel(Enchantments.MOB_LOOTING); //抢夺
         if (entityLiving instanceof EnderDragon){ //末影龙额外掉落 龙晶 创世结晶
             spawnDrops(SAItems.dragonCrystal.get(), random.nextInt(4 + level), world, pos, event);
         }

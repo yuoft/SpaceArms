@@ -2,11 +2,7 @@ package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.SATags;
-import com.yuo.spacearms.SATabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Predicate;
 
@@ -14,22 +10,19 @@ import java.util.function.Predicate;
  * 阿莫斯之弓
  */
 public class AmosiBow extends ModBow {
-    public static final Predicate<ItemStack> AMOSI_ARROWS = (stack) -> {
-        ITag<Item> tag = ItemTags.getCollection().get(SATags.AMOSI_ARROWS);
-        return stack.getItem().isIn(tag);
-    };
+    public static final Predicate<ItemStack> AMOSI_ARROWS = (stack) -> stack.is(SATags.AMOSI_ARROWS);
 
     public AmosiBow() {
-        super(new Properties().maxDamage(987).group(SATabs.spaceArms0), SAItems.amosiArrow.get());
+        super(new Properties().durability(987), SAItems.amosiArrow.get());
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return true;
     }
 
     @Override
-    public Predicate<ItemStack> getInventoryAmmoPredicate() {
+    public Predicate<ItemStack> getAllSupportedProjectiles() {
         return AMOSI_ARROWS;
     }
 

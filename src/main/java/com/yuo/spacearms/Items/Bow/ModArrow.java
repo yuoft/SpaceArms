@@ -4,27 +4,32 @@ import com.yuo.spacearms.Entity.*;
 import com.yuo.spacearms.Entity.Arrow.*;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SATabs;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.item.ArrowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 //箭物品
 public class ModArrow extends ArrowItem {
     public ModArrow() {
-        super(new Item.Properties().group(SATabs.spaceArms0));
+        super(new Item.Properties());
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return stack.getItem() == SAItems.amosiArrow.get();
     }
 
     //创建箭实体
     @Override
-    public AbstractArrowEntity createArrow(World worldIn, ItemStack stack, LivingEntity shooter) {
+    public @NotNull AbstractArrow createArrow(Level worldIn, ItemStack stack, LivingEntity shooter) {
         Item item = stack.getItem();
         if (item.equals(SAItems.ironArrow.get())){
             return new IronArrow(SAEntitys.IRON_ARROW.get(), shooter, worldIn);
@@ -46,13 +51,13 @@ public class ModArrow extends ArrowItem {
             return new IceArrow(SAEntitys.ICE_ARROW.get(), shooter, worldIn);
         } else if (item.equals(SAItems.amosiArrow.get())){
             return new AmosiArrow(SAEntitys.AMOSI_ARROW.get(), shooter, worldIn);
-        }else return null;
+        }else return new Arrow(worldIn, shooter);
     }
 
     //是否无限
     @Override
-    public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
-        int enchant = net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.enchantment.Enchantments.INFINITY, bow);
+    public boolean isInfinite(ItemStack stack, ItemStack bow, Player player) {
+        int enchant = bow.getEnchantmentLevel(Enchantments.INFINITY_ARROWS);
         return enchant > 0 && this.getClass() == ModArrow.class;
     }
 }

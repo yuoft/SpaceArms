@@ -3,10 +3,8 @@ package com.yuo.spacearms.Items.Bow;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.SATags;
 import com.yuo.spacearms.SATabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Predicate;
 
@@ -14,22 +12,19 @@ import java.util.function.Predicate;
  * 空间弓
  */
 public class SpaceBow extends ModBow {
-    public static final Predicate<ItemStack> SPACE_ARROWS = (stack) -> {
-        ITag<Item> tag = ItemTags.getCollection().get(SATags.SPACE_ARROWS);
-        return stack.getItem().isIn(tag);
-    };
+    public static final Predicate<ItemStack> SPACE_ARROWS = (stack) -> stack.is(SATags.SPACE_ARROWS);
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return true;
     }
 
     public SpaceBow() {
-        super(new Properties().maxDamage(849).group(SATabs.spaceArms0), SAItems.spaceArrow.get());
+        super(new Properties().durability(849), SAItems.spaceArrow.get());
     }
 
     @Override
-    public Predicate<ItemStack> getInventoryAmmoPredicate() {
+    public Predicate<ItemStack> getAllSupportedProjectiles() {
         return SPACE_ARROWS;
     }
 }

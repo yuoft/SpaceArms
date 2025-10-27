@@ -1,25 +1,22 @@
 package com.yuo.spacearms.Items.Bow;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.ShootableItem;
+import net.minecraft.client.renderer.entity.TntMinecartRenderer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.TntBlock;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -27,35 +24,36 @@ import java.util.List;
 public class TntBow extends BowItem {
 
     public TntBow() {
-        super(new Properties().maxDamage(389).group(SATabs.spaceArms0));
+        super(new Properties().durability(389));
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.tnt_bow"));
+    public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+        components.add(Component.translatable("spacearms.text.itemInfo.tnt_bow"));
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemstack = playerIn.getHeldItem(handIn);
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+        ItemStack itemstack = playerIn.getItemInHand(handIn);
         boolean flag = !findAmmo(itemstack, playerIn).isEmpty();
 
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, flag);
+        InteractionResultHolder<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, flag);
         if (ret != null) return ret;
 
-        if (!playerIn.abilities.isCreativeMode && !flag) {
-            return ActionResult.resultFail(itemstack);
+        if (!playerIn.isCreative() && !flag) {
+            return InteractionResultHolder.fail(itemstack);
         } else {
-            playerIn.setActiveHand(handIn);
-            return ActionResult.resultConsume(itemstack);
+            playerIn.swing(handIn);
+//            playerIn.interact(playerIn, handIn);
+            return InteractionResultHolder.consume(itemstack);
         }
     }
 
 
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if (entityLiving instanceof PlayerEntity) {
-            PlayerEntity playerentity = (PlayerEntity)entityLiving;
-            boolean flag = playerentity.abilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
+    @Override
+    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft) {
+        if (entityLiving instanceof Player playerentity) {
+            boolean flag = playerentity.getAbilities().instabuild || stack.getEnchantmentLevel(Enchantments.INFINITY_ARROWS) > 0;
             ItemStack itemstack = findAmmo(stack, playerentity);
 
             int i = this.getUseDuration(stack) - timeLeft;
@@ -67,47 +65,48 @@ public class TntBow extends BowItem {
                     itemstack = new ItemStack(Items.TNT);
                 }
 
-                double f = getArrowVelocity(i) + 0.5d;
+                double f = getPowerForTime(i) + 0.5d;
                 if (f < 0.6d) return;
-                if (!worldIn.isRemote) {
-                    TNTEntity tntEntity = new TNTEntity(worldIn, playerentity.getPosX(), playerentity.getPosY() + 0.5, playerentity.getPosZ(), playerentity);
-                    int power = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
-                    tntEntity.setMotion(playerentity.getLookVec().scale(f + 0.5 + power * 0.05));
+                if (!worldIn.isClientSide) {
+                    PrimedTnt tntEntity = new PrimedTnt(worldIn, playerentity.getX(), playerentity.getY() + 0.5, playerentity.getZ(), playerentity);
+                    int power = stack.getEnchantmentLevel(Enchantments.POWER_ARROWS);
+                    tntEntity.setDeltaMovement(playerentity.getLookAngle().scale(f + 0.5 + power * 0.05));
                     tntEntity.setFuse((int) Math.ceil(30 * f));
-                    stack.damageItem(1, playerentity, e -> e.sendBreakAnimation(playerentity.getActiveHand()));
-                    worldIn.addEntity(tntEntity);
+                    stack.hurtAndBreak(1, playerentity, e -> e.broadcastBreakEvent(playerentity.getUsedItemHand()));
+                    worldIn.addFreshEntity(tntEntity);
                 }
 
-                worldIn.playSound((PlayerEntity)null, playerentity.getPosX(), playerentity.getPosY(), playerentity.getPosZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, (float) (1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F));
+                worldIn.playSound(null, playerentity.getX(), playerentity.getY(), playerentity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS,
+                        1.0F, (float) (1.0F / (worldIn.random.nextFloat() * 0.4F + 1.2F) + f * 0.5F));
 
-                if (!flag && !playerentity.abilities.isCreativeMode) {
+                if (!flag && !playerentity.isCreative()) {
                     itemstack.shrink(1);
                     if (itemstack.isEmpty()) {
-                        playerentity.inventory.deleteStack(itemstack);
+                        playerentity.getInventory().removeItem(itemstack);
                     }
                 }
 
-                playerentity.addStat(Stats.ITEM_USED.get(this));
+                playerentity.awardStat(Stats.ITEM_USED.get(this));
             }
         }
     }
 
-    private ItemStack findAmmo(ItemStack shootable, PlayerEntity player) {
-        if (!(shootable.getItem() instanceof ShootableItem)) {
+    private ItemStack findAmmo(ItemStack shootable, Player player) {
+        if (!(shootable.getItem() instanceof ProjectileWeaponItem)) {
             return ItemStack.EMPTY;
         } else {
-            ItemStack heldItem = player.getHeldItem(Hand.OFF_HAND);
+            ItemStack heldItem = player.getItemInHand(InteractionHand.OFF_HAND);
             if (heldItem.getItem() == Items.TNT) {
                 return heldItem;
             } else {
-                for(int i = 0; i < player.inventory.getSizeInventory(); ++i) {
-                    ItemStack stack = player.inventory.getStackInSlot(i);
+                for(int i = 0; i < player.getInventory().getContainerSize(); ++i) {
+                    ItemStack stack = player.getInventory().getItem(i);
                     if (stack.getItem() == Items.TNT) {
                         return stack;
                     }
                 }
 
-                return player.abilities.isCreativeMode ? new ItemStack(Items.TNT) : ItemStack.EMPTY;
+                return player.isCreative() ? new ItemStack(Items.TNT) : ItemStack.EMPTY;
             }
         }
     }
@@ -115,12 +114,12 @@ public class TntBow extends BowItem {
     //是否允许附魔
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.FLAME || enchantment == Enchantments.PUNCH) return false;
+        if (enchantment == Enchantments.FLAMING_ARROWS || enchantment == Enchantments.PUNCH_ARROWS) return false;
         return super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override
-    public int getItemEnchantability() {
+    public int getEnchantmentValue(ItemStack stack) {
         return 0;
     }
 }
