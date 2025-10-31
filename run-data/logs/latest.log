@@ -1,0 +1,54 @@
+[3110月2025 18:31:22.858] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, -mixin.config=endless.mixins.json, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources, --mixin.config, endless.mixins.json]
+[3110月2025 18:31:22.858] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[3110月2025 18:31:22.922] [main/WARN] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Configuration file D:\McMod20\SpaceArms\run-data\config\fml.toml is not correct. Correcting
+[3110月2025 18:31:22.922] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSkipGLVersions] was corrected from null to []
+[3110月2025 18:31:22.922] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
+[3110月2025 18:31:22.922] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSquir] was corrected from null to false
+[3110月2025 18:31:22.922] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowShowCPU] was corrected from null to false
+[3110月2025 18:31:22.937] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[3110月2025 18:31:22.971] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/26852/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[3110月2025 18:31:23.315] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[3110月2025 18:31:23.315] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[3110月2025 18:31:23.315] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[3110月2025 18:31:23.315] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[3110月2025 18:31:23.538] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[3110月2025 18:31:24.846] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[3110月2025 18:31:24.862] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources]
+[3110月2025 18:31:25.150] [main/INFO] [mixin/]: Remapping refMap endless.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.214] [main/INFO] [mixin/]: Remapping refMap moonlight-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.214] [main/INFO] [mixin/]: Remapping refMap moonlight-forge-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.214] [main/INFO] [mixin/]: Remapping refMap jade.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.229] [main/INFO] [mixin/]: Remapping refMap dummmmmmy-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.229] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[3110月2025 18:31:25.964] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [spacearms]
+[3110月2025 18:31:26.139] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.2.1-beta.2).
+[3110月2025 18:31:29.900] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[3110月2025 18:31:29.901] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file D:\McMod20\SpaceArms\run-data\config\dummmmmmy-common.toml is not correct. Correcting
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key scarecrow was corrected from null to its default, SimpleCommentedConfig:{}. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key scarecrow.mobs_whitelist was corrected from null to its default, []. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key scarecrow.mobs_blacklist was corrected from null to its default, []. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key scarecrow.scare_radius was corrected from null to its default, 12. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general was corrected from null to its default, SimpleCommentedConfig:{}. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.DPS_mode was corrected from null to its default, DYNAMIC. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.disable_equipment_damage was corrected from null to its default, true. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.dummy_decoy was corrected from null to its default, false. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.xp_per_damage_on_hit was corrected from null to its default, 0.0. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.boss_health_color was corrected from null to its default, YELLOW. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key general.boss_health was corrected from null to its default, 200. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key mobs_damage_numbers was corrected from null to its default, SimpleCommentedConfig:{}. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key mobs_damage_numbers.damage_mode was corrected from null to its default, NONE. 
+[3110月2025 18:31:30.093] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key mobs_damage_numbers.healing_mode was corrected from null to its default, NONE. 
+[3110月2025 18:31:30.189] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file D:\McMod20\SpaceArms\run-data\config\moonlight-client.toml is not correct. Correcting
+[3110月2025 18:31:30.189] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key merge_dynamic_packs was corrected from null to its default, true. 
+[3110月2025 18:31:30.189] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key lazy_map_upload was corrected from null to its default, true. 
+[3110月2025 18:31:30.189] [modloading-worker-0/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key maps_mipmap was corrected from null to its default, 3. 
+[3110月2025 18:31:30.316] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[3110月2025 18:31:30.332] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 8.921 ms
+[3110月2025 18:31:30.557] [main/INFO] [Moonlight/]: Initialized block sets in 15ms
+[3110月2025 18:31:31.066] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[3110月2025 18:31:31.066] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[3110月2025 18:31:31.220] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[3110月2025 18:31:31.316] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 92 ms
+[3110月2025 18:31:31.316] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 93 ms
+[3110月2025 18:31:31.316] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 0, old count: 0, new count: 1, removed stale: 0, written: 0

@@ -1,57 +1,57 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.SATabs;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.TierSortingRegistry;
+import net.minecraftforge.common.ToolAction;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+public class ComplexTool extends DiggerItem {
+    private final TagKey<Block> blocks = BlockTags.MINEABLE_WITH_PICKAXE;
+    private final Tier itemTier;
 
-public class ComplexTool extends ToolItem {
-
-    private static final Set<Block> blockSet = new HashSet<>();
-    private static final Set<ToolType> toolTypes = new HashSet<>(Arrays.asList(ToolType.PICKAXE, ToolType.AXE, ToolType.SHOVEL, ToolType.HOE));
-    static {
-        blockSet.addAll(PickaxeItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll(ShovelItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll(AxeItem.BLOCK_TO_ITEM.keySet());
-        blockSet.addAll(HoeItem.BLOCK_TO_ITEM.keySet());
-    }
-    private final IItemTier itemTier;
-
-    public ComplexTool(IItemTier tier) {
-        super( 3, -2.6f, tier, blockSet, new Properties().group(SATabs.spaceArms0).maxDamage(tier.getMaxUses()));
+    public ComplexTool(Tier tier) {
+        super( 3, -2.6f, tier, BlockTags.MINEABLE_WITH_PICKAXE, new Properties().durability(tier.getUses()));
         this.itemTier = tier;
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isEnchantable(ItemStack stack) {
         return (getTier() == SAItemTiers.SUPER_XRAY || getTier() == SAItemTiers.ULTRA) || stack.isEnchanted();
     }
 
     @Override
-    public Set<ToolType> getToolTypes(ItemStack stack) {
-        return toolTypes;
+    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+        return true;//ToolActions.DEFAULT_PICKAXE_ACTIONS.contains(toolAction);
+    }
+
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        return state.getBlock().defaultDestroyTime() >= 0 ? this.itemTier.getSpeed() : super.getDestroySpeed(stack, state);
+    }
+
+    @Deprecated
+    public boolean isCorrectToolForDrops(BlockState state) {
+        if (TierSortingRegistry.isTierSorted(this.getTier())) {
+            return TierSortingRegistry.isCorrectTierForDrops(this.getTier(), state) && state.is(this.blocks);
+        } else {
+            int i = this.getTier().getLevel();
+            if (i < 3 && state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
+                return false;
+            } else if (i < 2 && state.is(BlockTags.NEEDS_IRON_TOOL)) {
+                return false;
+            } else {
+                return (i >= 1 || !state.is(BlockTags.NEEDS_STONE_TOOL)) && state.is(this.blocks);
+            }
+        }
     }
 
     @Override
-    public int getHarvestLevel(ItemStack stack, ToolType tool, @Nullable PlayerEntity player, @Nullable BlockState blockState) {
-        return itemTier != null ? itemTier.getHarvestLevel() : 1;
+    public boolean isCorrectToolForDrops(@NotNull ItemStack stack, BlockState state) {
+        return state.is(this.blocks) && TierSortingRegistry.isCorrectTierForDrops(this.getTier(), state);
     }
-
-    @Override
-    public boolean canHarvestBlock(ItemStack stack, BlockState state) {
-        return super.canHarvestBlock(stack, state);
-    }
-
-    @Override
-    public boolean canHarvestBlock(BlockState blockIn) {
-        return super.canHarvestBlock(blockIn);
-    }
-
 }

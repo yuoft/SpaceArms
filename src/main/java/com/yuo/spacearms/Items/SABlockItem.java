@@ -33,7 +33,7 @@ public class SABlockItem extends BlockItem {
                         //生物转化物品
                         if (world instanceof ServerLevel serverLevel) {
                             serverLevel.sendParticles(ParticleTypes.LAVA, pos.getX(), pos.getY(), pos.getZ(), 50, 0.0, 0D, 0D,0.0);
-                            ItemEntity demonicIngotItem = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(SAItems.rubyIngot.get(), stack.getCount()));
+                            ItemEntity demonicIngotItem = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(SAItems.ruby.get(), stack.getCount()));
                             demonicIngotItem.setDeltaMovement(world.random.nextDouble() / 2.0, 0.1, world.random.nextDouble() / 2.0);
                             world.addFreshEntity(demonicIngotItem);
                             stack.shrink(stack.getCount());

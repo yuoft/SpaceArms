@@ -1,12 +1,11 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -14,16 +13,16 @@ import java.util.List;
 public class SuperSpacePickaxe extends PickaxeItem {
 
 	public SuperSpacePickaxe() {
-		super(SAItemTiers.SUPER_SPACE, 2, -2.4f, new Properties().group(SATabs.spaceArms0).isImmuneToFire());
+		super(SAItemTiers.SUPER_SPACE, 2, -2.4f, new Properties().fireResistant());
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.super_space_pickaxe"));
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		components.add(Component.translatable("spacearms.text.itemInfo.super_space_pickaxe"));
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 }

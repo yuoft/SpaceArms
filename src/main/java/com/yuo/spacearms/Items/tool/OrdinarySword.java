@@ -2,55 +2,54 @@ package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
+import org.checkerframework.checker.units.qual.C;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class OrdinarySword extends SwordItem{
-	public OrdinarySword(IItemTier iItemTier) {
-		super(iItemTier, 4, - 2.4f, new Properties().group(SATabs.spaceArms0));
+public class OrdinarySword extends SwordItem {
+	public OrdinarySword(Tier iItemTier) {
+		super(iItemTier, 4, - 2.4f, new Properties());
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return (getTier() == SAItemTiers.SUPER_XRAY || getTier() == SAItemTiers.ULTRA) || stack.isEnchanted();
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
 		Item item = stack.getItem();
 		if (item.equals(SAItems.totemSword.get())){
-			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.totem_sword"));
+			components.add(Component.translatable("spacearms.text.itemInfo.totem_sword"));
 		}
 		if (item.equals(SAItems.glowstoneSword.get())){
-			tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.glowstone_sword"));
+			components.add(Component.translatable("spacearms.text.itemInfo.glowstone_sword"));
 		}
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 		Item item = stack.getItem();
 		if (item.equals(SAItems.totemSword.get())){
-			if (target.isEntityUndead())
-				target.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, 0));
-			else target.addPotionEffect(new EffectInstance(Effects.INSTANT_DAMAGE, 10, 0));
+			if (target.getMobType() == MobType.UNDEAD)
+				target.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 10, 0));
+			else target.addEffect(new MobEffectInstance(MobEffects.HARM, 10, 0));
 			return true;
 		}
 		if (item.equals(SAItems.glowstoneSword.get())){
-			target.addPotionEffect(new EffectInstance(Effects.GLOWING, 40, 0));
+			target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 40, 0));
 			return true;
 		}
-		return true;
+		return super.hurtEnemy(stack, target, attacker);
 	}
 }

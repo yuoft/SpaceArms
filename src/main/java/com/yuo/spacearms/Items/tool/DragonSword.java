@@ -3,40 +3,38 @@ package com.yuo.spacearms.Items.tool;
 import com.yuo.spacearms.Entity.DragonCrystal;
 import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.SATabs;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class DragonSword extends SwordItem{
+public class DragonSword extends SwordItem {
 	public DragonSword() {
-		super(SAItemTiers.DRAGON, 4, -2.4F, new Properties().group(SATabs.spaceArms0));
+		super(SAItemTiers.DRAGON, 4, -2.4F, new Properties());
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.dragon_sword"));
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		components.add(Component.translatable("spacearms.text.itemInfo.dragon_sword"));
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		ItemStack stack = playerIn.getHeldItem(handIn);
-		if (!worldIn.isRemote && !playerIn.isSneaking()){
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+		ItemStack stack = playerIn.getItemInHand(handIn);
+		if (!worldIn.isClientSide && !playerIn.isCrouching()){
 			DragonCrystal diamondEntity = new DragonCrystal(SAEntitys.DRAGON_CRYSTAL.get(), playerIn, worldIn);
-			diamondEntity.setDirectionAndMovement(playerIn, playerIn.rotationPitch, playerIn.rotationYaw,
-					0, 2.0f,1.0f);
-			worldIn.addEntity(diamondEntity);
-			stack.damageItem(5, playerIn, e -> playerIn.sendBreakAnimation(handIn));
-			playerIn.getCooldownTracker().setCooldown(this, 60);
+			diamondEntity.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0, 2.0f,1.0f);
+			worldIn.addFreshEntity(diamondEntity);
+			stack.hurtAndBreak(5, playerIn, e -> playerIn.broadcastBreakEvent(handIn));
+			playerIn.getCooldowns().addCooldown(this, 60);
 		}
-		return ActionResult.resultSuccess(stack);
+		return InteractionResultHolder.success(stack);
 	}
 }

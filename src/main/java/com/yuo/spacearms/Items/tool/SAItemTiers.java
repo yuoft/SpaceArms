@@ -11,8 +11,8 @@ import java.util.function.Supplier;
 public enum SAItemTiers implements Tier {
     WOLF(233, 20.0f, 52.8f, 3, 0, () -> Ingredient.of(Items.NETHER_STAR)),
     BH3(233, 11.0f, 15, 3, 10, () -> Ingredient.of(Items.NETHER_STAR)),
-    RUBY(1456, 11f, 4.0f, 3, 10, () -> Ingredient.of(SAItems.rubyIngot.get())),
-    EMERALD(1589, 15.0f, 5.0f, 3, 10, () -> Ingredient.of(SAItems.emeraldIngot.get())),
+    RUBY(1456, 11f, 4.0f, 3, 10, () -> Ingredient.of(SAItems.ruby.get())),
+    JADE(1589, 15.0f, 5.0f, 3, 10, () -> Ingredient.of(SAItems.jade.get())),
     XRAY(2179, 19.0f, 12, 4, 12, () -> Ingredient.of(SAItems.xrayIngot.get())),
     SUPER(2605, 22.0f, 15, 4, 14, () -> Ingredient.of(SAItems.superIngot.get())),
     DRAGON(3465, 25f, 18, 5, 15, () -> Ingredient.of(SAItems.dragonCrystal.get())),

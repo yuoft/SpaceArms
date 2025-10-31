@@ -1,18 +1,18 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShovelItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.Tier;
 
 public class OrdinaryShovel extends ShovelItem {
 
-	public OrdinaryShovel(IItemTier itemTier) {
-		super(itemTier, 3, -3f, new Properties().group(SATabs.spaceArms0));
+	public OrdinaryShovel(Tier itemTier) {
+		super(itemTier, 3, -3f, new Properties());
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return (getTier() == SAItemTiers.SUPER_XRAY || getTier() == SAItemTiers.ULTRA) || stack.isEnchanted();
 	}
 }

@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 添加村民交易处理类
@@ -31,8 +30,8 @@ public class VillagerEvents {
         VillagerProfession type = event.getType();
         if (VillagerProfession.WEAPONSMITH.equals(type)){
             Int2ObjectMap<List<ItemListing>> trades = event.getTrades();
-            trades.get(1).add(new EmeraldForItemsTrade(SAItems.rubyIngot.get(), 10, 16, 2));  //每次可交易次数，获取经验
-            trades.get(2).add(new EmeraldForItemsTrade(SAItems.emeraldIngot.get(), 8, 12, 3));
+            trades.get(1).add(new EmeraldForItemsTrade(SAItems.ruby.get(), 10, 16, 2));  //每次可交易次数，获取经验
+            trades.get(2).add(new EmeraldForItemsTrade(SAItems.jade.get(), 8, 12, 3));
             trades.get(3).add(new EmeraldForItemsTrade(SAItems.dragonCrystal.get(), 4, 8, 5));
             trades.get(4).add(new ItemsForEmeraldsAndItemsTrade(SAItems.spacePath.get(), 9,16,  SAItems.spaceIngot.get(), 1,6, 6));
             trades.get(5).add(new ItemsForEmeraldsAndItemsTrade(Items.NETHER_STAR, 1,64,  SAItems.spaceCore.get(), 1,5, 8));

@@ -1,7 +1,8 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.item.Item;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
@@ -17,11 +18,11 @@ public enum ShieldType {
     private final float protectionValue; //防护数值(盔甲值)
     private final int maxDamage; //耐久值
     private final float probability; //免伤概率
-    private final Tags.IOptionalNamedTag<Item> repairable; //修复材料
+    private final TagKey<Item> repairable; //修复材料
     private final int enchantAbility; //附魔能力
     private final Item.Properties properties; //物品属性
 
-    ShieldType(@Nonnull String id, float protectionValueIn, int maxDamageIn, float probabilityIn, Tags.IOptionalNamedTag<Item> repairableIn,
+    ShieldType(@Nonnull String id, float protectionValueIn, int maxDamageIn, float probabilityIn, TagKey<Item> repairableIn,
                int enchantAbilityIn, boolean isImmuneToFire){
         this.name = id;
         this.protectionValue = protectionValueIn;
@@ -30,8 +31,8 @@ public enum ShieldType {
         this.repairable = repairableIn;
         this.enchantAbility = enchantAbilityIn;
         if (isImmuneToFire)
-            this.properties = new Item.Properties().group(SATabs.spaceArms0).maxDamage(maxDamage).isImmuneToFire();
-        else this.properties = new Item.Properties().group(SATabs.spaceArms0).maxDamage(maxDamage);
+            this.properties = new Item.Properties().durability(maxDamage).fireResistant();
+        else this.properties = new Item.Properties().durability(maxDamage);
     }
 
     public String getName() {
@@ -58,7 +59,7 @@ public enum ShieldType {
         return enchantAbility;
     }
 
-    public Tags.IOptionalNamedTag<Item> getRepairable() {
+    public TagKey<Item> getRepairable() {
         return repairable;
     }
 

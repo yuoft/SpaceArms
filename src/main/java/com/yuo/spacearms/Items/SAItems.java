@@ -5,12 +5,9 @@ import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.Arms.*;
 import com.yuo.spacearms.Items.Bow.*;
 import com.yuo.spacearms.Items.tool.*;
-import com.yuo.spacearms.SATabs;
 
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorItem.Type;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,10 +16,10 @@ public class SAItems {
 	//创建注册器。ForgeRegistries.ITEMS代表了我们要注册的是物品，第二个参数填入的应该是你的modId。
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, com.yuo.spacearms.SpaceArms.MOD_ID);
 	//注册物品。一个是「注册名」，还有一个就是你要注册对象的实例
-	public static RegistryObject<Item> rubyIngot = ITEMS.register("ruby_ingot", OrdinaryItem::new);
+	public static RegistryObject<Item> ruby = ITEMS.register("ruby", OrdinaryItem::new);
 	public static RegistryObject<Item> spacePath = ITEMS.register("space_path", OrdinaryItem::new);
 	public static RegistryObject<Item> spaceIngot = ITEMS.register("space_ingot", OrdinaryItem::new);
-	public static RegistryObject<Item> emeraldIngot = ITEMS.register("emerald_ingot", OrdinaryItem::new);
+	public static RegistryObject<Item> jade = ITEMS.register("jade", OrdinaryItem::new);
 	public static RegistryObject<Item> spaceCore = ITEMS.register("space_core", SpaceCore::new);
 	public static RegistryObject<Item> dragonCrystal = ITEMS.register("dragon_crystal", OrdinaryItem::new);
 	public static RegistryObject<Item> blazeBone = ITEMS.register("blaze_bone", OrdinaryItem::new);
@@ -37,7 +34,7 @@ public class SAItems {
 	public static RegistryObject<Item> goldStick = ITEMS.register("gold_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> diamondStick = ITEMS.register("diamond_stick", OrdinaryItem::new);
 	public static RegistryObject<Item> netheriteStick = ITEMS.register("netherite_stick", OrdinaryItem::new);
-	public static RegistryObject<Item> emeraldPowder = ITEMS.register("emerald_powder", OrdinaryItem::new);
+	public static RegistryObject<Item> jadePowder = ITEMS.register("jade_powder", OrdinaryItem::new);
 	public static RegistryObject<Item> complexPowder = ITEMS.register("complex_powder", OrdinaryItem::new);
 	public static RegistryObject<Item> xrayIngot = ITEMS.register("xray_ingot", OrdinaryItem::new);
 	public static RegistryObject<Item> superXrayIngot = ITEMS.register("super_xray_ingot", OrdinaryItem::new);
@@ -128,11 +125,11 @@ public class SAItems {
 	public static RegistryObject<Item> rubyAxe = ITEMS.register("ruby_axe", () -> new OrdinaryAxe(SAItemTiers.RUBY));
 	public static RegistryObject<Item> rubyHoe = ITEMS.register("ruby_hoe", () -> new OrdinaryHoe(SAItemTiers.RUBY));
 	public static RegistryObject<Item> rubyShovel = ITEMS.register("ruby_shovel", () -> new OrdinaryShovel(SAItemTiers.RUBY));
-	public static RegistryObject<Item> emeraldSword = ITEMS.register("emerald_sword", () -> new OrdinarySword(SAItemTiers.EMERALD));
-	public static RegistryObject<Item> emeraldPickaxe = ITEMS.register("emerald_pickaxe", () -> new OrdinaryPickaxe(SAItemTiers.EMERALD));
-	public static RegistryObject<Item> emeraldAxe = ITEMS.register("emerald_axe", () -> new OrdinaryAxe(SAItemTiers.EMERALD));
-	public static RegistryObject<Item> emeraldHoe = ITEMS.register("emerald_hoe", () -> new OrdinaryHoe(SAItemTiers.EMERALD));
-	public static RegistryObject<Item> emeraldShovel = ITEMS.register("emerald_shovel", () -> new OrdinaryShovel(SAItemTiers.EMERALD));
+	public static RegistryObject<Item> jadeSword = ITEMS.register("jade_sword", () -> new OrdinarySword(SAItemTiers.JADE));
+	public static RegistryObject<Item> jadePickaxe = ITEMS.register("jade_pickaxe", () -> new OrdinaryPickaxe(SAItemTiers.JADE));
+	public static RegistryObject<Item> jadeAxe = ITEMS.register("jade_axe", () -> new OrdinaryAxe(SAItemTiers.JADE));
+	public static RegistryObject<Item> jadeHoe = ITEMS.register("jade_hoe", () -> new OrdinaryHoe(SAItemTiers.JADE));
+	public static RegistryObject<Item> jadeShovel = ITEMS.register("jade_shovel", () -> new OrdinaryShovel(SAItemTiers.JADE));
 	public static RegistryObject<Item> spaceSword = ITEMS.register("space_sword", SpaceSword::new);
 	public static RegistryObject<Item> spacePickaxe = ITEMS.register("space_pickaxe", SpacePickaxe::new);
 	public static RegistryObject<Item> spaceAxe = ITEMS.register("space_axe", SpaceAxe::new);
@@ -147,8 +144,8 @@ public class SAItems {
 	public static RegistryObject<Item> dragonHoe = ITEMS.register("dragon_hoe", DragonHoe::new);
 	public static RegistryObject<Item> dragonShovel = ITEMS.register("dragon_shovel", DragonShovel::new);
 	public static RegistryObject<Item> beheadSword = ITEMS.register("behead_sword", BeheadSword::new);
-	public static RegistryObject<Item> totemSword = ITEMS.register("totem_sword", () -> new OrdinarySword(ItemTier.DIAMOND));
-	public static RegistryObject<Item> glowstoneSword = ITEMS.register("glowstone_sword", () -> new OrdinarySword(ItemTier.IRON));
+	public static RegistryObject<Item> totemSword = ITEMS.register("totem_sword", () -> new OrdinarySword(Tiers.DIAMOND));
+	public static RegistryObject<Item> glowstoneSword = ITEMS.register("glowstone_sword", () -> new OrdinarySword(Tiers.IRON));
 
 	public static RegistryObject<Item> xraySword = ITEMS.register("xray_sword", () -> new OrdinarySword(SAItemTiers.XRAY));
 	public static RegistryObject<Item> xrayPickaxe = ITEMS.register("xray_pickaxe", () -> new OrdinaryPickaxe(SAItemTiers.XRAY));
@@ -171,13 +168,13 @@ public class SAItems {
 	public static RegistryObject<Item> ultraHoe = ITEMS.register("ultra_hoe", () -> new OrdinaryHoe(SAItemTiers.ULTRA));
 	public static RegistryObject<Item> ultraShovel = ITEMS.register("ultra_shovel", () -> new OrdinaryShovel(SAItemTiers.ULTRA));
 
-	public static RegistryObject<Item> woodComplexTool = ITEMS.register("wood_complex_tool", () -> new ComplexTool(ItemTier.WOOD));
-	public static RegistryObject<Item> stoneComplexTool = ITEMS.register("stone_complex_tool", () -> new ComplexTool(ItemTier.STONE));
-	public static RegistryObject<Item> ironComplexTool = ITEMS.register("iron_complex_tool", () -> new ComplexTool(ItemTier.IRON));
-	public static RegistryObject<Item> goldComplexTool = ITEMS.register("gold_complex_tool", () -> new ComplexTool(ItemTier.GOLD));
-	public static RegistryObject<Item> diamondComplexTool = ITEMS.register("diamond_complex_tool", () -> new ComplexTool(ItemTier.DIAMOND));
-	public static RegistryObject<Item> netheriteComplexTool = ITEMS.register("netherite_complex_tool", () -> new ComplexTool(ItemTier.NETHERITE));
-	public static RegistryObject<Item> emeraldComplexTool = ITEMS.register("emerald_complex_tool", () -> new ComplexTool(SAItemTiers.EMERALD));
+	public static RegistryObject<Item> woodComplexTool = ITEMS.register("wood_complex_tool", () -> new ComplexTool(Tiers.WOOD));
+	public static RegistryObject<Item> stoneComplexTool = ITEMS.register("stone_complex_tool", () -> new ComplexTool(Tiers.STONE));
+	public static RegistryObject<Item> ironComplexTool = ITEMS.register("iron_complex_tool", () -> new ComplexTool(Tiers.IRON));
+	public static RegistryObject<Item> goldComplexTool = ITEMS.register("gold_complex_tool", () -> new ComplexTool(Tiers.GOLD));
+	public static RegistryObject<Item> diamondComplexTool = ITEMS.register("diamond_complex_tool", () -> new ComplexTool(Tiers.DIAMOND));
+	public static RegistryObject<Item> netheriteComplexTool = ITEMS.register("netherite_complex_tool", () -> new ComplexTool(Tiers.NETHERITE));
+	public static RegistryObject<Item> jadeComplexTool = ITEMS.register("jade_complex_tool", () -> new ComplexTool(SAItemTiers.JADE));
 	public static RegistryObject<Item> rubyComplexTool = ITEMS.register("ruby_complex_tool", () -> new ComplexTool(SAItemTiers.RUBY));
 	public static RegistryObject<Item> dragonComplexTool = ITEMS.register("dragon_complex_tool", () -> new ComplexTool(SAItemTiers.DRAGON));
 	public static RegistryObject<Item> xrayComplexTool = ITEMS.register("xray_complex_tool", () -> new ComplexTool(SAItemTiers.XRAY));
@@ -215,74 +212,78 @@ public class SAItems {
 	public static RegistryObject<BowItem> tntBow = ITEMS.register("tnt_bow", TntBow::new);
 
 	//盔甲
-	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head", () -> new OrdinaryArms(SAArmorMaterials.RUBY, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> rubyChest = ITEMS.register("ruby_chest", () -> new OrdinaryArms(SAArmorMaterials.RUBY, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> rubyLegs = ITEMS.register("ruby_legs", () -> new OrdinaryArms(SAArmorMaterials.RUBY, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> rubyFeet = ITEMS.register("ruby_feet", () -> new OrdinaryArms(SAArmorMaterials.RUBY, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> emeraldHead = ITEMS.register("emerald_head", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> emeraldChest = ITEMS.register("emerald_chest", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> emeraldLegs = ITEMS.register("emerald_legs", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> emeraldFeet = ITEMS.register("emerald_feet", () -> new OrdinaryArms(SAArmorMaterials.EMERALD, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> spaceHead = ITEMS.register("space_head", () -> new SpaceArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> spaceChest = ITEMS.register("space_chest", () -> new SpaceArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> spaceLegs = ITEMS.register("space_legs", () -> new SpaceArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> spaceFeet = ITEMS.register("space_feet", () -> new SpaceArms(EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> opHead = ITEMS.register("op_head", () -> new OpArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> opChest = ITEMS.register("op_chest", () -> new OpArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> opLegs = ITEMS.register("op_legs", () -> new OpArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> opFeet = ITEMS.register("op_feet", () -> new OpArms(EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> dragonHead = ITEMS.register("dragon_head", () -> new DragonArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> dragonChest = ITEMS.register("dragon_chest", () -> new DragonArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> dragonLegs = ITEMS.register("dragon_legs", () -> new DragonArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> dragonFeet = ITEMS.register("dragon_feet", () -> new DragonArms(EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> totemHead = ITEMS.register("totem_head", () -> new TotemArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> totemChest = ITEMS.register("totem_chest", () -> new TotemArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> totemLegs = ITEMS.register("totem_legs", () -> new TotemArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> totemFeet = ITEMS.register("totem_feet", () -> new TotemArms(EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> glowstoneHead = ITEMS.register("glowstone_head", () -> new GlowstoneArms(EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> glowstoneChest = ITEMS.register("glowstone_chest", () -> new GlowstoneArms(EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> glowstoneLegs = ITEMS.register("glowstone_legs", () -> new GlowstoneArms(EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> glowstoneFeet = ITEMS.register("glowstone_feet", () -> new GlowstoneArms(EquipmentSlotType.FEET));
+	public static RegistryObject<ArmorItem> rubyHead = ITEMS.register("ruby_head", () -> new OrdinaryArms(SAArmorMaterials.RUBY, Type.HELMET));
+	public static RegistryObject<ArmorItem> rubyChest = ITEMS.register("ruby_chest", () -> new OrdinaryArms(SAArmorMaterials.RUBY, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> rubyLegs = ITEMS.register("ruby_legs", () -> new OrdinaryArms(SAArmorMaterials.RUBY, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> rubyFeet = ITEMS.register("ruby_feet", () -> new OrdinaryArms(SAArmorMaterials.RUBY, Type.BOOTS));
+	public static RegistryObject<ArmorItem> jadeHead = ITEMS.register("jade_head", () -> new OrdinaryArms(SAArmorMaterials.JADE, Type.HELMET));
+	public static RegistryObject<ArmorItem> jadeChest = ITEMS.register("jade_chest", () -> new OrdinaryArms(SAArmorMaterials.JADE, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> jadeLegs = ITEMS.register("jade_legs", () -> new OrdinaryArms(SAArmorMaterials.JADE, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> jadeFeet = ITEMS.register("jade_feet", () -> new OrdinaryArms(SAArmorMaterials.JADE, Type.BOOTS));
+	public static RegistryObject<ArmorItem> spaceHead = ITEMS.register("space_head", () -> new SpaceArms(Type.HELMET));
+	public static RegistryObject<ArmorItem> spaceChest = ITEMS.register("space_chest", () -> new SpaceArms(Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> spaceLegs = ITEMS.register("space_legs", () -> new SpaceArms(Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> spaceFeet = ITEMS.register("space_feet", () -> new SpaceArms(Type.BOOTS));
+	public static RegistryObject<ArmorItem> opHead = ITEMS.register("op_head", () -> new OpArms(Type.HELMET));
+	public static RegistryObject<ArmorItem> opChest = ITEMS.register("op_chest", () -> new OpArms(Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> opLegs = ITEMS.register("op_legs", () -> new OpArms(Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> opFeet = ITEMS.register("op_feet", () -> new OpArms(Type.BOOTS));
+	public static RegistryObject<ArmorItem> dragonHead = ITEMS.register("dragon_head", () -> new DragonArms(Type.HELMET));
+	public static RegistryObject<ArmorItem> dragonChest = ITEMS.register("dragon_chest", () -> new DragonArms(Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> dragonLegs = ITEMS.register("dragon_legs", () -> new DragonArms(Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> dragonFeet = ITEMS.register("dragon_feet", () -> new DragonArms(Type.BOOTS));
+	public static RegistryObject<ArmorItem> totemHead = ITEMS.register("totem_head", () -> new TotemArms(Type.HELMET));
+	public static RegistryObject<ArmorItem> totemChest = ITEMS.register("totem_chest", () -> new TotemArms(Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> totemLegs = ITEMS.register("totem_legs", () -> new TotemArms(Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> totemFeet = ITEMS.register("totem_feet", () -> new TotemArms(Type.BOOTS));
+	public static RegistryObject<ArmorItem> glowstoneHead = ITEMS.register("glowstone_head", () -> new GlowstoneArms(Type.HELMET));
+	public static RegistryObject<ArmorItem> glowstoneChest = ITEMS.register("glowstone_chest", () -> new GlowstoneArms(Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> glowstoneLegs = ITEMS.register("glowstone_legs", () -> new GlowstoneArms(Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> glowstoneFeet = ITEMS.register("glowstone_feet", () -> new GlowstoneArms(Type.BOOTS));
 
-	public static RegistryObject<ArmorItem> xrayHead = ITEMS.register("xray_head", () -> new OrdinaryArms(SAArmorMaterials.XRAY, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> xrayChest = ITEMS.register("xray_chest", () -> new OrdinaryArms(SAArmorMaterials.XRAY, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> xrayLegs = ITEMS.register("xray_legs", () -> new OrdinaryArms(SAArmorMaterials.XRAY, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> xrayFeet = ITEMS.register("xray_feet", () -> new OrdinaryArms(SAArmorMaterials.XRAY, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> superXrayHead = ITEMS.register("super_xray_head", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> superXrayChest = ITEMS.register("super_xray_chest", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> superXrayLegs = ITEMS.register("super_xray_legs", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> superXrayFeet = ITEMS.register("super_xray_feet", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> superHead = ITEMS.register("super_head", () -> new OrdinaryArms(SAArmorMaterials.SUPER, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> superChest = ITEMS.register("super_chest", () -> new OrdinaryArms(SAArmorMaterials.SUPER, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> superLegs = ITEMS.register("super_legs", () -> new OrdinaryArms(SAArmorMaterials.SUPER, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> superFeet = ITEMS.register("super_feet", () -> new OrdinaryArms(SAArmorMaterials.SUPER, EquipmentSlotType.FEET));
-	public static RegistryObject<ArmorItem> ultraHead = ITEMS.register("ultra_head", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, EquipmentSlotType.HEAD));
-	public static RegistryObject<ArmorItem> ultraChest = ITEMS.register("ultra_chest", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, EquipmentSlotType.CHEST));
-	public static RegistryObject<ArmorItem> ultraLegs = ITEMS.register("ultra_legs", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, EquipmentSlotType.LEGS));
-	public static RegistryObject<ArmorItem> ultraFeet = ITEMS.register("ultra_feet", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, EquipmentSlotType.FEET));
+	public static RegistryObject<ArmorItem> xrayHead = ITEMS.register("xray_head", () -> new OrdinaryArms(SAArmorMaterials.XRAY, Type.HELMET));
+	public static RegistryObject<ArmorItem> xrayChest = ITEMS.register("xray_chest", () -> new OrdinaryArms(SAArmorMaterials.XRAY, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> xrayLegs = ITEMS.register("xray_legs", () -> new OrdinaryArms(SAArmorMaterials.XRAY, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> xrayFeet = ITEMS.register("xray_feet", () -> new OrdinaryArms(SAArmorMaterials.XRAY, Type.BOOTS));
+	public static RegistryObject<ArmorItem> superXrayHead = ITEMS.register("super_xray_head", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, Type.HELMET));
+	public static RegistryObject<ArmorItem> superXrayChest = ITEMS.register("super_xray_chest", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> superXrayLegs = ITEMS.register("super_xray_legs", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> superXrayFeet = ITEMS.register("super_xray_feet", () -> new OrdinaryArms(SAArmorMaterials.SUPER_XRAY, Type.BOOTS));
+	public static RegistryObject<ArmorItem> superHead = ITEMS.register("super_head", () -> new OrdinaryArms(SAArmorMaterials.SUPER, Type.HELMET));
+	public static RegistryObject<ArmorItem> superChest = ITEMS.register("super_chest", () -> new OrdinaryArms(SAArmorMaterials.SUPER, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> superLegs = ITEMS.register("super_legs", () -> new OrdinaryArms(SAArmorMaterials.SUPER, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> superFeet = ITEMS.register("super_feet", () -> new OrdinaryArms(SAArmorMaterials.SUPER, Type.BOOTS));
+	public static RegistryObject<ArmorItem> ultraHead = ITEMS.register("ultra_head", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, Type.HELMET));
+	public static RegistryObject<ArmorItem> ultraChest = ITEMS.register("ultra_chest", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, Type.CHESTPLATE));
+	public static RegistryObject<ArmorItem> ultraLegs = ITEMS.register("ultra_legs", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, Type.LEGGINGS));
+	public static RegistryObject<ArmorItem> ultraFeet = ITEMS.register("ultra_feet", () -> new OrdinaryArms(SAArmorMaterials.ULTRA, Type.BOOTS));
 
 	
 	//注册方块物品
 	public static RegistryObject<BlockItem> rubyOre = ITEMS.register("ruby_ore",
 			() -> new SABlockItem(SABlocks.rubyOre.get(), new Item.Properties()));
+	public static RegistryObject<BlockItem> netherRubyOre = ITEMS.register("nether_ruby_ore",
+			() -> new SABlockItem(SABlocks.netherRubyOre.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> rubyBlock = ITEMS.register("ruby_block",
 			() -> new BlockItem(SABlocks.rubyBlock.get(), new Item.Properties()));
-	public static RegistryObject<BlockItem> emeraldIngotBlock = ITEMS.register("emerald_ingot_block",
-			() -> new BlockItem(SABlocks.emeraldIngotBlock.get(), new Item.Properties()));
-	public static RegistryObject<BlockItem> emeraldIngotOre = ITEMS.register("emerald_ingot_ore",
-			() -> new BlockItem(SABlocks.emeraldIngotOre.get(), new Item.Properties()));
+	public static RegistryObject<BlockItem> jadeBlock = ITEMS.register("jade_block",
+			() -> new BlockItem(SABlocks.jadeBlock.get(), new Item.Properties()));
+	public static RegistryObject<BlockItem> jadeOre = ITEMS.register("jade_ore",
+			() -> new BlockItem(SABlocks.jadeOre.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> spaceBlock = ITEMS.register("space_block",
 			() -> new BlockItem(SABlocks.spaceBlock.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> spaceOre = ITEMS.register("space_ore",
 			() -> new BlockItem(SABlocks.spaceOre.get(), new Item.Properties()));
+	public static RegistryObject<BlockItem> deepslateSpaceOre = ITEMS.register("deepslate_space_ore",
+			() -> new BlockItem(SABlocks.deepslateSpaceOre.get(), new Item.Properties()));
+	public static RegistryObject<BlockItem> endSpaceOre = ITEMS.register("end_space_ore",
+			() -> new BlockItem(SABlocks.endSpaceOre.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> fragileBedrock = ITEMS.register("fragile_bedrock",
 			() -> new BlockItem(SABlocks.fragileBedrock.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> dragonBlock = ITEMS.register("dragon_block",
 			() -> new BlockItem(SABlocks.dragonBlock.get(), new Item.Properties()));
 	public static RegistryObject<BlockItem> dragonOre = ITEMS.register("dragon_ore",
 			() -> new BlockItem(SABlocks.dragonOre.get(), new Item.Properties()));
-	public static RegistryObject<BlockItem> endSpaceOre = ITEMS.register("end_space_ore",
-			() -> new BlockItem(SABlocks.endSpaceOre.get(), new Item.Properties()));
 
 	public static RegistryObject<BlockItem> xrayBlock = ITEMS.register("xray_block",
 			() -> new BlockItem(SABlocks.xrayBlock.get(), new Item.Properties()));

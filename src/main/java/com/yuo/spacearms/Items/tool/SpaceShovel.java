@@ -1,20 +1,27 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CampfireBlock;
-import net.minecraft.block.GrassBlock;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gameevent.GameEvent.Context;
+import net.minecraftforge.common.ToolActions;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class SpaceShovel extends ShovelItem {
@@ -22,86 +29,78 @@ public class SpaceShovel extends ShovelItem {
 	private final ItemHander handler;
 
 	public SpaceShovel() {
-		super(SAItemTiers.SPACE, -6, -3.0f, new Properties().group(SATabs.spaceArms0).isImmuneToFire());
+		super(SAItemTiers.SPACE, -6, -3.0f, new Properties().fireResistant());
 		this.handler = new ItemHander();
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		ItemHander.addInfo(stack, tooltip);
-	}
-
-	@Override
-	public boolean canHarvestBlock(BlockState blockIn) {
-		int i = this.getTier().getHarvestLevel();
-		if (blockIn.getHarvestTool() == ToolType.SHOVEL) {
-			return i >= blockIn.getHarvestLevel();
-		}
-		return false;
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		ItemHander.addInfo(stack, components);
 	}
 
 	//切换工具模式 开启或关闭范围挖掘
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		return ItemHander.changeMode(worldIn, playerIn, handIn);
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		return ItemHander.changeMode(level, player, hand);
 	}
 
 	@Override
-	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, PlayerEntity player) {
+	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player) {
 		return ItemHander.toolBreakBlock(itemstack, player, pos, handler, 1);
 	}
 
 	@Override
-	public ActionResultType onItemUse(ItemUseContext context) {
-		World world = context.getWorld();
-		BlockPos blockpos = context.getPos();
-		BlockState blockstate = world.getBlockState(blockpos);
-		if (context.getFace() == Direction.DOWN) {
-			return ActionResultType.PASS;
+	public InteractionResult useOn(UseOnContext context) {
+		Level level = context.getLevel();
+		BlockPos blockpos = context.getClickedPos();
+		BlockState blockstate = level.getBlockState(blockpos);
+		if (context.getClickedFace() == Direction.DOWN) {
+			return InteractionResult.PASS;
 		} else {
-			PlayerEntity playerentity = context.getPlayer();
-			BlockState blockstate1 = blockstate.getToolModifiedState(world, blockpos, playerentity, context.getItem(), net.minecraftforge.common.ToolType.SHOVEL);
+			Player player = context.getPlayer();
+			BlockState blockstate1 = blockstate.getToolModifiedState(context, ToolActions.SHOVEL_FLATTEN, false);
 			BlockState blockstate2 = null;
-			if (blockstate1 != null && world.isAirBlock(blockpos.up())) {
-				world.playSound(playerentity, blockpos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
+				level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
 				blockstate2 = blockstate1;
-			} else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.get(CampfireBlock.LIT)) {
-				if (!world.isRemote()) {
-					world.playEvent(null, 1009, blockpos, 0);
+			} else if (blockstate.getBlock() instanceof CampfireBlock && (Boolean)blockstate.getValue(CampfireBlock.LIT)) {
+				if (!level.isClientSide()) {
+					level.levelEvent((Player)null, 1009, blockpos, 0);
 				}
 
-				CampfireBlock.extinguish(world, blockpos, blockstate);
-				blockstate2 = blockstate.with(CampfireBlock.LIT, Boolean.FALSE);
+				CampfireBlock.dowse(context.getPlayer(), level, blockpos, blockstate);
+				blockstate2 = (BlockState)blockstate.setValue(CampfireBlock.LIT, false);
 			}
 
 			if (blockstate2 != null) {
-				if (!world.isRemote) {
-					if (context.getItem().getOrCreateTag().getBoolean("mode")){
-						world.setBlockState(blockpos, blockstate2, 11);
+				if (!level.isClientSide) {
+					if (context.getItemInHand().getOrCreateTag().getBoolean("mode")){
+						level.setBlock(blockpos, blockstate2, 11);
 					}else { //正常形态使用才能范围更改
-						Iterable<BlockPos> allInBoxMutable = BlockPos.getAllInBoxMutable(blockpos.add(-1, 0, -1), blockpos.add(1, 0, 1));
+						Iterable<BlockPos> allInBoxMutable = BlockPos.betweenClosed(blockpos.offset(-1, 0, -1), blockpos.offset(1, 0, 1));
 						for (BlockPos pos : allInBoxMutable) {
-							BlockState state = world.getBlockState(pos);
-							if (state.getBlock() instanceof GrassBlock && world.isAirBlock(pos.up())){ //当前方块是草方块，并且上方是空气
-								world.setBlockState(pos, blockstate2, 11);
+							BlockState state = level.getBlockState(pos);
+							if (state.getBlock() instanceof GrassBlock && level.getBlockState(pos.above()).isAir()){ //当前方块是草方块，并且上方是空气
+								level.setBlock(pos, blockstate2, 11);
 							}
 						}
 					}
-					if (playerentity != null) {
-						context.getItem().damageItem(1, playerentity, (player) -> {
-							player.sendBreakAnimation(context.getHand());
+					level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, Context.of(player, blockstate2));
+					if (player != null) {
+						context.getItemInHand().hurtAndBreak(1, player, (p_43122_) -> {
+							p_43122_.broadcastBreakEvent(context.getHand());
 						});
 					}
 				}
 
-				return ActionResultType.func_233537_a_(world.isRemote);
+				return InteractionResult.sidedSuccess(level.isClientSide);
 			} else {
-				return ActionResultType.PASS;
+				return InteractionResult.PASS;
 			}
 		}
 	}

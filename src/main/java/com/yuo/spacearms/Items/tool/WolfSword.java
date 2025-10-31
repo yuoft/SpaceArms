@@ -12,7 +12,7 @@ public class WolfSword extends SwordItem {
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack stack) {
+	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 }

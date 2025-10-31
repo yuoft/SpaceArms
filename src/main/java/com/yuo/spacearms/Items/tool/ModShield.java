@@ -6,14 +6,19 @@ import com.yuo.spacearms.Entity.Render.ShieldTileEntityRenderer;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
 import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
@@ -44,19 +49,18 @@ public class ModShield extends ShieldItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if (entityIn instanceof PlayerEntity){
-            PlayerEntity player = (PlayerEntity) entityIn;
-            ItemStack offhand = player.getHeldItemOffhand();
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean b) {
+        if (entity instanceof Player player){
+            ItemStack offhand = player.getOffhandItem();
             if (offhand.getItem() == SAItems.obsidianShield.get()){
-                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 20, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 0));
             }
         }
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
-        return slot == EquipmentSlotType.OFFHAND ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        return slot == EquipmentSlot.OFFHAND ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
     }
 
     public ShieldType getShieldType() {
@@ -64,15 +68,20 @@ public class ModShield extends ShieldItem {
     }
 
     @Override
-    public int getItemEnchantability() {
+    public int getEnchantmentValue(ItemStack stack) {
         return shieldType.getEnchantAbility();
     }
 
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return this.shieldType.getRepairable().contains(repair.getItem()) || super.getIsRepairable(toRepair, repair);
+    @Override
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+        return repair.is(this.shieldType.getRepairable()) || super.isValidRepairItem(toRepair, repair);
     }
 
     @Override
+    public boolean canDisableShield(ItemStack stack, ItemStack shield, LivingEntity entity, LivingEntity attacker) {
+        return super.canDisableShield(stack, shield, entity, attacker);
+    }
+
     public boolean isShield(ItemStack stack, @Nullable LivingEntity entity) {
         return true;
     }

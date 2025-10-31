@@ -7,7 +7,7 @@ import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Proxy.ClientProxy;
 import com.yuo.spacearms.Proxy.CommonProxy;
 import com.yuo.spacearms.Proxy.IProxy;
-import com.yuo.spacearms.world.OreGen;
+import com.yuo.spacearms.world.DataGenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,8 +27,6 @@ public class SpaceArms {
         SATabs.TABS.register(modEventBus);
         SAEntitys.ENTITY_TYPES.register(modEventBus);
         EffectRegistry.EFFECTS.register(modEventBus);
-
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::generateOres); //注册矿物生成
         proxy.registerHandlers();
     }
 

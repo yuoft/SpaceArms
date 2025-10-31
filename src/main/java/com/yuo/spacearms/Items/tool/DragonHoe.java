@@ -1,17 +1,15 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.SATabs;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -19,23 +17,25 @@ import java.util.List;
 public class DragonHoe extends HoeItem {
 
 	public DragonHoe() {
-		super(SAItemTiers.DRAGON, -3, 0, new Properties().group(SATabs.spaceArms0));
+		super(SAItemTiers.DRAGON, -3, 0, new Properties());
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("spacearms.text.itemInfo.dragon_tool"));
+	public void appendHoverText(ItemStack stack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag flag) {
+		components.add(Component.translatable("spacearms.text.itemInfo.dragon_tool"));
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
-		if (!worldIn.isRemote){
-			ToolType toolType = state.getHarvestTool();
-			if (entityLiving instanceof PlayerEntity && toolType == ToolType.HOE){
-				PlayerEntity player = (PlayerEntity) entityLiving;
+	public boolean mineBlock(ItemStack stack, Level worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
+		mineBlockExp(stack, worldIn, state, pos, entityLiving);
+		return super.mineBlock(stack, worldIn, state, pos, entityLiving);
+	}
+
+	public static void mineBlockExp(ItemStack stack, Level worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
+		if (!worldIn.isClientSide){
+			if (entityLiving instanceof Player player && stack.isCorrectToolForDrops(state)){
 				ToolHelper.spawnExp(player, worldIn, stack, pos);
 			}
 		}
-		return true;
 	}
 }

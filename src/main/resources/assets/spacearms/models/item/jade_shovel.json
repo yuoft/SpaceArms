@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "spacearms:item/tool/emerald_axe"
+    "layer0": "spacearms:item/tool/jade_shovel"
   }
 }
