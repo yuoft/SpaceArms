@@ -7,25 +7,25 @@
   ],
   "key": {
     "x": {
-      "item": "spacearms:emerald_sword"
+      "item": "spacearms:jade_sword"
     },
     "y": {
-      "item": "spacearms:emerald_pickaxe"
+      "item": "spacearms:jade_pickaxe"
     },
     "z": {
-      "item": "spacearms:emerald_axe"
+      "item": "spacearms:jade_axe"
     },
     "m": {
-      "item": "spacearms:emerald_shovel"
+      "item": "spacearms:jade_shovel"
     },
     "n": {
-      "item": "spacearms:emerald_hoe"
+      "item": "spacearms:jade_hoe"
     },
     "o": {
       "item": "spacearms:iron_stick"
     }
   },
   "result": {
-    "item": "spacearms:emerald_complex_tool"
+    "item": "spacearms:jade_complex_tool"
   }
 }

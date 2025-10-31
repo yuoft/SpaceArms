@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item":"minecraft:bedrock"
+				"item":["minecraft:bedrock"]
 			}
 		]
       }

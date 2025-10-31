@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " y ",
-    " x ",
+    "yy ",
+    "yx ",
     " x "
   ],
   "key": {
     "y": {
-      "item": "spacearms:emerald_ingot"
+      "item": "spacearms:jade"
     },
 	"x": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "spacearms:emerald_shovel"
+    "item": "spacearms:jade_axe"
   }
 }

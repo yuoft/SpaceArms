@@ -1,5 +1,5 @@
 {
-  "parent": "spacearms:ruby_ingot",
+  "parent": "spacearms:ruby",
   "display": { 
     "icon": { 
       "item": "spacearms:super_apple"
@@ -17,7 +17,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_apple"
+          "item": ["spacearms:super_apple"]
         }
       }
     },
@@ -25,7 +25,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_beef"
+          "item":["spacearms:super_beef"]
         }
       }
     },
@@ -33,7 +33,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_beetroot"
+          "item": ["spacearms:super_beetroot"]
         }
       }
     },
@@ -41,7 +41,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_bread"
+          "item": ["spacearms:super_bread"]
         }
       }
     },
@@ -49,7 +49,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_carrot"
+          "item": ["spacearms:super_carrot"]
         }
       }
     },
@@ -57,7 +57,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_chicken"
+          "item": ["spacearms:super_chicken"]
         }
       }
     },
@@ -65,7 +65,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_cod"
+          "item": ["spacearms:super_cod"]
         }
       }
     },
@@ -73,7 +73,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_mutton"
+          "item": ["spacearms:super_mutton"]
         }
       }
     },
@@ -81,7 +81,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_pork"
+          "item": ["spacearms:super_pork"]
         }
       }
     },
@@ -89,7 +89,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_potato"
+          "item": ["spacearms:super_potato"]
         }
       }
     },
@@ -97,7 +97,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_rabbit"
+          "item": ["spacearms:super_rabbit"]
         }
       }
     }

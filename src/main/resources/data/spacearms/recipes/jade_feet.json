@@ -7,10 +7,10 @@
   ],
   "key": {
     "x": {
-      "item": "spacearms:emerald_ingot"
+      "item": "spacearms:jade"
     }
   },
   "result": {
-    "item": "spacearms:emerald_feet"
+    "item": "spacearms:jade_feet"
   }
 }

@@ -17,7 +17,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": { 
 		"items": [{
-				"item":"spacearms:space_core"
+				"item":["spacearms:space_core"]
 			}]
       }
     }

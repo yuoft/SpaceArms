@@ -1,13 +1,13 @@
 {
   "display": { 
     "icon": { 
-      "item": "spacearms:ruby_ingot"
+      "item": "spacearms:ruby"
     },
     "title": {
-		"translate": "advancements.spacearms.ruby_ingot.title"
+		"translate": "advancements.spacearms.ruby.title"
 	},
     "description": {
-		"translate": "advancements.spacearms.ruby_ingot.desc"
+		"translate": "advancements.spacearms.ruby.desc"
 	},
     "frame": "task",
     "background": "spacearms:textures/block/space_ore.png"
@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item": "spacearms:ruby_ingot"
+				"item": ["spacearms:ruby"]
 			}
 		]
       }

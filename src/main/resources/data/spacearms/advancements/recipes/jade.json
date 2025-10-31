@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "jade": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": ["spacearms:jade"]
+          }]
+      }
+    },
+    "jade_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+            "item": ["spacearms:jade_ore"]
+          }]
+      }
+    }
+  },
+  "rewards":{
+    "recipes": [
+      "spacearms:jade_axe",
+      "spacearms:jade_block",
+      "spacearms:un_jade_block",
+      "spacearms:jade_chest",
+      "spacearms:jade_feet",
+      "spacearms:jade_head",
+      "spacearms:jade_ingot",
+      "spacearms:jade_legs",
+      "spacearms:jade_pickaxe",
+      "spacearms:jade_sword"
+    ]
+  },
+ "requirements": [
+   [
+     "jade",
+     "jade_ore"
+   ]
+ ]
+}

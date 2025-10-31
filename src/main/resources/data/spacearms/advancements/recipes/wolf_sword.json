@@ -4,7 +4,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": "minecraft:nether_star"
+            "item": ["minecraft:nether_star"]
           }]
       }
     },
@@ -12,7 +12,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": "minecraft:dragon_egg"
+            "item": ["minecraft:dragon_egg"]
           }]
       }
     }

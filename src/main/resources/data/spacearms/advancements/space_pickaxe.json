@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item":"spacearms:space_pickaxe"
+				"item":["spacearms:space_pickaxe"]
 			}
 		]
       }

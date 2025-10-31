@@ -1,5 +1,5 @@
 {
-  "parent": "spacearms:emerald_ingot",
+  "parent": "spacearms:jade",
   "display": { 
     "icon": { 
       "item": "spacearms:dragon_crystal"
@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item":"spacearms:dragon_crystal"
+				"item":["spacearms:dragon_crystal"]
 			}
 		]
       }

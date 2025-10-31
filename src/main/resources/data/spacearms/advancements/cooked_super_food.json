@@ -17,7 +17,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_apple"
+          "item": ["spacearms:cooked_super_apple"]
         }
       }
     },
@@ -25,7 +25,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_beef"
+          "item": ["spacearms:cooked_super_beef"]
         }
       }
     },
@@ -33,7 +33,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_beetroot"
+          "item": ["spacearms:cooked_super_beetroot"]
         }
       }
     },
@@ -41,7 +41,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_bread"
+          "item": ["spacearms:cooked_super_bread"]
         }
       }
     },
@@ -49,7 +49,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_carrot"
+          "item": ["spacearms:cooked_super_carrot"]
         }
       }
     },
@@ -57,7 +57,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_chicken"
+          "item": ["spacearms:cooked_super_chicken"]
         }
       }
     },
@@ -65,7 +65,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_cod"
+          "item": ["spacearms:cooked_super_cod"]
         }
       }
     },
@@ -73,7 +73,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_potato"
+          "item": ["spacearms:cooked_super_potato"]
         }
       }
     },
@@ -81,7 +81,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_mutton"
+          "item": ["spacearms:cooked_super_mutton"]
         }
       }
     },
@@ -89,7 +89,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_pork"
+          "item": ["spacearms:cooked_super_pork"]
         }
       }
     },
@@ -97,7 +97,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:cooked_super_rabbit"
+          "item": ["spacearms:cooked_super_rabbit"]
         }
       }
     },
@@ -105,7 +105,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_beetroot_soup"
+          "item": ["spacearms:super_beetroot_soup"]
         }
       }
     },
@@ -113,7 +113,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_cookie"
+          "item": ["spacearms:super_cookie"]
         }
       }
     },
@@ -121,7 +121,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_rabbit_stew"
+          "item": ["spacearms:super_rabbit_stew"]
         }
       }
     },
@@ -129,7 +129,7 @@
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-          "item": "spacearms:super_pumpkin_pie"
+          "item": ["spacearms:super_pumpkin_pie"]
         }
       }
     }

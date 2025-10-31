@@ -302,7 +302,7 @@ public class EventHandler {
         }
     }
     //铁砧配方
-    @SubscribeEvent
+//    @SubscribeEvent
     public static void NewRecipes(AnvilUpdateEvent event) {
         ItemStack stack=event.getLeft();
         ItemStack stack2=event.getRight();

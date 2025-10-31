@@ -6,6 +6,7 @@ import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -16,7 +17,7 @@ public class SATabs {
 			.title(Component.translatable("itemGroup.tab.SpaceArms0"))
 			.icon(() -> SAItems.jade.get().getDefaultInstance())
 			.displayItems((parameters, output) -> {
-				for (RegistryObject<Item> entry : EndlessItems.ITEMS.getEntries()) {
+				for (RegistryObject<Item> entry : SAItems.ITEMS.getEntries()) {
 					if (entry.get() instanceof DiggerItem || entry.get() instanceof ArmorItem || entry.get() instanceof TieredItem
 							|| entry.get() instanceof ProjectileWeaponItem) {
 					} else output.accept(new ItemStack(entry.get()));
@@ -26,7 +27,7 @@ public class SATabs {
 			.title(Component.translatable("itemGroup.tab.SpaceArms1"))
 			.icon(() -> SAItems.opSword.get().getDefaultInstance())
 			.displayItems((parameters, output) -> {
-				for (RegistryObject<Item> entry : EndlessItems.ITEMS.getEntries()) {
+				for (RegistryObject<Item> entry : SAItems.ITEMS.getEntries()) {
 					if (entry.get() instanceof DiggerItem || entry.get() instanceof ArmorItem || entry.get() instanceof TieredItem
 							|| entry.get() instanceof ProjectileWeaponItem) {
 						output.accept(new ItemStack(entry.get()));

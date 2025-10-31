@@ -1,5 +1,5 @@
 {
-  "parent": "spacearms:emerald_ingot",
+  "parent": "spacearms:jade",
   "display": { 
     "icon": { 
       "item": "spacearms:tianhuo"
@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item":"spacearms:tianhuo"
+				"item":["spacearms:tianhuo"]
 			}
 		]
       }

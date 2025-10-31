@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "spacearms:emerald_ingot_block"
+          "name": "spacearms:jade_block"
         }
       ],
       "conditions": [

@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "spacearms:complex_powder"
   },
-  "result": "spacearms:emerald_ingot",
+  "result": "spacearms:jade",
   "experience": 0.5,
   "cookingtime": 250
 }

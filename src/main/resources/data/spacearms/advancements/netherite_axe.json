@@ -1,5 +1,5 @@
 {
-  "parent": "spacearms:emerald_ingot",
+  "parent": "spacearms:jade",
   "display": { 
     "icon": { 
       "item": "minecraft:netherite_axe"
@@ -17,7 +17,7 @@
       "trigger": "minecraft:item_durability_changed",
       "conditions": {
         "item": {
-          "item": "minecraft:netherite_axe"
+          "item": ["minecraft:netherite_axe"]
         },
         "durability": 0
       }

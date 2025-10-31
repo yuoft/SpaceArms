@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "xxx",
+    "x x",
     "xxx",
     "xxx"
   ],
   "key": {
-	"x": {
-      "item": "spacearms:emerald_ingot"
+    "x": {
+      "item": "spacearms:jade"
     }
   },
   "result": {
-    "item": "spacearms:emerald_ingot_block"
+    "item": "spacearms:jade_chest"
   }
 }

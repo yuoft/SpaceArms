@@ -18,16 +18,16 @@
       "conditions": {
         "items": [
           {
-            "item": "spacearms:op_head"
+            "item": ["spacearms:op_head"]
           },
           {
-            "item": "spacearms:op_chest"
+            "item": ["spacearms:op_chest"]
           },
           {
-            "item": "spacearms:op_legs"
+            "item": ["spacearms:op_legs"]
           },
           {
-            "item": "spacearms:op_feet"
+            "item": ["spacearms:op_feet"]
           }
         ]
       }

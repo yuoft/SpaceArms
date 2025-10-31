@@ -1,14 +1,14 @@
 {
-  "parent": "spacearms:ruby_ingot",
+  "parent": "spacearms:ruby",
   "display": { 
     "icon": { 
-      "item": "spacearms:emerald_ingot"
+      "item": "spacearms:jade"
     },
     "title": {
-		"translate": "advancements.spacearms.emerald_ingot.title"
+		"translate": "advancements.spacearms.jade.title"
 	},
     "description": {
-		"translate": "advancements.spacearms.emerald_ingot.desc"
+		"translate": "advancements.spacearms.jade.desc"
 	},
     "frame": "task"
   },
@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item": "spacearms:emerald_ingot"					
+				"item": ["spacearms:jade"]
 			}
 		]
       }

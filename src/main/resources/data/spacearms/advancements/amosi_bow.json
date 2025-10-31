@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item": "spacearms:amosi_bow"
+				"item": ["spacearms:amosi_bow"]
 			}
 		]
       }

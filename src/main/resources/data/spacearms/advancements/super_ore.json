@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item":"spacearms:super_ore"
+				"item":["spacearms:super_ore"]
 			}
 		]
       }

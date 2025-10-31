@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "spacearms:space_pickaxe"
+  },
+  "addition": {
+    "item": "spacearms:space_core"
+  },
+  "result": {
+    "item": "spacearms:super_space_pickaxe"
+  }
+}

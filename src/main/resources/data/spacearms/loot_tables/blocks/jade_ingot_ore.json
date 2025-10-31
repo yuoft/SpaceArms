@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "spacearms:emerald_ingot_ore"
+              "name": "spacearms:jade_ore"
             },
             {
               "type": "minecraft:item",
@@ -38,7 +38,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "spacearms:emerald_powder"
+              "name": "spacearms:jade_powder"
             }
           ]
         }

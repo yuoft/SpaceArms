@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-		"item": "spacearms:emerald_ingot_block"
+		"item": "spacearms:jade_block"
 	}
   ],
   "result": {
-    "item": "spacearms:emerald_ingot",
+    "item": "spacearms:jade",
     "count": 9
   }
 }
