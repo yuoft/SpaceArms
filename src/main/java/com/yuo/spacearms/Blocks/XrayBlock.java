@@ -11,7 +11,7 @@ public class XrayBlock extends Block {
 
 	public XrayBlock(int harvestLevel, float hardness, float resistancelln) {
 		super(Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).sound(SoundType.GLASS).strength(hardness, resistancelln)
-				.requiresCorrectToolForDrops().noOcclusion());
+				.requiresCorrectToolForDrops().forceSolidOn().isViewBlocking((v1, v2, v3) -> false).dynamicShape());
 	}
 
 	@Override

@@ -2,10 +2,11 @@ package com.yuo.spacearms.Items.tool;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.yuo.spacearms.Entity.Render.ShieldTileEntityRenderer;
+import com.yuo.spacearms.Client.Render.ShieldTileEntityRenderer;
 import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
-import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -19,9 +20,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 //盾牌
 public class ModShield extends ShieldItem {
@@ -36,6 +39,21 @@ public class ModShield extends ShieldItem {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ARMOR, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, SpaceArms.MOD_ID + "shield_armor", type.getProtectionValue(), AttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private ShieldTileEntityRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (renderer == null) {
+                    renderer = new ShieldTileEntityRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+                }
+                return renderer;
+            }
+        });
     }
 
     @Override

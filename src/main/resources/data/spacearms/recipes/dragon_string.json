@@ -9,5 +9,8 @@
   },
   "result": {
     "item": "spacearms:dragon_string"
+  },
+  "template": {
+    "item": "minecraft:amethyst_shard"
   }
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.RecipeType;
  */
 public class RlUtils {
     public static ResourceLocation fa(String path){
-        return ResourceLocation.fromNamespaceAndPath(Endless.MOD_ID, path);
+        return ResourceLocation.withDefaultNamespace(path);
     }
 
     public static ResourceLocation fa(String namespace, String path){

@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Event;
 
-import com.yuo.spacearms.Entity.Render.Arrow.*;
-import com.yuo.spacearms.Entity.Render.Mob.*;
+import com.yuo.spacearms.Client.Render.Arrow.*;
+import com.yuo.spacearms.Client.Render.Mob.*;
 import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.ModSpawnEgg;
 import com.yuo.spacearms.Items.SAItems;
@@ -18,24 +18,22 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = SpaceArms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientEventHandler {
-    public static final ResourceLocation IRON_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/iron_shield");
-    public static final ResourceLocation IRON_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/iron_shield_nopattern");
-    public static final ResourceLocation GOLD_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/gold_shield");
-    public static final ResourceLocation GOLD_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/gold_shield_nopattern");
-    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/diamond_shield");
-    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/diamond_shield_nopattern");
-    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/netherite_shield");
-    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/netherite_shield_nopattern");
-    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/obsidian_shield");
-    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/obsidian_shield_nopattern");
-    public static final ResourceLocation NORMAL_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa("entity/shield_base_nopattern");
+    public static final ResourceLocation IRON_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/iron_shield");
+    public static final ResourceLocation IRON_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/iron_shield_nopattern");
+    public static final ResourceLocation GOLD_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/gold_shield");
+    public static final ResourceLocation GOLD_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/gold_shield_nopattern");
+    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/diamond_shield");
+    public static final ResourceLocation DIAMOND_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/diamond_shield_nopattern");
+    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/netherite_shield");
+    public static final ResourceLocation NETHERITE_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/netherite_shield_nopattern");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/obsidian_shield");
+    public static final ResourceLocation OBSIDIAN_SHIELD_TEXTURE_NOPATTERN = RlUtils.fa(SpaceArms.MOD_ID, "entity/shield/obsidian_shield_nopattern");
 
     public static Material getShieldTexture(ShieldType type, boolean flag) {
         return switch (type) {

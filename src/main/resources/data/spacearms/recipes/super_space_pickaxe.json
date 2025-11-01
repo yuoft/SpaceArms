@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "spacearms:super_space_pickaxe"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
   }
 }

@@ -29,9 +29,14 @@ public class SpaceBlock extends Block {
 
 	//实体行走
 	@Override
-	public void entityInside(BlockState pos, Level worldIn, BlockPos blockPos, Entity entityIn) {
-		if (entityIn instanceof LivingEntity){
-			ToolHelper.TP((LivingEntity) entityIn, worldIn);
+	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+		if (entity instanceof LivingEntity living){
+			ToolHelper.TP(living, level);
 		}
+	}
+
+	@Override
+	public boolean canEntityDestroy(BlockState state, BlockGetter level, BlockPos pos, Entity entity) {
+		return super.canEntityDestroy(state, level, pos, entity);
 	}
 }
