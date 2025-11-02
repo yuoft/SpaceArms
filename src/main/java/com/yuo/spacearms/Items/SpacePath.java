@@ -17,7 +17,7 @@ import java.util.List;
 public class SpacePath extends Item {
 
 	public SpacePath() {
-		super(new Properties()); //设置物品所在 创造模式物品栏
+		super(new Properties().fireResistant()); //设置物品所在 创造模式物品栏
 	}
 
 	@Override

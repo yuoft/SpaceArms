@@ -3,17 +3,15 @@ package com.yuo.spacearms.Event;
 import com.yuo.spacearms.Items.Arms.OpArms;
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Items.NetheriteItem;
+import com.yuo.spacearms.Items.FireImmuneItem;
 import com.yuo.spacearms.Items.tool.*;
 import com.yuo.spacearms.SpaceArms;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -35,7 +33,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -297,7 +294,7 @@ public class EventHandler {
     public static void entityItemUnDeath(ItemEvent event) { //物品实体事件
         ItemEntity entityItem = event.getEntity();
         Item item = entityItem.getItem().getItem();
-        if(item instanceof OpSword || item instanceof OpArms || item instanceof WolfSword || item instanceof NetheriteItem
+        if(item instanceof OpSword || item instanceof OpArms || item instanceof WolfSword || item instanceof FireImmuneItem
                 || item instanceof OpPickaxe ) {
             entityItem.setInvulnerable(true); // 设置物品实体不会死亡
         }

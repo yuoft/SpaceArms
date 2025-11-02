@@ -1,6 +1,5 @@
 package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.SATabs;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
