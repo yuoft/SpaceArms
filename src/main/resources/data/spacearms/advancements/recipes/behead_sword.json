@@ -4,7 +4,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:blaze_bone"]
+            "items": ["spacearms:blaze_bone"]
           }]
       }
     },
@@ -12,7 +12,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:wither_bone"]
+            "items": ["spacearms:wither_bone"]
           }]
       }
     }

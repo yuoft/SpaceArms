@@ -18,7 +18,7 @@
       "conditions": { 
 		"items":[
 			{
-				"item": ["spacearms:iron_stick"]
+				"items": ["spacearms:iron_stick"]
 			}
 		]
       }

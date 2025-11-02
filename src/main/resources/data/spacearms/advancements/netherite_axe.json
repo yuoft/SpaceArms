@@ -17,7 +17,7 @@
       "trigger": "minecraft:item_durability_changed",
       "conditions": {
         "item": {
-          "item": ["minecraft:netherite_axe"]
+          "items": ["minecraft:netherite_axe"]
         },
         "durability": 0
       }

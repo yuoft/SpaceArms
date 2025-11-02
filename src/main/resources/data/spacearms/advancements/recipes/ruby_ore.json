@@ -4,7 +4,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:ruby_ore"]
+            "items": ["spacearms:ruby_ore"]
           }]
       }
     },
@@ -12,7 +12,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:ruby"]
+            "items": ["spacearms:ruby"]
           }]
       }
     }

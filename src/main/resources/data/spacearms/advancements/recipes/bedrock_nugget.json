@@ -3,29 +3,41 @@
     "bedrock_nugget": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": [{
-            "item": ["spacearms:bedrock_nugget"]
-          }]
+        "items": [
+          {
+            "items": [
+              "spacearms:bedrock_nugget"
+            ]
+          }
+        ]
       }
     },
     "bedrock_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": [{
-            "item": ["spacearms:bedrock_ingot"]
-          }]
+        "items": [
+          {
+            "items": [
+              "spacearms:bedrock_ingot"
+            ]
+          }
+        ]
       }
     },
     "bedrock_powder": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": [{
-            "item": ["spacearms:bedrock_powder"]
-          }]
+        "items": [
+          {
+            "items": [
+              "spacearms:bedrock_powder"
+            ]
+          }
+        ]
       }
     }
   },
-  "rewards":{
+  "rewards": {
     "recipes": [
       "spacearms:bedrock",
       "spacearms:op_chest",

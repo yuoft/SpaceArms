@@ -4,7 +4,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:space_path"]
+            "items": ["spacearms:space_path"]
           }]
       }
     },
@@ -12,7 +12,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:space_ore"]
+            "items": ["spacearms:space_ore"]
           }]
       }
     },
@@ -20,7 +20,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:space_block"]
+            "items": ["spacearms:space_block"]
           }]
       }
     },
@@ -28,7 +28,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [{
-            "item": ["spacearms:space_ingot"]
+            "items": ["spacearms:space_ingot"]
           }]
       }
     }

@@ -1,6 +1,5 @@
 package com.yuo.spacearms.Blocks;
 
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
