@@ -1,6 +1,7 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.SATabs;
+import com.yuo.spacearms.Items.ItemHander;
+import com.yuo.spacearms.Items.SAItemTiers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;

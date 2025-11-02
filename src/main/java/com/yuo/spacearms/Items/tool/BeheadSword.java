@@ -1,13 +1,12 @@
 package com.yuo.spacearms.Items.tool;
 
-import com.yuo.spacearms.SATabs;
+import com.yuo.spacearms.Items.SAItemTiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class BeheadSword extends SwordItem {

@@ -1,7 +1,6 @@
 package com.yuo.spacearms.Items.Arms;
 
-import com.yuo.spacearms.SATabs;
-import net.minecraft.client.renderer.EffectInstance;
+import com.yuo.spacearms.Items.SAArmorMaterials;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

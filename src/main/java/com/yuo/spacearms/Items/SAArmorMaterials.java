@@ -1,6 +1,5 @@
-package com.yuo.spacearms.Items.Arms;
+package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.SpaceArms;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;

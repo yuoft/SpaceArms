@@ -1,6 +1,5 @@
-package com.yuo.spacearms.Items.tool;
+package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.Items.SAItems;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;

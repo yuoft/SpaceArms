@@ -1,19 +1,15 @@
 package com.yuo.spacearms.Items.tool;
 
+import com.yuo.spacearms.Items.SAItemTiers;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.SATabs;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import org.checkerframework.checker.units.qual.C;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class OrdinarySword extends SwordItem {

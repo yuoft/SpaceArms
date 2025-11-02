@@ -1,7 +1,7 @@
 package com.yuo.spacearms.Entity.Arrow;
 
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Items.tool.ToolHelper;
+import com.yuo.spacearms.Items.ToolHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

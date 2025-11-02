@@ -1,6 +1,6 @@
 package com.yuo.spacearms.Items.Arms;
 
-import com.yuo.spacearms.SATabs;
+import com.yuo.spacearms.Items.SAArmorMaterials;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;

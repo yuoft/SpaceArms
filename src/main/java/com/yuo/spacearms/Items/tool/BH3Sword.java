@@ -1,12 +1,10 @@
 package com.yuo.spacearms.Items.tool;
 
 import com.yuo.spacearms.Effect.EffectRegistry;
+import com.yuo.spacearms.Items.SAItemTiers;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.SATabs;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -23,9 +21,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
-import javax.annotation.Nullable;
 import java.util.List;
-import java.util.UUID;
 
 public class BH3Sword extends SwordItem {
     public BH3Sword() {

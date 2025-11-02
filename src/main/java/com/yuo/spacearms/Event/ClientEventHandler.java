@@ -5,7 +5,7 @@ import com.yuo.spacearms.Client.Render.Mob.*;
 import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.ModSpawnEgg;
 import com.yuo.spacearms.Items.SAItems;
-import com.yuo.spacearms.Items.tool.ShieldType;
+import com.yuo.spacearms.Items.ShieldType;
 import com.yuo.spacearms.RlUtils;
 import com.yuo.spacearms.SpaceArms;
 import moze_intel.projecte.rendering.EntitySpriteRenderer;

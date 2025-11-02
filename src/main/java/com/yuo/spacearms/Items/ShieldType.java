@@ -1,6 +1,5 @@
-package com.yuo.spacearms.Items.tool;
+package com.yuo.spacearms.Items;
 
-import com.yuo.spacearms.SATabs;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;

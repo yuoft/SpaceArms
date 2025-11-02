@@ -1,5 +1,6 @@
 package com.yuo.spacearms.Items.tool;
 
+import com.yuo.spacearms.Items.SAItemTiers;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DiggerItem;

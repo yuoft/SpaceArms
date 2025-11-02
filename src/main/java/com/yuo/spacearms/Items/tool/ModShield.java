@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.yuo.spacearms.Client.Render.ShieldTileEntityRenderer;
 import com.yuo.spacearms.Items.SAItems;
+import com.yuo.spacearms.Items.ShieldType;
 import com.yuo.spacearms.SpaceArms;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
