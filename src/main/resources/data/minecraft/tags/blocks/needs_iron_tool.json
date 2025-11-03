@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "spacearms:ruby_ore",
+    "spacearms:nether_ruby_ore",
+    "spacearms:ruby_block",
+    "spacearms:jade_ore",
+    "spacearms:jade_block"
+  ]
+}

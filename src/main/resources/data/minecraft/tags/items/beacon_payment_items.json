@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "spacearms:ruby",
+    "spacearms:jade",
+    "spacearms:xray_ingot",
+    "spacearms:super_xray_ingot",
+    "spacearms:super_ingot",
+    "spacearms:ultra_ingot",
+    "spacearms:dragon_crystal",
+    "spacearms:space_ingot"
+  ]
+}

@@ -5,8 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +35,13 @@ public class SpaceBlock extends Block {
 	}
 
 	@Override
-	public boolean canEntityDestroy(BlockState state, BlockGetter level, BlockPos pos, Entity entity) {
-		return super.canEntityDestroy(state, level, pos, entity);
+	public boolean canHarvestBlock(BlockState state, BlockGetter level, BlockPos pos, Player player) {
+		if (player.getMainHandItem().getItem() instanceof DiggerItem digger){
+			int levelDig = digger.getTier().getLevel();
+			if (digger instanceof PickaxeItem){
+				return levelDig >= 7;
+			}
+		}
+		return super.canHarvestBlock(state, level, pos, player);
 	}
 }

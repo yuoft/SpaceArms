@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "spacearms:space_ore",
+    "spacearms:deepslate_space_ore",
+    "spacearms:end_space_ore"
+  ]
+}

@@ -36,7 +36,7 @@ public class OpPickaxe extends PickaxeItem {
 	@Override
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
 		if (stack.isCorrectToolForDrops(state)){
-			return 100.0f;
+			return 999.0f;
 		}
 		return Math.max(super.getDestroySpeed(stack, state), 10.0f);
 	}

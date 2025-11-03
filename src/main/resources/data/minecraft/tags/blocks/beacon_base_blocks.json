@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "spacearms:ruby_block",
+    "spacearms:jade_block",
+    "spacearms:dragon_block",
+    "spacearms:xray_block",
+    "spacearms:super_xray_block",
+    "spacearms:super_block",
+    "spacearms:ultra_block",
+    "spacearms:space_block"
+  ]
+}

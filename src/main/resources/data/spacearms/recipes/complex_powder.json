@@ -17,6 +17,7 @@
     }
   },
   "result": {
-    "item": "spacearms:complex_powder"
+    "item": "spacearms:complex_powder",
+    "count": 4
   }
 }

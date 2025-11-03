@@ -1,0 +1,21 @@
+{
+  "values": [
+    "spacearms:ruby_ore",
+    "spacearms:nether_ruby_ore",
+    "spacearms:ruby_block",
+    "spacearms:jade_ore",
+    "spacearms:jade_block",
+    "spacearms:dragon_ore",
+    "spacearms:dragon_block",
+    "spacearms:xray_block",
+    "spacearms:super_xray_block",
+    "spacearms:super_ore",
+    "spacearms:super_block",
+    "spacearms:ultra_block",
+    "spacearms:space_ore",
+    "spacearms:deepslate_space_ore",
+    "spacearms:end_space_ore",
+    "spacearms:space_block",
+    "spacearms:fragile_bedrock"
+  ]
+}

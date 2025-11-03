@@ -1,70 +1,61 @@
 package com.yuo.spacearms.Items;
 
-import net.minecraft.util.LazyLoadedValue;
+import com.yuo.spacearms.RlUtils;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.ForgeTier;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.TierSortingRegistry;
 
-import java.util.function.Supplier;
+import java.util.List;
 
-public enum SAItemTiers implements Tier {
-    WOLF(233, 20.0f, 52.8f, 3, 0, () -> Ingredient.of(Items.NETHER_STAR)),
-    BH3(233, 11.0f, 15, 3, 10, () -> Ingredient.of(Items.NETHER_STAR)),
-    RUBY(1456, 11f, 4.0f, 3, 10, () -> Ingredient.of(SAItems.ruby.get())),
-    JADE(1589, 15.0f, 5.0f, 3, 10, () -> Ingredient.of(SAItems.jade.get())),
-    XRAY(2179, 19.0f, 12, 4, 12, () -> Ingredient.of(SAItems.xrayIngot.get())),
-    SUPER(2605, 22.0f, 15, 4, 14, () -> Ingredient.of(SAItems.superIngot.get())),
-    DRAGON(3465, 25f, 18, 5, 15, () -> Ingredient.of(SAItems.dragonCrystal.get())),
-    SUPER_XRAY(3947, 30.0f, 23, 5, 16, () -> Ingredient.of(SAItems.superXrayIngot.get())),
-    ULTRA(4467, 35.0f, 29, 6, 20, () -> Ingredient.of(SAItems.ultraIngot.get())),
-    SPACE(5924, 50.0f, 50.0f, 7, 30, () -> Ingredient.of(SAItems.spaceIngot.get())),
-    SUPER_SPACE(1124, 50.0f, 12.0f, 9, 15, () -> Ingredient.of(SAItems.spaceCore.get())),
-    //数值无穷表示：Double或Float的POSITIVE_INFINITY（正）或NEGATIVE_INFINITY（负）
-    OP(9999, 99.0f, 10.0f, 99, 0, () -> Ingredient.EMPTY);
+public class SAItemTiers {
+    public static final TagKey<Block> NEEDS_XRAY_TOOL = BlockTags.create(RlUtils.fa("needs_xray_tool"));
+    public static final TagKey<Block> NEEDS_DRAGON_TOOL = BlockTags.create(RlUtils.fa("needs_dragon_tool"));
+    public static final TagKey<Block> NEEDS_ULTRA_TOOL = BlockTags.create(RlUtils.fa("needs_ultra_tool"));
+    public static final TagKey<Block> NEEDS_SPACE_TOOL = BlockTags.create(RlUtils.fa("needs_space_tool"));
+    public static final TagKey<Block> NEEDS_SUPER_SPACE_TOOL = BlockTags.create(RlUtils.fa("needs_super_space_tool"));
+    public static final TagKey<Block> NEEDS_OP_TOOL = BlockTags.create(RlUtils.fa("needs_op_tool"));
 
-    private final int maxUses;//耐久
-    private final float efficiency;//使用效率
-    private final float attackDamage;//工具伤害
-    private final int harvestLevel;//工具等级
-    private final int enchantability;//附魔等级
-    private final LazyLoadedValue<Ingredient> repairMaterial;//修复材料
-
-    SAItemTiers(int maxUses, float efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial) {
-        this.maxUses = maxUses;
-        this.efficiency = efficiency;
-        this.attackDamage = attackDamage;
-        this.harvestLevel = harvestLevel;
-        this.enchantability = enchantability;
-        this.repairMaterial = new LazyLoadedValue<>(repairMaterial);
-    }
-
-    @Override
-    public int getUses() {
-        return this.maxUses;
-    }
-
-    @Override
-    public float getSpeed() {
-        return this.efficiency;
-    }
-
-    @Override
-    public float getAttackDamageBonus() {
-        return this.attackDamage;
-    }
-
-    @Override
-    public int getLevel() {
-        return this.harvestLevel;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantability;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairMaterial.get();
-    }
+    public static Tier WOLF = TierSortingRegistry.registerTier(new ForgeTier(3, 233, 20, 52.8f, 0, BlockTags.NEEDS_DIAMOND_TOOL,
+                    () -> Ingredient.of(Items.NETHER_STAR)), RlUtils.fa( "wolf"),
+            List.of(Tiers.IRON), List.of(Tiers.NETHERITE));
+    public static Tier BH3 = TierSortingRegistry.registerTier(new ForgeTier(3, 233, 20, 15, 10, BlockTags.NEEDS_DIAMOND_TOOL,
+                    () -> Ingredient.of(Items.NETHER_STAR)), RlUtils.fa( "bh3"),
+            List.of(Tiers.IRON), List.of(Tiers.NETHERITE));
+    public static Tier RUBY = TierSortingRegistry.registerTier(new ForgeTier(3, 1456, 11, 4, 10, BlockTags.NEEDS_DIAMOND_TOOL,
+                    () -> Ingredient.of(SAItems.ruby.get())), RlUtils.fa( "ruby"),
+            List.of(Tiers.IRON), List.of(Tiers.NETHERITE));
+    public static Tier JADE = TierSortingRegistry.registerTier(new ForgeTier(3, 1589, 15, 5, 11, BlockTags.NEEDS_DIAMOND_TOOL,
+                    () -> Ingredient.of(SAItems.jade.get())), RlUtils.fa( "jade"),
+            List.of(Tiers.IRON), List.of(Tiers.NETHERITE));
+    public static Tier XRAY = TierSortingRegistry.registerTier(new ForgeTier(4, 2179, 19, 12, 12, NEEDS_XRAY_TOOL,
+                    () -> Ingredient.of(SAItems.xrayIngot.get())), RlUtils.fa( "xray"),
+            List.of(Tiers.DIAMOND), List.of());
+    public static Tier SUPER = TierSortingRegistry.registerTier(new ForgeTier(4, 2605, 22, 15, 14, NEEDS_XRAY_TOOL,
+                    () -> Ingredient.of(SAItems.superIngot.get())), RlUtils.fa( "super"),
+            List.of(Tiers.DIAMOND), List.of());
+    public static Tier DRAGON = TierSortingRegistry.registerTier(new ForgeTier(5, 3465, 25, 18, 15, NEEDS_DRAGON_TOOL,
+                    () -> Ingredient.of(SAItems.dragonCrystal.get())), RlUtils.fa( "dragon"),
+            List.of(Tiers.NETHERITE), List.of());
+    public static Tier SUPER_XRAY = TierSortingRegistry.registerTier(new ForgeTier(5, 3947, 30, 23, 16, NEEDS_DRAGON_TOOL,
+                    () -> Ingredient.of(SAItems.superXrayIngot.get())), RlUtils.fa( "super_xray"),
+            List.of(Tiers.NETHERITE), List.of());
+    public static Tier ULTRA = TierSortingRegistry.registerTier(new ForgeTier(6, 4467, 35, 29, 20, NEEDS_ULTRA_TOOL,
+                    () -> Ingredient.of(SAItems.ultraIngot.get())), RlUtils.fa( "ultra"),
+            List.of(DRAGON), List.of());
+    public static Tier SPACE = TierSortingRegistry.registerTier(new ForgeTier(7, 5924, 50, 50, 30, NEEDS_SPACE_TOOL,
+                    () -> Ingredient.of(SAItems.spaceIngot.get())), RlUtils.fa( "space"),
+            List.of(ULTRA), List.of());
+    public static Tier SUPER_SPACE = TierSortingRegistry.registerTier(new ForgeTier(9, 1024, 50, 12, 16, NEEDS_SUPER_SPACE_TOOL,
+                    () -> Ingredient.of(SAItems.spaceCore.get())), RlUtils.fa( "super_space"),
+            List.of(SPACE), List.of());
+    public static Tier OP = TierSortingRegistry.registerTier(new ForgeTier(99, 9999, 999, 10, 0, NEEDS_OP_TOOL,
+                    () -> Ingredient.EMPTY), RlUtils.fa( "op"),
+            List.of(SUPER_SPACE), List.of());
 }

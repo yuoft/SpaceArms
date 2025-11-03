@@ -8,6 +8,7 @@ import com.yuo.spacearms.Items.tool.*;
 
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.ArmorItem.Type;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -260,39 +261,41 @@ public class SAItems {
 
 	
 	//注册方块物品
+	private static final Properties BLOCK_ITEM = new Properties();
+	private static final Properties BLOCK_ITEM_FIRE = new Properties().fireResistant();
 	public static RegistryObject<BlockItem> rubyOre = ITEMS.register("ruby_ore",
-			() -> new SABlockItem(SABlocks.rubyOre.get(), new Item.Properties()));
+			() -> new SABlockItem(SABlocks.rubyOre.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> netherRubyOre = ITEMS.register("nether_ruby_ore",
-			() -> new SABlockItem(SABlocks.netherRubyOre.get(), new Item.Properties()));
+			() -> new SABlockItem(SABlocks.netherRubyOre.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> rubyBlock = ITEMS.register("ruby_block",
-			() -> new BlockItem(SABlocks.rubyBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.rubyBlock.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> jadeBlock = ITEMS.register("jade_block",
-			() -> new BlockItem(SABlocks.jadeBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.jadeBlock.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> jadeOre = ITEMS.register("jade_ore",
-			() -> new BlockItem(SABlocks.jadeOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.jadeOre.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> spaceBlock = ITEMS.register("space_block",
-			() -> new BlockItem(SABlocks.spaceBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.spaceBlock.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> spaceOre = ITEMS.register("space_ore",
-			() -> new BlockItem(SABlocks.spaceOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.spaceOre.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> deepslateSpaceOre = ITEMS.register("deepslate_space_ore",
-			() -> new BlockItem(SABlocks.deepslateSpaceOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.deepslateSpaceOre.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> endSpaceOre = ITEMS.register("end_space_ore",
-			() -> new BlockItem(SABlocks.endSpaceOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.endSpaceOre.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> fragileBedrock = ITEMS.register("fragile_bedrock",
-			() -> new BlockItem(SABlocks.fragileBedrock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.fragileBedrock.get(), BLOCK_ITEM_FIRE));
 	public static RegistryObject<BlockItem> dragonBlock = ITEMS.register("dragon_block",
-			() -> new BlockItem(SABlocks.dragonBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.dragonBlock.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> dragonOre = ITEMS.register("dragon_ore",
-			() -> new BlockItem(SABlocks.dragonOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.dragonOre.get(), BLOCK_ITEM));
 
 	public static RegistryObject<BlockItem> xrayBlock = ITEMS.register("xray_block",
-			() -> new BlockItem(SABlocks.xrayBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.xrayBlock.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> superXrayBlock = ITEMS.register("super_xray_block",
-			() -> new BlockItem(SABlocks.superXrayBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.superXrayBlock.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> superOre = ITEMS.register("super_ore",
-			() -> new BlockItem(SABlocks.superOre.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.superOre.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> superBlock = ITEMS.register("super_block",
-			() -> new BlockItem(SABlocks.superBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.superBlock.get(), BLOCK_ITEM));
 	public static RegistryObject<BlockItem> ultraBlock = ITEMS.register("ultra_block",
-			() -> new BlockItem(SABlocks.ultraBlock.get(), new Item.Properties()));
+			() -> new BlockItem(SABlocks.ultraBlock.get(), BLOCK_ITEM));
 }

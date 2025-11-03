@@ -21,7 +21,7 @@ public class SABlockItem extends BlockItem {
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
         Level world = entity.level();
         Item item = stack.getItem();
-        if (!world.isClientSide && item == SAItems.rubyOre.get()){
+        if (!world.isClientSide && (item == SAItems.rubyOre.get() || item == SAItems.netherRubyOre.get())){
             BlockPos pos = entity.blockPosition();
 
             //中间方块为岩浆
