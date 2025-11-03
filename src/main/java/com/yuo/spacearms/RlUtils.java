@@ -9,18 +9,10 @@ import net.minecraft.world.item.crafting.RecipeType;
  */
 public class RlUtils {
     public static ResourceLocation fa(String path){
-        return ResourceLocation.withDefaultNamespace(path);
+        return new ResourceLocation(path);
     }
 
     public static ResourceLocation fa(String namespace, String path){
-        return ResourceLocation.fromNamespaceAndPath(namespace, path);
-    }
-
-    public static ResourceLocation tryParse(String s){
-        return ResourceLocation.tryParse(s);
-    }
-
-    public static ResourceLocation parse(String s){
-        return ResourceLocation.parse(s);
+        return new ResourceLocation(namespace, path);
     }
 }
