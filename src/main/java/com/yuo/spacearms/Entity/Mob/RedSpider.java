@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class RedSpider extends GreenSpider {
+public class RedSpider extends GreenSpider implements ISAMob {
     public RedSpider(EntityType<? extends Spider> type, Level world) {
         super(type, world);
     }
@@ -34,7 +34,7 @@ public class RedSpider extends GreenSpider {
         super.tick();
         if (this.isAlive()) { //被攻击时有30%吐蛛网
             Player player = this.lastHurtByPlayer;
-            if (player != null && random.nextInt(100) > 69 && this.tickCount % 160 == 0) {
+            if (player != null && random.nextDouble() < 0.3f + level().getDifficulty().getId() * 0.05f && this.tickCount % 120 == 0) {
                 BlockPos pos = player.blockPosition();
                 BlockState state = Blocks.COBWEB.defaultBlockState();
                 level().setBlockAndUpdate(pos, state);

@@ -2,6 +2,7 @@ package com.yuo.spacearms.world;
 
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.RlUtils;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -93,6 +94,6 @@ public class OreFeatures {
 
     // 创建ResourceKey的方法
     public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String pName) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, RlUtils.fa(pName));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, RlUtils.fa(SpaceArms.MOD_ID, pName));
     }
 }

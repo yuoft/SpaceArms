@@ -8,10 +8,10 @@ import com.yuo.spacearms.Items.SAItems;
 import com.yuo.spacearms.Items.ShieldType;
 import com.yuo.spacearms.RlUtils;
 import com.yuo.spacearms.SpaceArms;
-import moze_intel.projecte.rendering.EntitySpriteRenderer;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -68,7 +68,7 @@ public class ClientEventHandler {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         //投掷物渲染
-        event.registerEntityRenderer(SAEntitys.DRAGON_CRYSTAL.get(), (renderManager) -> new EntitySpriteRenderer<>(renderManager, RlUtils.fa(SpaceArms.MOD_ID, "entity/dragon_crystal")));
+        event.registerEntityRenderer(SAEntitys.DRAGON_CRYSTAL.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(SAEntitys.IRON_ARROW.get(), IronArrowRender::new);//实体箭渲染
         event.registerEntityRenderer(SAEntitys.GOLD_ARROW.get(), GoldArrowRender::new);
         event.registerEntityRenderer(SAEntitys.DIAMOND_ARROW.get(), DiamondArrowRender::new);

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "spacearms:ore_fragile_bedrock_nether_top",
+  "step": "underground_ores"
+}

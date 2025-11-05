@@ -1,30 +1,30 @@
-[0111月2025 17:04:29.332] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, -mixin.config=endless.mixins.json, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources, --mixin.config, endless.mixins.json]
-[0111月2025 17:04:29.332] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
-[0111月2025 17:04:29.428] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[0111月2025 17:04:29.460] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/26852/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[0111月2025 17:04:29.859] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[0111月2025 17:04:29.859] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[0111月2025 17:04:29.859] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[0111月2025 17:04:29.875] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
-[0111月2025 17:04:30.099] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[0111月2025 17:04:31.599] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[0111月2025 17:04:31.619] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources]
-[0111月2025 17:04:31.922] [main/INFO] [mixin/]: Remapping refMap endless.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.002] [main/INFO] [mixin/]: Remapping refMap moonlight-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.002] [main/INFO] [mixin/]: Remapping refMap moonlight-forge-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.002] [main/INFO] [mixin/]: Remapping refMap jade.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.002] [main/INFO] [mixin/]: Remapping refMap dummmmmmy-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.002] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
-[0111月2025 17:04:32.815] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [spacearms]
-[0111月2025 17:04:32.991] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.2.1-beta.2).
-[0111月2025 17:04:36.817] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
-[0111月2025 17:04:36.818] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
-[0111月2025 17:04:37.237] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[0111月2025 17:04:37.252] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 6.719 ms
-[0111月2025 17:04:37.555] [main/INFO] [Moonlight/]: Initialized block sets in 17ms
-[0111月2025 17:04:38.006] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[0111月2025 17:04:38.006] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[0111月2025 17:04:38.154] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[0111月2025 17:04:38.233] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 74 ms
-[0111月2025 17:04:38.233] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 75 ms
-[0111月2025 17:04:38.233] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 0, old count: 0, new count: 1, removed stale: 0, written: 0
+[0511月2025 17:16:01.520] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, -mixin.config=endless.mixins.json, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources, --mixin.config, endless.mixins.json]
+[0511月2025 17:16:01.520] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[0511月2025 17:16:01.599] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[0511月2025 17:16:01.647] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/26852/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[0511月2025 17:16:02.014] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[0511月2025 17:16:02.014] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[0511月2025 17:16:02.030] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[0511月2025 17:16:02.030] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\26852\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[0511月2025 17:16:02.285] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[0511月2025 17:16:03.634] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[0511月2025 17:16:03.650] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\26852\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, spacearms, --all, --output, D:\McMod20\SpaceArms\src\generated\resources, --existing, D:\McMod20\SpaceArms\src\main\resources]
+[0511月2025 17:16:03.922] [main/INFO] [mixin/]: Remapping refMap endless.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:03.969] [main/INFO] [mixin/]: Remapping refMap moonlight-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:03.969] [main/INFO] [mixin/]: Remapping refMap moonlight-forge-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:03.969] [main/INFO] [mixin/]: Remapping refMap jade.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:03.969] [main/INFO] [mixin/]: Remapping refMap dummmmmmy-common-refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:03.969] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using D:\McMod20\SpaceArms/build/createSrgToMcp/output.srg
+[0511月2025 17:16:04.736] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [spacearms]
+[0511月2025 17:16:04.917] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.2.1-beta.2).
+[0511月2025 17:16:08.957] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[0511月2025 17:16:08.959] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[0511月2025 17:16:09.377] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[0511月2025 17:16:09.377] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 7.023 ms
+[0511月2025 17:16:09.644] [main/INFO] [Moonlight/]: Initialized block sets in 14ms
+[0511月2025 17:16:10.086] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[0511月2025 17:16:10.086] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/26852/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[0511月2025 17:16:10.299] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[0511月2025 17:16:10.392] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 87 ms
+[0511月2025 17:16:10.392] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 89 ms
+[0511月2025 17:16:10.392] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 33, old count: 33, new count: 34, removed stale: 0, written: 0

@@ -19,7 +19,7 @@ import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-public class GreenSkeleton extends Skeleton {
+public class GreenSkeleton extends Skeleton implements ISAMob {
     public GreenSkeleton(EntityType<? extends Skeleton> type, Level world) {
         super(type, world);
     }

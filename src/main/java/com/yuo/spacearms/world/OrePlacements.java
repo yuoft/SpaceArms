@@ -1,6 +1,7 @@
 package com.yuo.spacearms.world;
 
 import com.yuo.spacearms.RlUtils;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -90,6 +91,6 @@ public class OrePlacements {
     }
 
     public static ResourceKey<PlacedFeature> createKey(String pKey) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, RlUtils.fa(pKey));
+        return ResourceKey.create(Registries.PLACED_FEATURE, RlUtils.fa(SpaceArms.MOD_ID, pKey));
     }
 }

@@ -1,0 +1,27 @@
+{
+  "feature": "spacearms:ore_fragile_bedrock_nether_down",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 80
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 128
+        },
+        "min_inclusive": {
+          "absolute": 123
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

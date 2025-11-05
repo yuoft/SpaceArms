@@ -10,7 +10,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.level.Level;
 
-public class RedSkeleton extends GreenSkeleton{
+public class RedSkeleton extends GreenSkeleton implements ISAMob {
     public RedSkeleton(EntityType<? extends Skeleton> type, Level world) {
         super(type, world);
     }

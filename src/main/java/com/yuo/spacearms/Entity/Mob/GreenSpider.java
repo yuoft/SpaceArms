@@ -10,7 +10,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.level.Level;
 
-public class GreenSpider extends Spider {
+public class GreenSpider extends Spider implements ISAMob {
     public GreenSpider(EntityType<? extends Spider> type, Level world) {
         super(type, world);
     }

@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
-public class RedCreeper extends GreenCreeper {
+public class RedCreeper extends GreenCreeper implements ISAMob {
     public RedCreeper(EntityType<? extends Creeper> type, Level world) {
         super(type, world);
         this.fuseTime = 5;

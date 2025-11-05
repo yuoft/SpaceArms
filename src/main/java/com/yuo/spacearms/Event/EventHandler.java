@@ -1,5 +1,7 @@
 package com.yuo.spacearms.Event;
 
+import com.yuo.spacearms.Entity.Mob.*;
+import com.yuo.spacearms.Entity.SAEntitys;
 import com.yuo.spacearms.Items.Arms.OpArms;
 import com.yuo.spacearms.Blocks.SABlocks;
 import com.yuo.spacearms.Items.SAItems;
@@ -15,6 +17,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,12 +25,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -62,6 +66,66 @@ public class EventHandler {
     public static List<String> playersWithOpLeg = new ArrayList<>();
     public static List<String> playersWithOpFeet = new ArrayList<>();
     public static final String IS_BEDROCK = SpaceArms.MOD_ID + ":is_bedrock";
+    public static final RandomSource RANDOM = RandomSource.create();
+
+    @SubscribeEvent
+    public static void mobTotem(LivingUseTotemEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (entity instanceof ISAMob){
+            entity.heal(entity.getMaxHealth() * 0.25f);
+        }
+    }
+
+    @SubscribeEvent
+    public static void modMobSpawn(MobSpawnEvent.FinalizeSpawn event) {
+        Mob mob = event.getEntity();
+        Level level = event.getLevel().getLevel();
+        BlockPos pos = mob.getOnPos();
+        boolean flag = RANDOM.nextDouble() < 0.2d + event.getDifficulty().getEffectiveDifficulty() * 0.2d; //生成强化怪物概率
+        boolean isRed = RANDOM.nextDouble() < 0.2d + event.getDifficulty().getEffectiveDifficulty() * 0.1d; //生成精英
+        if (!flag) return;
+        if (mob instanceof ISAMob) return; //不重复生成
+
+        if (mob instanceof Zombie){
+            if (isRed){
+                addMob(level, new RedZombie(SAEntitys.RED_ZOMBIE.get(), level), pos);
+            }else {
+                addMob(level, new GreenZombie(SAEntitys.GREEN_ZOMBIE.get(), level), pos);
+            }
+        }else if (mob instanceof Skeleton){
+            if (isRed){
+                addMob(level, new RedSkeleton(SAEntitys.RED_SKELETON.get(), level), pos);
+            }else {
+                addMob(level, new GreenSkeleton(SAEntitys.GREEN_SKELETON.get(), level), pos);
+            }
+        }else if (mob instanceof Spider){
+            if (isRed){
+                addMob(level, new RedSpider(SAEntitys.RED_SPIDER.get(), level), pos);
+            }else {
+                addMob(level, new GreenSpider(SAEntitys.GREEN_SPIDER.get(), level), pos);
+            }
+        }else if (mob instanceof Creeper){
+            if (isRed){
+                addMob(level, new RedCreeper(SAEntitys.RED_CREEPER.get(), level), pos);
+            }else {
+                addMob(level, new GreenCreeper(SAEntitys.GREEN_CREEPER.get(), level), pos);
+            }
+        }else if (mob instanceof EnderMan){
+            if (isRed){
+                addMob(level, new RedEnderMan(SAEntitys.RED_ENDERMAN.get(), level), pos);
+            }else {
+                addMob(level, new GreenEnderMan(SAEntitys.GREEN_ENDERMAN.get(), level), pos);
+            }
+        }
+    }
+
+    /**
+     * 添加生物
+     */
+    private static void addMob(Level level, Mob mob, BlockPos pos) {
+        mob.setPos(pos.getX() + RANDOM.nextDouble(), pos.getY(), pos.getZ() + RANDOM.nextDouble());
+        level.addFreshEntity(mob);
+    }
 
     //检查玩家背包是否有基岩，有则给予负面状态
     @SubscribeEvent
@@ -186,11 +250,13 @@ public class EventHandler {
             //chest
             if (playersWithOpChest.contains(key)) {
                 if (hasChest) {
-                    player.getAbilities().flying = true;
+                    if (!player.getAbilities().mayfly)
+                        player.getAbilities().mayfly = true;
                 }else {
-                    if (!player.isCreative()) {
-                        player.getAbilities().flying = false;
+                    if (player.getAbilities().mayfly && !player.isCreative() && !player.isSpectator()) {
                         player.getAbilities().mayfly = false;
+                        if (player.getAbilities().flying)
+                            player.getAbilities().flying = false;
                     }
                     playersWithOpChest.remove(key);
                 }

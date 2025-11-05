@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class RedEnderMan extends GreenEnderMan {
+public class RedEnderMan extends GreenEnderMan implements ISAMob {
     public RedEnderMan(EntityType<? extends EnderMan> type, Level world) {
         super(type, world);
     }
@@ -33,15 +33,21 @@ public class RedEnderMan extends GreenEnderMan {
     public void tick() {
         super.tick();
         Player player = this.lastHurtByPlayer;
-        if (player != null && random.nextInt(100) > 50 && this.tickCount % 40 == 0) {
+        if (player != null && random.nextDouble() < 0.35f + level().getDifficulty().getId() * 0.1f && this.tickCount % 40 == 0) {
             BlockPos pos = player.blockPosition();
             BlockPos pos1 = new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ());
             BlockState state = level().getBlockState(pos1);
             if (state.getBlock().defaultDestroyTime() < 5.0f) {
+                BlockState carriedBlock = this.getCarriedBlock();
+                if (carriedBlock != null) {
+                    this.setCarriedBlock(Blocks.AIR.defaultBlockState());
+                }
                 this.setCarriedBlock(state);
                 level().setBlockAndUpdate(pos1, Blocks.AIR.defaultBlockState());
             }
         }
+
+
     }
 
     @Override

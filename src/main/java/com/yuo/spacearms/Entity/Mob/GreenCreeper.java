@@ -17,9 +17,8 @@ import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import java.util.Collection;
-import java.util.Iterator;
 
-public class GreenCreeper extends Creeper {
+public class GreenCreeper extends Creeper implements ISAMob {
     private int lastActiveTime;
     private int timeSinceIgnited;
     protected int fuseTime;

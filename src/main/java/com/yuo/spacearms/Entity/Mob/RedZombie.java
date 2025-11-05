@@ -11,7 +11,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 
-public class RedZombie extends GreenZombie {
+public class RedZombie extends GreenZombie implements ISAMob {
 
     public RedZombie(EntityType<? extends Zombie> entityType, Level world) {
         super(entityType, world);

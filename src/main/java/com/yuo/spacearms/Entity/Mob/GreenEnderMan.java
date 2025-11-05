@@ -25,7 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 
-public class GreenEnderMan extends EnderMan {
+public class GreenEnderMan extends EnderMan implements ISAMob {
     public GreenEnderMan(EntityType<? extends EnderMan> type, Level world) {
         super(type, world);
     }
@@ -43,7 +43,7 @@ public class GreenEnderMan extends EnderMan {
     public void tick() {
         super.tick();
         Player player = this.lastHurtByPlayer;
-        if (player != null && random.nextInt(100) > 50 && this.tickCount % 200 == 0) {
+        if (player != null && random.nextDouble() < 0.35f + level().getDifficulty().getId() * 0.1f && this.tickCount % 200 == 0) {
             AABB alignedBB = new AABB(this.blockPosition().offset(-16, -8, -16), this.blockPosition().offset(16, 8, 8));
             for (Monster monster : this.level().getEntitiesOfClass(Monster.class, alignedBB)) {
                 if (monster instanceof Creeper){

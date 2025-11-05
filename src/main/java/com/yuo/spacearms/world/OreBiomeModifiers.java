@@ -1,6 +1,7 @@
 package com.yuo.spacearms.world;
 
 import com.yuo.spacearms.RlUtils;
+import com.yuo.spacearms.SpaceArms;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -61,6 +62,6 @@ public class OreBiomeModifiers {
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, RlUtils.fa(name));
+        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, RlUtils.fa(SpaceArms.MOD_ID, name));
     }
 }
