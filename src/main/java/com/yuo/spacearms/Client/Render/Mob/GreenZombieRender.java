@@ -16,7 +16,7 @@ public class GreenZombieRender extends AbstractZombieRenderer<GreenZombie, Zombi
         super(context, new ZombieModel<>(context.bakeLayer(ModelLayers.ZOMBIE)),
                 new ZombieModel<>(context.bakeLayer(ModelLayers.ZOMBIE_INNER_ARMOR)),
                 new ZombieModel<>(context.bakeLayer(ModelLayers.ZOMBIE_OUTER_ARMOR)));
-//        this.addLayer(new GreenZombieEyesLayer(this));
+        this.addLayer(new GreenZombieEyesLayer(this));
     }
 
     @Override
