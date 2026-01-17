@@ -30,7 +30,6 @@ minecraft {
             property 'forge.logging.console.level', 'info'
             property 'mixin.env.remapRefMap','true'
             property 'mixin.env.refMapRemappingFile', "${project.projectDir}/build/createSrgToMcp/output.srg"
-            arg "-mixin.config=endless.mixins.json"
             mods {
                 "${mod_id}" {
                     source sourceSets.main
@@ -98,7 +97,7 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     compileOnly fg.deobf("curse.maven:curios-309927:${curios_id}")
     compileOnly fg.deobf("curse.maven:projecte-226410:${pe_id}")
-    implementation fg.deobf("curse.maven:avaritia-endless-624491:${ae_id}")
+//    implementation fg.deobf("curse.maven:avaritia-endless-624491:${ae_id}")
 
     runtimeOnly fg.deobf("curse.maven:jade-324717:${jade_id}")
     runtimeOnly fg.deobf("curse.maven:selene-499980:4806893")
@@ -142,12 +141,12 @@ tasks.named('jar', Jar).configure {
     // This is the preferred method to reobfuscate your jar file
     finalizedBy 'reobfJar'
 }
-
-mixin {
-    //指定refmap.json文件生成位置
-    add sourceSets.main, "endless.refmap.json"
-    config "endless.mixins.json"
-}
+//
+//mixin {
+//    //指定refmap.json文件生成位置
+//    add sourceSets.main, "endless.refmap.json"
+//    config "endless.mixins.json"
+//}
 
 publishing {
     publications {
